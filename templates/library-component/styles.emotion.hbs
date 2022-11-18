@@ -1,0 +1,14 @@
+import { css } from '@emotion/css';
+
+/** props that affect the CSS of this component */
+type StylesProps = {
+    // TODO: replace example prop with yours
+    variant: 'example1' | 'example2'
+}
+
+/** returns the className generated for the styles of this component */
+export const getStyles = <T extends StylesProps>(props: T) => {
+    return css`
+      color: ${ props.variant === 'example1' ? 'blue' : 'red' } 
+    `
+}

@@ -1,0 +1,7 @@
+**/dist/
+**/build/
+config/jest/
+**/node_modules/
+storybook-static/
+**/tmp
+**/generated/

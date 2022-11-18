@@ -1,4 +1,6 @@
 # Add files here to ignore them from prettier formatting
-
+lerna.json
+nx.json
+**/*.hbs
 /dist
 /coverage

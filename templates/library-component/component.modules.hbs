@@ -1,0 +1,21 @@
+import React, { FC, PropsWithChildren, ComponentPropsWithoutRef } from 'react';
+import classnames from 'classnames/bind';
+
+import styles from './{{dashCase name}}.module.scss';
+
+const selector = '{{lowerCase prefix}}-{{lowerCase name}}';
+
+export type {{pascalCase prefix}}{{pascalCase name}}Props = PropsWithChildren<{
+  // exampleProp: unknown;
+}> & ComponentPropsWithoutRef<'{{lowerCase elementType}}'>;
+
+export const {{pascalCase prefix}}{{pascalCase name}} : FC<{{pascalCase prefix}}{{pascalCase name}}Props> = ({ children, className, /* exampleProp, */ ...rest }) => {
+  const cx = classnames.bind(styles);
+  const classes = cx(selector, className);
+
+  return (
+    <{{lowerCase elementType}} className={classes} {...rest}>
+      {children}
+    </{{lowerCase elementType}}>
+  );
+};
