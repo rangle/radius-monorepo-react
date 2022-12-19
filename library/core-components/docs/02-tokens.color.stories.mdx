@@ -1,0 +1,29 @@
+import {
+  Meta,
+  Typeset,
+  Title,
+  Subtitle,
+  Story,
+} from '@storybook/addon-docs/blocks';
+import { PropsTable } from '@storybook/components';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
+
+<Meta
+  title="About/Design Tokens/Color"
+  parameters={{ badges: [BADGE.BETA] }}
+  decorators={[
+    (Story) => (
+      <div style={{ marginBottom: '4rem', marginTop: '1rem' }}>
+        <Story />
+      </div>
+    ),
+  ]}
+/>
+
+# Color
+
+## Core
+
+These are going to be the colors
+
+These are their stories

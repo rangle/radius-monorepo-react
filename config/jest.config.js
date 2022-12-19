@@ -13,7 +13,6 @@ module.exports = {
     '\\.(css|less|scss|sass)$': '<rootDir>/__mocks__/fileMock.js',
   },
   transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   testPathIgnorePatterns: ['.d.ts'],

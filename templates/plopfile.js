@@ -7,7 +7,6 @@ const configData = {
   libraryName: 'core-components',
 };
 
-// eslint-disable-next-line func-names
 module.exports = function (
   /** @type {import('plop').NodePlopAPI} */
   plop

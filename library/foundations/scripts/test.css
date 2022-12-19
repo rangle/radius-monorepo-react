@@ -1,0 +1,71 @@
+@layer radius--core {
+    :root {
+        --core--primary-500: red;
+        --core--inverse-500: white;
+        --core--neutral-500: gray;
+        --core--light-surface-500: yellow;
+        --core--dark-surface-500: navy;
+        --core--primary-color: {core.primary-500};
+        --core--typography-text-1: 10px/12px roboto;
+        --core--typography-text-2: 12px/14px roboto;
+        --core--typography-text-3: 14px/16px roboto;
+        --core--typography-text-4: 16px/18px roboto;
+        --core--grid-screen-size-1: 480px;
+        --core--grid-screen-size-2: 768px;
+        --core--grid-screen-size-3: 1024px;
+    }
+ }
+ @layer radius--core--light-mode {
+    :root {
+        --color--primary: {core.primary-color};
+    }
+ }
+ @layer radius--core--dark-mode {
+    :root {
+        --color--primary: {core.inverse-500};
+    }
+ }
+ @layer radius--typography--screen-mobile {
+    :root {
+        --screen-size-min: 0;
+        --screen-size-max: {core--grid-screen-size-1};
+    }
+    @media screen and (max-width: {screen-size-max}) {
+      :root {
+        --label-text: {core--typography-text-1}
+      }
+    }
+ }
+ @layer radius--typography--screen-tablet {
+    :root {
+        --screen-size-min: {core--grid-screen-size-1} + 1;
+        --screen-size-max: {core--grid-screen-size-2};
+    }
+    @media screen and (max-width: {screen-size-max}) and (min-width: {screen-size-min}) {
+        :root {
+            --label-text: {core--typography-text-2}
+       }   
+    }
+ }
+ @layer radius--typography--screen-medium {
+    :root {
+        --screen-size-min: {core--grid-screen-size-2} + 1;
+        --screen-size-max: {core--grid-screen-size-3};
+    }
+    @media screen and (max-width: {screen-size-max}) and (min-width: {screen-size-min}) {
+        :root {
+            --label-text: {core--typography-text-3}
+       }   
+    }
+ }
+ @layer radius--typography--screen-large {
+    :root {
+        --screen-size-min: {core--grid-screen-size-3} + 1;
+        --screen-size-max: 0;
+    }
+    @media screen and (min-width: {screen-size-min}) {
+       :root {
+            --label-text: {core--typography-text-4}
+       }   
+    }
+ }

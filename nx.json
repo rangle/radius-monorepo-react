@@ -1,40 +1,36 @@
 {
-  "extends": "nx/presets/npm.json",
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "$schema": "node_modules/nx/schemas/nx-schema.json",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [],
-        "accessToken": "Y2Y2YWZmODUtZDIyZC00YzMzLTliMzYtYmFkNDhmNGJkNjkwfHJlYWQtd3JpdGU="
+        "accessToken": "MjBkMDM5YjEtOGNmZi00ZjFjLWI5NDctMDBjNTRjMmE5MGMzfHJlYWQtd3JpdGU="
       }
     }
   },
-  "targetDependencies": {
-    "dev": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "start": [
-      {
-        "target": "build",
-        "projects": "self"
-      }
-    ]
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "prod": ["!{projectRoot}/**/*.spec.tsx"]
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "test": {
-      "dependsOn": [
-        "^test"
-      ]
+      "dependsOn": ["^test"],
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+    },
+    "dev": {
+      "dependsOn": ["^build"]
     }
   },
-  "defaultBase": "main"
+  "defaultBase": "main",
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    }
+  }
 }

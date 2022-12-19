@@ -5,3 +5,4 @@ config/jest/
 storybook-static/
 **/tmp
 **/generated/
+apps/demo

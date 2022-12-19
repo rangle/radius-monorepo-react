@@ -1,0 +1,4 @@
+/* Button Component Tokens */
+.radius-button {
+    --radius-button-padding-left: var()
+}

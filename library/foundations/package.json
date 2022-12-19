@@ -1,0 +1,9 @@
+{
+  "name": "radius-foundation-scripts",
+  "version": "1.0.0",
+  "description": "Foundation scripts for Design Systems",
+  "main": "index.js",
+  "author": "jason.santos@rangle.io",
+  "type": "module",
+  "license": "MIT"
+}

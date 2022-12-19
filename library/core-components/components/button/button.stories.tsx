@@ -5,7 +5,7 @@ import { RadiusButton, RadiusButtonProps } from './button';
 
 export default {
   component: RadiusButton,
-  title: 'Components/Button',
+  title: 'Core COmponents/Button',
   parameters: {
     design: {
       type: 'figma',
@@ -20,6 +20,4 @@ const Template: ComponentStory<typeof RadiusButton> = (
 ) => <RadiusButton {...args}>Hello World</RadiusButton>;
 
 export const Default = Template.bind({});
-Default.args = {
-
-};
+Default.args = {};

@@ -1,0 +1,29 @@
+import {
+  Meta,
+  Typeset,
+  Title,
+  Subtitle,
+  Story,
+} from '@storybook/addon-docs/blocks';
+import { PropsTable } from '@storybook/components';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
+
+<Meta
+  title="About/Radius"
+  parameters={{ badges: [BADGE.BETA] }}
+  decorators={[
+    (Story) => (
+      <div style={{ marginBottom: '4rem', marginTop: '1rem' }}>
+        <Story />
+      </div>
+    ),
+  ]}
+/>
+
+# Radius
+
+## About Radius
+
+Radius is a Design System Accelerator
+
+It's main goal is to remove the decision fatigue and to keep your Design System practice evergreen
