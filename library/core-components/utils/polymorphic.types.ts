@@ -34,8 +34,7 @@ export type AsProp<C extends ElementType> = {
 export type ChildrenProp = Pick<PropsWithChildren<unknown>, 'children'>;
 
 /*** generic type representing the `ref` prop */
-export type PolymorphicRef<C extends ElementType> =
-  ComponentPropsWithRef<C>['ref'];
+export type PolymorphicRef<C extends ElementType> = ComponentPropsWithRef<C>;
 
 export type ComponentPropsWitAs<C extends ElementType> = AsProp<C> &
   ComponentPropsWithoutRef<C>;
@@ -48,4 +47,4 @@ export type PolymorphicComponentProp<C extends ElementType, Props> = Props &
 export type PolymorphicComponentPropWithRef<
   C extends ElementType,
   Props
-> = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };
+> = PolymorphicComponentProp<C, Props> & PolymorphicRef<C>;
