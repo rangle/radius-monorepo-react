@@ -51,15 +51,12 @@ export const RadiusButton = forwardRef<
   RadiusButtonTagAsHTML,
   RadiusButtonProps
 >(
-  (
-    {
-      children, // extract children
-      variant,
-      size, // extract your extensions
-      ...rest // the remainder should be the original tag's attributes
-    },
-    ref
-  ) => {
+  ({
+    children, // extract children
+    variant,
+    size, // extract your extensions
+    ...rest // the remainder should be the original tag's attributes
+  }) => {
     // one suggested idiom is to extract all specific props in the render function props param
     // and let 'rest' contain only the native html attributes and the `as` prop
     // afterwards, you can use our `elementAndProps` utility to make sure the props are

@@ -17,7 +17,8 @@
     "clean": "lerna run clean && rm -rf node_modules",
     "graph": "nx graph",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "workspaces": [
     "apps/*",
@@ -77,7 +78,8 @@
     "rollup-plugin-postcss": "^4.0.2",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "husky": "^8.0.0"
   },
   "dependencies": {}
 }
