@@ -70,5 +70,16 @@ export const getStyles = <T extends StylesProps>({
     margin: var(--button--typography-text);
     font-size: var(--button--typography-text);
     font-size: var(--button--typography-text);
+    &:hover {
+      background: transparent;
+    }
+    &:focus {
+      color: ${background};
+      background: ${color};
+    }
+    &:disabled {
+      color: #ccc;
+      background: #ccc;
+    }
   `;
 };

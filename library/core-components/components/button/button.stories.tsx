@@ -22,16 +22,22 @@ const Template: ComponentStory<typeof RadiusButton> = (
 export const Default = Template.bind({});
 Default.args = {};
 
-// export const forwardRefExample = () => {
-//   const ref = React.createRef();
-//   console.log(ref);
-//   setTimeout(() => {
-//     console.log(ref);
-//   }, 1000);
-//   return (
-//     <div style={{ display: 'flex', gap: '1em', padding: '1em 0' }}>
-//       hello world forward ref demo
-//       <RadiusButton ref={ref}>Hello World</RadiusButton>
-//     </div>
-//   );
-// };
+export const ButtonStates = () => (
+  <div style={{ display: 'flex', gap: '1em', padding: '1em 0' }}>
+    <RadiusButton>Radius Button</RadiusButton>
+    <RadiusButton id="one">Radius Button</RadiusButton>
+    <RadiusButton id="three">Radius Button</RadiusButton>
+    <RadiusButton id="two">Radius Button</RadiusButton>
+    <RadiusButton id="four" disabled>
+      Radius Button
+    </RadiusButton>
+  </div>
+);
+
+ButtonStates.parameters = {
+  pseudo: {
+    hover: '#one',
+    focus: '#two',
+    active: '#three',
+  },
+};
