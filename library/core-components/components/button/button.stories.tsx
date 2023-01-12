@@ -36,9 +36,9 @@ const ButtonStatesTemplate: ComponentStory<typeof RadiusButton> = (
     <div className="pseudo-focus">
       <RadiusButton {...args}>Focus</RadiusButton>
     </div>
-    {/* <RadiusButton disabled {...args}>
+    <RadiusButton disabled {...args}>
       Radius Button
-    </RadiusButton> */}
+    </RadiusButton>
   </div>
 );
 
