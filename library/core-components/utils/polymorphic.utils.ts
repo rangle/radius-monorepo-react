@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithRef, Ref } from 'react';
+import React, { ComponentPropsWithRef } from 'react';
 import { ComponentPropsWitAs } from './polymorphic.types';
 
 type ElementAndPropsResult<
