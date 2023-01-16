@@ -21,7 +21,7 @@ export type RadiusButtonStyleType =
  */
 export type StylesProps = {
   // TODO: replace example props with yours
-  appearance?: RadiusButtonStyleType;
+  appearance?: 'filled' | 'hollow';
   size?: RadiusButtonSize;
 };
 
