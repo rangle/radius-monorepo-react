@@ -12,6 +12,10 @@ export default {
       url: 'https://www.figma.com/file/????',
     },
     badges: [BADGE.EXPERIMENTAL],
+
+    componentSubtitle:
+      'This Polymorphic component will style your component to render as a button.',
+    // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
 } as ComponentMeta<typeof RadiusButton>;
 

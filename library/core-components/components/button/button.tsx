@@ -35,7 +35,7 @@ export type RadiusButtonProps = PolymorphicComponentPropWithRef<
   RadiusButtonExtendedProps
 >;
 
-// ----------------------------
+// Adding comments before the component will be added to the documentation in storybook.
 /** # RadiusButton Component
  * A polymorphic component that represents either an html _button_ or _anchor_
  * exposes all attributes of the selected tag, plus the specific attributes
@@ -44,7 +44,7 @@ export type RadiusButtonProps = PolymorphicComponentPropWithRef<
  * Makes use of the react forwardRef function to ensure that the `ref` property is available
  * and points to the html dom element inside.
  *
- * See [https://reactjs.org/docs/forwarding-refs.html] for more information
+ * See https://reactjs.org/docs/forwarding-refs.html for more information
  */
 export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
   (
