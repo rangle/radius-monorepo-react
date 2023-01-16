@@ -21,24 +21,36 @@ const Template: ComponentStory<typeof RadiusButton> = (
 
 export const Default = Template.bind({});
 Default.args = {};
+3;
 
 const ButtonStatesTemplate: ComponentStory<typeof RadiusButton> = (
   args: RadiusButtonProps
 ) => (
   <div style={{ display: 'flex', gap: '1em', padding: '1em 0' }}>
-    <RadiusButton {...args}>Default</RadiusButton>
+    <div>
+      <RadiusButton {...args}>Normal</RadiusButton>
+    </div>
     <div className="pseudo-hover">
       <RadiusButton {...args}>Hover</RadiusButton>
-    </div>
-    <div className="pseudo-active">
-      <RadiusButton {...args}>Active</RadiusButton>
     </div>
     <div className="pseudo-focus">
       <RadiusButton {...args}>Focus</RadiusButton>
     </div>
-    <RadiusButton disabled {...args}>
-      Radius Button
-    </RadiusButton>
+    <div className="pseudo-active">
+      <RadiusButton {...args}>Active</RadiusButton>
+    </div>
+    <div className="pseudo-hover pseudo-focus">
+      <RadiusButton {...args}>Hover Focus</RadiusButton>
+    </div>
+    <div className="pseudo-hover pseudo-active">
+      <RadiusButton {...args}>Hover Active</RadiusButton>
+    </div>
+    <div className="pseudo-focus pseudo-active">
+      <RadiusButton {...args}>Focus Active</RadiusButton>
+    </div>
+    <div className="pseudo-hover pseudo-focus pseudo-active">
+      <RadiusButton {...args}>Hover Focus Active</RadiusButton>
+    </div>
   </div>
 );
 

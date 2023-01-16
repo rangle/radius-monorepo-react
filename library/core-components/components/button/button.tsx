@@ -20,8 +20,7 @@ export type RadiusButtonExtendedProps = {
 };
 
 /// Valid Element Types for the RadiusButton
-type RadiusButtonTag = 'a' | 'button';
-type RadiusButtonTagAsHTML = HTMLLinkElement | HTMLButtonElement;
+type RadiusButtonTag = 'button' | 'a';
 
 /** The Component Props
  * it is a mix of the Specific props declared above
@@ -47,10 +46,7 @@ export type RadiusButtonProps = PolymorphicComponentProp<
  *
  * See [https://reactjs.org/docs/forwarding-refs.html] for more information
  */
-export const RadiusButton = forwardRef<
-  RadiusButtonTagAsHTML,
-  RadiusButtonProps
->(
+export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
   ({
     children, // extract children
     variant,
