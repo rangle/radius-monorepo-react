@@ -1,5 +1,5 @@
 import React, { useMemo, forwardRef } from 'react';
-import { PolymorphicComponentProp } from '../../utils/polymorphic.types';
+import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 
 import { getStyles, StylesProps } from './button.styles';
@@ -21,7 +21,6 @@ export type RadiusButtonExtendedProps = {
 
 /// Valid Element Types for the RadiusButton
 type RadiusButtonTag = 'a' | 'button';
-type RadiusButtonTagAsHTML = HTMLLinkElement | HTMLButtonElement;
 
 /** The Component Props
  * it is a mix of the Specific props declared above
@@ -31,7 +30,7 @@ type RadiusButtonTagAsHTML = HTMLLinkElement | HTMLButtonElement;
  * check the file [library/core-components/utils/polymorphic.types.ts]
  * for more details
  */
-export type RadiusButtonProps = PolymorphicComponentProp<
+export type RadiusButtonProps = PolymorphicComponentPropWithRef<
   RadiusButtonTag,
   RadiusButtonExtendedProps
 >;
@@ -47,21 +46,21 @@ export type RadiusButtonProps = PolymorphicComponentProp<
  *
  * See [https://reactjs.org/docs/forwarding-refs.html] for more information
  */
-export const RadiusButton = forwardRef<
-  RadiusButtonTagAsHTML,
-  RadiusButtonProps
->(
-  ({
-    children, // extract children
-    variant,
-    size, // extract your extensions
-    ...rest // the remainder should be the original tag's attributes
-  }) => {
+export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
+  (
+    {
+      children, // extract children
+      variant,
+      size, // extract your extensions
+      ...rest // the remainder should be the original tag's attributes
+    },
+    ref
+  ) => {
     // one suggested idiom is to extract all specific props in the render function props param
     // and let 'rest' contain only the native html attributes and the `as` prop
     // afterwards, you can use our `elementAndProps` utility to make sure the props are
     // properly typed according to the html tag
-    const element = elementAndProps(rest, 'button');
+    const element = elementAndProps(rest, ref, 'button');
 
     // Styling the component using [Emotion](https://emotion.sh/).
     // the styling logic, however, is encapsulated in the getStyles function:
@@ -87,7 +86,11 @@ export const RadiusButton = forwardRef<
       //   const er = props.href;   // typescript error
 
       return (
-        <element.Component className={className} {...element.props}>
+        <element.Component
+          className={className}
+          ref={element.props.ref}
+          {...element.props}
+        >
           {children}
         </element.Component>
       );
@@ -99,7 +102,11 @@ export const RadiusButton = forwardRef<
       //   const er = props.value; // typescript error
       //   const ok = props.href;  // works fine
       return (
-        <element.Component className={className} {...element.props}>
+        <element.Component
+          className={className}
+          ref={element.props.ref}
+          {...element.props}
+        >
           {children}
         </element.Component>
       );

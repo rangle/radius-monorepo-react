@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentPropsWithRef } from 'react';
 import { ComponentPropsWitAs } from './polymorphic.types';
 
 type ElementAndPropsResult<
@@ -6,17 +6,20 @@ type ElementAndPropsResult<
 > = T extends ComponentPropsWitAs<T>['as']
   ? {
       Component: T;
-      props: ComponentProps<T>;
+      props: ComponentPropsWithRef<T>;
     }
   : never;
 
 export const elementAndProps = <
   T extends React.ElementType,
-  P extends ComponentPropsWitAs<T>
+  P extends ComponentPropsWitAs<T>,
+  R extends ComponentPropsWithRef<T>
 >(
   { as, ...props }: P,
+  ref: R['ref'],
   defaultTAG: Exclude<P['as'], undefined>
 ) =>
-  ({ props, Component: as || defaultTAG } as ElementAndPropsResult<
-    Exclude<P['as'], undefined>
-  >);
+  ({
+    props: { ...props, ref },
+    Component: as || defaultTAG,
+  } as ElementAndPropsResult<Exclude<P['as'], undefined>>);
