@@ -106,7 +106,6 @@ export const getStyles = <T extends StylesProps>({
   size = 'medium',
 }: T) => {
   /* Example styles. Adjust with styles for your implementation */
-  console.log(appearance, buttonColors);
   const normal = buttonColors[appearance];
   const focus = buttonColors[`${appearance}Focus`];
   const active = buttonColors[`${appearance}Active`];
@@ -119,6 +118,7 @@ export const getStyles = <T extends StylesProps>({
    */
 
   return css`
+    import "button.tokens.css";
     /* note that values that do not vary with props can be added 
     *  directly as css variables representing design tokens */
     color: ${normal.color};

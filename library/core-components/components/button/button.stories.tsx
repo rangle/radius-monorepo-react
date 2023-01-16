@@ -21,11 +21,7 @@ export default {
 
 const Template: ComponentStory<typeof RadiusButton> = (
   args: ComponentProps<typeof RadiusButton>
-) => (
-  <RadiusButton as="button" {...args}>
-    Hello World
-  </RadiusButton>
-);
+) => <RadiusButton {...args}>Controlled Button</RadiusButton>;
 
 export const Default = Template.bind({});
 Default.args = {};
