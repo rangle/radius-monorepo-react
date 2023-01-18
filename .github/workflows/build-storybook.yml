@@ -41,7 +41,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_GITHUB_TOKEN }}
         with:
           source-directory: storybook-static
-          destination-github-username: radius-design-system-site
+          destination-github-username: rangle
           destination-repository-name: radius-design-system-site.github.io
           user-email: bohdan.anderson@rangle.com
           target-branch: main
