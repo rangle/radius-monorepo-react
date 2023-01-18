@@ -1,5 +1,5 @@
 import { css, CSSObject } from '@emotion/css';
-
+import './button.tokens.css';
 // Discrimitated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
 export type RadiusButtonSize = 'small' | 'medium' | 'large';
@@ -30,9 +30,12 @@ export type StylesProps = {
  */
 // TODO: replace values with css variables
 const buttonSize: Record<RadiusButtonSize, string> = {
-  small: '0.8rem',
-  medium: '1rem',
-  large: '1.2rem',
+  small:
+    'var(--spacing-button-vertical-padding-sm) var(--spacing-button-horizontal-padding-sm)',
+  medium:
+    'var(--spacing-button-vertical-padding-md) var(--spacing-button-horizontal-padding-md)',
+  large:
+    'var(--spacing-button-vertical-padding-lg) var(--spacing-button-horizontal-padding-lg)',
 };
 
 /** Map from color props to css
@@ -44,59 +47,54 @@ const buttonColors: Record<
   Pick<CSSObject, 'color' | 'background' | 'border'>
 > = {
   filled: {
-    color: 'var(--radius-button-primary-text-color)',
-    background: 'var(--radius-button-primary-background-color)',
-    border: 'var(--radius-button-primary-border-color)',
+    color: 'var(--color-button-primary-label-default)',
+    background: 'var(--color-button-primary-surface-default)',
+    border: 'var(--color-button-primary-border-default)',
   },
   filledFocus: {
-    color: 'var(--radius-button-primary-text-color-focus)',
-    background: 'var(--radius-button-primary-background-color-focus)',
-    border: 'var(--radius-button-primary-border-color-focus)',
+    color: 'var(--color-button-primary-label-focus)',
+    background: 'var(--color-button-primary-surface-focus)',
+    border: 'var(--color-button-primary-border-focus)',
   },
   filledActive: {
-    color: 'var(--radius-button-primary-text-color-active)',
-    background: 'var(--radius-button-primary-background-color-active)',
-    border: 'var(--radius-button-primary-border-color-active)',
+    color: 'var(--color-button-primary-label-active)',
+    background: 'var(--color-button-primary-surface-active)',
+    border: 'var(--color-button-primary-border-active)',
   },
   filledHover: {
-    color: 'var(--radius-button-primary-text-color-hover)',
-    background: 'var(--radius-button-primary-background-color-hover)',
-    border: 'var(--radius-button-primary-border-color-hover)',
+    color: 'var(--color-button-primary-label-hover)',
+    background: 'var(--color-button-primary-surface-hover)',
+    border: 'var(--color-button-primary-border-hover)',
   },
   filledDisabled: {
-    color: 'var(--radius-button-primary-text-color-disabled)',
-    background: 'var(--radius-button-primary-background-color-disabled)',
-    border: 'var(--radius-button-primary-border-color-disabled)',
+    color: 'var(--color-button-primary-label-disabled)',
+    background: 'var(--color-button-primary-surface-disabled)',
+    border: 'var(--color-button-primary-border-disabled)',
   },
   hollow: {
-    color: 'var(--radius-button-secondary-text-color)',
-    background: 'var(--radius-button-secondary-background-color)',
-    border:
-      'var(--radius-spacing-1) solid var(--radius-button-secondary-text-color)',
+    color: 'var(--color-button-secondary-label-default)',
+    background: 'var(--color-button-secondary-surface-default)',
+    border: 'var(--color-button-secondary-border-default)',
   },
   hollowFocus: {
-    color: 'var(--radius-button-secondary-text-color-focus)',
-    background: 'var(--radius-button-secondary-background-color-focus)',
-    border:
-      'var(--radius-spacing-1) solid var(--radius-button-secondary-text-color-focus)',
+    color: 'var(--color-button-secondary-label-focus)',
+    background: 'var(--color-button-secondary-surface-focus)',
+    border: 'var(--color-button-secondary-border-focus)',
   },
   hollowActive: {
-    color: 'var(--radius-button-secondary-text-color-active)',
-    background: 'var(--radius-button-secondary-background-color-active)',
-    border:
-      'var(--radius-spacing-1) solid var(--radius-button-secondary-text-color-active)',
+    color: 'var(--color-button-secondary-label-active)',
+    background: 'var(--color-button-secondary-surface-active)',
+    border: 'var(--color-button-secondary-border-active)',
   },
   hollowHover: {
-    color: 'var(--radius-button-secondary-text-color-hover)',
-    background: 'var(--radius-button-secondary-background-color-hover)',
-    border:
-      'var(--radius-spacing-1) solid var(--radius-button-secondary-text-color-hover)',
+    color: 'var(--color-button-secondary-label-hover)',
+    background: 'var(--color-button-secondary-surface-hover)',
+    border: 'var(--color-button-secondary-border-hover)',
   },
   hollowDisabled: {
-    color: 'var(--radius-button-secondary-text-color-disabled)',
-    background: 'var(--radius-button-secondary-background-color-disabled)',
-    border:
-      'var(--radius-spacing-1) solid var(--radius-button-secondary-text-color-disabled)',
+    color: 'var(--color-button-secondary-label-disabled)',
+    background: 'var(--color-button-secondary-surface-disabled)',
+    border: 'var(--color-button-secondary-border-disabled)',
   },
 };
 
@@ -118,15 +116,14 @@ export const getStyles = <T extends StylesProps>({
    */
 
   return css`
-    import "button.tokens.css";
     /* note that values that do not vary with props can be added 
     *  directly as css variables representing design tokens */
     color: ${normal.color};
     background: ${normal.background};
     border: ${normal.border};
     padding: ${padding};
+    border-radius: var(--borderWidth-button-border-width-md);
     font-size: var(--button--typography-text);
-    padding: var(--button--padding);
     margin: var(--button--typography-text);
     font-size: var(--button--typography-text);
     font-size: var(--button--typography-text);

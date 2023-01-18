@@ -41,4 +41,6 @@ Thumbs.db
 # Remix files
 apps/**/build
 apps/**/.cache
-  
+
+# Generated files (should be built on server)
+library/foundations/generated/*

@@ -1,0 +1,23 @@
+/* Riforma regular */
+@font-face {
+  font-family: 'Riforma';
+  src: url('RangleRiformaWeb-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Riforma light */
+@font-face {
+  font-family: 'Riforma';
+  src: url('RangleRiformaWeb-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Riforma medium */
+@font-face {
+  font-family: 'Riforma';
+  src: url('RangleRiformaLL-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}

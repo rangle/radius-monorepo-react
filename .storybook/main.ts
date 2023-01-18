@@ -6,6 +6,7 @@ module.exports = {
     '../library/**/*.stories.mdx',
     '../library/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+  staticDirs: ['../shared/fonts', '../shared/assets', '../library/foundations/generated'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -13,7 +14,4 @@ module.exports = {
     'storybook-addon-pseudo-states',
   ],
   framework: '@storybook/react',
-  // typescript: {
-  //   check: true,
-  // },
 };
