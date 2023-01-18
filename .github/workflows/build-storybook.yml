@@ -1,0 +1,48 @@
+name: build-storybook
+
+on:
+  push:
+    branches:
+      - main
+      - releases/**
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Updates the tokens 🚧 and Builds the projects 🏗
+        run: npm run build
+
+      - name: Build storybook static site
+        run: npm run build-storybook
+
+      - name: Push directory to another repository
+        uses: cpina/github-action-push-to-another-repository@v1.4.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_GITHUB_TOKEN }}
+        with:
+          source-directory: storybook-static
+          destination-github-username: radius-design-system-site
+          destination-repository-name: radius-design-system-site.github.io
+          user-email: bohdan.anderson@rangle.com
+          target-branch: main
+          target-directory: docs
