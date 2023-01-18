@@ -27,7 +27,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn ci
+        run: yarn install --frozen-lockfile
 
       - name: Updates the tokens 🚧 and Builds the projects 🏗
         run: yarn run build
