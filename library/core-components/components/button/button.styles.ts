@@ -103,6 +103,7 @@ export const getStyles = <T extends StylesProps>({
   appearance = 'hollow',
   size = 'medium',
 }: T) => {
+  console.log('get Styles ', appearance, size);
   /* Example styles. Adjust with styles for your implementation */
   const normal = buttonColors[appearance];
   const focus = buttonColors[`${appearance}Focus`];
