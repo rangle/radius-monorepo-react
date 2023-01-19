@@ -51,7 +51,7 @@ jobs:
           destination-repository-name: radius-design-system-site.github.io
           user-email: bohdan.anderson@rangle.com
           target-branch: main
-          target-directory: docs/${{ steps.package-version.outputs.current-version}}
+          target-directory: format( 'docs/{0}', steps.package-version.outputs.current-version)
 
       - name: Push directory to overwrite latest
         uses: cpina/github-action-push-to-another-repository@v1.4.2
