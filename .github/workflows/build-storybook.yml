@@ -3,6 +3,7 @@ name: build-storybook
 on:
   push:
     branches:
+      - main
       - releases/**
 permissions:
   contents: write
@@ -25,6 +26,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+        with:
+          path: library/core-components/package.json
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -34,7 +41,7 @@ jobs:
       - name: Build storybook static site
         run: yarn run build-storybook
 
-      - name: Push directory to another repository
+      - name: Push directory to current version
         uses: cpina/github-action-push-to-another-repository@v1.4.2
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_GITHUB_TOKEN }}
@@ -44,4 +51,16 @@ jobs:
           destination-repository-name: radius-design-system-site.github.io
           user-email: bohdan.anderson@rangle.com
           target-branch: main
-          target-directory: docs
+          target-directory: docs/${{ steps.package-version.outputs.current-version}}
+
+      - name: Push directory to overwrite latest
+        uses: cpina/github-action-push-to-another-repository@v1.4.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_GITHUB_TOKEN }}
+        with:
+          source-directory: storybook-static
+          destination-github-username: rangle
+          destination-repository-name: radius-design-system-site.github.io
+          user-email: bohdan.anderson@rangle.com
+          target-branch: main
+          target-directory: docs/latest
