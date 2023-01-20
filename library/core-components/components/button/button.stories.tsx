@@ -11,6 +11,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/file/????',
     },
+    // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {
       major: process.env.COMPONENT_VERSION?.[0],
       minor: process.env.COMPONENT_VERSION?.[1],

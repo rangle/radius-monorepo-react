@@ -32,5 +32,5 @@ export const RadiusTheme = create({
 
   brandTitle: 'Radius',
   brandUrl: 'https://rangle.io/radius/',
-  brandImage: 'radius-logo.svg',
+  brandImage: 'radius-logo-light.svg',
 });
