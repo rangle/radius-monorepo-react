@@ -39,6 +39,8 @@ jobs:
         run: yarn run build
 
       - name: Build storybook static site
+        env:
+          VERSION: ${{ steps.package-version.outputs.current-version }}
         run: yarn run build-storybook
 
       - name: Push directory to current version

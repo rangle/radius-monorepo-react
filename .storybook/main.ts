@@ -1,3 +1,5 @@
+import { Config } from "@storybook/addons";
+
 module.exports = {
   core: {
     builder: 'webpack5',
@@ -14,4 +16,8 @@ module.exports = {
     'storybook-addon-pseudo-states',
   ],
   framework: '@storybook/react',
+  env: (config:Config) => ({
+    ...config,
+    COMPONENT_VERSION: process.env.VERSION || 'DEV',
+  }),
 };
