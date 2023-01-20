@@ -4,7 +4,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "demo": "nx run demo:dev",
-    "run-many": "nx run-many --all --parallel",
+    "run-many": "nx run-many --all --parallel --exclude=demo",
     "build": "yarn run run-many --target=build",
     "test": "yarn run run-many --target=test",
     "build:affected": "yarn run build --affected",
