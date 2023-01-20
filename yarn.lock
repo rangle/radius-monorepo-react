@@ -19130,6 +19130,11 @@ storybook-addon-pseudo-states@^1.15.2:
   resolved "https://registry.npmjs.org/storybook-addon-pseudo-states/-/storybook-addon-pseudo-states-1.15.2.tgz#8d98c896eb9bc590187043da88b30cdd750268ac"
   integrity sha512-YMjzct/747PyCfzAD2469283gbBSdK3pMfuPg4nq5ZtPzfDAkaiGlxPnXNL9dMA2Bo1PLgNJ3f9u2Kh1OfuPlw==
 
+storybook-version@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/storybook-version/-/storybook-version-0.1.1.tgz#b7cc41c64ee30faa202d23dbcc93f4c3e5e807cd"
+  integrity sha512-8xASloEZzXjEmT1vYpKQWppEONR1fwoUc4+POvAu/xUDKqKFVMSG0Y/7y1jP9e36WQM6fVWrGPcWwgeP6IdNnw==
+
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.npmjs.org/stream-browserify/-/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"

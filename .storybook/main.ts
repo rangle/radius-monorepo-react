@@ -1,5 +1,7 @@
 import { Config } from "@storybook/addons";
 
+const versions = process.env.VERSION?.split('.')||['0','0','0'];
+
 module.exports = {
   core: {
     builder: 'webpack5',
@@ -10,6 +12,7 @@ module.exports = {
   ],
   staticDirs: ['../shared/fonts', '../shared/assets', '../library/foundations/generated'],
   addons: [
+    'storybook-version',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
@@ -18,6 +21,6 @@ module.exports = {
   framework: '@storybook/react',
   env: (config:Config) => ({
     ...config,
-    COMPONENT_VERSION: process.env.VERSION || 'DEV',
+    COMPONENT_VERSION: versions,
   }),
 };

@@ -3,6 +3,7 @@ name: build-storybook
 on:
   push:
     branches:
+      - main
       - releases/**
 permissions:
   contents: write

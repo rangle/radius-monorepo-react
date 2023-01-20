@@ -79,6 +79,7 @@
     "rollup": "^3.3.0",
     "rollup-plugin-postcss": "^4.0.2",
     "storybook-addon-pseudo-states": "^1.15.2",
+    "storybook-version": "^0.1.1",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "yarn": "^1.22.19"

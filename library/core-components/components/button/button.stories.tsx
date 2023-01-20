@@ -5,11 +5,16 @@ import { RadiusButton } from './button';
 
 export default {
   component: RadiusButton,
-  title: 'Core COmponents/Button',
+  title: `Core Components/Button`,
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/????',
+    },
+    version: {
+      major: process.env.COMPONENT_VERSION?.[0],
+      minor: process.env.COMPONENT_VERSION?.[1],
+      patch: process.env.COMPONENT_VERSION?.[2],
     },
     badges: [BADGE.EXPERIMENTAL],
 
