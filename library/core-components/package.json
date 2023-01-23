@@ -1,6 +1,9 @@
 {
   "name": "@rangle/radius-react-core-components",
   "license": "MIT",
+  "repository": {
+    "url": "ssh://git@github.com:rangle/radius-monorepo-react.git"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },

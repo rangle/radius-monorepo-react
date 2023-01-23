@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "description": "Foundation scripts and variables for Design Systems",
   "main": "index.js",
+  "repository": {
+    "url": "ssh://git@github.com:rangle/radius-monorepo-react.git"
+  },
   "scripts": {
     "test": "jest",
     "tokens:ci": "RADIUS_LAYERS_SUFFIX=-${npm_package_version} yarn tokens:validate",
