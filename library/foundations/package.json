@@ -1,6 +1,6 @@
 {
   "name": "@rangle/radius-react-core-foundations",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "description": "Foundation scripts and variables for Design Systems",
   "main": "index.js",
   "repository": {
@@ -13,7 +13,7 @@
     "tokens:parse": "cat ./tokens.json | ts-node scripts/to-layers.ts > generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:validate": "cat ./tokens.json | ts-node scripts/validate-layers.ts generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:generate": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts css > generated/theme.css",
-    "build":"yarn tokens:update"
+    "build": "yarn tokens:update"
   },
   "jest": {
     "transform": {
@@ -22,9 +22,10 @@
   },
   "devDependencies": {
     "jest": "^29.3.1",
-    "ts-node": "10.9.1",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.0.3",
+    "ts-node": "10.9.1"
   },
   "author": "jason.santos@rangle.io",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "543da8702ce74dd76e39978a41f3225fff404817"
 }
