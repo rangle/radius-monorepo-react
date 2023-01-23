@@ -39,6 +39,7 @@
     "classnames": "^2.3.1"
   },
   "devDependencies": {
+    "@rangle/radius-react-core-foundations": "^0.1.0",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^9.0.2",
@@ -58,7 +59,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "rollup": "^3.3.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "ts-jest": "^29.0.3",
-    "@rangle/radius-react-core-foundations":"^1.0.1"
-  }
+    "ts-jest": "^29.0.3"
+  },
+  "gitHead": "4cd59f5bb5f649386a59b795ab5e6b8c6b30403e"
 }

@@ -1,5 +1,8 @@
 {
-  "packages": ["library/*", "apps/*"],
+  "packages": [
+    "library/*",
+    "apps/*"
+  ],
   "useNx": true,
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "version": "0.1.0",
