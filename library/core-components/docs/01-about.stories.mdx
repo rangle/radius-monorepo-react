@@ -1,15 +1,10 @@
-import {
-  Meta,
-  Typeset,
-  Title,
-  Subtitle,
-  Story,
-} from '@storybook/addon-docs';
+import { Meta, Typeset, Title, Subtitle, Story } from '@storybook/addon-docs';
 import { PropsTable } from '@storybook/components';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 <Meta
-  title="About/Radius"
+  title="About/This Design System"
+  parameters={{ badges: [BADGE.BETA] }}
   decorators={[
     (Story) => (
       <div style={{ marginBottom: '4rem', marginTop: '1rem' }}>
@@ -19,10 +14,16 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges';
   ]}
 />
 
-# Radius
+# This Design System
 
-## About Radius
+## Naming a Design System
 
-Radius is a Design System Accelerator
+You may think that naming your design system isn’t one of the most important things to do at first. But what if I told you that you’re underestimating the importance of naming it? You would be surprised to see how it helps your design system’s adoption, engage your team, and brings much more value and sense. If you consider a design system a product (or an infrastructure), you must brand it properly.
 
-It's main goal is to remove the decision fatigue and to keep your Design System practice evergreen
+## “Design System” is a terrible name for design systems
+
+One of design systems' common issues is ensuring everyone will adopt them. I think part of the problem lies in the name “design system.” The word "design" in "design system" doesn't help people see that it belongs to everyone, not just the design team. I wouldn’t be surprised if people think it’s only a “designer” thing and aren’t concerned by it.
+
+Your design system shouldn’t be owned by a specific discipline, and the name shouldn’t specify a discipline either. An abstract name that doesn’t relate to a specific team, skill, or department is more helpful in ensuring your design system’s adoption. Most of the time, there is a significant difference before and after naming design systems. At first, developers, product managers, and other teams didn’t feel concerned or didn’t show interest in the design system project. But as soon as the design system’s identity is defined, it gets more people’s attention and intrigues them. Of course, choosing a name that is close to the brand’s values and means something to everyone is better. The idea would be to have people start to say things like “it’s a [design system name]’s question,” “how to add it in [design system name],” or “if this pattern should be [design system name]-ed.”
+
+In her Design Systems book, Alla Kholmatova says that “Without a shared language, a group of people can’t create effectively together.” and I think it all starts with a design system name that shares the same vision and values for the whole organization.
