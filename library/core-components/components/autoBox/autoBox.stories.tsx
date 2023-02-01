@@ -23,31 +23,129 @@ export default {
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
   argTypes: {
-    // direction: {
-    //   options: ['horizontal', 'vertical'],
-    //   control: {
-    //     type: 'select',
-    //   },
-    // },
-    // width: {
-    //   control: {
-    //     type: 'text',
-    //     value: 'fill-parent',
-    //   },
-    // },
-    // height: {
-    //   control: {
-    //     type: 'text',
-    //     value: '100px',
-    //   },
-    // },
-    // space: {
-    //   control: {
-    //     type: 'text',
-    //     value: 'auto',
-    //   },
-    //   description: 'The space between each child',
-    // },
+    as: {
+      control: 'text',
+      description: 'The HTML element to render.',
+      defaultValue: { summary: 'div' },
+    },
+    direction: {
+      description: 'The direction of the layout, uses flex row or column.',
+      options: ['horizontal', 'vertical'],
+      control: 'select',
+    },
+    alignment: {
+      description: 'The alignment of the layout, uses align-items.',
+      options: ['top', 'center', 'bottom', 'left', 'right'],
+      control: 'select',
+      defaultValue: { summary: 'top' },
+    },
+    width: {
+      description:
+        'The width of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%).',
+      options: ['150px', '50%', 'fill-parent', 'hug-contents'],
+      control: 'select',
+      defaultValue: { summary: 'hug-contents' },
+    },
+    height: {
+      description:
+        'The height of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%).',
+      options: ['100px', '50%', 'fill-parent', 'hug-contents'],
+      control: 'select',
+      defaultValue: { summary: 'hug-contents' },
+    },
+    space: {
+      description:
+        'The space between the children, can be number (gap) or auto (justify-content: space-between;).',
+      options: ['auto', '10px', '10%'],
+      control: 'select',
+      defaultValue: { summary: '10px' },
+    },
+    padding: {
+      description:
+        'The padding around the content, can be number, object of vertical and horizontal, or object of top, right, bottom, left.',
+      control: 'object',
+    },
+    fill: {
+      description:
+        'Background colour. Color can be assigned as hex or rgba(0-255,0-255,0-255,0-1).',
+      control: 'color',
+      presetColors: ['#cccccc', '#000000'],
+    },
+    stroke: {
+      description: 'Border colour. We are currently missing dashed borders.',
+      control: 'color',
+      presetColors: ['#cccccc', '#000000'],
+    },
+    strokeWidth: {
+      description:
+        'Border width, can be number or object of top, right, bottom, left.',
+      control: 'object',
+    },
+    strokeAlign: {
+      description:
+        'Border alignment, inside or outside. We are missing middle alignment.',
+      options: ['inside', 'outside'],
+      control: 'select',
+    },
+    opacity: {
+      description: 'Opacity of the component. A number between 0 and 1.',
+      control: {
+        type: 'number',
+        min: 0,
+        max: 1,
+      },
+    },
+    clippedContent: {
+      description:
+        'Whether the content should be clipped or not, uses overflow: hidden.',
+      defaultValue: { summary: 'false' },
+      control: 'boolean',
+    },
+    isParent: {
+      description:
+        "Used in conjunction with absolutePosition, uses and sets position: 'relative'.",
+      defaultValue: { summary: 'false' },
+      control: 'boolean',
+    },
+    absolutePosition: {
+      description:
+        'Used in conjunction with isParent, uses and sets position: absolute.',
+      defaultValue: { summary: 'false' },
+      control: 'boolean',
+    },
+    x: {
+      description:
+        'Used in conjunction with absolutePosition, sets left or right depending on horizontal constraint. Does not act the same as Figma.',
+      control: 'text',
+    },
+    y: {
+      description:
+        'Used in conjunction with absolutePosition, sets top or bottom depending on verticalConstraint. Does not act the same as Figma.',
+      control: 'text',
+    },
+    horizontalConstraint: {
+      description:
+        'Used in conjunction with absolutePosition, sets left or right. We are missing functionality from figma.',
+      options: ['left', 'right'],
+      control: 'select',
+      defaultValue: { summary: 'left' },
+    },
+    verticalConstraint: {
+      description:
+        'Used in conjunction with absolutePosition, sets top or bottom. We are missing functionality from figma.',
+      options: ['top', 'bottom'],
+      control: 'select',
+      defaultValue: { summary: 'top' },
+    },
+    effect: {
+      description:
+        'Effects that are applied to the autoBox. We have inner/drop shadow and blur. Multiple filters can be applied by passing an array of filters. We are missing functionality from figma.',
+    },
+    cornerRadius: {
+      description:
+        'Border radius, can be number or object of topLeft, topRight, bottomRight, bottomLeft.',
+      control: 'object',
+    },
   },
 } as ComponentMeta<typeof RadiusAutoBox>;
 
@@ -55,17 +153,35 @@ const Template: ComponentStory<typeof RadiusAutoBox> = (
   args: ComponentProps<typeof RadiusAutoBox>
 ) => (
   <RadiusAutoBox {...args}>
-    <RadiusAutoBox width={100} height={25} />
-    <RadiusAutoBox width={100} height={25} />
-    <RadiusAutoBox width={100} height={25} />
+    <RadiusAutoBox width={100} height="fill-parent" fill="#fff" stroke="#000" />
+    <RadiusAutoBox width={100} height="fill-parent" fill="#fff" stroke="#000" />
+    <RadiusAutoBox width={100} height="fill-parent" fill="#fff" stroke="#000" />
   </RadiusAutoBox>
 );
 
 export const Default = Template.bind({});
 Default.args = {
+  as: 'div',
+  direction: 'horizontal',
+  alignment: 'top',
   width: 'fill-parent',
   height: '100px',
   space: 'auto',
+  padding: { top: 5, right: 5, bottom: 5, left: 5 },
+  fill: '#cccccc',
+  stroke: '#000000',
+  strokeWidth: { top: 1, right: 1, bottom: 1, left: 1 },
+  strokeAlign: undefined,
+  cornerRadius: { topLeft: 0, topRight: 0, bottomRight: 0, bottomLeft: 0 },
+  opacity: undefined,
+  clippedContent: false,
+  isParent: false,
+  absolutePosition: false,
+  x: undefined,
+  y: undefined,
+  horizontalConstraint: 'left',
+  verticalConstraint: 'top',
+  effect: [{ type: 'drop-shadow', color: '#ccc', offset: [0, 0], blur: 5 }],
 };
 
 export const ExampleGrid = () => (
@@ -90,10 +206,26 @@ export const ExampleGrid = () => (
       width="fill-parent"
       height={130}
       stroke={'#000'}
+      strokeAlign={`inside`}
     >
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
+      <RadiusAutoBox
+        width="fill-parent"
+        height={25}
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
+      <RadiusAutoBox
+        width="fill-parent"
+        height={25}
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
+      <RadiusAutoBox
+        width="fill-parent"
+        height={25}
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
     </RadiusAutoBox>
     <br />
 
@@ -116,10 +248,26 @@ export const ExampleGrid = () => (
       width="fill-parent"
       height={130}
       stroke={'#000'}
+      strokeAlign={`inside`}
     >
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
+      <RadiusAutoBox
+        width="fill-parent"
+        height={25}
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
+      <RadiusAutoBox
+        width="fill-parent"
+        height={25}
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
+      <RadiusAutoBox
+        width="fill-parent"
+        height={25}
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
     </RadiusAutoBox>
     <br />
 
@@ -142,10 +290,26 @@ export const ExampleGrid = () => (
       width="fill-parent"
       height={130}
       stroke={'#000'}
+      strokeAlign={`inside`}
     >
-      <RadiusAutoBox width="fill-parent" height="fill-parent" stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height="fill-parent" stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height="fill-parent" stroke={'#000'} />
+      <RadiusAutoBox
+        width="fill-parent"
+        height="fill-parent"
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
+      <RadiusAutoBox
+        width="fill-parent"
+        height="fill-parent"
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
+      <RadiusAutoBox
+        width="fill-parent"
+        height="fill-parent"
+        stroke={'#000'}
+        strokeAlign={`inside`}
+      />
     </RadiusAutoBox>
     <br />
   </RadiusAutoBox>

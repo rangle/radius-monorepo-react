@@ -163,17 +163,19 @@ export const getStyles = <T extends AutoLayoutProps>({
 
     ${isParent ? 'position: relative;' : ''}
     ${absolutePosition ? 'position: absolute;' : ''}
-    flex-direction: ${direction === 'horizontal' ? 'row' : 'column'};
+    ${direction
+      ? `flex-direction: ${direction === 'horizontal' ? 'row' : 'column'}`
+      : ''};
     ${space === 'auto'
       ? 'justify-content: space-between;'
-      : `gap: ${space || 10}px;`};
+      : `gap: ${getSize(space || 10)};`};
     ${clippedContent ? 'overflow: hidden;' : ''};
     align-items: ${mapAlignments[alignment || 'top']};
 
     width: ${getSize(width)};
     height: ${getSize(height)};
 
-    padding: ${getPadding(padding)};
+    ${padding ? `padding: ${getPadding(padding)}` : ''};
 
     ${opacity !== undefined ? `opacity: ${opacity};` : ''}
     ${fill ? `background-color: ${getColor(fill)};` : ''}
