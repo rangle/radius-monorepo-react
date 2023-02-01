@@ -40,8 +40,13 @@ export type ComponentPropsWitAs<C extends ElementType> = AsProp<C> &
   ComponentPropsWithoutRef<C>;
 
 /*** generic type representing the props of a given component of type `C` - without the `ref` prop */
-export type PolymorphicComponentProp<C extends ElementType, Props> = Props &
-  ComponentPropsWitAs<C>;
+// export type PolymorphicComponentProp<C extends ElementType, Props> = Props &
+//   ComponentPropsWitAs<C>;
+
+export type PolymorphicComponentProp<
+  C extends React.ElementType,
+  Props = Record<string, unknown>
+> = Props & AsProp<C> & React.ComponentPropsWithoutRef<C>;
 
 /*** generic type representing the props of a given component of type `C` - with the `ref` prop */
 export type PolymorphicComponentPropWithRef<

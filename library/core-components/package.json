@@ -18,6 +18,7 @@
     "dev": "rm -rf dist && rollup -w --config ../../config/rollup.config.mjs",
     "build": "rm -rf dist && rollup --config ../../config/rollup.config.mjs",
     "test": "jest -c ../../config/jest.config.js --testPathPattern=library/core-components",
+    "test-watch": "jest -c ../../config/jest.config.js --watch",
     "clean": "rm -rf dist & rm -rf node_modules",
     "clean:dist": "rm -rf dist"
   },

@@ -9,6 +9,7 @@
     "test": "yarn run run-many --target=test",
     "build:affected": "yarn run build --affected",
     "test:affected": "yarn run test --affected",
+    "test:watch": "nx run @rangle/radius-react-core-components:test-watch",
     "build:force": "yarn run build --skip-nx-cache",
     "publish": "lerna publish from-package --yes",
     "publish:next": "lerna publish from-package --canary --preid next --yes",
