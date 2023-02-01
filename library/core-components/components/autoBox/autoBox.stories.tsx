@@ -613,7 +613,6 @@ export const Effects = () => (
 
 export const Layouts = () => (
   <RadiusAutoBox
-    direction="horizontal"
     width="fill-parent"
     space={20}
     alignment="center"
@@ -627,7 +626,7 @@ export const Layouts = () => (
         width="fill-parent"
       />
     </RadiusAutoBox>
-    <RadiusAutoBox width="fill-parent">
+    <RadiusAutoBox width="fill-parent" direction="vertical">
       <RadiusAutoBox
         as={RadiusButton}
         absolutePosition={true}
