@@ -9,10 +9,11 @@
   "scripts": {
     "test": "jest",
     "tokens:ci": "RADIUS_LAYERS_SUFFIX=-${npm_package_version} yarn tokens:validate",
-    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:parse && yarn tokens:validate && yarn tokens:generate",
+    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:parse && yarn tokens:validate && yarn tokens:generate && yarn tokens:docs",
     "tokens:parse": "cat ./tokens.json | ts-node scripts/to-layers.ts > generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:validate": "cat ./tokens.json | ts-node scripts/validate-layers.ts generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:generate": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts css > generated/theme.css",
+    "tokens:docs": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts storybook > generated/04-token-documentation.stories.mdx && prettier --version && prettier --config ../../.prettierrc --parser mdx --write generated/04-token-documentation.stories.mdx",
     "build": "yarn tokens:update"
   },
   "jest": {

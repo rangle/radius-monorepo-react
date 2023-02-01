@@ -1,0 +1,104 @@
+import {
+  Meta,
+  Title,
+  Subtitle,
+  Story,
+  ColorPalette,
+  ColorItem,
+  Typeset,
+} from '@storybook/addon-docs';
+import { PropsTable } from '@storybook/components';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
+
+<Meta
+  title="About/Layers and Tokens"
+  parameters={{ badges: [BADGE.BETA] }}
+  decorators={[
+    (Story) => (
+      <div style={{ marginBottom: '4rem', marginTop: '1rem' }}>
+        <Story />
+      </div>
+    ),
+  ]}
+/>
+
+# Design Contexts as Code
+
+## Why it is important to have continuity of terminology
+
+If **Design Tokens** are the elementary unit of design decisions, **Design Contexts** are their structure. If you use a flat list of Design Tokens it is very hard to figure out how to refactor them when a new circumstances introduces a new behavior or rule to your design language.
+
+When communication with engineering is done with a flat list of Design Tokens, it is very hard to understand how to use them. This requires a lot of back and forth between designers and engineers to figure this out.
+
+By treating Design Contexts as code, we can use the same tools that we use to build our applications to build our design language. This allows us to have a single source of truth for our design language and be able to quicly communicate complexity and change.
+
+## How to use Design Contexts
+
+Designers will create new contexts every time a set of design decisions is subordinate to a set of circumstances. For example, a new context would be created for a new product (premium), a new section of a product (authenticated), or a new mode (dark mode). Contexts can also be used when the design must obey different rules (on mobile vs desktop, for exmaple).
+
+When consuming the Design Tokens from the Design Team, Contexts will be represented in the Documentation, but they should also be exported by their tools. This allows engineers to consume the Design Contexts the same way they consume the Design Tokens.
+
+One of the best ways to consume Design Contexts is to convert them to **Layers**. On web implementations, this can be translated directly into _CSS Layers_ to allow the Context names to be visible in the browser, creating a complete picture of the design language that spans from Design to Test Automation.
+
+## Static vs Dynamic Layers
+
+Design Contexts can be static or dynamic, so Layers should follow the same principles.
+
+Static Contexts are the ones that are defined by the Design Team and are not expected to change. They exist mostly to organize the Design Tokens and provide a way to consume them. They can also represent factors that affect the Design Language, but that are not modified within one specific component library, for example, a differnt target brand or platform.
+
+Dynamic Contexts are the ones that, despite being defined by the Design Team, can be switched on or off by either circumstances or by the choice of the consuming team. Examples are light/dark mode, screen sizes or user preferences.
+
+Contexts are not mutually exclusive. A component can be affected by multiple contexts at the same time. For example, a component can be affected by all static contexts, a dark mode context and a screen size context at the same time.
+
+When converting Contexts to Layers, the order, precedence and activation of the layers should match those defined by the Design Team for the contexts.
+
+## How to select Dynamic Layers
+
+When consuming Design Tokens, the generated theme implementations should be able to select the correct set of Layers based on the circumstances. This should be enabled by the Design Team throught the use of Layer Parameters.
+
+We proposed two types of parameters, but teams might use different combinations depending on their needs.
+
+_resolution layers_ are controlled by the parameters `screen-min-size` and `screen-max-size`. The layer becomes active if the viewport is between these two values. If the viewport is smaller than the `screen-min-size` or bigger than the `screen-max-size`, the layer is not active.
+
+_section layers_ are controlled by the parameter `section-name`. The layer becomes active within a specific part of the application defined by `section-name` parameter. In web implementations, this is usually defined by either a route or a class name present on either the body or a section tag.
+
+# Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Value</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>color-primary</td>
+      <td>font: Bold 16px/24px Helvetica Neue</td>
+      <td>
+        <span style={{ font: 'Bold 16px/24px Helvetica Neue' }}>
+          Helvetica Neue
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>color-secondary</td>
+      <td>red</td>
+      <td>
+        <span style={{ font: 'Bold 16px/24px Helvetica Neue' }}>
+          Helvetica Neue
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>color-tertiary</td>
+      <td>green</td>
+      <td>
+        <span style={{ font: 'Bold 16px/24px Helvetica Neue' }}>
+          Helvetica Neue
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

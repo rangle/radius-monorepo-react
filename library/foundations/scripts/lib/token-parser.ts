@@ -103,12 +103,14 @@ export type CompositeLeafTypography = {
   };
 };
 
+export type TokenLayer = {
+  variables: TokenOutput[];
+  name: string;
+  parameters: Record<string, string>;
+};
+
 export type TokenLayers = {
-  layers: {
-    variables: TokenOutput[];
-    name: string;
-    parameters: Record<string, string>;
-  }[];
+  layers: TokenLayer[];
   order: string[];
 };
 
