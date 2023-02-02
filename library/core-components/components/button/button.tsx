@@ -88,7 +88,7 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
 
       return (
         <element.Component
-          className={`${style} ${className} radius-button`}
+          className={`${style} ${className}`}
           ref={element.props.ref}
           {...element.props}
         >

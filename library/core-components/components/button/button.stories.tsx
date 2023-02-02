@@ -1,7 +1,9 @@
 import React, { ComponentProps } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusButton } from './button';
+import { RadiusButton, RadiusButtonVariant } from './button';
+import { RadiusButtonSize } from './button.styles';
+import { css } from '@emotion/css';
 
 export default {
   component: RadiusButton,
@@ -67,4 +69,86 @@ export const ButtonStates = ButtonStatesTemplate.bind({});
 ButtonStates.args = {};
 ButtonStates.props = {
   name: 'Button states',
+};
+
+type ButtonVariations = {
+  types: readonly RadiusButtonVariant[];
+  sizes: readonly RadiusButtonSize[];
+  states: readonly ['Default', 'Hover', 'Active', 'Focus', 'Disabled'];
+};
+
+const buttonVariations: ButtonVariations = {
+  types: ['primary', 'secondary'] as const,
+  sizes: ['large', 'medium', 'small'] as const,
+  states: ['Default', 'Hover', 'Active', 'Focus', 'Disabled'] as const,
+};
+
+const renderButtonVariationCell = (
+  type: ButtonVariations['types'][number],
+  size: ButtonVariations['sizes'][number],
+  state: ButtonVariations['states'][number]
+) => {
+  const className = `pseudo-${state.toLowerCase()}`;
+  if (state !== 'Disabled') {
+    return (
+      <td className={className}>
+        <RadiusButton size={size} variant={type}>
+          Action
+        </RadiusButton>
+      </td>
+    );
+  } else {
+    return (
+      <td>
+        <RadiusButton size={size} variant={type} disabled>
+          Action
+        </RadiusButton>
+      </td>
+    );
+  }
+};
+
+const tableStyle = css`
+  tr,
+  td {
+    color: var(--color-text-on-base-primary);
+    font: var(--typography-body-md);
+    padding: 2em;
+  }
+`;
+
+const ButtonVariantsTemplateAutomated = (
+  options: ButtonVariations
+): ComponentStory<typeof RadiusButton> => {
+  const { types, sizes, states } = options;
+  const typeAndSize = types.flatMap((type) =>
+    sizes.map((size) => [type, size] as const)
+  );
+  // renders a table with rows for each type and size and collumns for each state
+  return () => (
+    <table className={tableStyle}>
+      <tr>
+        <th></th>
+        {states.map((state) => (
+          <th>{state}</th>
+        ))}
+      </tr>
+      {typeAndSize.map(([type, size]) => (
+        <tr>
+          <td>
+            {type} {size}
+          </td>
+          {states.map((state) => renderButtonVariationCell(type, size, state))}
+        </tr>
+      ))}
+    </table>
+  );
+};
+
+export const ButtonVariants = ButtonVariantsTemplateAutomated(
+  buttonVariations
+).bind({});
+ButtonVariants.args = {};
+ButtonVariants.props = {
+  name: 'Button Variations',
 };

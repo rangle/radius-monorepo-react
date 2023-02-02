@@ -1,5 +1,4 @@
 import { css, CSSObject } from '@emotion/css';
-import './button.tokens.css';
 // Discrimitated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
 export type RadiusButtonSize = 'small' | 'medium' | 'large';
@@ -16,7 +15,7 @@ export type RadiusButtonStyleType =
   | 'hollowDisabled';
 /** Props that affect the CSS of this component
  * this type can be merged directly into the component props
- * _if_ they map 1:1 with those. otherwise this type can be used by the
+ * _if and only if_ they map 1:1 with those. otherwise this type can be used by the
  * component code to set styles properly
  */
 export type StylesProps = {
@@ -41,7 +40,6 @@ const buttonSize: Record<RadiusButtonSize, string> = {
 /** Map from color props to css
  * An example of a useful map that helps select css props based on props
  */
-// TODO: replace values with css variables
 const buttonColors: Record<
   RadiusButtonStyleType,
   Pick<CSSObject, 'color' | 'background' | 'border'>
