@@ -4,6 +4,7 @@
     "apps/*"
   ],
   "useNx": true,
+  "npmClient": "yarn",
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "version": "0.1.0",
   "useWorkspaces": true,
