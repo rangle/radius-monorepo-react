@@ -45,8 +45,6 @@ const renderTemplate = templates[templateName];
     to be used by the Design System packages
 */
 
-// for Debug Purposes
-// loadPreviousLayersFile(`${__dirname}/../token-layers.json`)
 readStdin()
   .then(parseData)
   .then(renderTemplate)

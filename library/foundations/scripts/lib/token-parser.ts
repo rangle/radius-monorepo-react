@@ -11,6 +11,9 @@
  * - in the future, can be integrated to the Radius CLI and Supernova scripts
  */
 
+// For debugging purposes, you can run this script with:
+// import * as data from '../../tokens.json';
+
 // TODO: remove duplicate names in keys
 // TODO: add these features to Radius CLI Styles command
 
@@ -21,8 +24,8 @@
 // be added as `parameters` as well as `variables`
 // ---
 export const PARAM_SECTION_NAME = 'section-name';
-export const PARAM_SCREEN_MIN_WIDTH = 'min-width';
-export const PARAM_SCREEN_MAX_WIDTH = 'max-width';
+export const PARAM_SCREEN_MIN_WIDTH = 'screen-min-width';
+export const PARAM_SCREEN_MAX_WIDTH = 'screen-max-width';
 
 const SPECIAL_LAYER_VARIABLES = [
   PARAM_SECTION_NAME,
@@ -38,12 +41,14 @@ const SPECIAL_LAYER_VARIABLES = [
 export type JSONLeaf = {
   value: string;
   type: string;
+  description?: string;
 };
 
 /** Composite node containing a more complex value */
 export type JSONCompositeLeaf = {
   type: string;
   value: Record<string, string> | Array<Record<string, string>>;
+  description?: string;
 };
 
 /** Generic node */
@@ -64,9 +69,19 @@ export type TokenOutput = {
   name: string;
   key: string;
   type: string;
+  description?: string;
   value: string;
   rawValue?: string;
 };
+/* REFERNCE TOKEN */
+
+export type TokenReference = {
+  sources: string[];
+  token: TokenOutput;
+  isStatic: boolean;
+};
+
+export type ReferenceMap = Record<string, TokenReference>;
 
 /* SPECIAL TOKEN STRUCTURES TO CREATE SHORTHAND DEFINITIONS *EXPERIMENTAL* */
 
@@ -82,6 +97,7 @@ export type BoxShadowDefinition = {
 export type CompositeLeafBoxShadow = {
   type: 'boxShadow';
   value: Array<BoxShadowDefinition> | BoxShadowDefinition;
+  description?: string;
 };
 
 export const isCompositeLeafBoxShadow = (
@@ -91,6 +107,7 @@ export const isCompositeLeafBoxShadow = (
 
 export type CompositeLeafTypography = {
   type: 'typography';
+  description?: string;
   value: {
     fontFamily: string;
     fontWeight: string;
@@ -107,6 +124,7 @@ export type TokenLayer = {
   variables: TokenOutput[];
   name: string;
   parameters: Record<string, string>;
+  dependencies: string[];
 };
 
 export type TokenLayers = {
@@ -178,14 +196,18 @@ export const isExpression = (input: string): boolean => {
   return !!input.replace(' ', '').match(expressionPattern);
 };
 
+const hasParameters = (parameters: Record<string, string>) =>
+  Object.keys(parameters).filter((key) => key !== 'description').length > 0;
+
 /* RENDERING RESULT FUNCTIONS */
 
 // create a token description base on a JSONLeaf
-export const renderToken = (name: string, item: JSONLeaf) => ({
+export const renderToken = (name: string, item: JSONLeaf): TokenOutput => ({
   key: `--${item.type}-${formatKey(name)}`,
   name,
   value: item.value,
   type: item.type,
+  description: item.description,
 });
 
 // create a token description of a composite token
@@ -219,28 +241,56 @@ export const renderCompositeToken = (name: string, item: JSONCompositeLeaf) => {
 
 /* MAIN PARSER OF TOKENS */
 
+/** recursively extract tokens from a JSONStructure
+ * and return a list of TokenOutput objects
+ * @param dataSet JSONStructure to extract tokens from
+ * @param parentName name of the parent node
+ * @param references a dictionary of references to be used to resolve expressions
+ * @param isStatic whether the layer we are parsing is static or not
+ * @param source the section-name that controls the layer we are parsing
+ * @param results the list of tokens to be returned
+ * @returns a list of TokenOutput objects
+ */
+
 export const extractTokens = (
   dataSet: JSONStructure,
   parentName: string,
-  references: Record<string, string> = {},
+  references: ReferenceMap = {},
+  isStatic = false,
+  source: string | null = null,
   results?: TokenOutput[]
 ): TokenOutput[] => {
   let finalResult = results ?? [];
   for (const key in dataSet) {
-    // create keyname with the same patter as the references
+    // create keyname with the same pattern as the references
     const keyName = `${parentName ? `${parentName}.` : ''}${key}`;
 
     // this is the item we want
     const item = dataSet[key];
     // if it's a single token, process it
     if (isJSONLeaf(item)) {
-      references[`{${keyName}}`] = item.value;
-      finalResult = [...finalResult, renderToken(keyName, item)];
+      const token = renderToken(keyName, item);
+      // check if a reference already exists
+      const existingReference: Partial<TokenReference> =
+        references[`{${keyName}}`] || {};
+      // add it to the references dictionary - this is used to resolve expressions and dependencies between layers
+      references[`{${keyName}}`] = {
+        ...existingReference,
+        token,
+        sources: [
+          ...(existingReference.sources ?? []),
+          ...(source ? [source] : []),
+        ],
+        isStatic,
+      };
+      // create the object and add it to the final result
+      finalResult = [...finalResult, token];
 
       // if it's a composite token, we should render it with our special functions
     } else if (isCompositeLeaf(item)) {
       finalResult = [...finalResult, renderCompositeToken(keyName, item)];
     } else if (isString(item)) {
+      // if it's a string, it means there's something strange going on. add it as a 'lone string'
       finalResult = [
         ...finalResult,
         renderToken(keyName, {
@@ -253,7 +303,7 @@ export const extractTokens = (
     else {
       finalResult = [
         ...finalResult,
-        ...extractTokens(item, keyName, references),
+        ...extractTokens(item, keyName, references, isStatic, source),
       ];
     }
   }
@@ -265,35 +315,70 @@ export const extractTokens = (
 const bracketsAround = /[\{][a-zA-Z0-9.\-]*[\}]/g;
 export const isReference = (u: string) => u.match(bracketsAround);
 
+const isPresent = <T>(a: T[], b: T[]) => a.some((item) => b.includes(item));
+
 export const processParameters = (
   specialNames: string[],
-  variables: TokenOutput[]
+  dataSet: JSONStructure
 ) =>
-  variables
-    .filter(({ name }) => specialNames.includes(name))
+  Object.entries(dataSet)
+    .filter(
+      ([name, { value }]) =>
+        specialNames.includes(name) && typeof value === 'string'
+    )
     .reduce(
-      (res, { name, value }) => ({ ...res, [name]: value }),
+      (res, [name, { value }]) => ({ ...res, [name]: value as string }),
       {} as Record<string, string>
     );
 
-export const processReferences = (refs: Record<string, string>) => {
+/** Process references
+ * references can be of two types:
+ * 1. static references, which are refereces that are resolved to their value in the parser
+ * 2. dynamic references, which are references that are resolved to their value in runtime
+ * static references are prefixed with a `!` in the reference dictionary
+ * as a rule, any reference to a static layer should be a static reference
+ * @param refs - a dictionary of references
+ * @returns a function that takes a string and returns a string with all references processed
+ */
+export const processReferences = (
+  refs: ReferenceMap,
+  dependencies: string[]
+) => {
   const getRef = (value: string): string => {
     const references: string[] = value.match(bracketsAround) || [];
     // if there are no references in the value, return it
     if (references.length === 0) return value;
     // otherwise, process _all_ references you found
     return references.reduce((result, key) => {
-      const res = key && refs[key];
-      if (!res) {
+      // if key is falsy, return the result
+      if (!key) return result;
+
+      const ref = refs[key];
+
+      if (!ref) {
         console.warn(`reference: ${key} not found`);
+        return result;
       }
-      // if the result of the reference lookup is still a reference to something else...
-      if (res && isReference(res)) {
+
+      // if it's a normal reference, replace it with the token key
+      if (!ref.isStatic) {
+        // if the reference is not static, add its dependencies to the list of dependencies
+        if (!isPresent(ref.sources, dependencies))
+          // add all elements of the sources array to the dependencies array if they are not already present
+          dependencies.push(
+            ...ref.sources.filter((s) => !dependencies.includes(s))
+          );
+        // return a reference to the token key instead of the token name
+        return result.replace(key, `{${ref.token.key}}`);
+      }
+
+      if (isReference(ref.token.value)) {
+        // if the reference is a static reference, replace it with the value
         // recurse
-        return getRef(res);
+        return getRef(ref.token.value);
       } else {
         // othewrwise, replace the reference with the final value
-        return result.replace(key, res);
+        return result.replace(key, ref.token.value);
       }
     }, value);
   };
@@ -376,20 +461,37 @@ export const processLayers = <T extends TokenStructure>(
     $themes,
     ...tokenData
   } = input;
-  const references: Record<string, string> = {};
-  const layers = Object.keys(tokenData)
+  const references: ReferenceMap = {};
+  const layers: TokenLayer[] = Object.keys(tokenData)
     .map((key) => {
       const layer = tokenData[key];
       const name = formatLayerName(key);
-      const variables = extractTokens(layer, '', references);
-      const parameters = processParameters(SPECIAL_LAYER_VARIABLES, variables);
-      return { name, variables, parameters };
+      const parameters = processParameters(SPECIAL_LAYER_VARIABLES, layer);
+      // if there is at least one parameter other than 'description', it is a dynamic layer
+      const isStatic = !hasParameters(parameters);
+      const variables = extractTokens(
+        layer,
+        '',
+        references,
+        isStatic,
+        parameters[PARAM_SECTION_NAME]
+      );
+      return { name, variables, parameters, isDynamic: isStatic };
     })
-    .map(({ variables, ...rest }) => ({
-      ...rest,
-      variables: variables.map(processReferences(references)),
-    }));
-  return { layers, order: tokenSetOrder.map(formatLayerName) };
+    .map((layer): TokenLayer => {
+      const { variables, parameters, ...rest } = layer;
+      const dependencies: string[] = [];
+      return {
+        ...rest,
+        variables: variables.map(processReferences(references, dependencies)),
+        parameters,
+        dependencies: [...new Set(dependencies)],
+      };
+    });
+  return {
+    layers,
+    order: tokenSetOrder.map(formatLayerName),
+  };
 };
 
 // Token Layer Snapshot Validator
@@ -452,3 +554,7 @@ export const compareTokenLayers = (
   });
   return messages;
 };
+
+// for debugging purposes
+// const ls = processLayers(data);
+// console.log(ls);

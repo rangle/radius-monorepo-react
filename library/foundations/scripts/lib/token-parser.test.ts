@@ -234,11 +234,41 @@ describe('extractTokens', () => {
 });
 
 describe('processReferences', () => {
-  const fbn = processReferences({
-    ['{test.x}']: '1',
-    ['{test.y}']: '2',
-    ['{test.z}']: '3',
-  });
+  const fbn = processReferences(
+    {
+      ['{test.x}']: {
+        token: {
+          name: '',
+          key: 'nn',
+          type: 'c',
+          value: '1',
+        },
+        isStatic: true,
+        sources: [],
+      },
+      ['{test.y}']: {
+        token: {
+          name: '',
+          key: 'nn',
+          type: 'c',
+          value: '2',
+        },
+        isStatic: true,
+        sources: [],
+      },
+      ['{test.z}']: {
+        token: {
+          name: '',
+          key: 'nn',
+          type: 'c',
+          value: '3',
+        },
+        isStatic: true,
+        sources: [],
+      },
+    },
+    []
+  );
   it('should find a single reference', () => {
     const r = fbn({
       name: '',

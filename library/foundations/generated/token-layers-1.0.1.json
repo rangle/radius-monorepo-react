@@ -2,7 +2,7 @@
   "layers": [
     {
       "name": "radius--core",
-      "parameters": {},
+      "isDynamic": true,
       "variables": [
         {
           "key": "--color-core-primary-50",
@@ -240,6 +240,7 @@
           "name": "core.space.half",
           "value": "0.25rem*0.5",
           "type": "spacing",
+          "description": "2px",
           "rawValue": "{core.space.base}*0.5"
         },
         {
@@ -247,6 +248,7 @@
           "name": "core.space.base",
           "value": "0.25rem",
           "type": "spacing",
+          "description": "4px",
           "rawValue": "0.25rem"
         },
         {
@@ -254,6 +256,7 @@
           "name": "core.space.2x",
           "value": "0.25rem * 2",
           "type": "spacing",
+          "description": "8px",
           "rawValue": "{core.space.base} * 2"
         },
         {
@@ -261,6 +264,7 @@
           "name": "core.space.3x",
           "value": "0.25rem * 3",
           "type": "spacing",
+          "description": "12px",
           "rawValue": "{core.space.base} * 3"
         },
         {
@@ -268,6 +272,7 @@
           "name": "core.space.4x",
           "value": "0.25rem*4",
           "type": "spacing",
+          "description": "16px",
           "rawValue": "{core.space.base}*4"
         },
         {
@@ -275,6 +280,7 @@
           "name": "core.space.5x",
           "value": "0.25rem * 5",
           "type": "spacing",
+          "description": "20px",
           "rawValue": "{core.space.base} * 5"
         },
         {
@@ -282,6 +288,7 @@
           "name": "core.space.6x",
           "value": "0.25rem*6",
           "type": "spacing",
+          "description": "24px",
           "rawValue": "{core.space.base}*6"
         },
         {
@@ -289,6 +296,7 @@
           "name": "core.space.8x",
           "value": "0.25rem*8",
           "type": "spacing",
+          "description": "32px",
           "rawValue": "{core.space.base}*8"
         },
         {
@@ -296,6 +304,7 @@
           "name": "core.space.10x",
           "value": "0.25rem*10",
           "type": "spacing",
+          "description": "40px",
           "rawValue": "{core.space.base}*10"
         },
         {
@@ -303,6 +312,7 @@
           "name": "core.space.12x",
           "value": "0.25rem*12",
           "type": "spacing",
+          "description": "48px",
           "rawValue": "{core.space.base}*12"
         },
         {
@@ -310,6 +320,7 @@
           "name": "core.space.16x",
           "value": "0.25rem*16",
           "type": "spacing",
+          "description": "64px\n",
           "rawValue": "{core.space.base}*16"
         },
         {
@@ -317,6 +328,7 @@
           "name": "core.space.18x",
           "value": "0.25rem*18",
           "type": "spacing",
+          "description": "72px",
           "rawValue": "{core.space.base}*18"
         },
         {
@@ -324,6 +336,7 @@
           "name": "core.space.20x",
           "value": "0.25rem*20",
           "type": "spacing",
+          "description": "80px\n",
           "rawValue": "{core.space.base}*20"
         },
         {
@@ -331,6 +344,7 @@
           "name": "core.space.26x",
           "value": "0.25rem*26",
           "type": "spacing",
+          "description": "104px",
           "rawValue": "{core.space.base}*26"
         },
         {
@@ -338,6 +352,7 @@
           "name": "core.space.45x",
           "value": "0.25rem*45",
           "type": "spacing",
+          "description": "180px",
           "rawValue": "{core.space.base}*45"
         },
         {
@@ -345,6 +360,7 @@
           "name": "core.space.60x",
           "value": "0.25rem*60",
           "type": "spacing",
+          "description": "240px",
           "rawValue": "{core.space.base}*60"
         },
         {
@@ -352,6 +368,7 @@
           "name": "core.radius.none",
           "value": "0rem",
           "type": "borderRadius",
+          "description": "0px",
           "rawValue": "0rem"
         },
         {
@@ -359,6 +376,7 @@
           "name": "core.radius.xxs",
           "value": "0.125rem",
           "type": "borderRadius",
+          "description": "2px",
           "rawValue": "0.125rem"
         },
         {
@@ -366,6 +384,7 @@
           "name": "core.radius.xsm",
           "value": "0.25rem",
           "type": "borderRadius",
+          "description": "4px",
           "rawValue": "0.25rem"
         },
         {
@@ -373,6 +392,7 @@
           "name": "core.radius.sm",
           "value": "0.5",
           "type": "borderRadius",
+          "description": "8px",
           "rawValue": "0.5"
         },
         {
@@ -380,6 +400,7 @@
           "name": "core.radius.md",
           "value": "1rem",
           "type": "borderRadius",
+          "description": "16px",
           "rawValue": "1rem"
         },
         {
@@ -387,6 +408,7 @@
           "name": "core.radius.lg",
           "value": "1.5rem",
           "type": "borderRadius",
+          "description": "24px",
           "rawValue": "1.5rem"
         },
         {
@@ -394,6 +416,7 @@
           "name": "core.radius.xlg",
           "value": "2rem",
           "type": "borderRadius",
+          "description": "32px",
           "rawValue": "2rem"
         },
         {
@@ -401,6 +424,7 @@
           "name": "core.radius.xxlg",
           "value": "2.25rem",
           "type": "borderRadius",
+          "description": "36px",
           "rawValue": "2.25rem"
         },
         {
@@ -408,6 +432,7 @@
           "name": "core.radius.max",
           "value": "300px",
           "type": "borderRadius",
+          "description": "100%",
           "rawValue": "300px"
         },
         {
@@ -569,6 +594,7 @@
           "name": "fontSize.100",
           "value": "0.75rem",
           "type": "fontSizes",
+          "description": "12px",
           "rawValue": "0.75rem"
         },
         {
@@ -576,6 +602,7 @@
           "name": "fontSize.200",
           "value": "0.875rem",
           "type": "fontSizes",
+          "description": "14px",
           "rawValue": "0.875rem"
         },
         {
@@ -583,6 +610,7 @@
           "name": "fontSize.300",
           "value": "1rem",
           "type": "fontSizes",
+          "description": "16px",
           "rawValue": "1rem"
         },
         {
@@ -590,6 +618,7 @@
           "name": "fontSize.400",
           "value": "1.125rem",
           "type": "fontSizes",
+          "description": "18px",
           "rawValue": "1.125rem"
         },
         {
@@ -597,6 +626,7 @@
           "name": "fontSize.500",
           "value": "1.25rem",
           "type": "fontSizes",
+          "description": "20px",
           "rawValue": "1.25rem"
         },
         {
@@ -604,6 +634,7 @@
           "name": "fontSize.600",
           "value": "1.5rem",
           "type": "fontSizes",
+          "description": "24px",
           "rawValue": "1.5rem"
         },
         {
@@ -611,6 +642,7 @@
           "name": "fontSize.700",
           "value": "2.25rem",
           "type": "fontSizes",
+          "description": "36px",
           "rawValue": "2.25rem"
         },
         {
@@ -618,6 +650,7 @@
           "name": "fontSize.800",
           "value": "2.5rem",
           "type": "fontSizes",
+          "description": "40px",
           "rawValue": "2.5rem"
         },
         {
@@ -625,6 +658,7 @@
           "name": "fontSize.900",
           "value": "4rem",
           "type": "fontSizes",
+          "description": "64px",
           "rawValue": "4rem"
         },
         {
@@ -632,6 +666,7 @@
           "name": "fontSize.1000",
           "value": "5rem",
           "type": "fontSizes",
+          "description": "80px",
           "rawValue": "5rem"
         },
         {
@@ -690,11 +725,13 @@
           "type": "textDecoration",
           "rawValue": "underline"
         }
-      ]
+      ],
+      "parameters": {},
+      "dependencies": []
     },
     {
-      "name": "radius--lightmode--semanticcolors",
-      "parameters": {},
+      "name": "radius--mode--light",
+      "isDynamic": false,
       "variables": [
         {
           "key": "--color-text-on-base-primary",
@@ -1031,443 +1068,31 @@
           "value": "#CCCCCC",
           "type": "color",
           "rawValue": "{core.neutral.500}"
+        },
+        {
+          "key": "--other-section-name",
+          "name": "section-name",
+          "value": "Light Mode",
+          "type": "other",
+          "description": "Describes the name of the section that triggers this Dynamic Layer",
+          "rawValue": "Light Mode"
         }
-      ]
+      ],
+      "parameters": {
+        "section-name": "Light Mode"
+      },
+      "dependencies": []
     },
     {
-      "name": "radius--lightmode--components--buttons",
-      "parameters": {},
-      "variables": [
-        {
-          "key": "--color-button-primary-surface-default",
-          "name": "button.primary.surface.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{interaction.primary.default}"
-        },
-        {
-          "key": "--color-button-primary-surface-hover",
-          "name": "button.primary.surface.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.hover}"
-        },
-        {
-          "key": "--color-button-primary-surface-active",
-          "name": "button.primary.surface.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.primary.active}"
-        },
-        {
-          "key": "--color-button-primary-surface-focus",
-          "name": "button.primary.surface.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.focus}"
-        },
-        {
-          "key": "--color-button-primary-surface-disabled",
-          "name": "button.primary.surface.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.primary.disabled}"
-        },
-        {
-          "key": "--color-button-primary-border-default",
-          "name": "button.primary.border.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{interaction.primary.default}"
-        },
-        {
-          "key": "--color-button-primary-border-hover",
-          "name": "button.primary.border.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.hover}"
-        },
-        {
-          "key": "--color-button-primary-border-active",
-          "name": "button.primary.border.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.primary.active}"
-        },
-        {
-          "key": "--color-button-primary-border-focus",
-          "name": "button.primary.border.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.focus}"
-        },
-        {
-          "key": "--color-button-primary-border-disabled",
-          "name": "button.primary.border.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.primary.disabled}"
-        },
-        {
-          "key": "--color-button-primary-label-default",
-          "name": "button.primary.label.default",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{text.primary-action.default}"
-        },
-        {
-          "key": "--color-button-primary-label-hover",
-          "name": "button.primary.label.hover",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.hover}"
-        },
-        {
-          "key": "--color-button-primary-label-active",
-          "name": "button.primary.label.active",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.active}"
-        },
-        {
-          "key": "--color-button-primary-label-focus",
-          "name": "button.primary.label.focus",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.focus}"
-        },
-        {
-          "key": "--color-button-primary-label-disabled",
-          "name": "button.primary.label.disabled",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.disabled}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-lg",
-          "name": "button.horizontal-padding.lg",
-          "value": "0.25rem*8",
-          "type": "spacing",
-          "rawValue": "{core.space.8x}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-md",
-          "name": "button.horizontal-padding.md",
-          "value": "0.25rem*6",
-          "type": "spacing",
-          "rawValue": "{core.space.6x}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-sm",
-          "name": "button.horizontal-padding.sm",
-          "value": "0.25rem*4",
-          "type": "spacing",
-          "rawValue": "{core.space.4x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-lg",
-          "name": "button.vertical-padding.lg",
-          "value": "0.25rem*4",
-          "type": "spacing",
-          "rawValue": "{core.space.4x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-md",
-          "name": "button.vertical-padding.md",
-          "value": "0.25rem * 3",
-          "type": "spacing",
-          "rawValue": "{core.space.3x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-sm",
-          "name": "button.vertical-padding.sm",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--spacing-button-gap-default",
-          "name": "button.gap.default",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--borderRadius-button-border-radius-none",
-          "name": "button.border-radius.none",
-          "value": "0rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.none}"
-        },
-        {
-          "key": "--borderWidth-button-border-width-sm",
-          "name": "button.border-width.sm",
-          "value": "1px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.sm}"
-        },
-        {
-          "key": "--borderWidth-button-border-width-md",
-          "name": "button.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        },
-        {
-          "key": "--color-button-secondary-surface-default",
-          "name": "button.secondary.surface.default",
-          "value": "transparent",
-          "type": "color",
-          "rawValue": "transparent"
-        },
-        {
-          "key": "--color-button-secondary-surface-hover",
-          "name": "button.secondary.surface.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.hover}"
-        },
-        {
-          "key": "--color-button-secondary-surface-active",
-          "name": "button.secondary.surface.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.secondary.active}"
-        },
-        {
-          "key": "--color-button-secondary-surface-focus",
-          "name": "button.secondary.surface.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.focus}"
-        },
-        {
-          "key": "--color-button-secondary-surface-disabled",
-          "name": "button.secondary.surface.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.secondary.disabled}"
-        },
-        {
-          "key": "--color-button-secondary-border-default",
-          "name": "button.secondary.border.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{interaction.secondary.default}"
-        },
-        {
-          "key": "--color-button-secondary-border-hover",
-          "name": "button.secondary.border.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.hover}"
-        },
-        {
-          "key": "--color-button-secondary-border-active",
-          "name": "button.secondary.border.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.secondary.active}"
-        },
-        {
-          "key": "--color-button-secondary-border-focus",
-          "name": "button.secondary.border.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.focus}"
-        },
-        {
-          "key": "--color-button-secondary-border-disabled",
-          "name": "button.secondary.border.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.secondary.disabled}"
-        },
-        {
-          "key": "--color-button-secondary-label-default",
-          "name": "button.secondary.label.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.default}"
-        },
-        {
-          "key": "--color-button-secondary-label-hover",
-          "name": "button.secondary.label.hover",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.hover}"
-        },
-        {
-          "key": "--color-button-secondary-label-active",
-          "name": "button.secondary.label.active",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.active}"
-        },
-        {
-          "key": "--color-button-secondary-label-focus",
-          "name": "button.secondary.label.focus",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.focus}"
-        },
-        {
-          "key": "--color-button-secondary-label-disabled",
-          "name": "button.secondary.label.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{text.secondary-action.disabled}"
-        },
-        {
-          "key": "--color-focus-outline-default",
-          "name": "focus-outline.default",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.focus}"
-        },
-        {
-          "key": "--borderRadius-focus-outline-border-radius-sm",
-          "name": "focus-outline.border-radius.sm",
-          "value": "0.125rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.xxs}"
-        },
-        {
-          "key": "--borderWidth-focus-outline-border-width-md",
-          "name": "focus-outline.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        }
-      ]
-    },
-    {
-      "name": "radius--lightmode--components--link",
-      "parameters": {},
-      "variables": [
-        {
-          "key": "--color-link-border-default",
-          "name": "link.border.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.default}"
-        },
-        {
-          "key": "--color-link-border-hover",
-          "name": "link.border.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.hover}"
-        },
-        {
-          "key": "--color-link-border-active",
-          "name": "link.border.active",
-          "value": "#F7856E",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.active}"
-        },
-        {
-          "key": "--color-link-border-focus",
-          "name": "link.border.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.focus}"
-        },
-        {
-          "key": "--color-link-border-disabled",
-          "name": "link.border.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.disabled}"
-        },
-        {
-          "key": "--spacing-link-gap-default",
-          "name": "link.gap.default",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--borderWidth-link-border-width-sm",
-          "name": "link.border-width.sm",
-          "value": "1px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.sm}"
-        },
-        {
-          "key": "--borderWidth-link-border-width-md",
-          "name": "link.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        },
-        {
-          "key": "--spacing-link-horizontal-padding-none",
-          "name": "link.horizontal-padding.none",
-          "value": "0px",
-          "type": "spacing",
-          "rawValue": "{core.space.none}"
-        },
-        {
-          "key": "--spacing-link-vertical-padding-none",
-          "name": "link.vertical-padding.none",
-          "value": "0px",
-          "type": "spacing",
-          "rawValue": "{core.space.none}"
-        },
-        {
-          "key": "--borderRadius-link-border-radius-none",
-          "name": "link.border-radius.none",
-          "value": "0rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.none}"
-        },
-        {
-          "key": "--color-link-label-default",
-          "name": "link.label.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.default}"
-        },
-        {
-          "key": "--color-link-label-hover",
-          "name": "link.label.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.hover}"
-        },
-        {
-          "key": "--color-link-label-active",
-          "name": "link.label.active",
-          "value": "#F7856E",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.active}"
-        },
-        {
-          "key": "--color-link-label-focus",
-          "name": "link.label.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.focus}"
-        },
-        {
-          "key": "--color-link-label-disabled",
-          "name": "link.label.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.disabled}"
-        }
-      ]
-    },
-    {
-      "name": "radius--darkmode--semanticcolors",
-      "parameters": {},
+      "name": "radius--mode--dark",
+      "isDynamic": false,
       "variables": [
         {
           "key": "--color-text-on-base-primary",
           "name": "text.onBase.primary",
           "value": "#FFFFFF",
           "type": "color",
+          "description": "Color on base",
           "rawValue": "{core.neutral.white}"
         },
         {
@@ -1798,439 +1423,32 @@
           "value": "#CCCCCC",
           "type": "color",
           "rawValue": "{core.neutral.500}"
+        },
+        {
+          "key": "--other-section-name",
+          "name": "section-name",
+          "value": "Dark Mode",
+          "type": "other",
+          "description": "Describes the name of the section that triggers this Dynamic Layer",
+          "rawValue": "Dark Mode"
+        },
+        {
+          "key": "--other-description",
+          "name": "description",
+          "value": "Colors for light mode",
+          "type": "other",
+          "description": "Light mode is the default mode for the Design System",
+          "rawValue": "Colors for light mode"
         }
-      ]
-    },
-    {
-      "name": "radius--darkmode--components--buttons",
-      "parameters": {},
-      "variables": [
-        {
-          "key": "--color-button-primary-surface-default",
-          "name": "button.primary.surface.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{interaction.primary.default}"
-        },
-        {
-          "key": "--color-button-primary-surface-hover",
-          "name": "button.primary.surface.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.hover}"
-        },
-        {
-          "key": "--color-button-primary-surface-active",
-          "name": "button.primary.surface.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.primary.active}"
-        },
-        {
-          "key": "--color-button-primary-surface-focus",
-          "name": "button.primary.surface.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.focus}"
-        },
-        {
-          "key": "--color-button-primary-surface-disabled",
-          "name": "button.primary.surface.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.primary.disabled}"
-        },
-        {
-          "key": "--color-button-primary-border-default",
-          "name": "button.primary.border.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{interaction.primary.default}"
-        },
-        {
-          "key": "--color-button-primary-border-hover",
-          "name": "button.primary.border.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.hover}"
-        },
-        {
-          "key": "--color-button-primary-border-active",
-          "name": "button.primary.border.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.primary.active}"
-        },
-        {
-          "key": "--color-button-primary-border-focus",
-          "name": "button.primary.border.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.focus}"
-        },
-        {
-          "key": "--color-button-primary-border-disabled",
-          "name": "button.primary.border.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.primary.disabled}"
-        },
-        {
-          "key": "--color-button-primary-label-default",
-          "name": "button.primary.label.default",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{text.primary-action.default}"
-        },
-        {
-          "key": "--color-button-primary-label-hover",
-          "name": "button.primary.label.hover",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.hover}"
-        },
-        {
-          "key": "--color-button-primary-label-active",
-          "name": "button.primary.label.active",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.active}"
-        },
-        {
-          "key": "--color-button-primary-label-focus",
-          "name": "button.primary.label.focus",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.focus}"
-        },
-        {
-          "key": "--color-button-primary-label-disabled",
-          "name": "button.primary.label.disabled",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.primary-action.disabled}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-lg",
-          "name": "button.horizontal-padding.lg",
-          "value": "0.25rem*8",
-          "type": "spacing",
-          "rawValue": "{core.space.8x}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-md",
-          "name": "button.horizontal-padding.md",
-          "value": "0.25rem*6",
-          "type": "spacing",
-          "rawValue": "{core.space.6x}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-sm",
-          "name": "button.horizontal-padding.sm",
-          "value": "0.25rem*4",
-          "type": "spacing",
-          "rawValue": "{core.space.4x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-lg",
-          "name": "button.vertical-padding.lg",
-          "value": "0.25rem*4",
-          "type": "spacing",
-          "rawValue": "{core.space.4x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-md",
-          "name": "button.vertical-padding.md",
-          "value": "0.25rem * 3",
-          "type": "spacing",
-          "rawValue": "{core.space.3x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-sm",
-          "name": "button.vertical-padding.sm",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--spacing-button-gap-default",
-          "name": "button.gap.default",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--borderRadius-button-border-radius-none",
-          "name": "button.border-radius.none",
-          "value": "0rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.none}"
-        },
-        {
-          "key": "--borderWidth-button-border-width-sm",
-          "name": "button.border-width.sm",
-          "value": "1px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.sm}"
-        },
-        {
-          "key": "--borderWidth-button-border-width-md",
-          "name": "button.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        },
-        {
-          "key": "--color-button-secondary-surface-default",
-          "name": "button.secondary.surface.default",
-          "value": "transparent",
-          "type": "color",
-          "rawValue": "transparent"
-        },
-        {
-          "key": "--color-button-secondary-surface-hover",
-          "name": "button.secondary.surface.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.hover}"
-        },
-        {
-          "key": "--color-button-secondary-surface-active",
-          "name": "button.secondary.surface.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.secondary.active}"
-        },
-        {
-          "key": "--color-button-secondary-surface-focus",
-          "name": "button.secondary.surface.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.focus}"
-        },
-        {
-          "key": "--color-button-secondary-surface-disabled",
-          "name": "button.secondary.surface.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.secondary.disabled}"
-        },
-        {
-          "key": "--color-button-secondary-border-default",
-          "name": "button.secondary.border.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{interaction.secondary.default}"
-        },
-        {
-          "key": "--color-button-secondary-border-hover",
-          "name": "button.secondary.border.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.hover}"
-        },
-        {
-          "key": "--color-button-secondary-border-active",
-          "name": "button.secondary.border.active",
-          "value": "#A3331A",
-          "type": "color",
-          "rawValue": "{interaction.secondary.active}"
-        },
-        {
-          "key": "--color-button-secondary-border-focus",
-          "name": "button.secondary.border.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.secondary.focus}"
-        },
-        {
-          "key": "--color-button-secondary-border-disabled",
-          "name": "button.secondary.border.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.secondary.disabled}"
-        },
-        {
-          "key": "--color-button-secondary-label-default",
-          "name": "button.secondary.label.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.default}"
-        },
-        {
-          "key": "--color-button-secondary-label-hover",
-          "name": "button.secondary.label.hover",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.hover}"
-        },
-        {
-          "key": "--color-button-secondary-label-active",
-          "name": "button.secondary.label.active",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.active}"
-        },
-        {
-          "key": "--color-button-secondary-label-focus",
-          "name": "button.secondary.label.focus",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.secondary-action.focus}"
-        },
-        {
-          "key": "--color-button-secondary-label-disabled",
-          "name": "button.secondary.label.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{text.secondary-action.disabled}"
-        },
-        {
-          "key": "--color-focus-outline-default",
-          "name": "focus-outline.default",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.primary.focus}"
-        },
-        {
-          "key": "--borderRadius-focus-outline-border-radius-sm",
-          "name": "focus-outline.border-radius.sm",
-          "value": "0.125rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.xxs}"
-        },
-        {
-          "key": "--borderWidth-focus-outline-border-width-md",
-          "name": "focus-outline.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        }
-      ]
-    },
-    {
-      "name": "radius--darkmode--components--link",
-      "parameters": {},
-      "variables": [
-        {
-          "key": "--color-link-border-default",
-          "name": "link.border.default",
-          "value": "transparent",
-          "type": "color",
-          "rawValue": "transparent"
-        },
-        {
-          "key": "--color-link-border-hover",
-          "name": "link.border.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.tertiary.hover}"
-        },
-        {
-          "key": "--color-link-border-active",
-          "name": "link.border.active",
-          "value": "#F7856E",
-          "type": "color",
-          "rawValue": "{interaction.tertiary.active}"
-        },
-        {
-          "key": "--color-link-border-focus",
-          "name": "link.border.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{interaction.tertiary.focus}"
-        },
-        {
-          "key": "--color-link-border-disabled",
-          "name": "link.border.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{interaction.tertiary.disabled}"
-        },
-        {
-          "key": "--spacing-link-gap-default",
-          "name": "link.gap.default",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--borderWidth-link-border-width-sm",
-          "name": "link.border-width.sm",
-          "value": "1px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.sm}"
-        },
-        {
-          "key": "--borderWidth-link-border-width-md",
-          "name": "link.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        },
-        {
-          "key": "--spacing-link-horizontal-padding-none",
-          "name": "link.horizontal-padding.none",
-          "value": "0px",
-          "type": "spacing",
-          "rawValue": "{core.space.none}"
-        },
-        {
-          "key": "--spacing-link-vertical-padding-none",
-          "name": "link.vertical-padding.none",
-          "value": "0px",
-          "type": "spacing",
-          "rawValue": "{core.space.none}"
-        },
-        {
-          "key": "--borderRadius-link-border-radius-none",
-          "name": "link.border-radius.none",
-          "value": "0rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.none}"
-        },
-        {
-          "key": "--color-link-label-default",
-          "name": "link.label.default",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.default}"
-        },
-        {
-          "key": "--color-link-label-hover",
-          "name": "link.label.hover",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.hover}"
-        },
-        {
-          "key": "--color-link-label-active",
-          "name": "link.label.active",
-          "value": "#F7856E",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.active}"
-        },
-        {
-          "key": "--color-link-label-focus",
-          "name": "link.label.focus",
-          "value": "#D44527",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.focus}"
-        },
-        {
-          "key": "--color-link-label-disabled",
-          "name": "link.label.disabled",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.disabled}"
-        }
-      ]
-    },
-    {
-      "name": "radius--typography--lg-breakpoint",
+      ],
       "parameters": {
-        "min-width": "900px"
+        "section-name": "Dark Mode"
       },
+      "dependencies": []
+    },
+    {
+      "name": "radius--breakpoint--lg",
+      "isDynamic": false,
       "variables": [
         {
           "key": "--typography-heading-xxl",
@@ -2324,20 +1542,22 @@
           "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
         },
         {
-          "key": "--dimension-min-width",
-          "name": "min-width",
+          "key": "--dimension-screen-min-width",
+          "name": "screen-min-width",
           "value": "900px",
           "type": "dimension",
+          "description": "Breakpoint minimum width",
           "rawValue": "900px"
         }
-      ]
+      ],
+      "parameters": {
+        "screen-min-width": "900px"
+      },
+      "dependencies": []
     },
     {
-      "name": "radius--typography--md-breakpoint",
-      "parameters": {
-        "min-width": "600px",
-        "max-width": "899px"
-      },
+      "name": "radius--breakpoint--md",
+      "isDynamic": false,
       "variables": [
         {
           "key": "--typography-heading-xxl",
@@ -2417,27 +1637,455 @@
           "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
         },
         {
-          "key": "--dimension-min-width",
-          "name": "min-width",
+          "key": "--dimension-screen-min-width",
+          "name": "screen-min-width",
           "value": "600px",
           "type": "dimension",
+          "description": "Breakpoint Minimum Width",
           "rawValue": "600px"
         },
         {
-          "key": "--dimension-max-width",
-          "name": "max-width",
+          "key": "--dimension-screen-max-width",
+          "name": "screen-max-width",
           "value": "899px",
           "type": "dimension",
+          "description": "Breakpoint maximum width",
           "rawValue": "899px"
         }
+      ],
+      "parameters": {
+        "screen-min-width": "600px",
+        "screen-max-width": "899px"
+      },
+      "dependencies": []
+    },
+    {
+      "name": "radius--components",
+      "isDynamic": true,
+      "variables": [
+        {
+          "key": "--color-button-primary-surface-default",
+          "name": "button.primary.surface.default",
+          "value": "{--color-interaction-primary-default}",
+          "type": "color",
+          "rawValue": "{interaction.primary.default}"
+        },
+        {
+          "key": "--color-button-primary-surface-hover",
+          "name": "button.primary.surface.hover",
+          "value": "{--color-interaction-primary-hover}",
+          "type": "color",
+          "rawValue": "{interaction.primary.hover}"
+        },
+        {
+          "key": "--color-button-primary-surface-active",
+          "name": "button.primary.surface.active",
+          "value": "{--color-interaction-primary-active}",
+          "type": "color",
+          "rawValue": "{interaction.primary.active}"
+        },
+        {
+          "key": "--color-button-primary-surface-focus",
+          "name": "button.primary.surface.focus",
+          "value": "{--color-interaction-primary-focus}",
+          "type": "color",
+          "rawValue": "{interaction.primary.focus}"
+        },
+        {
+          "key": "--color-button-primary-surface-disabled",
+          "name": "button.primary.surface.disabled",
+          "value": "{--color-interaction-primary-disabled}",
+          "type": "color",
+          "rawValue": "{interaction.primary.disabled}"
+        },
+        {
+          "key": "--color-button-primary-border-default",
+          "name": "button.primary.border.default",
+          "value": "{--color-interaction-primary-default}",
+          "type": "color",
+          "rawValue": "{interaction.primary.default}"
+        },
+        {
+          "key": "--color-button-primary-border-hover",
+          "name": "button.primary.border.hover",
+          "value": "{--color-interaction-primary-hover}",
+          "type": "color",
+          "rawValue": "{interaction.primary.hover}"
+        },
+        {
+          "key": "--color-button-primary-border-active",
+          "name": "button.primary.border.active",
+          "value": "{--color-interaction-primary-active}",
+          "type": "color",
+          "rawValue": "{interaction.primary.active}"
+        },
+        {
+          "key": "--color-button-primary-border-focus",
+          "name": "button.primary.border.focus",
+          "value": "{--color-interaction-primary-focus}",
+          "type": "color",
+          "rawValue": "{interaction.primary.focus}"
+        },
+        {
+          "key": "--color-button-primary-border-disabled",
+          "name": "button.primary.border.disabled",
+          "value": "{--color-interaction-primary-disabled}",
+          "type": "color",
+          "rawValue": "{interaction.primary.disabled}"
+        },
+        {
+          "key": "--color-button-primary-label-default",
+          "name": "button.primary.label.default",
+          "value": "{--color-text-primary-action-default}",
+          "type": "color",
+          "rawValue": "{text.primary-action.default}"
+        },
+        {
+          "key": "--color-button-primary-label-hover",
+          "name": "button.primary.label.hover",
+          "value": "{--color-text-primary-action-hover}",
+          "type": "color",
+          "rawValue": "{text.primary-action.hover}"
+        },
+        {
+          "key": "--color-button-primary-label-active",
+          "name": "button.primary.label.active",
+          "value": "{--color-text-primary-action-active}",
+          "type": "color",
+          "rawValue": "{text.primary-action.active}"
+        },
+        {
+          "key": "--color-button-primary-label-focus",
+          "name": "button.primary.label.focus",
+          "value": "{--color-text-primary-action-focus}",
+          "type": "color",
+          "rawValue": "{text.primary-action.focus}"
+        },
+        {
+          "key": "--color-button-primary-label-disabled",
+          "name": "button.primary.label.disabled",
+          "value": "{--color-text-primary-action-disabled}",
+          "type": "color",
+          "rawValue": "{text.primary-action.disabled}"
+        },
+        {
+          "key": "--spacing-button-horizontal-padding-lg",
+          "name": "button.horizontal-padding.lg",
+          "value": "0.25rem*8",
+          "type": "spacing",
+          "rawValue": "{core.space.8x}"
+        },
+        {
+          "key": "--spacing-button-horizontal-padding-md",
+          "name": "button.horizontal-padding.md",
+          "value": "0.25rem*6",
+          "type": "spacing",
+          "rawValue": "{core.space.6x}"
+        },
+        {
+          "key": "--spacing-button-horizontal-padding-sm",
+          "name": "button.horizontal-padding.sm",
+          "value": "0.25rem*4",
+          "type": "spacing",
+          "rawValue": "{core.space.4x}"
+        },
+        {
+          "key": "--spacing-button-vertical-padding-lg",
+          "name": "button.vertical-padding.lg",
+          "value": "0.25rem*4",
+          "type": "spacing",
+          "rawValue": "{core.space.4x}"
+        },
+        {
+          "key": "--spacing-button-vertical-padding-md",
+          "name": "button.vertical-padding.md",
+          "value": "0.25rem * 3",
+          "type": "spacing",
+          "rawValue": "{core.space.3x}"
+        },
+        {
+          "key": "--spacing-button-vertical-padding-sm",
+          "name": "button.vertical-padding.sm",
+          "value": "0.25rem * 2",
+          "type": "spacing",
+          "rawValue": "{core.space.2x}"
+        },
+        {
+          "key": "--spacing-button-gap-default",
+          "name": "button.gap.default",
+          "value": "0.25rem * 2",
+          "type": "spacing",
+          "rawValue": "{core.space.2x}"
+        },
+        {
+          "key": "--borderRadius-button-border-radius-none",
+          "name": "button.border-radius.none",
+          "value": "0rem",
+          "type": "borderRadius",
+          "rawValue": "{core.radius.none}"
+        },
+        {
+          "key": "--borderWidth-button-border-width-sm",
+          "name": "button.border-width.sm",
+          "value": "1px",
+          "type": "borderWidth",
+          "rawValue": "{core.borderWidth.sm}"
+        },
+        {
+          "key": "--borderWidth-button-border-width-md",
+          "name": "button.border-width.md",
+          "value": "2px",
+          "type": "borderWidth",
+          "rawValue": "{core.borderWidth.md}"
+        },
+        {
+          "key": "--color-button-secondary-surface-default",
+          "name": "button.secondary.surface.default",
+          "value": "transparent",
+          "type": "color",
+          "rawValue": "transparent"
+        },
+        {
+          "key": "--color-button-secondary-surface-hover",
+          "name": "button.secondary.surface.hover",
+          "value": "{--color-interaction-secondary-hover}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.hover}"
+        },
+        {
+          "key": "--color-button-secondary-surface-active",
+          "name": "button.secondary.surface.active",
+          "value": "{--color-interaction-secondary-active}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.active}"
+        },
+        {
+          "key": "--color-button-secondary-surface-focus",
+          "name": "button.secondary.surface.focus",
+          "value": "{--color-interaction-secondary-focus}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.focus}"
+        },
+        {
+          "key": "--color-button-secondary-surface-disabled",
+          "name": "button.secondary.surface.disabled",
+          "value": "{--color-interaction-secondary-disabled}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.disabled}"
+        },
+        {
+          "key": "--color-button-secondary-border-default",
+          "name": "button.secondary.border.default",
+          "value": "{--color-interaction-secondary-default}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.default}"
+        },
+        {
+          "key": "--color-button-secondary-border-hover",
+          "name": "button.secondary.border.hover",
+          "value": "{--color-interaction-secondary-hover}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.hover}"
+        },
+        {
+          "key": "--color-button-secondary-border-active",
+          "name": "button.secondary.border.active",
+          "value": "{--color-interaction-secondary-active}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.active}"
+        },
+        {
+          "key": "--color-button-secondary-border-focus",
+          "name": "button.secondary.border.focus",
+          "value": "{--color-interaction-secondary-focus}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.focus}"
+        },
+        {
+          "key": "--color-button-secondary-border-disabled",
+          "name": "button.secondary.border.disabled",
+          "value": "{--color-interaction-secondary-disabled}",
+          "type": "color",
+          "rawValue": "{interaction.secondary.disabled}"
+        },
+        {
+          "key": "--color-button-secondary-label-default",
+          "name": "button.secondary.label.default",
+          "value": "{--color-text-secondary-action-default}",
+          "type": "color",
+          "rawValue": "{text.secondary-action.default}"
+        },
+        {
+          "key": "--color-button-secondary-label-hover",
+          "name": "button.secondary.label.hover",
+          "value": "{--color-text-secondary-action-hover}",
+          "type": "color",
+          "rawValue": "{text.secondary-action.hover}"
+        },
+        {
+          "key": "--color-button-secondary-label-active",
+          "name": "button.secondary.label.active",
+          "value": "{--color-text-secondary-action-active}",
+          "type": "color",
+          "rawValue": "{text.secondary-action.active}"
+        },
+        {
+          "key": "--color-button-secondary-label-focus",
+          "name": "button.secondary.label.focus",
+          "value": "{--color-text-secondary-action-focus}",
+          "type": "color",
+          "rawValue": "{text.secondary-action.focus}"
+        },
+        {
+          "key": "--color-button-secondary-label-disabled",
+          "name": "button.secondary.label.disabled",
+          "value": "{--color-text-secondary-action-disabled}",
+          "type": "color",
+          "rawValue": "{text.secondary-action.disabled}"
+        },
+        {
+          "key": "--color-focus-outline-default",
+          "name": "focus-outline.default",
+          "value": "{--color-interaction-primary-focus}",
+          "type": "color",
+          "rawValue": "{interaction.primary.focus}"
+        },
+        {
+          "key": "--borderRadius-focus-outline-border-radius-sm",
+          "name": "focus-outline.border-radius.sm",
+          "value": "0.125rem",
+          "type": "borderRadius",
+          "rawValue": "{core.radius.xxs}"
+        },
+        {
+          "key": "--borderWidth-focus-outline-border-width-md",
+          "name": "focus-outline.border-width.md",
+          "value": "2px",
+          "type": "borderWidth",
+          "rawValue": "{core.borderWidth.md}"
+        },
+        {
+          "key": "--color-link-border-default",
+          "name": "link.border.default",
+          "value": "{--color-text-tertiary-action-default}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.default}"
+        },
+        {
+          "key": "--color-link-border-hover",
+          "name": "link.border.hover",
+          "value": "{--color-text-tertiary-action-hover}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.hover}"
+        },
+        {
+          "key": "--color-link-border-active",
+          "name": "link.border.active",
+          "value": "{--color-text-tertiary-action-active}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.active}"
+        },
+        {
+          "key": "--color-link-border-focus",
+          "name": "link.border.focus",
+          "value": "{--color-text-tertiary-action-focus}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.focus}"
+        },
+        {
+          "key": "--color-link-border-disabled",
+          "name": "link.border.disabled",
+          "value": "{--color-text-tertiary-action-disabled}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.disabled}"
+        },
+        {
+          "key": "--spacing-link-gap-default",
+          "name": "link.gap.default",
+          "value": "0.25rem * 2",
+          "type": "spacing",
+          "rawValue": "{core.space.2x}"
+        },
+        {
+          "key": "--borderWidth-link-border-width-sm",
+          "name": "link.border-width.sm",
+          "value": "1px",
+          "type": "borderWidth",
+          "rawValue": "{core.borderWidth.sm}"
+        },
+        {
+          "key": "--borderWidth-link-border-width-md",
+          "name": "link.border-width.md",
+          "value": "2px",
+          "type": "borderWidth",
+          "rawValue": "{core.borderWidth.md}"
+        },
+        {
+          "key": "--spacing-link-horizontal-padding-none",
+          "name": "link.horizontal-padding.none",
+          "value": "0px",
+          "type": "spacing",
+          "rawValue": "{core.space.none}"
+        },
+        {
+          "key": "--spacing-link-vertical-padding-none",
+          "name": "link.vertical-padding.none",
+          "value": "0px",
+          "type": "spacing",
+          "rawValue": "{core.space.none}"
+        },
+        {
+          "key": "--borderRadius-link-border-radius-none",
+          "name": "link.border-radius.none",
+          "value": "0rem",
+          "type": "borderRadius",
+          "rawValue": "{core.radius.none}"
+        },
+        {
+          "key": "--color-link-label-default",
+          "name": "link.label.default",
+          "value": "{--color-text-tertiary-action-default}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.default}"
+        },
+        {
+          "key": "--color-link-label-hover",
+          "name": "link.label.hover",
+          "value": "{--color-text-tertiary-action-hover}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.hover}"
+        },
+        {
+          "key": "--color-link-label-active",
+          "name": "link.label.active",
+          "value": "{--color-text-tertiary-action-active}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.active}"
+        },
+        {
+          "key": "--color-link-label-focus",
+          "name": "link.label.focus",
+          "value": "{--color-text-tertiary-action-focus}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.focus}"
+        },
+        {
+          "key": "--color-link-label-disabled",
+          "name": "link.label.disabled",
+          "value": "{--color-text-tertiary-action-disabled}",
+          "type": "color",
+          "rawValue": "{text.tertiary-action.disabled}"
+        }
+      ],
+      "parameters": {},
+      "dependencies": [
+        "Light Mode",
+        "Dark Mode"
       ]
     },
     {
-      "name": "radius--typography--sm-breakpoint",
-      "parameters": {
-        "min-width": "320px",
-        "max-width": "559px"
-      },
+      "name": "radius--breakpoint--sm",
+      "isDynamic": false,
       "variables": [
         {
           "key": "--typography-heading-xxl",
@@ -2531,32 +2179,36 @@
           "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
         },
         {
-          "key": "--dimension-min-width",
-          "name": "min-width",
+          "key": "--dimension-screen-min-width",
+          "name": "screen-min-width",
           "value": "320px",
           "type": "dimension",
+          "description": "Breakpoint minimum width",
           "rawValue": "320px"
         },
         {
-          "key": "--dimension-max-width",
-          "name": "max-width",
+          "key": "--dimension-screen-max-width",
+          "name": "screen-max-width",
           "value": "559px",
           "type": "dimension",
+          "description": "Breakpoint maximum width",
           "rawValue": "559px"
         }
-      ]
+      ],
+      "parameters": {
+        "screen-min-width": "320px",
+        "screen-max-width": "559px"
+      },
+      "dependencies": []
     }
   ],
   "order": [
     "radius--core",
-    "radius--lightmode--semanticcolors",
-    "radius--lightmode--components--buttons",
-    "radius--lightmode--components--link",
-    "radius--darkmode--semanticcolors",
-    "radius--darkmode--components--buttons",
-    "radius--darkmode--components--link",
-    "radius--typography--lg-breakpoint",
-    "radius--typography--md-breakpoint",
-    "radius--typography--sm-breakpoint"
+    "radius--mode--light",
+    "radius--mode--dark",
+    "radius--breakpoint--lg",
+    "radius--breakpoint--md",
+    "radius--breakpoint--sm",
+    "radius--components"
   ]
 }
