@@ -230,7 +230,7 @@ Padding.parameters = {
   },
 };
 
-export const Opacity = () => (
+const OpacityTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction="horizontal"
     alignment="top"
@@ -273,8 +273,14 @@ export const Opacity = () => (
     />
   </RadiusAutoBox>
 );
+export const Opacity = OpacityTemplate.bind({});
+Opacity.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
-export const BackgroundColor = () => (
+const BackgroundColorTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction="horizontal"
     alignment="top"
@@ -301,8 +307,14 @@ export const BackgroundColor = () => (
     />
   </RadiusAutoBox>
 );
+export const BackgroundColor = BackgroundColorTemplate.bind({});
+BackgroundColor.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
-export const Border = () => (
+const BorderTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction="horizontal"
     alignment="top"
@@ -331,8 +343,14 @@ export const Border = () => (
     />
   </RadiusAutoBox>
 );
+export const Border = BorderTemplate.bind({});
+Border.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
-export const BorderRadius = () => (
+const BorderRadiusTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction={'horizontal'}
     alignment={'top'}
@@ -359,8 +377,14 @@ export const BorderRadius = () => (
     />
   </RadiusAutoBox>
 );
+export const BorderRadius = BorderRadiusTemplate.bind({});
+BorderRadius.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
-export const Absolute = () => (
+const AbsoluteTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction={'vertical'}
     width={'fill-parent'}
@@ -394,8 +418,14 @@ export const Absolute = () => (
     </RadiusAutoBox>
   </RadiusAutoBox>
 );
+export const Absolute = AbsoluteTemplate.bind({});
+Absolute.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
-export const AsElements = () => (
+const AsElementsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction="horizontal"
     width="fill-parent"
@@ -432,8 +462,14 @@ export const AsElements = () => (
     </RadiusAutoBox>
   </RadiusAutoBox>
 );
+export const AsElements = AsElementsTemplate.bind({});
+AsElements.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
-export const Effects = () => (
+const EffectsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction="horizontal"
     width="fill-parent"
@@ -500,8 +536,14 @@ export const Effects = () => (
     </RadiusAutoBox>
   </RadiusAutoBox>
 );
+export const Effects = EffectsTemplate.bind({});
+Effects.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
-export const Layouts = () => (
+const LayoutsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     width="fill-parent"
     space={20}
@@ -534,3 +576,9 @@ export const Layouts = () => (
     </RadiusAutoBox>
   </RadiusAutoBox>
 );
+export const Layouts = LayoutsTemplate.bind({});
+Layouts.parameters = {
+  controls: {
+    disable: true,
+  },
+};
