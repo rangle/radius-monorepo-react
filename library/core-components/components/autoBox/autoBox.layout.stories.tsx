@@ -23,7 +23,7 @@ export default {
       page: () => (
         <>
           <Title>Layout</Title>
-          <Description children="Here we try to mimic the way Figma arranges components when inside of a Auto Layout component."></Description>
+          <Description children="We duplicate the way Figma arranges Auto Layout components."></Description>
           <Stories includePrimary={true} />
         </>
       ),

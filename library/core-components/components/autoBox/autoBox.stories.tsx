@@ -20,7 +20,7 @@ export default {
     },
     badges: [BADGE.EXPERIMENTAL],
     componentSubtitle:
-      "AutoBox mimics Figma's Auto Layout and properties. In Fimga Auto Layout is a very powerful feature that allows you to create complex layouts with ease.  We've adapted it's API as a Polymorphic component that will work with many of the features in Auto Layout.",
+      "AutoBox duplicates Figma's Auto Layout API. In Fimga Auto Layout is a very powerful feature that allows you to create complex layouts with ease.  We've adapted it's API as a Polymorphic component that will work with many of the features in Auto Layout.",
 
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
