@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './autoBox';
 import { RadiusButton } from '../button/button';
+
 export default {
   component: RadiusAutoBox,
   title: `Core Components/AutoBox`,
@@ -19,14 +20,15 @@ export default {
     },
     badges: [BADGE.EXPERIMENTAL],
     componentSubtitle:
-      'This Polymorphic component that will manage layouts for you (mimics Figma).',
+      "AutoBox mimics Figma's Auto Layout and properties. In Fimga Auto Layout is a very powerful feature that allows you to create complex layouts with ease.  We've adapted it's API as a Polymorphic component that will work with many of the features in Auto Layout.",
+
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
   argTypes: {
     as: {
       control: 'text',
       description: 'The HTML element to render.',
-      defaultValue: { summary: 'div' },
+      table: { defaultValue: { summary: 'div' } },
     },
     direction: {
       description: 'The direction of the layout, uses flex row or column.',
@@ -37,28 +39,28 @@ export default {
       description: 'The alignment of the layout, uses align-items.',
       options: ['top', 'center', 'bottom', 'left', 'right'],
       control: 'select',
-      defaultValue: { summary: 'top' },
+      table: { defaultValue: { summary: 'top' } },
     },
     width: {
       description:
         'The width of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%).',
       options: ['150px', '50%', 'fill-parent', 'hug-contents'],
       control: 'select',
-      defaultValue: { summary: 'hug-contents' },
+      table: { defaultValue: { summary: 'hug-contents' } },
     },
     height: {
       description:
         'The height of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%).',
       options: ['100px', '50%', 'fill-parent', 'hug-contents'],
       control: 'select',
-      defaultValue: { summary: 'hug-contents' },
+      table: { defaultValue: { summary: 'hug-contents' } },
     },
     space: {
       description:
         'The space between the children, can be number (gap) or auto (justify-content: space-between;).',
       options: ['auto', '10px', '10%'],
       control: 'select',
-      defaultValue: { summary: '10px' },
+      table: { defaultValue: { summary: '10px' } },
     },
     padding: {
       description:
@@ -98,19 +100,19 @@ export default {
     clippedContent: {
       description:
         'Whether the content should be clipped or not, uses overflow: hidden.',
-      defaultValue: { summary: 'false' },
+      table: { defaultValue: { summary: 'false' } },
       control: 'boolean',
     },
     isParent: {
       description:
         "Used in conjunction with absolutePosition, uses and sets position: 'relative'.",
-      defaultValue: { summary: 'false' },
+      table: { defaultValue: { summary: 'false' } },
       control: 'boolean',
     },
     absolutePosition: {
       description:
         'Used in conjunction with isParent, uses and sets position: absolute.',
-      defaultValue: { summary: 'false' },
+      table: { defaultValue: { summary: 'false' } },
       control: 'boolean',
     },
     x: {
@@ -128,14 +130,14 @@ export default {
         'Used in conjunction with absolutePosition, sets left or right. We are missing functionality from figma.',
       options: ['left', 'right'],
       control: 'select',
-      defaultValue: { summary: 'left' },
+      table: { defaultValue: { summary: 'left' } },
     },
     verticalConstraint: {
       description:
         'Used in conjunction with absolutePosition, sets top or bottom. We are missing functionality from figma.',
       options: ['top', 'bottom'],
       control: 'select',
-      defaultValue: { summary: 'top' },
+      table: { defaultValue: { summary: 'top' } },
     },
     effect: {
       description:
@@ -153,23 +155,35 @@ const Template: ComponentStory<typeof RadiusAutoBox> = (
   args: ComponentProps<typeof RadiusAutoBox>
 ) => (
   <RadiusAutoBox {...args}>
-    <RadiusAutoBox width={100} height="fill-parent" fill="#fff" stroke="#000" />
-    <RadiusAutoBox width={100} height="fill-parent" fill="#fff" stroke="#000" />
-    <RadiusAutoBox width={100} height="fill-parent" fill="#fff" stroke="#000" />
+    <RadiusAutoBox
+      width={100}
+      height="fill-parent"
+      fill="var(--color-button-primary-surface-hover)"
+    />
+    <RadiusAutoBox
+      width={100}
+      height="fill-parent"
+      fill="var(--color-button-primary-surface-hover)"
+    />
+    <RadiusAutoBox
+      width={100}
+      height="fill-parent"
+      fill="var(--color-button-primary-surface-hover)"
+    />
   </RadiusAutoBox>
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const AutoBox = Template.bind({});
+AutoBox.args = {
   as: 'div',
   direction: 'horizontal',
   alignment: 'top',
   width: 'fill-parent',
-  height: '100px',
+  height: '200px',
   space: 'auto',
-  padding: { top: 5, right: 5, bottom: 5, left: 5 },
-  fill: '#cccccc',
-  stroke: '#000000',
+  padding: { top: 20, right: 20, bottom: 20, left: 20 },
+  fill: 'var(--color-button-primary-surface-default))',
+  stroke: 'var(--color-text-secondary-action-default)',
   strokeWidth: { top: 1, right: 1, bottom: 1, left: 1 },
   strokeAlign: undefined,
   cornerRadius: { topLeft: 0, topRight: 0, bottomRight: 0, bottomLeft: 0 },
@@ -184,230 +198,37 @@ Default.args = {
   effect: [{ type: 'drop-shadow', color: '#ccc', offset: [0, 0], blur: 5 }],
 };
 
-export const ExampleGrid = () => (
-  <RadiusAutoBox direction="vertical">
-    <br />
-    <h2>fixed width / height, spacing auto</h2>
-    <RadiusAutoBox
-      direction="horizontal"
-      space="auto"
-      alignment="top"
-      width="fill-parent"
-    >
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-    </RadiusAutoBox>
-    <br />
-    <RadiusAutoBox
-      direction="vertical"
-      space="auto"
-      alignment="top"
-      width="fill-parent"
-      height={130}
-      stroke={'#000'}
-      strokeAlign={`inside`}
-    >
-      <RadiusAutoBox
-        width="fill-parent"
-        height={25}
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-      <RadiusAutoBox
-        width="fill-parent"
-        height={25}
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-      <RadiusAutoBox
-        width="fill-parent"
-        height={25}
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-    </RadiusAutoBox>
-    <br />
-
-    <h2>fixed width / height, spacing fixed</h2>
-    <RadiusAutoBox
-      direction="horizontal"
-      space={10}
-      alignment="top"
-      width="fill-parent"
-    >
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-    </RadiusAutoBox>
-    <br />
-    <RadiusAutoBox
-      direction="vertical"
-      space={10}
-      alignment="top"
-      width="fill-parent"
-      height={130}
-      stroke={'#000'}
-      strokeAlign={`inside`}
-    >
-      <RadiusAutoBox
-        width="fill-parent"
-        height={25}
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-      <RadiusAutoBox
-        width="fill-parent"
-        height={25}
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-      <RadiusAutoBox
-        width="fill-parent"
-        height={25}
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-    </RadiusAutoBox>
-    <br />
-
-    <h2>fill width / height, spacing fixed</h2>
-    <RadiusAutoBox
-      direction="horizontal"
-      space={10}
-      alignment="top"
-      width="fill-parent"
-    >
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
-      <RadiusAutoBox width="fill-parent" height={25} stroke={'#000'} />
-    </RadiusAutoBox>
-    <br />
-    <RadiusAutoBox
-      direction="vertical"
-      space={10}
-      alignment="top"
-      width="fill-parent"
-      height={130}
-      stroke={'#000'}
-      strokeAlign={`inside`}
-    >
-      <RadiusAutoBox
-        width="fill-parent"
-        height="fill-parent"
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-      <RadiusAutoBox
-        width="fill-parent"
-        height="fill-parent"
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-      <RadiusAutoBox
-        width="fill-parent"
-        height="fill-parent"
-        stroke={'#000'}
-        strokeAlign={`inside`}
-      />
-    </RadiusAutoBox>
-    <br />
-  </RadiusAutoBox>
-);
-
-export const Alignments = () => (
-  <RadiusAutoBox direction="vertical" space={30}>
-    <br />
-    <h2>Vertical | top - center - bottom</h2>
-    <RadiusAutoBox
-      direction="horizontal"
-      space="auto"
-      alignment="top"
-      width="fill-parent"
-    >
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={50} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={75} stroke={'#000'} />
-    </RadiusAutoBox>
-
-    <RadiusAutoBox
-      direction="horizontal"
-      space="auto"
-      alignment="center"
-      width="fill-parent"
-    >
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={50} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={75} stroke={'#000'} />
-    </RadiusAutoBox>
-
-    <RadiusAutoBox
-      direction="horizontal"
-      space="auto"
-      alignment="bottom"
-      width="fill-parent"
-    >
-      <RadiusAutoBox width={100} height={25} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={50} stroke={'#000'} />
-      <RadiusAutoBox width={100} height={75} stroke={'#000'} />
-    </RadiusAutoBox>
-
-    <RadiusAutoBox
-      direction="vertical"
-      space="auto"
-      alignment="left"
-      width="fill-parent"
-      height={50}
-    >
-      <RadiusAutoBox width="25%" height={10} stroke={'#000'} />
-      <RadiusAutoBox width="50%" height={10} stroke={'#000'} />
-      <RadiusAutoBox width="75%" height={10} stroke={'#000'} />
-    </RadiusAutoBox>
-
-    <RadiusAutoBox
-      direction="vertical"
-      space="auto"
-      alignment="center"
-      width="fill-parent"
-      height={50}
-    >
-      <RadiusAutoBox width="25%" height={10} stroke={'#000'} />
-      <RadiusAutoBox width="50%" height={10} stroke={'#000'} />
-      <RadiusAutoBox width="75%" height={10} stroke={'#000'} />
-    </RadiusAutoBox>
-
-    <RadiusAutoBox
-      direction="vertical"
-      space="auto"
-      alignment="right"
-      width="fill-parent"
-      height={50}
-    >
-      <RadiusAutoBox width="25%" height={10} stroke={'#000'} />
-      <RadiusAutoBox width="50%" height={10} stroke={'#000'} />
-      <RadiusAutoBox width="75%" height={10} stroke={'#000'} />
-    </RadiusAutoBox>
-  </RadiusAutoBox>
-);
-
-export const Padding = () => (
+const paddingTemplate: ComponentStory<typeof RadiusAutoBox> = (
+  args: ComponentProps<typeof RadiusAutoBox>
+) => (
   <RadiusAutoBox direction="horizontal" alignment="top" width="fill-parent">
     <RadiusAutoBox
       width={100}
       height={25}
       padding={{ left: '20px', top: '50px' }}
-      stroke={'#000'}
+      fill="var(--color-button-primary-surface-hover)"
     />
 
     <RadiusAutoBox
       width={100}
       height={25}
       padding={{ vertical: 30 }}
-      stroke={'#000'}
+      fill="var(--color-button-primary-surface-hover)"
     />
-    <RadiusAutoBox width={100} height={25} padding={50} stroke={'#000'} />
+    <RadiusAutoBox
+      width={100}
+      height={25}
+      padding={50}
+      fill="var(--color-button-primary-surface-hover)"
+    />
   </RadiusAutoBox>
 );
+export const Padding = paddingTemplate.bind({});
+Padding.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
 export const Opacity = () => (
   <RadiusAutoBox
@@ -420,31 +241,36 @@ export const Opacity = () => (
       width={100}
       height={25}
       opacity={0.05}
-      stroke={'#000'}
-      fill="#000"
+      stroke="var(--color-button-primary-surface-default)"
+      fill="var(--color-button-primary-surface-default)"
     />
     <RadiusAutoBox
       width={100}
       height={25}
       opacity={0.25}
-      stroke={'#000'}
-      fill="#000"
+      stroke="var(--color-button-primary-surface-default)"
+      fill="var(--color-button-primary-surface-default)"
     />
     <RadiusAutoBox
       width={100}
       height={25}
       opacity={0.5}
-      stroke={'#000'}
-      fill="#000"
+      stroke="var(--color-button-primary-surface-default)"
+      fill="var(--color-button-primary-surface-default)"
     />
     <RadiusAutoBox
       width={100}
       height={25}
       opacity={0.75}
-      stroke={'#000'}
-      fill="#000"
+      stroke="var(--color-button-primary-surface-default)"
+      fill="var(--color-button-primary-surface-default)"
     />
-    <RadiusAutoBox width={100} height={25} stroke={'#000'} fill="#000" />
+    <RadiusAutoBox
+      width={100}
+      height={25}
+      stroke="var(--color-button-primary-surface-default)"
+      fill="var(--color-button-primary-surface-default)"
+    />
   </RadiusAutoBox>
 );
 
@@ -483,18 +309,23 @@ export const Border = () => (
     width="fill-parent"
     padding={10}
   >
-    <RadiusAutoBox width={50} height={50} stroke={'#f00'} strokeWidth={5} />
     <RadiusAutoBox
       width={50}
       height={50}
-      stroke={'#f00'}
+      stroke="var(--color-button-primary-surface-hover)"
+      strokeWidth={5}
+    />
+    <RadiusAutoBox
+      width={50}
+      height={50}
+      stroke="var(--color-button-primary-surface-hover)"
       strokeAlign={`outside`}
       strokeWidth={`10px`}
     />
     <RadiusAutoBox
       width={50}
       height={50}
-      stroke={'#f00'}
+      stroke="var(--color-button-primary-surface-hover)"
       strokeAlign={'inside'}
       strokeWidth={{ left: 5, top: '20px', right: 0, bottom: 1 }}
     />
@@ -508,82 +339,136 @@ export const BorderRadius = () => (
     width={'fill-parent'}
     padding={10}
   >
-    <RadiusAutoBox width={50} height={50} cornerRadius={5} stroke={'#000'} />
-    <RadiusAutoBox width={50} height={50} cornerRadius="20px" stroke={'#000'} />
-    <RadiusAutoBox width={50} height={50} cornerRadius="100%" stroke={'#000'} />
+    <RadiusAutoBox
+      width={50}
+      height={50}
+      cornerRadius={5}
+      stroke="var(--color-button-primary-surface-hover)"
+    />
+    <RadiusAutoBox
+      width={50}
+      height={50}
+      cornerRadius="20px"
+      stroke="var(--color-button-primary-surface-hover)"
+    />
+    <RadiusAutoBox
+      width={50}
+      height={50}
+      cornerRadius="100%"
+      stroke="var(--color-button-primary-surface-hover)"
+    />
   </RadiusAutoBox>
 );
 
 export const Absolute = () => (
   <RadiusAutoBox
-    direction="vertical"
-    width="fill-parent"
+    direction={'vertical'}
+    width={'fill-parent'}
     strokeAlign={'inside'}
-    padding={10}
+    stroke="var(--color-button-primary-surface-default)"
+    padding={20}
+    isParent={true}
+    height={200}
   >
     <RadiusAutoBox
-      direction={'vertical'}
-      width={'fill-parent'}
-      strokeAlign={'inside'}
+      fill="var(--color-button-primary-surface-default)"
+      style={{ color: 'var(--color-button-primary-label-default)' }}
       padding={10}
-      isParent={true}
+      absolutePosition={true}
+      x="0%"
+      y="0%"
     >
-      <RadiusAutoBox width={20} height={20} fill="#f00" />
-      <RadiusAutoBox width={20} height={20} fill="#0f0" />
-      <RadiusAutoBox
-        x="50%"
-        y={'50%'}
-        width={20}
-        height={20}
-        fill="#00f"
-        absolutePosition={true}
-      />
-      <RadiusAutoBox
-        width={20}
-        height={20}
-        fill="#0ff"
-        horizontalConstraint="right"
-        verticalConstraint="bottom"
-        absolutePosition={true}
-        x="300px"
-        y="10px"
-      />
+      Top Left
+    </RadiusAutoBox>
+    <RadiusAutoBox
+      padding={10}
+      fill="var(--color-button-primary-surface-default)"
+      style={{ color: 'var(--color-button-primary-label-default)' }}
+      horizontalConstraint="right"
+      verticalConstraint="bottom"
+      absolutePosition={true}
+      x={0}
+      y="0px"
+    >
+      Bottom Right
     </RadiusAutoBox>
   </RadiusAutoBox>
 );
 
 export const AsElements = () => (
-  <RadiusAutoBox direction="horizontal" width="fill-parent" padding={10}>
-    <RadiusAutoBox as="h1" padding={5}>
+  <RadiusAutoBox
+    direction="horizontal"
+    width="fill-parent"
+    padding={10}
+    style={{ color: 'var(--color-button-primary-label-default)' }}
+  >
+    <RadiusAutoBox
+      as="h1"
+      padding={20}
+      fill="var(--color-button-primary-surface-default)"
+    >
       As h1
     </RadiusAutoBox>
-    <RadiusAutoBox as="main" padding={5}>
+    <RadiusAutoBox
+      as="main"
+      padding={20}
+      fill="var(--color-button-primary-surface-default)"
+    >
       As main
     </RadiusAutoBox>
-    <RadiusAutoBox as="ul" padding={5}>
+    <RadiusAutoBox
+      as="ul"
+      padding={20}
+      fill="var(--color-button-primary-surface-default)"
+    >
       As ul
     </RadiusAutoBox>
-    <RadiusAutoBox as="p" padding={5}>
+    <RadiusAutoBox
+      as="p"
+      padding={20}
+      fill="var(--color-button-primary-surface-default)"
+    >
       As paragraph
     </RadiusAutoBox>
   </RadiusAutoBox>
 );
 
 export const Effects = () => (
-  <RadiusAutoBox direction="horizontal" width="fill-parent" padding={10}>
+  <RadiusAutoBox
+    direction="horizontal"
+    width="fill-parent"
+    padding={10}
+    style={{ color: 'var(--color-button-primary-label-default)' }}
+  >
     <RadiusAutoBox
-      padding={5}
-      effect={{ type: 'drop-shadow', color: '#000', offset: [0, 0], blur: 5 }}
+      padding={20}
+      effect={{
+        type: 'drop-shadow',
+        color: 'var(--color-button-primary-surface-default)',
+        offset: [0, 0],
+        blur: 5,
+      }}
+      fill="var(--color-button-primary-surface-default)"
     >
       drop-shadow
     </RadiusAutoBox>
     <RadiusAutoBox
-      padding={5}
-      effect={{ type: 'inner-shadow', color: '#000', offset: [0, 0], blur: 5 }}
+      padding={20}
+      effect={{
+        type: 'inner-shadow',
+        color: 'var(--color-button-primary-surface-default)',
+        offset: [0, 0],
+        blur: 5,
+      }}
+      fill="var(--color-button-primary-surface-default)"
     >
       inner-shadow
     </RadiusAutoBox>
-    <RadiusAutoBox padding={5} effect={{ type: 'layer-blur', blur: 1 }}>
+    <RadiusAutoBox
+      padding={20}
+      effect={{ type: 'layer-blur', blur: 1 }}
+      fill="var(--color-button-primary-surface-default)"
+    >
       layer-blur
     </RadiusAutoBox>
     <RadiusAutoBox
@@ -594,17 +479,22 @@ export const Effects = () => (
         backgroundPosition: ' 0 0, 0 10px, 10px -10px, -10px 0px',
       }}
     >
-      <RadiusAutoBox padding={5} effect={{ type: 'background-blur', blur: 3 }}>
+      <RadiusAutoBox
+        style={{ fontWeight: 'bold' }}
+        padding={20}
+        effect={{ type: 'background-blur', blur: 3 }}
+      >
         background-blur
       </RadiusAutoBox>
     </RadiusAutoBox>
 
     <RadiusAutoBox
-      padding={5}
+      padding={20}
       effect={[
         { type: 'layer-blur', blur: 1 },
-        { type: 'drop-shadow', color: '#000', offset: [0, 0], blur: 5 },
+        { type: 'drop-shadow', color: '#000', offset: [0, 0], blur: 20 },
       ]}
+      fill="var(--color-button-primary-surface-default)"
     >
       layer-blur and drop-shadow
     </RadiusAutoBox>
@@ -617,6 +507,7 @@ export const Layouts = () => (
     space={20}
     alignment="center"
     isParent={true}
+    style={{ color: 'var(--color-button-primary-surface-default)' }}
   >
     <RadiusAutoBox width="fill-parent">
       <RadiusAutoBox
@@ -629,13 +520,14 @@ export const Layouts = () => (
     <RadiusAutoBox width="fill-parent" direction="vertical">
       <RadiusAutoBox
         as={RadiusButton}
+        variant="primary"
         absolutePosition={true}
         x={0}
         y={0}
         verticalConstraint="top"
         horizontalConstraint="right"
       >
-        Close button
+        Close Button
       </RadiusAutoBox>
       <RadiusAutoBox as="h2">Hello world</RadiusAutoBox>
       <RadiusAutoBox as="p">As paragraph</RadiusAutoBox>

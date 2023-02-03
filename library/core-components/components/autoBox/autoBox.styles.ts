@@ -160,6 +160,10 @@ export const getStyles = <T extends AutoLayoutProps>({
   return css`
     display: flex;
     margin: 0;
+    box-sizing: ${mapStrokeAlign[strokeAlign || 'inside']};
+    align-items: ${mapAlignments[alignment || 'top']};
+    width: ${getSize(width)};
+    height: ${getSize(height)};
 
     ${isParent ? 'position: relative;' : ''}
     ${absolutePosition ? 'position: absolute;' : ''}
@@ -170,20 +174,12 @@ export const getStyles = <T extends AutoLayoutProps>({
       ? 'justify-content: space-between;'
       : `gap: ${getSize(space || 10)};`};
     ${clippedContent ? 'overflow: hidden;' : ''};
-    align-items: ${mapAlignments[alignment || 'top']};
-
-    width: ${getSize(width)};
-    height: ${getSize(height)};
-
     ${padding ? `padding: ${getPadding(padding)}` : ''};
-
     ${opacity !== undefined ? `opacity: ${opacity};` : ''}
     ${fill ? `background-color: ${getColor(fill)};` : ''}
-
     ${stroke || strokeWidth ? 'border-style: solid;' : ''}
     ${stroke ? `border-color: ${getColor(stroke)};` : ''}
     ${strokeWidth ? getStrokeWidth(strokeWidth) : ''}
-    ${strokeAlign ? `box-sizing: ${mapStrokeAlign[strokeAlign]};` : ''}
     ${cornerRadius ? getCornerRadius(cornerRadius) : ''}
     ${x !== undefined || y !== undefined
       ? setPosition(x, y, horizontalConstraint, verticalConstraint)

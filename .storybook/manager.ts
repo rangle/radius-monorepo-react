@@ -8,4 +8,3 @@ addons.setConfig({
     showRoots: true,
   },
 });
-
