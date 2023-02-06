@@ -1,8 +1,8 @@
 import React, { useMemo, forwardRef } from 'react';
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 
-import { AutoLayoutProps } from './autoBox.types';
-import { getStyles } from './autoBox.styles';
+import { AutoLayoutProps } from './auto-box.types';
+import { getStyles } from './auto-box.styles';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 
 type RadiusButtonTag = React.ElementType;

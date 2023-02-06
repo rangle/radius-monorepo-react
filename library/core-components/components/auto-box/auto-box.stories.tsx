@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusAutoBox } from './autoBox';
+import { RadiusAutoBox } from './auto-box';
 import { RadiusButton } from '../button/button';
 
 export default {

@@ -1,2 +1,2 @@
 export * from './components/button';
-export * from './components/autoBox';
+export * from './components/auto-box';

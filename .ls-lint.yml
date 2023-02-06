@@ -23,6 +23,8 @@ ls:
   # .tsx and sub-extensions
   .tsx: kebab-case
   .stories.tsx: kebab-case
+  .styles.ts: kebab-case
+  .template.ts: kebab-case
 
   # directory rules
   ./**/{__tests__,__mocks__}:
@@ -37,3 +39,7 @@ ignore:
   - babel.config.js
   # package specific - directory patterns not yet implemented for ignore: https://ls-lint.org/1.x/configuration/the-basics.html#using-directory-patterns
   - apps
+  - library/foundations/node_modules
+  - library/core-components/node_modules
+  - library/foundations/dist
+  - library/core-components/dist

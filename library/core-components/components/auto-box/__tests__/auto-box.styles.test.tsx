@@ -8,7 +8,7 @@ import {
   getCornerRadius,
   setPosition,
   getEffects,
-} from '../autoBox.styles';
+} from '../auto-box.styles';
 
 describe('AutoBox Styles', () => {
   test('getSize', () => {

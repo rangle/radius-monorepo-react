@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import './autoBox.tokens.css';
+import './auto-box.tokens.css';
 
 import {
   AutoLayoutProps,
@@ -14,7 +14,7 @@ import {
   HorizontalConstraint,
   VerticalConstraint,
   Effect,
-} from './autoBox.types';
+} from './auto-box.types';
 
 export const getSize = (size?: AutolayoutSize) => {
   if (size === 'fill-parent') return '100%';
