@@ -14,13 +14,14 @@ export const meta: MetaFunction = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-import styles from './styles/global.css';
+// import styles from './styles/global.css';
+import theme from "@rangle/radius-react-core-foundations/generated/theme.css";
 
 export const links: LinksFunction = () => {
   return [
     {
       rel: 'stylesheet',
-      href: styles,
+      href: theme,
     },
   ];
 };
@@ -32,7 +33,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="light-mode">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

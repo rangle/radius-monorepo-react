@@ -7,5 +7,5 @@ module.exports = {
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "build/index.js",
   // publicPath: "/build/",
-  serverDependenciesToBundle: ['@rangle/radius-react-core-components'],
+  serverDependenciesToBundle: ['@rangle/radius-react-core-foundations', '@rangle/radius-react-core-components'],
 };

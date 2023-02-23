@@ -13,7 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+      "@rangle/radius-react-core-foundations": ["./library/foundations"]
     },
 
     // Remix takes care of building everything in `remix build`.

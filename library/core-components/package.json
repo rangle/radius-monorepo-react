@@ -23,8 +23,8 @@
     "clean:dist": "rm -rf dist"
   },
   "peerDependencies": {
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -55,12 +55,12 @@
     "jest-axe": "^7.0.0",
     "jest-environment-jsdom": "^29.3.1",
     "postcss": "^8.4.19",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "resize-observer-polyfill": "^1.5.1",
     "rollup": "^3.3.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "gitHead": "93b4b938eb0af8e973bb402f5546385770713295"
 }
