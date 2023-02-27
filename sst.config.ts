@@ -4,7 +4,7 @@ import { API } from './stacks/MyStack';
 export default {
   config(_input) {
     return {
-      name: 'my-sst-app',
+      name: 'radius-remix',
       region: 'us-east-1',
     };
   },
