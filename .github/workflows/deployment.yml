@@ -34,10 +34,15 @@ jobs:
       - run: npx nx affected --target=test --parallel=3 --configuration=ci
       - run: npx nx affected --target=build --parallel=3
 
-      - name: Production Deploy
-        if: github.ref == 'refs/heads/main'
-        run: npx @architect/architect deploy --production --prune
-        env:
-          CI: true
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      ## Configure AWS credentials for deployment
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      ## Deploy remix demo app with SST
+      - name: Deploy Demo App to AWS
+        run: |
+          cd apps/demo
+          yarn deploy:serverless

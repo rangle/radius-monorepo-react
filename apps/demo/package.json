@@ -5,9 +5,11 @@
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
-    "dev": "sst env remix dev",
+    "dev": "remix dev",
+    "dev:serverless":"sst env remix dev",
     "start": "remix-serve build",
-    "test": "jest"
+    "test": "jest",
+    "deploy:serverless": "sst deploy"
   },
   "dependencies": {
     "@rangle/radius-react-core-components": "^0.1.0",
