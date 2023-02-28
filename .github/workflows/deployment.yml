@@ -43,6 +43,4 @@ jobs:
 
       ## Deploy remix demo app with SST
       - name: Deploy Demo App to AWS
-        run: |
-          cd apps/demo
-          yarn deploy:serverless
+        run: yarn sst deploy
