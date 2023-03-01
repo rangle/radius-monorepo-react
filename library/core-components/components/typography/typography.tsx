@@ -14,10 +14,10 @@ export type TypographyTag =
   | 'h4'
   | 'h5'
   | 'h6'
-  // | 'a'
-  // | 'p'
-  // 'span' |
+  | 'p'
   | 'div';
+// | 'a'
+// 'span' |
 // | 'article'
 // | 'section'
 // | 'em'
@@ -26,6 +26,7 @@ export type TypographyTag =
 export type TypographyExtendedProps = {
   align?: Alignment;
   color?: string;
+  font?: string;
   children: React.ReactNode;
 };
 
@@ -35,8 +36,18 @@ export type TypographyProps = PolymorphicComponentPropWithRef<
 >;
 
 export const Typography = forwardRef<TypographyTag, TypographyProps>(
-  ({ align, color, children, className, ...rest }: TypographyProps, ref) => {
-    const element = elementAndProps(rest, ref, 'div');
+  (
+    {
+      align = 'left',
+      color = 'var(--color-text-on-base-primary)',
+      font = 'var(--typography-body-md)',
+      children,
+      className,
+      ...rest
+    }: TypographyProps,
+    ref
+  ) => {
+    const element = elementAndProps(rest, ref, 'p');
 
     // TODO - add variants based on tokens?
     const style = useMemo(
@@ -44,8 +55,9 @@ export const Typography = forwardRef<TypographyTag, TypographyProps>(
         getStyles({
           align,
           color,
+          font,
         }),
-      [align, color]
+      [align, color, font]
     );
 
     return (

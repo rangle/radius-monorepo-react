@@ -18,10 +18,16 @@ export default {
       },
     },
     as: {
-      defaultValue: 'div',
+      defaultValue: 'p',
     },
     align: {
       defaultValue: 'left',
+    },
+    color: {
+      defaultValue: 'var(--color-text-on-base-primary)',
+    },
+    font: {
+      defaultValue: 'var(--typography-body-md)',
     },
   },
 } as ComponentMeta<typeof Typography>;
@@ -34,5 +40,6 @@ const Template: ComponentStory<typeof Typography> = (
   </div>
 );
 
-export const Default = Template.bind({});
+export const Default: typeof Template = Template.bind({});
+Default.storyName = 'Typography';
 Default.args = {};
