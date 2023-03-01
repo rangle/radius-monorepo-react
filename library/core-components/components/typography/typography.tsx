@@ -4,7 +4,7 @@ import { elementAndProps } from '../../utils/polymorphic.utils';
 
 import { getStyles } from './typography.styles';
 
-export type Alignment = 'center' | 'left' | 'right';
+export type Alignment = 'left' | 'center' | 'right';
 
 // TODO - fix polymorphic types (type errors due to different expected props for some tags)
 export type TypographyTag =
@@ -16,16 +16,19 @@ export type TypographyTag =
   | 'h6'
   | 'p'
   | 'div';
+// | 'span'
 // | 'a'
-// 'span' |
 // | 'article'
 // | 'section'
 // | 'em'
 // | 'strong';
 
 export type TypographyExtendedProps = {
+  /** Text alignment */
   align?: Alignment;
+  /** Text color */
   color?: string;
+  /** Font (css shorthand property - see https://developer.mozilla.org/en-US/docs/Web/CSS/font) */
   font?: string;
   children: React.ReactNode;
 };
@@ -49,7 +52,6 @@ export const Typography = forwardRef<TypographyTag, TypographyProps>(
   ) => {
     const element = elementAndProps(rest, ref, 'p');
 
-    // TODO - add variants based on tokens?
     const style = useMemo(
       () =>
         getStyles({
