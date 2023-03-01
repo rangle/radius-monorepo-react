@@ -27,9 +27,9 @@ export type TypographyExtendedProps = {
   /** Text alignment */
   align?: Alignment;
   /** Text color */
-  color?: string;
+  color?: string; // TODO - add css variable types here
   /** Font (css shorthand property - see https://developer.mozilla.org/en-US/docs/Web/CSS/font) */
-  font?: string;
+  font?: string; // TODO - add css variable types here
   children: React.ReactNode;
 };
 
@@ -38,6 +38,11 @@ export type TypographyProps = PolymorphicComponentPropWithRef<
   TypographyExtendedProps
 >;
 
+/** # Typography Component
+ * A polymorphic component that represents a text element.
+ * Exposes all attributes of the selected tag, plus the specific attributes
+ * declared in the Specific Props type above.
+ */
 export const Typography = forwardRef<TypographyTag, TypographyProps>(
   (
     {

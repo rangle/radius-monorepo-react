@@ -8,6 +8,8 @@ export default {
   title: `Core Components/Typography`,
   parameters: {
     badges: [BADGE.EXPERIMENTAL],
+    componentSubtitle:
+      'This Polymorphic component provides an interface to apply styles and semantics to text content.',
   },
   argTypes: {
     children: {
@@ -34,12 +36,29 @@ export default {
 
 const Template: ComponentStory<typeof Typography> = (
   args: ComponentProps<typeof Typography>
-) => (
-  <div>
-    <Typography {...args} />
-  </div>
-);
+) => <Typography {...args} />;
 
 export const Default: typeof Template = Template.bind({});
-Default.storyName = 'Typography';
 Default.args = {};
+
+export const Example: ComponentStory<typeof Typography> = () => (
+  <div>
+    <Typography font="var(--typography-heading-xl)">Title</Typography>
+    <Typography color="var(--color-text-on-base-accent)">
+      Some body text. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+      Fuga, blanditiis.
+    </Typography>
+    <Typography
+      font="var(--typography-body-sm)"
+      color="--color-text-on-base-secondary"
+      align="right"
+    >
+      *Footnote
+    </Typography>
+  </div>
+);
+Example.parameters = {
+  controls: {
+    disable: true,
+  },
+};
