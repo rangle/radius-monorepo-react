@@ -13,6 +13,7 @@ import {
   JSONStructure,
   isEqual,
   isExpression,
+  createReplaceFunction,
 } from './token-parser';
 
 describe('isString', () => {
@@ -332,5 +333,78 @@ describe('isExpression', () => {
 
   test('negative example: number followed by non-valid unit', () => {
     expect(isExpression('1inch')).toBe(false);
+  });
+});
+describe('createReplaceFunction', () => {
+  it('should return the original value if the mapping is empty', () => {
+    const replace = createReplaceFunction([]);
+    const result = replace('key', 'value');
+    expect(result).toBe('value');
+  });
+
+  it('should replace the entire value of the "from" string with the "to" string', () => {
+    const replace = createReplaceFunction([['hello', 'hi']]);
+    const result = replace('key', 'hello');
+    expect(result).toBe('hi');
+  });
+
+  it('should replace all occurrences of the generic "from" regex with the "to" string', () => {
+    const replace = createReplaceFunction([[/hello/g, 'hi']]);
+    const result = replace('key', 'hello world hello');
+    expect(result).toBe('hi world hi');
+  });
+
+  it('should replace all occurrences of the generic "from" regex with the result of the "to" function', () => {
+    const replace = createReplaceFunction([
+      [/h.ll./g, (_, matches) => (matches ? matches[0].toUpperCase() : '')],
+    ]);
+    const result = replace('key', 'hello world hello');
+    expect(result).toBe('HELLO world HELLO');
+  });
+
+  it('should replace occurrences of the specific "from" text with the "to" string for the right key', () => {
+    const replace = createReplaceFunction([[/--mykey/, [['foo', 'baz']]]]);
+    const result = replace('--mykey', 'foo bar foo');
+    expect(result).toBe('baz bar foo');
+  });
+
+  it('should replace occurrences of the specific "from" regex with the "to" string for the right key', () => {
+    const replace = createReplaceFunction([[/--mykey/, [[/foo/g, 'baz']]]]);
+    const result = replace('--mykey', 'foo bar foo');
+    expect(result).toBe('baz bar baz');
+  });
+
+  it('should replace all occurrences of the specific "from" regex with the result of the "to" function', () => {
+    const replace = createReplaceFunction([
+      [
+        /--mykey/,
+        [
+          [
+            /foo (\w+)/g,
+            (_, matches) => (matches ? matches[0].toUpperCase() : ''),
+          ],
+        ],
+      ],
+    ]);
+    const result = replace('--mykey', 'foo world foo');
+    expect(result).toBe('FOO WORLD foo');
+  });
+
+  it('should not replace anything if the key does not match the specific token regex', () => {
+    const replace = createReplaceFunction([[/--foo/, [['bar', 'baz']]]]);
+    const result = replace('--notfoo', 'bar');
+    expect(result).toBe('bar');
+  });
+
+  it('should not replace anything if the value does not match the specific from regex', () => {
+    const replace = createReplaceFunction([[/--foo/g, [[/bar/, 'baz']]]]);
+    const result = replace('--notfoo', 'foo bar foo');
+    expect(result).toBe('foo bar foo');
+  });
+
+  it('should not replace anything if the value does not match anything', () => {
+    const replace = createReplaceFunction([[/abc/g, [['def', 'ghi']]]]);
+    const result = replace('miss', 'nothing matches here');
+    expect(result).toBe('nothing matches here');
   });
 });

@@ -10,6 +10,7 @@ import {
   isExpression,
   TokenLayers,
   toKebabCase,
+  GeneratorMappingFunction,
 } from '../lib/token-parser';
 
 // Wraps special layers based on detecting specific parameters.
@@ -91,7 +92,10 @@ const convertExpressions = (token: TokenOutput): TokenOutput =>
     ? { ...token, value: `Calc(${token.value})` }
     : token;
 
-export const renderCSSVariables = ({ order, layers }: TokenLayers) =>
+export const renderCSSVariables = (
+  { order, layers }: TokenLayers,
+  processValue: GeneratorMappingFunction = (key, value) => value
+) =>
   Buffer.from(`
   @layer ${order.join()};
   
@@ -110,7 +114,7 @@ export const renderCSSVariables = ({ order, layers }: TokenLayers) =>
           .map(convertExpressions)
           .map(
             ({ key, value }) => `
-          ${key}: ${value};`
+          ${key}: ${processValue(key, value)};`
           )
           .join('')}`
     )}

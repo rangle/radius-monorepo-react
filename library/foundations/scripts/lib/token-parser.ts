@@ -164,6 +164,93 @@ export const isTokenStudioJSON = (u: unknown): u is TokenStructure =>
   typeof (<TokenStructure>u).$metadata.tokenSetOrder === 'object' &&
   isArray((<TokenStructure>u).$metadata.tokenSetOrder);
 
+/* GENERATOR MAP TYPES */
+
+export type GeneratorMappingFrom = string | RegExp;
+
+export type GeneratorMappingTo =
+  | string
+  | ((value: string) => string)
+  | ((value: string, match: RegExpMatchArray | null) => string);
+
+export type GeneratorMappingGenericDictionaryItem = readonly [
+  from: GeneratorMappingFrom,
+  to: GeneratorMappingTo
+];
+
+export type GeneratorMappingSpecificDictionaryItem = readonly [
+  tokenPattern: RegExp,
+  item: Array<readonly [from: GeneratorMappingFrom, to: GeneratorMappingTo]>
+];
+
+export type GeneratorMappingDictionaryItem =
+  | GeneratorMappingGenericDictionaryItem
+  | GeneratorMappingSpecificDictionaryItem;
+
+export type GeneratorMappingDictionary = {
+  [template: string]: Array<GeneratorMappingDictionaryItem>;
+};
+
+export type GeneratorMappingFunction = (key: string, value: string) => string;
+
+export const isGeneratorMappingGenericDictionaryItem = (
+  u: unknown
+): u is GeneratorMappingGenericDictionaryItem =>
+  isArray(u) &&
+  u.length === 2 &&
+  (isString(u[0]) || u[0] instanceof RegExp) &&
+  (isString(u[1]) || typeof u[1] === 'function');
+
+export const isGeneratorMappingSpecificDictionaryItem = (
+  u: unknown
+): u is GeneratorMappingSpecificDictionaryItem =>
+  isArray(u) &&
+  u.length === 2 &&
+  u[0] instanceof RegExp &&
+  isArray(u[1]) &&
+  u[1].every(isGeneratorMappingGenericDictionaryItem);
+
+/** createReplaceFunction
+ * parse the mapping dictionary and return a function that takes a key and a value and returns the value with the replacements
+ * @param mapping Dictionary of mappings to replace values
+ * @returns a function that takes a key and a value and returns the value with the replacements
+ */
+export const createReplaceFunction = (
+  mapping: GeneratorMappingDictionary[string]
+): GeneratorMappingFunction => {
+  const items = mapping || [];
+  const replacingFunctions = items.flatMap((item) => {
+    if (isGeneratorMappingSpecificDictionaryItem(item)) {
+      const [tokenRegex, specificItems] = item;
+      return specificItems.map(([from, to]) => {
+        const regex = isString(from) ? new RegExp(from) : from;
+
+        return (key: string, value: string) =>
+          tokenRegex.test(key) && regex.test(value)
+            ? value.replace(
+                regex,
+                isString(to) ? to : to(value, value.match(regex))
+              )
+            : value;
+      });
+    } else {
+      const [from, to] = item;
+      const regex = isString(from) ? new RegExp(`^${from}$`) : from;
+
+      return (key: string, value: string) =>
+        regex.test(value)
+          ? value.replace(
+              regex,
+              isString(to) ? to : to(value, value.match(regex))
+            )
+          : value;
+    }
+  });
+
+  return (key: string, value: string) =>
+    replacingFunctions.reduce<string>((acc, fn) => fn(key, acc), value);
+};
+
 /* UTILTY FUNCTIONS */
 
 // convert names to kebab-case in case they come as CamelCase or pascalCase
