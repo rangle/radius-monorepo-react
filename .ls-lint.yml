@@ -37,6 +37,7 @@ ignore:
   - .storybook
   - storybook-static
   - babel.config.js
+  - sst.config.ts
   # package specific - directory patterns not yet implemented for ignore: https://ls-lint.org/1.x/configuration/the-basics.html#using-directory-patterns
   - apps
   - library/foundations/node_modules
