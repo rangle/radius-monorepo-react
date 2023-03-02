@@ -5,7 +5,7 @@ import { TextAndImage } from './text-and-image';
 
 export default {
   component: TextAndImage,
-  title: `Core Components/TextAndImage`,
+  title: `Core Components/Text And Image`,
   parameters: {
     badges: [BADGE.EXPERIMENTAL],
   },
