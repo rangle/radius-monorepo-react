@@ -14,7 +14,7 @@ import { Typography } from '../typography/typography';
 // >;
 
 export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
-  ({ preTitle, title, body }, ref) => {
+  ({ preTitle, title, headingLevel, body }, ref) => {
     // const element = elementAndProps(rest, ref, 'div');
     // const styles = useMemo(() => getStyles(rest), [rest]);
 
@@ -51,9 +51,8 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
               {preTitle}
             </Typography>
           )}
-          {/* TODO: make heading level a prop */}
           <Typography
-            as="h2"
+            as={headingLevel}
             font="var(--typography-heading-xxl)"
             color="var(--color-text-on-subtle-primary)"
           >
