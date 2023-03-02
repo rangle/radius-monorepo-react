@@ -2,11 +2,10 @@ import React, { useMemo, forwardRef } from 'react';
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 
 import { TextAndImageProps } from './text-and-image.types';
-import { getStyles } from './text-and-image.styles';
+// import { getStyles } from './text-and-image.styles';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 import { RadiusAutoBox } from '../auto-box/auto-box';
-
-// import tokenLayers from '../../foundations/generated/token-layers-1.0.1';
+import { Typography } from '../typography/typography';
 
 // type RadiusButtonTag = React.ElementType;
 // export type RadiusTextAndImageProps = PolymorphicComponentPropWithRef<
@@ -18,61 +17,54 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
   ({ preTitle, title, body }, ref) => {
     // const element = elementAndProps(rest, ref, 'div');
     // const styles = useMemo(() => getStyles(rest), [rest]);
+
     return (
       <RadiusAutoBox
-        // className={`${styles} ${className || ''}`}
-        // {...element.props}
         ref={ref}
+        padding={{
+          top: 'var(--spacing-core-space-26x)',
+          bottom: 'var(--spacing-core-space-26x)',
+          left: 'var(--spacing-core-space-18x)',
+          right: 'var(--spacing-core-space-18x)',
+        }}
+        space="var(--spacing-core-space-6x)"
+        fill="var(--color-background-subtle)"
+        width="fill-parent"
       >
+        <RadiusAutoBox width="fill-parent">
+          <RadiusAutoBox
+            as="img"
+            src="https://via.placeholder.com/1500"
+            alt=""
+            width="fill-parent"
+          />
+        </RadiusAutoBox>
         <RadiusAutoBox
-          as="img"
-          src="https://via.placeholder.com/1500"
-          alt=""
-          width="fill-parent"
-        />
-        <RadiusAutoBox
-          // TODO: get space token from library/foundations/generated/token-layers-1.0.1.json
-          space={48}
+          space="var(--spacing-core-space-12x)"
           direction="vertical"
         >
           {!!preTitle && (
-            <RadiusAutoBox
-              as="p"
-              style={{
-                color: 'var(--color-text-on-subtle-primary)',
-                // note: font tokens not working correctly:
-                // - font asset is named `Riforma` but token specifies `Riforma LL`
-                // - `font-weight` value is provided as `Regular` but should be `normal`
-
-                // font: 'var(--typography-heading-md)',
-                font: 'Normal 1.5rem/150% Riforma LL',
-              }}
-              // style={{ color: 'red' }}
+            <Typography
+              font="var(--typography-heading-md)"
+              color="var(--color-text-on-subtle-primary)"
             >
               {preTitle}
-            </RadiusAutoBox>
+            </Typography>
           )}
           {/* TODO: make heading level a prop */}
-          <RadiusAutoBox
+          <Typography
             as="h2"
-            style={{
-              color: 'var(--color-text-on-subtle-primary)',
-              // font: 'var(--typography-heading-xxl)',
-              font: 'bold 2.5rem/100% Riforma LL',
-            }}
+            font="var(--typography-heading-xxl)"
+            color="var(--color-text-on-subtle-primary)"
           >
             {title}
-          </RadiusAutoBox>
-          <RadiusAutoBox
-            as="p"
-            style={{
-              color: 'var(--color-text-on-subtle-secondary)',
-              // font: 'var(--typography-body-xl)',
-              font: 'normal 1.5rem/150% Riforma LL',
-            }}
+          </Typography>
+          <Typography
+            font="var(--typography-body-xl)"
+            color="var(--color-text-on-subtle-secondary)"
           >
             {body}
-          </RadiusAutoBox>
+          </Typography>
         </RadiusAutoBox>
       </RadiusAutoBox>
     );
