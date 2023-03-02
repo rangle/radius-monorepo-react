@@ -4,10 +4,16 @@ import {
   TokenLayers,
   writeToStdout,
   readStdin,
+  GeneratorMappingDictionary,
+  GeneratorMappingFunction,
+  createReplaceFunction,
 } from './lib/token-parser';
 import { renderStorybookStory, renderCSSVariables } from './templates';
 
-type RenderFunction = ({ order, layers }: TokenLayers) => Buffer;
+type RenderFunction = (
+  { order, layers }: TokenLayers,
+  replaceFunction?: GeneratorMappingFunction
+) => Buffer;
 
 type RenderTemplateMap = Record<string, RenderFunction>;
 
@@ -23,6 +29,32 @@ if (!templateName) {
 export const loadPreviousLayersFile = (fileName: string) => {
   console.warn('LAYERS PROCESSED. VALIDATING', fileName);
   return promises.readFile(fileName);
+};
+
+const loadGeneratorMappingModule = async (
+  path: string
+): Promise<GeneratorMappingDictionary | null> => {
+  try {
+    return (await import(path)) as GeneratorMappingDictionary;
+  } catch (e) {
+    return null;
+  }
+};
+
+export const loadGeneratorMappings = (templateName: string) => {
+  console.warn('LOADING GENERATOR MAPPINGS for', templateName);
+  const mapping = [
+    `./mapping/${templateName}-generator`,
+    `./mapping/all-generator`,
+    `./mapping/generator`,
+  ].reduce<Promise<GeneratorMappingDictionary>>(async (res, path) => {
+    const loadedModule = await loadGeneratorMappingModule(path);
+    const previousResult = await res;
+    const map = loadedModule ? loadedModule['default'] : {};
+    return { ...previousResult, ...map };
+  }, Promise.resolve({}));
+
+  return mapping;
 };
 
 const templates: RenderTemplateMap = {
@@ -46,8 +78,12 @@ const renderTemplate = templates[templateName];
 */
 
 readStdin()
-  .then(parseData)
-  .then(renderTemplate)
+  .then((input) =>
+    Promise.all([parseData(input), loadGeneratorMappings(templateName)])
+  )
+  .then(([data, mapping]) =>
+    renderTemplate(data, createReplaceFunction(mapping[templateName]))
+  )
   .then(writeToStdout)
   .catch((e) => {
     console.error('ERROR:', e);
