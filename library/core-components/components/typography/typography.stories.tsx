@@ -50,7 +50,7 @@ export const Example: ComponentStory<typeof Typography> = () => (
     </Typography>
     <Typography
       font="var(--typography-body-sm)"
-      color="--color-text-on-base-secondary"
+      color="var(--color-text-on-base-secondary)"
       align="right"
     >
       *Footnote
