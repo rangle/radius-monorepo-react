@@ -563,7 +563,7 @@ export const processLayers = <T extends TokenStructure>(
         isStatic,
         parameters[PARAM_SECTION_NAME]
       );
-      return { name, variables, parameters, isDynamic: isStatic };
+      return { name, variables, parameters, isStatic };
     })
     .map((layer): TokenLayer => {
       const { variables, parameters, ...rest } = layer;
