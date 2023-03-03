@@ -26,7 +26,7 @@ export const RadiusHero = ({
         alignment="center"
         className="content-container"
       >
-        <RadiusAutoBox className="image-container">
+        <RadiusAutoBox className="image-container" width="fill-parent">
           <RadiusAutoBox as="img" src={imageSrc} width="fill-parent" />
         </RadiusAutoBox>
         <RadiusAutoBox direction="vertical" className="text-container">
