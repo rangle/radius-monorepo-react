@@ -15,10 +15,12 @@ export default {
     },
     title: {
       defaultValue: 'Shrink your timelines',
+      type: { name: 'string', required: true },
     },
     body: {
       defaultValue:
         'Reduce the risk and effort required to get started on a design system. You can build a new digital product and a design system, with no delays in bringing it to market. Customer focus is the only focus.',
+      type: { name: 'string', required: true },
     },
   },
 } as ComponentMeta<typeof TextAndImage>;

@@ -6,10 +6,13 @@ import { RadiusAutoBox } from '../auto-box/auto-box';
 import { Typography } from '../typography/typography';
 
 export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
-  ({ preTitle, title, headingLevel, body, classname, ...rest }, ref) => {
+  (
+    { preTitle, title, headingLevel, body, media = 'left', classname, ...rest },
+    ref
+  ) => {
     const { container, imageContainer, textContainer } = useMemo(
-      () => getStyles(),
-      []
+      () => getStyles({ media }),
+      [media]
     );
 
     return (
@@ -26,10 +29,11 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
         fill="var(--color-background-subtle)"
         width="fill-parent"
         alignment="center"
+        // direction={media === 'left' ? 'horizontal' : 'horizontal-reverse'}
         {...rest}
       >
         {/* Image Container */}
-        <RadiusAutoBox /* width="50%" */ classname={imageContainer}>
+        <RadiusAutoBox /* width="50%" */ className={imageContainer}>
           <RadiusAutoBox
             as="img"
             src="https://via.placeholder.com/1500"
@@ -39,8 +43,8 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
         </RadiusAutoBox>
         {/* Text Container */}
         <RadiusAutoBox
-          classname={textContainer}
-          space="var(--spacing-core-space-12x)"
+          className={textContainer}
+          // space="var(--spacing-core-space-12x)"
           direction="vertical"
           // width="50%"
         >
