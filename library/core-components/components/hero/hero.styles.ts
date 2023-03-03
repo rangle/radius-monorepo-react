@@ -3,14 +3,17 @@ import { css } from '@emotion/css';
 /** returns the className generated for the styles of this component */
 export const getStyles = () => {
   return css`
+    justify-content: center;
+    background-color: var(--color-background-base);
     .content-container {
       padding: 6rem 1rem;
       flex-direction: column;
       @media screen and (min-width: 600px) and (max-width: 899px) {
-        padding: 6.5rem 1.25rem;
+        padding: 6.5rem 4rem;
       }
       @media screen and (min-width: 900px) {
         padding: 0 4.5rem;
+        max-width: 1136px;
         flex-direction: row;
       }
     }
@@ -30,6 +33,7 @@ export const getStyles = () => {
       width: 100%;
       @media screen and (min-width: 900px) {
         width: 50%;
+        padding: 14rem 0;
       }
     }
     .buttonContainer {
