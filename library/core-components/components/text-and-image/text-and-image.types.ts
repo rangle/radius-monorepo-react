@@ -12,7 +12,7 @@ export type TextAndImageProps = {
   /** The image source */
   src: string;
   /** The image alt text */
-  alt: string;
+  alt?: string;
   /** Optional classname to add to the container */
   className?: string;
 } & React.HTMLAttributes<HTMLDivElement>;

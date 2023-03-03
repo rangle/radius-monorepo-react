@@ -19,7 +19,7 @@ const breakpoints = {
 type StyleProps = Pick<TextAndImageProps, 'media'>;
 
 export const getStyles = <T extends StyleProps>({ media }: T) => {
-  const breakpointLg = `@media screen and (min-width: ${breakpoints.lg.min}px)`;
+  // const breakpointLg = `@media screen and (min-width: ${breakpoints.lg.min}px)`;
   const breakpointMd = `@media screen and (min-width: ${breakpoints.md.min}px) and (max-width: ${breakpoints.md.max}px)`;
   const breakpointSm = `@media screen and (min-width: ${breakpoints.sm.min}px) and (max-width: ${breakpoints.sm.max}px)`;
 
