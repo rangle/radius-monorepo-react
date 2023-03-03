@@ -6,14 +6,14 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "dev:serverless":"sst env remix dev",
+    "dev:serverless": "sst env remix dev",
     "start": "remix-serve build",
     "test": "jest",
     "deploy:serverless": "sst deploy"
   },
   "dependencies": {
+    "@rangle/radius-foundations": "*",
     "@rangle/radius-react-core-components": "^0.1.0",
-    "@rangle/radius-react-core-foundations": "^0.1.0",
     "@remix-run/node": "^1.5.1",
     "@remix-run/react": "^1.5.1",
     "@remix-run/serve": "^1.5.1",

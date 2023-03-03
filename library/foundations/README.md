@@ -31,3 +31,11 @@ This script validates the token layers by comparing them with the original token
 This script generates the theme by using the generated token layers file with the package version as a suffix if a RADIUS_LAYERS_SUFFIX environment variable is set. It outputs the theme to the generated directory in the format specified by the second argument (in this case, css).
 
 It is important to note that the tokens:ci and tokens:update scripts use the RADIUS_LAYERS_SUFFIX environment variable to append the package version to the output file name. It is recommended to use these scripts in the specific scenarios described above.
+
+## yarn tokens:types
+
+This script generates type definition files by using the generated token layers file. It outputs them to the generated directory as a typescript file. It will run prettier afterwards to ensure the file obeys
+linting rules.
+
+These type definitions allow developers to use tokens in their component files without resorting to 
+javascript themes in runtime.

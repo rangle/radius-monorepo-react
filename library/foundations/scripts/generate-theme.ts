@@ -8,7 +8,11 @@ import {
   GeneratorMappingFunction,
   createReplaceFunction,
 } from './lib/token-parser';
-import { renderStorybookStory, renderCSSVariables } from './templates';
+import {
+  renderStorybookStory,
+  renderCSSVariables,
+  renderTokenTypes,
+} from './templates';
 
 type RenderFunction = (
   { order, layers }: TokenLayers,
@@ -60,6 +64,8 @@ export const loadGeneratorMappings = (templateName: string) => {
 const templates: RenderTemplateMap = {
   // render css variables
   css: renderCSSVariables,
+  // render token types
+  types: renderTokenTypes,
   // render storybook theme
   storybook: renderStorybookStory,
   // default template for the test runner
