@@ -1,0 +1,14 @@
+# Deploying Remix Demo App to AWS
+
+The Radius React monorepo consists of a core components library and a foundations library that stores design tokens. The demo app is a Remix app that is used to test and demonstrate the Radius design system components.
+
+The demo app is deployed to AWS using the [SST](https://docs.sst.dev/) framework. The demo app is deployed to this URL: https://d11mwnosflssyy.cloudfront.net/. This is an environment called `radius-pr` that is used primarily for the PR pipeline preview. SST supports deploying to multiple environments.
+
+# How the Deployment Pipeline Works
+
+The deployment pipeline is triggered by a PR being opened or updated. The `deployment.yml` file in the `.github/workflows` directory contains the pipeline definition. The pipeline performs the following steps:
+
+1. Lint and test monorepo packages that have changed using the Nx `affected` command
+2. Build the demo app (this step also build the core and foundations packages as a prerequisite)
+3. Configure AWS credentials for the deployment using github action. The credentials are stored in the [github secrets](https://github.com/rangle/radius-monorepo-react/settings/secrets/actions).
+4. Deploy the demo app to AWS using the `sst deploy` command. The `--stage` flag is used to specify the environment. The `--stage` flag is set to `radius-pr` for the PR pipeline.
