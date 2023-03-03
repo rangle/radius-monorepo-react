@@ -7,7 +7,17 @@ import { Typography } from '../typography/typography';
 
 export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
   (
-    { preTitle, title, headingLevel, body, media = 'left', classname, ...rest },
+    {
+      preTitle,
+      title,
+      headingLevel,
+      body,
+      media = 'left',
+      src,
+      alt,
+      className,
+      ...rest
+    },
     ref
   ) => {
     const { container, imageContainer, textContainer } = useMemo(
@@ -18,36 +28,19 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
     return (
       <RadiusAutoBox
         ref={ref}
-        className={`${container} ${classname}`}
-        // padding={{
-        //   top: 'var(--spacing-core-space-26x)',
-        //   bottom: 'var(--spacing-core-space-26x)',
-        //   left: 'var(--spacing-core-space-18x)',
-        //   right: 'var(--spacing-core-space-18x)',
-        // }}
+        className={`${container} ${className}`}
         space="var(--spacing-core-space-6x)"
         fill="var(--color-background-subtle)"
         width="fill-parent"
         alignment="center"
-        // direction={media === 'left' ? 'horizontal' : 'horizontal-reverse'}
         {...rest}
       >
         {/* Image Container */}
         <RadiusAutoBox /* width="50%" */ className={imageContainer}>
-          <RadiusAutoBox
-            as="img"
-            src="https://via.placeholder.com/1500"
-            alt=""
-            width="fill-parent"
-          />
+          <RadiusAutoBox as="img" src={src} alt={alt} width="fill-parent" />
         </RadiusAutoBox>
         {/* Text Container */}
-        <RadiusAutoBox
-          className={textContainer}
-          // space="var(--spacing-core-space-12x)"
-          direction="vertical"
-          // width="50%"
-        >
+        <RadiusAutoBox className={textContainer} direction="vertical">
           {/* Pre-title */}
           {!!preTitle && (
             <Typography

@@ -22,6 +22,9 @@ export default {
         'Reduce the risk and effort required to get started on a design system. You can build a new digital product and a design system, with no delays in bringing it to market. Customer focus is the only focus.',
       type: { name: 'string', required: true },
     },
+    headingLevel: {
+      defaultValue: 'h2',
+    },
   },
 } as ComponentMeta<typeof TextAndImage>;
 
@@ -30,4 +33,7 @@ const Template: ComponentStory<typeof TextAndImage> = (
 ) => <TextAndImage {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  src: 'https://via.placeholder.com/1500',
+  alt: 'placeholder image',
+};
