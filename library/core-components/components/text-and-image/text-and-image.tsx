@@ -7,17 +7,7 @@ import { Typography } from '../typography/typography';
 
 export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
   (
-    {
-      preTitle,
-      title,
-      headingLevel,
-      body,
-      media = 'left',
-      src,
-      alt,
-      className,
-      ...rest
-    },
+    { title, headingLevel, body, media = 'left', src, alt, className, ...rest },
     ref
   ) => {
     const { container, imageContainer, textContainer } = useMemo(
@@ -29,40 +19,33 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
       <RadiusAutoBox
         ref={ref}
         className={`${container} ${className}`}
-        space="var(--spacing-core-space-6x)"
-        fill="var(--color-background-subtle)"
+        space="var(--spacing-core-space-8x)"
         width="fill-parent"
         alignment="center"
         {...rest}
       >
         {/* Image Container */}
-        <RadiusAutoBox /* width="50%" */ className={imageContainer}>
+        <RadiusAutoBox className={imageContainer}>
           <RadiusAutoBox as="img" src={src} alt={alt} width="fill-parent" />
         </RadiusAutoBox>
         {/* Text Container */}
-        <RadiusAutoBox className={textContainer} direction="vertical">
-          {/* Pre-title */}
-          {!!preTitle && (
-            <Typography
-              font="var(--typography-heading-md)"
-              // TODO: some dark mode color tokens are incorrect and will not display correctly until fixed (see https://rangle.atlassian.net/browse/R20-200)
-              color="var(--color-text-on-subtle-primary)"
-            >
-              {preTitle}
-            </Typography>
-          )}
+        <RadiusAutoBox
+          className={textContainer}
+          direction="vertical"
+          space="var(--spacing-core-space-8x)"
+        >
           {/* Title */}
           <Typography
             as={headingLevel}
-            font="var(--typography-heading-xxl)"
-            color="var(--color-text-on-subtle-primary)"
+            font="var(--typography-heading-lg)"
+            color="var(--color-text-on-base-primary)"
           >
             {title}
           </Typography>
           {/* Body */}
           <Typography
-            font="var(--typography-body-xl)"
-            color="var(--color-text-on-subtle-secondary)"
+            font="var(--typography-body-md)"
+            color="var(--color-text-on-base-secondary)"
           >
             {body}
           </Typography>

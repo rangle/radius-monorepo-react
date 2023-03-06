@@ -1,6 +1,4 @@
 export type TextAndImageProps = {
-  /** Optional text above the title */
-  preTitle?: string;
   /** Title text */
   title: string;
   /** Body text */

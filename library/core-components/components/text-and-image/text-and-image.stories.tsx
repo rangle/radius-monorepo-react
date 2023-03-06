@@ -9,17 +9,18 @@ export default {
   parameters: {
     badges: [BADGE.EXPERIMENTAL],
   },
+  args: {
+    src: 'https://via.placeholder.com/1500',
+    alt: 'placeholder image',
+  },
   argTypes: {
-    preTitle: {
-      defaultValue: 'How will it help?',
-    },
     title: {
-      defaultValue: 'Shrink your timelines',
+      defaultValue: 'Title',
       type: { name: 'string', required: true },
     },
     body: {
       defaultValue:
-        'Reduce the risk and effort required to get started on a design system. You can build a new digital product and a design system, with no delays in bringing it to market. Customer focus is the only focus.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
       type: { name: 'string', required: true },
     },
     headingLevel: {
@@ -33,7 +34,17 @@ const Template: ComponentStory<typeof TextAndImage> = (
 ) => <TextAndImage {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  src: 'https://via.placeholder.com/1500',
-  alt: 'placeholder image',
-};
+
+export const AsChild: ComponentStory<typeof TextAndImage> = (
+  args: ComponentProps<typeof TextAndImage>
+) => (
+  <div
+    style={{ display: 'flex', flexDirection: 'column', gap: 32, padding: 20 }}
+  >
+    <div style={{ display: 'flex', gap: 32 }}>
+      <TextAndImage {...args} />
+      <TextAndImage {...args} />
+    </div>
+    <TextAndImage {...args} />
+  </div>
+);
