@@ -1,9 +1,8 @@
 name: deploy demo app for PR preview
+
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  pull_request:
+    branches: ['main']
 
 jobs:
   main:
