@@ -8,7 +8,7 @@ Active
 
 ## Context
 
-The Hero component is a full-width component that is used to display a large image with a title, and a call to action button.
+The Hero component is a full-width component that is used to display a large image with a title, eyebrow, and a call to action button.
 
 ## Decision
 
