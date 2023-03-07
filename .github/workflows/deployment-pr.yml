@@ -1,10 +1,8 @@
-name: deploy demo app to production
+name: deploy demo app for PR preview
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  pull_request:
+    branches: ['main']
 
 jobs:
   main:
@@ -18,9 +16,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -33,10 +28,6 @@ jobs:
       - name: Build Demo App
         run: npx nx run demo:build
 
-      ## Run lint, test, and build for all affected projects
-      - run: npx nx affected --target=lint --parallel=3
-      - run: npx nx affected --target=test --parallel=3 --configuration=ci
-
       - name: Configure AWS credentials for deployment
         uses: aws-actions/configure-aws-credentials@v1
           with:
@@ -46,4 +37,11 @@ jobs:
 
       ## Deploy remix demo app with SST
       - name: Deploy Demo App to AWS
-        run: yarn sst deploy --stage prod
+        run: yarn sst deploy --stage radius-pr
+
+      - name: Comment on PR with link to deployed demo app
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Preview the demo app on https://d11mwnosflssyy.cloudfront.net/

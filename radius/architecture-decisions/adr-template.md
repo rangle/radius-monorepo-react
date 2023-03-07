@@ -1,5 +1,7 @@
 # Title
 
+Date: YYYY-MM-DD
+
 ## Status
 
 [Proposed, Active, Superseded, Retired]

@@ -9,5 +9,5 @@ module.exports = {
   serverBuildPath: "build/index.js",
   serverBuildTarget: "node-cjs",
   server: undefined,
-  serverDependenciesToBundle: ['@rangle/radius-react-core-foundations', '@rangle/radius-react-core-components'],
+  serverDependenciesToBundle: ['@rangle/radius-foundations', '@rangle/radius-react-core-components'],
 };
