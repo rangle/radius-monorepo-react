@@ -11,6 +11,7 @@ export type HeroProps = {
   eyebrow: string;
   buttonLabel: string;
   imageSrc: string;
+  ctaUrl: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const RadiusHero = ({
@@ -18,6 +19,7 @@ export const RadiusHero = ({
   eyebrow,
   buttonLabel,
   imageSrc,
+  ctaUrl,
   className,
   ...rest
 }: HeroProps) => {
@@ -45,7 +47,14 @@ export const RadiusHero = ({
             {title}
           </Typography>
           <RadiusAutoBox className="buttonContainer">
-            <RadiusButton as="button" variant="primary" size="large">
+            <RadiusButton
+              as="a"
+              variant="primary"
+              size="large"
+              href={ctaUrl}
+              // TODO: remove this className when the link button bug (R20-218) is fixed
+              className="call-to-action"
+            >
               {buttonLabel}
             </RadiusButton>
           </RadiusAutoBox>

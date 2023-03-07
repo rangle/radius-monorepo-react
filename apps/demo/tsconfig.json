@@ -14,7 +14,6 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"],
-      "@rangle/radius-foundations": ["./library/foundations"]
     },
 
     // Remix takes care of building everything in `remix build`.

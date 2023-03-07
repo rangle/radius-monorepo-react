@@ -15,7 +15,7 @@ export const meta: MetaFunction = () => ({
 });
 
 // import styles from './styles/global.css';
-import theme from "@rangle/radius-foundations/generated/theme.css";
+import theme from "../../../library/foundations/generated/theme.css";
 import font from "../../../shared/fonts/fonts.css";
 
 export const links: LinksFunction = () => {

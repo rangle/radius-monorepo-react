@@ -38,6 +38,13 @@ export default {
         type: 'text',
       },
     },
+    ctaUrl: {
+      type: { name: 'string', required: true },
+      defaultValue: '#',
+      control: {
+        type: 'text',
+      },
+    },
   },
 } as ComponentMeta<typeof RadiusHero>;
 

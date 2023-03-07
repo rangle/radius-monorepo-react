@@ -5,6 +5,10 @@ export const getStyles = () => {
   return css`
     justify-content: center;
     background-color: var(--color-background-base);
+    .call-to-action {
+      text-decoration: none;
+      font: var(--typography-body-md);
+    }
     .content-container {
       padding: 6rem 1rem;
       flex-direction: column;
