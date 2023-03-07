@@ -1,6 +1,6 @@
-import { Config } from "@storybook/addons";
+import { Config } from '@storybook/addons';
 
-const versions = process.env.VERSION?.split('.')||['0','0','0'];
+const versions = process.env.VERSION?.split('.') || ['0', '0', '0'];
 
 module.exports = {
   core: {
@@ -13,8 +13,12 @@ module.exports = {
     '../library/**/*.stories.@(js|jsx|ts|tsx)',
   ],
 
-  // Add assets, these files will be added to the root of the build (/fonts.css) 
-  staticDirs: ['../shared/fonts', '../shared/assets', '../library/foundations/generated'],
+  // Add assets, these files will be added to the root of the build (/fonts.css)
+  staticDirs: [
+    '../shared/fonts',
+    '../shared/assets',
+    '../library/foundations/generated',
+  ],
 
   addons: [
     'storybook-version',
@@ -22,12 +26,13 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-addon-pseudo-states',
+    '@geometricpanda/storybook-addon-badges',
   ],
   framework: '@storybook/react',
 
   // We add versions globally from the build env
   // Access the variable with process.env.COMPONENT_VERSION
-  env: (config:Config) => ({
+  env: (config: Config) => ({
     ...config,
     COMPONENT_VERSION: versions,
   }),
