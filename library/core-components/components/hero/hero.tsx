@@ -1,4 +1,6 @@
 import React from 'react';
+import { cx } from '@emotion/css';
+
 import { RadiusAutoBox } from '../../components/auto-box/auto-box';
 import { RadiusButton } from '../../components/button/button';
 import { Typography } from '../../components/typography/typography';
@@ -9,17 +11,19 @@ export type HeroProps = {
   eyebrow: string;
   buttonLabel: string;
   imageSrc: string;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export const RadiusHero = ({
   title,
   eyebrow,
   buttonLabel,
   imageSrc,
+  className,
+  ...rest
 }: HeroProps) => {
   const heroStyle = getStyles();
   return (
-    <RadiusAutoBox className={heroStyle}>
+    <RadiusAutoBox className={cx(heroStyle, className)} {...rest}>
       <RadiusAutoBox
         width="fill-parent"
         space={24}
