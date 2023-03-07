@@ -47,10 +47,3 @@ jobs:
       ## Deploy remix demo app with SST
       - name: Deploy Demo App to AWS
         run: yarn sst deploy --stage prod
-
-      - name: Comment on PR with link to deployed demo app
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            Preview the demo app on https://d7mzfbcjb41ud.cloudfront.net
