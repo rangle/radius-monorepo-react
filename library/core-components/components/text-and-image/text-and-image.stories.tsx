@@ -26,6 +26,9 @@ export default {
     headingLevel: {
       defaultValue: 'h2',
     },
+    media: {
+      defaultValue: 'left',
+    },
   },
 } as ComponentMeta<typeof TextAndImage>;
 
@@ -35,7 +38,7 @@ const Template: ComponentStory<typeof TextAndImage> = (
 
 export const Default = Template.bind({});
 
-export const AsChild: ComponentStory<typeof TextAndImage> = (
+export const Multiple: ComponentStory<typeof TextAndImage> = (
   args: ComponentProps<typeof TextAndImage>
 ) => (
   <div

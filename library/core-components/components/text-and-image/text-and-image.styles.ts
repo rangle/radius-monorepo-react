@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/css';
 
 import { TextAndImageProps } from './text-and-image.types';
 

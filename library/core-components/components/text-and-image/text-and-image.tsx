@@ -1,4 +1,5 @@
 import React, { useMemo, forwardRef } from 'react';
+import { cx } from '@emotion/css';
 
 import { TextAndImageProps } from './text-and-image.types';
 import { getStyles } from './text-and-image.styles';
@@ -18,7 +19,7 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
     return (
       <RadiusAutoBox
         ref={ref}
-        className={`${container} ${className}`}
+        className={cx(container, className)}
         space="var(--spacing-core-space-8x)"
         width="fill-parent"
         alignment="center"

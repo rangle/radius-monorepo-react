@@ -10,8 +10,8 @@ export type TextAndImageProps = {
   /** The image source */
   src: string;
   /** The image alt text */
-  alt?: string;
+  alt?: string; // ? Should this be required?
   /** Optional classname to add to the container */
   className?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
-// TODO: make this polymorphic? (Since it's an autoboxed component)
+// TODO: make this polymorphic after fixing polymorphic implementation. See https://rangle.atlassian.net/browse/R20-217

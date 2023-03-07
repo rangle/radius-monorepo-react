@@ -3,12 +3,14 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
-import { TextAndImage } from '..';
+import { TextAndImage, TextAndImageProps } from '..';
 
 expect.extend(toHaveNoViolations);
 
 describe('<TextAndImage />', () => {
-  const renderTestComponent = () => {
+  const renderTestComponent = (
+    props?: Partial<TextAndImageProps & React.HTMLAttributes<HTMLDivElement>>
+  ) => {
     return render(
       <TextAndImage
         title="Hello World"
@@ -16,6 +18,7 @@ describe('<TextAndImage />', () => {
         headingLevel="h2"
         src="https://via.placeholder.com/1500"
         alt="placeholder image"
+        {...props}
       />
     );
   };
@@ -29,5 +32,10 @@ describe('<TextAndImage />', () => {
     const { container } = renderTestComponent();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  test('should display the correct heading level', () => {
+    const { getByText } = renderTestComponent({ headingLevel: 'h3' });
+    expect(getByText('Hello World').tagName).toBe('H3');
   });
 });
