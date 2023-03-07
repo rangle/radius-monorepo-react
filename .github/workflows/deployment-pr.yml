@@ -42,6 +42,5 @@ jobs:
       - name: Comment on PR with link to deployed demo app
         uses: peter-evans/create-or-update-comment@v1
         with:
-          issue-number: ${{ github.event.pull_request.number }}
           body: |
             Preview the demo app on https://d11mwnosflssyy.cloudfront.net/

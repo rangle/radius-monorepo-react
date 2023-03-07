@@ -25,6 +25,7 @@ $ AWS_PROFILE=radius npx sst deploy
 
 ## Environments
 
-The demo app is deployed to one environment:
+The demo app is deployed to two environments:
 
-- `radius-pr`: https://d11mwnosflssyy.cloudfront.net/. Primarily used for the demo.
+- `radius-pr`: https://d11mwnosflssyy.cloudfront.net/. The demo app is deployed for PR preview.
+- `prod`: https://d7mzfbcjb41ud.cloudfront.net. The demo app is deployed when code merged to the main branch. This is the environment used for demo.
