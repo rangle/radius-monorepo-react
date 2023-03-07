@@ -1,4 +1,6 @@
 import React, { useMemo, forwardRef } from 'react';
+import { cx } from '@emotion/css';
+
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 
@@ -69,7 +71,7 @@ export const Typography = forwardRef<TypographyTag, TypographyProps>(
 
     return (
       <element.Component
-        className={`${style} ${className}`}
+        className={cx(style, className)}
         ref={element.props.ref}
         {...element.props}
       >
