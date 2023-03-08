@@ -2,7 +2,7 @@ import { css, CSSObject } from '@emotion/css';
 import {
   RadiusSpacingTokens,
   Var,
-} from '../../../foundations/generated/design-tokens.types';
+} from '@rangle/radius-foundations/generated/design-tokens.types';
 // Discrimitated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
 export type RadiusButtonSize = 'small' | 'medium' | 'large';

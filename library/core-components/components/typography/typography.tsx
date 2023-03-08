@@ -1,15 +1,15 @@
 import React, { useMemo, forwardRef } from 'react';
 import { cx } from '@emotion/css';
+import {
+  RadiusColorTokens,
+  RadiusTypographyTokens,
+  Var,
+} from '@rangle/radius-foundations/generated/design-tokens.types';
 
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 
 import { getStyles } from './typography.styles';
-import {
-  RadiusColorTokens,
-  RadiusTypographyTokens,
-  Var,
-} from '../../../foundations/generated/design-tokens.types';
 
 export type Alignment = 'left' | 'center' | 'right';
 
