@@ -5,6 +5,11 @@ import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 
 import { getStyles } from './typography.styles';
+import {
+  RadiusColorTokens,
+  RadiusTypographyTokens,
+  Var,
+} from '../../../foundations/generated/design-tokens.types';
 
 export type Alignment = 'left' | 'center' | 'right';
 
@@ -29,9 +34,9 @@ export type TypographyExtendedProps = {
   /** Text alignment */
   align?: Alignment;
   /** Text color */
-  color?: string; // TODO - add css variable types here
+  color?: Var<RadiusColorTokens>; // ? How to handle optional string values? This completely invalidates the type safety & intellisense value of the design token types
   /** Font (css shorthand property - see https://developer.mozilla.org/en-US/docs/Web/CSS/font) */
-  font?: string; // TODO - add css variable types here
+  font?: Var<RadiusTypographyTokens>;
   children: React.ReactNode;
 };
 

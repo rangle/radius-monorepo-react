@@ -90,5 +90,8 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
       Extract<RadiusTokens, \`--\${T}-${subject}-\${string}\`>;`
       )
       .join('\n')};
+
+  /** Utility type that returns the provided token type(s) wrapped with the \`var()\` function. */
+  export type Var<T> = T extends string ? \`var(\${T})\` : T;
   `);
 };
