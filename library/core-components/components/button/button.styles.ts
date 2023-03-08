@@ -1,4 +1,8 @@
 import { css, CSSObject } from '@emotion/css';
+import {
+  RadiusSpacingTokens,
+  Var,
+} from '../../../foundations/generated/design-tokens.types';
 // Discrimitated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
 export type RadiusButtonSize = 'small' | 'medium' | 'large';
@@ -27,8 +31,10 @@ export type StylesProps = {
 /** Simple Map from size props to spacing
  * An example of a useful map that helps select simple css values based on props
  */
-// TODO: replace values with css variables
-const buttonSize: Record<RadiusButtonSize, string> = {
+const buttonSize: Record<
+  RadiusButtonSize,
+  `${Var<RadiusSpacingTokens>} ${Var<RadiusSpacingTokens>}`
+> = {
   small:
     'var(--spacing-button-vertical-padding-sm) var(--spacing-button-horizontal-padding-sm)',
   medium:
