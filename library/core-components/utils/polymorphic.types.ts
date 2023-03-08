@@ -1,12 +1,7 @@
 /*
  * Polymorphic types source: https://blog.logrocket.com/build-strongly-typed-polymorphic-components-react-typescript/
  */
-import {
-  PropsWithChildren,
-  ElementType,
-  ComponentPropsWithoutRef,
-  ComponentPropsWithRef,
-} from 'react';
+import { ElementType, ComponentPropsWithRef } from 'react';
 
 // Helper types to allow components to become polymorphic
 
@@ -30,14 +25,14 @@ export type AsProp<C extends ElementType> = {
   as?: C;
 };
 
-/** type fragment containing the 'children' prop */
-export type ChildrenProp = Pick<PropsWithChildren<unknown>, 'children'>;
+type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
 
 /*** generic type representing the `ref` prop */
-export type PolymorphicRef<C extends ElementType> = ComponentPropsWithRef<C>;
+export type PolymorphicRef<C extends ElementType> =
+  ComponentPropsWithRef<C>['ref'];
 
-export type ComponentPropsWitAs<C extends ElementType> = AsProp<C> &
-  ComponentPropsWithoutRef<C>;
+// export type ComponentPropsWitAs<C extends ElementType> = AsProp<C> &
+//   ComponentPropsWithoutRef<C>;
 
 /*** generic type representing the props of a given component of type `C` - without the `ref` prop */
 // export type PolymorphicComponentProp<C extends ElementType, Props> = Props &
@@ -45,11 +40,12 @@ export type ComponentPropsWitAs<C extends ElementType> = AsProp<C> &
 
 export type PolymorphicComponentProp<
   C extends React.ElementType,
-  Props = Record<string, unknown>
-> = Props & AsProp<C> & React.ComponentPropsWithoutRef<C>;
+  Props = Record<string, never>
+> = React.PropsWithChildren<Props & AsProp<C>> &
+  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
 /*** generic type representing the props of a given component of type `C` - with the `ref` prop */
 export type PolymorphicComponentPropWithRef<
   C extends ElementType,
-  Props
-> = PolymorphicComponentProp<C, Props> & PolymorphicRef<C>;
+  Props = Record<string, never>
+> = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };

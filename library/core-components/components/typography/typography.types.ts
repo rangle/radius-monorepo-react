@@ -3,7 +3,6 @@ import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 
 export type Alignment = 'left' | 'center' | 'right';
 
-// TODO - fix polymorphic types (type errors due to different expected props for some tags)
 export type TypographyTag =
   | 'h1'
   | 'h2'
@@ -12,13 +11,13 @@ export type TypographyTag =
   | 'h5'
   | 'h6'
   | 'p'
-  | 'div';
-// | 'span'
-// | 'a'
-// | 'article'
-// | 'section'
-// | 'em'
-// | 'strong';
+  | 'div'
+  | 'span'
+  | 'a'
+  | 'article'
+  | 'section'
+  | 'em'
+  | 'strong';
 
 export type TypographyExtendedProps = {
   /** Text color */
@@ -43,7 +42,9 @@ export type TypographyExtendedProps = {
   children: React.ReactNode;
 };
 
-export type TypographyProps = PolymorphicComponentPropWithRef<
-  TypographyTag,
-  TypographyExtendedProps
->;
+export type TypographyProps<C extends React.ElementType> =
+  PolymorphicComponentPropWithRef<C, TypographyExtendedProps>;
+
+export type TypographyComponent = <C extends React.ElementType = 'p'>(
+  props: TypographyProps<C>
+) => React.ReactElement | null;
