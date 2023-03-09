@@ -237,7 +237,7 @@ export const createReplaceFunction = (
       const [from, to] = item;
       const regex = isString(from) ? new RegExp(`^${from}$`) : from;
 
-      return (key: string, value: string) =>
+      return (_: string, value: string) =>
         regex.test(value)
           ? value.replace(
               regex,
@@ -262,7 +262,8 @@ export const toKebabCase = (s: string) =>
     .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase()
-    .replace(/\s|--/g, '-');
+    .replace(/\s/g, '-')
+    .replace(/--/g, '-');
 
 // create a formatted key that's more css-friendly
 export const formatKey = (str: string) => toKebabCase(str);

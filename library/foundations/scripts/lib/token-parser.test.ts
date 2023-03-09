@@ -134,6 +134,14 @@ describe('toKebabCase', () => {
     expect(toKebabCase('Punctuation,phrase 2')).toBe('punctuation-phrase-2');
     expect(toKebabCase('Punctuation.phrase 3')).toBe('punctuation-phrase-3');
   });
+
+  it('converts PascalCase input to kebab case', () => {
+    expect(toKebabCase('PascalCaseInput')).toBe('pascal-case-input');
+  });
+
+  it(`correctly handles -PascalCase scenarios`, () => {
+    expect(toKebabCase('test-PascalCaseInput')).toBe('test-pascal-case-input');
+  });
 });
 
 describe('isEqual', () => {
@@ -408,5 +416,3 @@ describe('createReplaceFunction', () => {
     expect(result).toBe('nothing matches here');
   });
 });
-
-// TODO: validate that tokens are camelCase (can cause issues with the parser otherwise)
