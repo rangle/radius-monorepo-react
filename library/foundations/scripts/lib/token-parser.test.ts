@@ -408,3 +408,5 @@ describe('createReplaceFunction', () => {
     expect(result).toBe('nothing matches here');
   });
 });
+
+// TODO: validate that tokens are camelCase (can cause issues with the parser otherwise)
