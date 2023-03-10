@@ -30,15 +30,15 @@ export const getStyles = <T extends StyleProps>({ media }: T) => {
       }
     `,
     imageContainer: css`
-      flex-basis: 50%;
+      width: 50%;
       ${breakpointSm} {
-        flex-basis: 100%;
+        width: 100%;
       }
     `,
     textContainer: css`
-      flex-basis: 50%;
+      width: 50%;
       ${breakpointSm} {
-        flex-basis: 100%;
+        width: 100%;
       }
     `,
   };
