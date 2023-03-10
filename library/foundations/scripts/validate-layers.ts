@@ -27,7 +27,13 @@ if (!snapshotFileName) {
 
 export const loadPreviousLayersFile = (fileName: string) => {
   console.warn('LAYERS PROCESSED. VALIDATING', fileName);
-  return promises.readFile(fileName).then(parseData);
+  return promises
+    .readFile(fileName)
+    .then(parseData)
+    .catch((e) => {
+      console.error(e.message);
+      return null;
+    });
 };
 
 /*
@@ -64,9 +70,14 @@ readStdin()
       );
       process.exit(1);
     } else console.warn('# NEW TOKENS ARE VALID!');
+    if (!previousLayerList) {
+      console.warn('## TOKENS VERSION UPGRADED!');
+      return;
+    }
     const diff = compareTokenLayers(previousLayerList, layerList, true);
+    console.warn(snapshotFileName, diff);
     if (diff.length) {
-      console.log('## NEW TOKENS HAVE BREAKING CHANGES');
+      console.warn('## NEW TOKENS HAVE BREAKING CHANGES');
 
       diff.forEach((m) =>
         console.log(
@@ -74,7 +85,7 @@ readStdin()
         )
       );
       process.exit(1);
-    } else console.warn('# NEW TOKENS ARE COMPATIBLE!');
+    } else console.warn('## NEW TOKENS ARE COMPATIBLE!');
     process.exit(0);
   })
   .catch((e: Error) => {
