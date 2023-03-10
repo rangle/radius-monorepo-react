@@ -79,40 +79,40 @@ export default function Index() {
         </RadiusAutoBox>
       </RadiusAutoBox>
 
-      <RadiusAutoBox
-        as="section"
-        direction="vertical"
-        fill="var(--color-background-base)"
-        style={{ maxWidth: 1280, padding: '6rem 12rem', margin: '0 auto' }}
-      >
-        <Typography
-          as="h2"
-          font="var(--typography-heading-xl)"
-          color="var(--color-text-on-base-primary)"
-          align="center"
-          style={{ marginBottom: '4rem', alignSelf: 'center' }}
+      <RadiusAutoBox fill="var(--color-background-base)">
+        <RadiusAutoBox
+          as="section"
+          direction="vertical"
+          style={{ maxWidth: 1280, padding: '6rem 12rem', margin: '0 auto' }}
         >
-          What makes Radius different?
-        </Typography>
-
-        <RadiusAutoBox padding="25px">
-          <TextAndImage
-            title="It’s Flexible"
-            body="Fit your design system build to your organization’s own ecosystem of tooling, processes and vendors, and scale as your product lines grow"
-            headingLevel="h3"
-            src="images/flexible.png"
-            alt="placeholder image"
-          />
-        </RadiusAutoBox>
-        <RadiusAutoBox padding="25px">
-          <TextAndImage
-            title="It’s Focused"
-            body="Radius solves your business case and empowers you to communicate your brand, rather than focusing on building as many components as possible"
-            headingLevel="h3"
-            src="images/focused.png"
-            alt="placeholder image"
-            media="right"
-          />
+          <Typography
+            as="h2"
+            font="var(--typography-heading-xl)"
+            color="var(--color-text-on-base-primary)"
+            align="center"
+            style={{ marginBottom: '4rem', alignSelf: 'center' }}
+          >
+            What makes Radius different?
+          </Typography>
+          <RadiusAutoBox padding="25px">
+            <TextAndImage
+              title="It’s Flexible"
+              body="Fit your design system build to your organization’s own ecosystem of tooling, processes and vendors, and scale as your product lines grow"
+              headingLevel="h3"
+              src="images/flexible.png"
+              alt="placeholder image"
+            />
+          </RadiusAutoBox>
+          <RadiusAutoBox padding="25px">
+            <TextAndImage
+              title="It’s Focused"
+              body="Radius solves your business case and empowers you to communicate your brand, rather than focusing on building as many components as possible"
+              headingLevel="h3"
+              src="images/focused.png"
+              alt="placeholder image"
+              media="right"
+            />
+          </RadiusAutoBox>
         </RadiusAutoBox>
       </RadiusAutoBox>
     </>
