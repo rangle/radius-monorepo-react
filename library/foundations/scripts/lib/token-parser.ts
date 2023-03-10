@@ -125,6 +125,7 @@ export type TokenLayer = {
   name: string;
   parameters: Record<string, string>;
   dependencies: string[];
+  isStatic: boolean;
 };
 
 export type TokenLayers = {
@@ -400,7 +401,7 @@ export const extractTokens = (
 
 /* REFERENCE PROCESSOR */
 
-const bracketsAround = /[\{][a-zA-Z0-9.\-]*[\}]/g;
+const bracketsAround = /[\{][a-zA-Z][a-zA-Z0-9.\-]*[\}]/g;
 export const isReference = (u: string) => u.match(bracketsAround);
 
 const isPresent = <T>(a: T[], b: T[]) => a.some((item) => b.includes(item));
