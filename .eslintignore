@@ -6,3 +6,4 @@ storybook-static/
 **/tmp
 **/generated/
 apps/demo
+coverage

@@ -7,7 +7,6 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
-    needs: lint
     strategy:
       matrix:
         node-version: [16.x]
@@ -42,6 +41,9 @@ jobs:
         run: |
           # Parse and Validate Design Tokens
           yarn tokens:ci
+
+      - name: Lint
+        run: yarn lint:ci
 
       - name: Build Demo App
         run: npx nx run demo:build
