@@ -372,12 +372,26 @@ export const extractTokens = (
         ],
         isStatic,
       };
+
       // create the object and add it to the final result
       finalResult = [...finalResult, token];
 
       // if it's a composite token, we should render it with our special functions
     } else if (isCompositeLeaf(item)) {
-      finalResult = [...finalResult, renderCompositeToken(keyName, item)];
+      const token = renderCompositeToken(keyName, item);
+      const existingReference: Partial<TokenReference> =
+        references[`{${keyName}}`] || {};
+      // add it to the references dictionary - this is used to resolve expressions and dependencies between layers
+      references[`{${keyName}}`] = {
+        ...existingReference,
+        token,
+        sources: [
+          ...(existingReference.sources ?? []),
+          ...(source ? [source] : []),
+        ],
+        isStatic,
+      };
+      finalResult = [...finalResult, token];
     } else if (isString(item)) {
       // if it's a string, it means there's something strange going on. add it as a 'lone string'
       finalResult = [
