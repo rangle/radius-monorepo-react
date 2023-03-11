@@ -1,6 +1,6 @@
 {
   "name": "@rangle/radius-foundations",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Foundation scripts and variables for Design Systems",
   "files": [
     "docs/",
@@ -13,7 +13,7 @@
   "scripts": {
     "test": "jest",
     "tokens:ci": "RADIUS_LAYERS_SUFFIX=-${npm_package_version} yarn tokens:validate",
-    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:parse && yarn tokens:validate && yarn tokens:generate && yarn tokens:docs && yarn tokens:types",
+    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:validate && yarn tokens:parse && yarn tokens:generate && yarn tokens:docs && yarn tokens:types",
     "tokens:parse": "cat ./tokens.json | ts-node scripts/to-layers.ts > generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:validate": "cat ./tokens.json | ts-node scripts/validate-layers.ts generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:generate": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts css > generated/theme.css",
