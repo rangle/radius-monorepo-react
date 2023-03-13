@@ -1,6 +1,7 @@
-import { css, CSSObject } from '@emotion/css';
+import { css } from '@emotion/css';
 import {
   RadiusSpacingTokens,
+  RadiusColorTokens,
   Var,
 } from '@rangle/radius-foundations/generated/design-tokens.types';
 // Discrimitated unions are an excellent way to add type safety
@@ -48,7 +49,9 @@ const buttonSize: Record<
  */
 const buttonColors: Record<
   RadiusButtonStyleType,
-  Pick<CSSObject, 'color' | 'background' | 'border'>
+  {
+    [key in 'color' | 'background' | 'border']: Var<RadiusColorTokens>;
+  }
 > = {
   filled: {
     color: 'var(--color-button-primary-label-default)',
