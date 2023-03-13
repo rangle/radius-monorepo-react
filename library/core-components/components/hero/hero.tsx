@@ -38,12 +38,12 @@ export const RadiusHero = ({
         <RadiusAutoBox direction="vertical" className="text-container">
           <Typography
             as="p"
-            font="var(--typography-heading-md)"
-            color="var(--color-text-on-base-secondary)"
+            font="--typography-heading-md"
+            color="--color-text-on-base-secondary"
           >
             {eyebrow}
           </Typography>
-          <Typography as="h1" font="var(--typography-heading-xxl)">
+          <Typography as="h1" font="--typography-heading-xxl">
             {title}
           </Typography>
           <RadiusAutoBox className="buttonContainer">
