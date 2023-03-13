@@ -80,19 +80,13 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
       )
       .join('\n')};
 
-  // Tokens By Subject (--color-button, --typography-button, etc.)
+  // Token Subjects
 
-    export type CSSTokenSubjects =
-      | 'text'
-      | 'background'
-      | 'interaction'
-      | 'section'
-      | 'heading'
-      | 'body'
-      | 'link'
-      | 'btn'
-      | 'screen'
-      | 'button';
+  export type RadiusTokenSubjects = ${subjectNames
+    .map((subject) => `'${subject}'`)
+    .join(' | ')};
+
+  // Tokens By Subject (--color-button, --typography-button, etc.)
 
     ${subjectNames
       .map(
@@ -119,6 +113,7 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
   export const renderCSSProp = (prop: RadiusTokens | { css: CSSExpression }) =>
     typeof prop === 'string' ? \`var(\${prop})\` : prop.css;
 
+
   /**
    * Returns a list of tokens that match the given type T and subject S. If no subject is provided, all subjects are returned, and if no type is provided, all types are returned.
    *
@@ -130,8 +125,9 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
    */
   export type CSSTokensByTypeAndSubject<
     T extends RadiusTokenTypes = RadiusTokenTypes,
-    S extends CSSTokenSubjects = CSSTokenSubjects
+    S extends RadiusTokenSubjects = RadiusTokenSubjects
   > = Extract<RadiusTokens, \`--\${T}-\${S}-\${string}\`>;
+
 
   /** Returns a list of tokens tokens as described by {@link CSSTokensByTypeAndSubject}, or a custom CSS expression provided inside an object with the css property.
    * @example
@@ -141,8 +137,9 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
    */
   export type CSSProp<
     T extends RadiusTokenTypes = RadiusTokenTypes,
-    S extends CSSTokenSubjects = CSSTokenSubjects
+    S extends RadiusTokenSubjects = RadiusTokenSubjects
   > = CSSTokensByTypeAndSubject<T, S> | { css: CSSExpression };
+
 
   /** Utility type that returns the provided token type(s) wrapped with the \`var()\` function. */
   export type Var<T> = T extends string ? \`var(\${T})\` : T;
