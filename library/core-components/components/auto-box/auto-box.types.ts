@@ -1,3 +1,5 @@
+import { CSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
+
 export const mapAlignments = {
   top: 'flex-start',
   center: 'center',
@@ -30,8 +32,8 @@ export type AutoLayoutProps = {
   horizontalConstraint?: HorizontalConstraint;
   verticalConstraint?: VerticalConstraint;
 
-  fill?: Color;
-  stroke?: Color;
+  fill?: CSSProp<'color', 'background' | 'interaction'>;
+  stroke?: CSSProp<'color', 'background' | 'interaction'>;
   strokeWidth?: StrokeWidth;
   strokeAlign?: StrokeAlign;
   // strokeSide?: StrokeSide;

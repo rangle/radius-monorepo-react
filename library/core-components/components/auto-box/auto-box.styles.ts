@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { renderCSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
 import './auto-box.tokens.css';
 
 import {
@@ -176,9 +177,9 @@ export const getStyles = <T extends AutoLayoutProps>({
     ${clippedContent ? 'overflow: hidden;' : ''};
     ${padding ? `padding: ${getPadding(padding)}` : ''};
     ${opacity !== undefined ? `opacity: ${opacity};` : ''}
-    ${fill ? `background-color: ${getColor(fill)};` : ''}
+    ${fill ? `background-color: ${renderCSSProp(fill)};` : ''}
     ${stroke || strokeWidth ? 'border-style: solid;' : ''}
-    ${stroke ? `border-color: ${getColor(stroke)};` : ''}
+    ${stroke ? `border-color: ${renderCSSProp(stroke)};` : ''}
     ${strokeWidth ? getStrokeWidth(strokeWidth) : ''}
     ${cornerRadius ? getCornerRadius(cornerRadius) : ''}
     ${x !== undefined || y !== undefined
