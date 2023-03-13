@@ -38,15 +38,15 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
           {/* Title */}
           <Typography
             as={headingLevel}
-            font="var(--typography-heading-lg)"
-            color="var(--color-text-on-base-primary)"
+            font="--typography-heading-lg"
+            color="--color-text-on-base-primary"
           >
             {title}
           </Typography>
           {/* Body */}
           <Typography
-            font="var(--typography-body-md)"
-            color="var(--color-text-on-base-secondary)"
+            font="--typography-body-md"
+            color="--color-text-on-base-secondary"
           >
             {body}
           </Typography>

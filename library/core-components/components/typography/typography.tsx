@@ -1,10 +1,6 @@
 import React, { useMemo, forwardRef } from 'react';
 import { cx } from '@emotion/css';
-import {
-  RadiusColorTokens,
-  RadiusTypographyTokens,
-  Var,
-} from '@rangle/radius-foundations/generated/design-tokens.types';
+import { CSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
 
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
@@ -34,9 +30,9 @@ export type TypographyExtendedProps = {
   /** Text alignment */
   align?: Alignment;
   /** Text color */
-  color?: Var<RadiusColorTokens>; // ? How to handle optional string values? This completely invalidates the type safety & intellisense value of the design token types
+  color?: CSSProp<'color', 'text'>;
   /** Font (css shorthand property - see https://developer.mozilla.org/en-US/docs/Web/CSS/font) */
-  font?: Var<RadiusTypographyTokens>;
+  font?: CSSProp<'typography'>;
   children: React.ReactNode;
 };
 
@@ -51,17 +47,7 @@ export type TypographyProps = PolymorphicComponentPropWithRef<
  * declared in the Specific Props type above.
  */
 export const Typography = forwardRef<TypographyTag, TypographyProps>(
-  (
-    {
-      align = 'left',
-      color = 'var(--color-text-on-base-primary)',
-      font = 'var(--typography-body-md)',
-      children,
-      className,
-      ...rest
-    }: TypographyProps,
-    ref
-  ) => {
+  ({ align, color, font, children, className, ...rest }, ref) => {
     const element = elementAndProps(rest, ref, 'p');
 
     const style = useMemo(
