@@ -32,15 +32,20 @@ export type AutoLayoutProps = {
   horizontalConstraint?: HorizontalConstraint;
   verticalConstraint?: VerticalConstraint;
 
-  fill?: CSSProp<'color', 'background' | 'interaction'>;
-  stroke?: CSSProp<'color', 'background' | 'interaction'>;
+  fill?: CSSProp<'color'>;
+  stroke?: CSSProp<'color'>;
   strokeWidth?: StrokeWidth;
   strokeAlign?: StrokeAlign;
   // strokeSide?: StrokeSide;
   // strokeCap?: StrokeCap;
 
   cornerRadius?: CornerRadius;
-  effect?: Effect | Effect[];
+
+  // effects
+  dropShadow?: DropShadow;
+  innerShadow?: InnerShadow;
+  layerBlur?: Blur;
+  backgroundBlur?: Blur;
 
   // blendMode?: BlendMode; // not needed
 };
@@ -62,36 +67,11 @@ export type BlendMode =
   | 'color'
   | 'luminosity';
 
-type Vector = readonly [x: Size, y: Size];
-type HexCode = `#${string}`;
-export type Color =
-  | {
-      r: number;
-      g: number;
-      b: number;
-      a: number;
-    }
-  | `var(${string})`
-  | HexCode;
-
-export type Effect = DropShadowEffect | InnerShadowEffect | BlurEffect;
-
-type DropShadowEffect = {
-  type: 'drop-shadow';
-  color: HexCode | Color;
-  offset: Vector;
-  blur: Size;
-};
-type InnerShadowEffect = {
-  type: 'inner-shadow';
-  color: HexCode | Color;
-  offset: Vector;
-  blur: Size;
-};
-type BlurEffect = {
-  type: 'layer-blur' | 'background-blur';
-  blur: Size;
-};
+// effects
+// TODO: narrow these types (in generator)
+export type DropShadow = CSSProp;
+export type InnerShadow = CSSProp;
+export type Blur = Size;
 
 type StrokeSides = 'top' | 'left' | 'bottom' | 'right';
 export type StrokeWidth = Size | { [key in StrokeSides]: Size };

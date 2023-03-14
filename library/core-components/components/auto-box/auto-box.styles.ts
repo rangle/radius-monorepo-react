@@ -9,12 +9,10 @@ import {
   AutolayoutSize,
   Size,
   Padding,
-  Color,
   StrokeWidth,
   CornerRadius,
   HorizontalConstraint,
   VerticalConstraint,
-  Effect,
 } from './auto-box.types';
 
 export const getSize = (size?: AutolayoutSize) => {
@@ -50,15 +48,6 @@ export const getPadding = (padding?: Padding) => {
     }
   }
   return '0px';
-};
-
-export const getColor = (color?: Color) => {
-  if (typeof color === 'string') return color;
-  if (typeof color === 'object')
-    return `rgba(${color.r},${color.g},${color.b},${
-      color.a > 1 ? color.a / 100 : color.a
-    })`;
-  return 'transparent';
 };
 
 export const getStrokeWidth = (strokeWidth: StrokeWidth) => {
@@ -106,30 +95,6 @@ export const setPosition = (
   return out;
 };
 
-export const getEffects = (effect: Effect | Effect[]) => {
-  const effects = Array.isArray(effect) ? effect : [effect];
-  return effects.reduce((acc: string, effect: Effect) => {
-    switch (effect.type) {
-      case 'drop-shadow':
-        return `${acc} box-shadow: ${getCssValue(
-          effect.offset[0]
-        )} ${getCssValue(effect.offset[1])} ${getCssValue(
-          effect.blur
-        )} ${getColor(effect.color)};`;
-      case 'inner-shadow':
-        return `${acc} box-shadow: inset ${getCssValue(
-          effect.offset[0]
-        )} ${getCssValue(effect.offset[1])} ${getCssValue(
-          effect.blur
-        )} ${getColor(effect.color)};`;
-      case 'layer-blur':
-        return `${acc} filter: blur(${getCssValue(effect.blur)});`;
-      case 'background-blur':
-        return `${acc} backdrop-filter: blur(${getCssValue(effect.blur)});`;
-    }
-  }, '' as string);
-};
-
 // colours alpha can be 0-1 or 0-100
 // strokeAlign is missing middle
 // to add: strokeSide
@@ -156,7 +121,10 @@ export const getStyles = <T extends AutoLayoutProps>({
   y,
   horizontalConstraint,
   verticalConstraint,
-  effect,
+  dropShadow,
+  innerShadow,
+  layerBlur,
+  backgroundBlur,
 }: T) => {
   return css`
     display: flex;
@@ -185,7 +153,11 @@ export const getStyles = <T extends AutoLayoutProps>({
     ${x !== undefined || y !== undefined
       ? setPosition(x, y, horizontalConstraint, verticalConstraint)
       : ''}
-
-    ${effect ? getEffects(effect) : ''}
+    ${dropShadow ? `box-shadow: ${renderCSSProp(dropShadow)};` : ''}
+    ${innerShadow ? `box-shadow: inset ${renderCSSProp(innerShadow)};` : ''}
+    ${layerBlur ? `filter: blur(${getCssValue(layerBlur)});` : ''}
+    ${backgroundBlur
+      ? `backdrop-filter: blur(${getCssValue(backgroundBlur)});`
+      : ''}
   `;
 };

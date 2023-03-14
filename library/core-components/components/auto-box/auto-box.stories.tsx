@@ -478,31 +478,21 @@ const EffectsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   >
     <RadiusAutoBox
       padding={20}
-      effect={{
-        type: 'drop-shadow',
-        color: 'var(--color-button-primary-surface-default)',
-        offset: [0, 0],
-        blur: 5,
-      }}
+      dropShadow="--boxShadow-core-elevation-100"
       fill="--color-button-primary-surface-default"
     >
       drop-shadow
     </RadiusAutoBox>
     <RadiusAutoBox
       padding={20}
-      effect={{
-        type: 'inner-shadow',
-        color: 'var(--color-button-primary-surface-default)',
-        offset: [0, 0],
-        blur: 5,
-      }}
+      innerShadow="--boxShadow-core-elevation-100"
       fill="--color-button-primary-surface-default"
     >
       inner-shadow
     </RadiusAutoBox>
     <RadiusAutoBox
       padding={20}
-      effect={{ type: 'layer-blur', blur: 1 }}
+      layerBlur={1}
       fill="--color-button-primary-surface-default"
     >
       layer-blur
@@ -518,18 +508,15 @@ const EffectsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
       <RadiusAutoBox
         style={{ fontWeight: 'bold' }}
         padding={20}
-        effect={{ type: 'background-blur', blur: 3 }}
+        backgroundBlur={3}
       >
         background-blur
       </RadiusAutoBox>
     </RadiusAutoBox>
-
     <RadiusAutoBox
       padding={20}
-      effect={[
-        { type: 'layer-blur', blur: 1 },
-        { type: 'drop-shadow', color: '#000', offset: [0, 0], blur: 20 },
-      ]}
+      layerBlur={1}
+      dropShadow="--boxShadow-core-elevation-100"
       fill="--color-button-primary-surface-default"
     >
       layer-blur and drop-shadow
