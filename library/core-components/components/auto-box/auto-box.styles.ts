@@ -144,7 +144,7 @@ export const getStyles = <T extends AutoLayoutProps>({
       : `gap: ${getSize(space || 10)};`};
     ${clippedContent ? 'overflow: hidden;' : ''};
     ${padding ? `padding: ${getPadding(padding)}` : ''};
-    ${opacity !== undefined ? `opacity: ${opacity};` : ''}
+    ${opacity !== undefined ? `opacity: ${renderCSSProp(opacity)};` : ''}
     ${fill ? `background-color: ${renderCSSProp(fill)};` : ''}
     ${stroke || strokeWidth ? 'border-style: solid;' : ''}
     ${stroke ? `border-color: ${renderCSSProp(stroke)};` : ''}

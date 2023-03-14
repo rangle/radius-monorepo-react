@@ -25,7 +25,7 @@ export type AutoLayoutProps = {
   height?: AutolayoutSize;
 
   padding?: Padding;
-  opacity?: number;
+  opacity?: CSSProp; // TODO: narrow this type
 
   x?: Size;
   y?: Size;

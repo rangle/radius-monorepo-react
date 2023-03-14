@@ -240,28 +240,28 @@ const OpacityTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     <RadiusAutoBox
       width={100}
       height={25}
-      opacity={0.05}
+      opacity="--opacity-core-opacity-lighter"
       stroke="--color-button-primary-surface-default"
       fill="--color-button-primary-surface-default"
     />
     <RadiusAutoBox
       width={100}
       height={25}
-      opacity={0.25}
+      opacity="--opacity-core-opacity-light"
       stroke="--color-button-primary-surface-default"
       fill="--color-button-primary-surface-default"
     />
     <RadiusAutoBox
       width={100}
       height={25}
-      opacity={0.5}
+      opacity="--opacity-core-opacity-dark"
       stroke="--color-button-primary-surface-default"
       fill="--color-button-primary-surface-default"
     />
     <RadiusAutoBox
       width={100}
       height={25}
-      opacity={0.75}
+      opacity="--opacity-core-opacity-darker"
       stroke="--color-button-primary-surface-default"
       fill="--color-button-primary-surface-default"
     />
