@@ -10,7 +10,6 @@ import {
   Size,
   Padding,
   StrokeWidth,
-  CornerRadius,
   HorizontalConstraint,
   VerticalConstraint,
 } from './auto-box.types';
@@ -56,16 +55,6 @@ export const getStrokeWidth = (strokeWidth: StrokeWidth) => {
   return `border-width: ${getCssValue(strokeWidth.top)} ${getCssValue(
     strokeWidth.right
   )} ${getCssValue(strokeWidth.bottom)} ${getCssValue(strokeWidth.left)};`;
-};
-
-export const getCornerRadius = (cornerRadius: CornerRadius) => {
-  if (typeof cornerRadius !== 'object')
-    return `border-radius: ${getCssValue(cornerRadius)};`;
-  return `border-radius: ${getCssValue(cornerRadius.topLeft)} ${getCssValue(
-    cornerRadius.topRight
-  )} ${getCssValue(cornerRadius.bottomRight)} ${getCssValue(
-    cornerRadius.bottomLeft
-  )};`;
 };
 
 export const setPosition = (
@@ -149,7 +138,7 @@ export const getStyles = <T extends AutoLayoutProps>({
     ${stroke || strokeWidth ? 'border-style: solid;' : ''}
     ${stroke ? `border-color: ${renderCSSProp(stroke)};` : ''}
     ${strokeWidth ? getStrokeWidth(strokeWidth) : ''}
-    ${cornerRadius ? getCornerRadius(cornerRadius) : ''}
+    ${cornerRadius ? `border-radius: ${renderCSSProp(cornerRadius)}` : ''}
     ${x !== undefined || y !== undefined
       ? setPosition(x, y, horizontalConstraint, verticalConstraint)
       : ''}

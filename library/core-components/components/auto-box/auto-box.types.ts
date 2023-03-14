@@ -39,7 +39,7 @@ export type AutoLayoutProps = {
   // strokeSide?: StrokeSide;
   // strokeCap?: StrokeCap;
 
-  cornerRadius?: CornerRadius;
+  cornerRadius?: CSSProp; // TODO: narrow this type
 
   // effects
   dropShadow?: DropShadow;
@@ -99,15 +99,6 @@ export type VerticalConstraint =
   | 'top and bottom'
   | 'center'
   | 'scale';
-
-export type CornerRadius =
-  | Size
-  | {
-      topLeft?: Size;
-      topRight?: Size;
-      bottomLeft?: Size;
-      bottomRight?: Size;
-    };
 
 type FullPadding = {
   top?: Size;

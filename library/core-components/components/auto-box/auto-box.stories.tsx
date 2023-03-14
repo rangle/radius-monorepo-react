@@ -186,7 +186,7 @@ AutoBox.args = {
   stroke: '--color-text-secondary-action-default',
   strokeWidth: { top: 1, right: 1, bottom: 1, left: 1 },
   strokeAlign: undefined,
-  cornerRadius: { topLeft: 0, topRight: 0, bottomRight: 0, bottomLeft: 0 },
+  cornerRadius: '--borderRadius-core-radius-none',
   opacity: undefined,
   clippedContent: false,
   isParent: false,
@@ -360,19 +360,19 @@ const BorderRadiusTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     <RadiusAutoBox
       width={50}
       height={50}
-      cornerRadius={5}
+      cornerRadius="--borderRadius-core-radius-xsm"
       stroke="--color-button-primary-surface-hover"
     />
     <RadiusAutoBox
       width={50}
       height={50}
-      cornerRadius="20px"
+      cornerRadius="--borderRadius-core-radius-md"
       stroke="--color-button-primary-surface-hover"
     />
     <RadiusAutoBox
       width={50}
       height={50}
-      cornerRadius="100%"
+      cornerRadius="--borderRadius-core-radius-max"
       stroke="--color-button-primary-surface-hover"
     />
   </RadiusAutoBox>
