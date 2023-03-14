@@ -101,7 +101,7 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
 
   // Utilities
 
-  type CSSExpression =
+  export type CSSExpression =
     | string
     | number
     | boolean
