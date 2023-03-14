@@ -9,7 +9,6 @@ import {
   AutolayoutSize,
   Size,
   Padding,
-  StrokeWidth,
   HorizontalConstraint,
   VerticalConstraint,
 } from './auto-box.types';
@@ -47,14 +46,6 @@ export const getPadding = (padding?: Padding) => {
     }
   }
   return '0px';
-};
-
-export const getStrokeWidth = (strokeWidth: StrokeWidth) => {
-  if (typeof strokeWidth !== 'object')
-    return `border-width: ${getCssValue(strokeWidth)};`;
-  return `border-width: ${getCssValue(strokeWidth.top)} ${getCssValue(
-    strokeWidth.right
-  )} ${getCssValue(strokeWidth.bottom)} ${getCssValue(strokeWidth.left)};`;
 };
 
 export const setPosition = (
@@ -137,7 +128,7 @@ export const getStyles = <T extends AutoLayoutProps>({
     ${fill ? `background-color: ${renderCSSProp(fill)};` : ''}
     ${stroke || strokeWidth ? 'border-style: solid;' : ''}
     ${stroke ? `border-color: ${renderCSSProp(stroke)};` : ''}
-    ${strokeWidth ? getStrokeWidth(strokeWidth) : ''}
+    ${strokeWidth ? `border-width: ${renderCSSProp(strokeWidth)};` : ''}
     ${cornerRadius ? `border-radius: ${renderCSSProp(cornerRadius)}` : ''}
     ${x !== undefined || y !== undefined
       ? setPosition(x, y, horizontalConstraint, verticalConstraint)

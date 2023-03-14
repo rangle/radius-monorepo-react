@@ -34,7 +34,7 @@ export type AutoLayoutProps = {
 
   fill?: CSSProp<'color'>;
   stroke?: CSSProp<'color'>;
-  strokeWidth?: StrokeWidth;
+  strokeWidth?: CSSProp; // TODO: narrow this type
   strokeAlign?: StrokeAlign;
   // strokeSide?: StrokeSide;
   // strokeCap?: StrokeCap;
@@ -72,9 +72,6 @@ export type BlendMode =
 export type DropShadow = CSSProp;
 export type InnerShadow = CSSProp;
 export type Blur = Size;
-
-type StrokeSides = 'top' | 'left' | 'bottom' | 'right';
-export type StrokeWidth = Size | { [key in StrokeSides]: Size };
 
 export type Size = number | `${number}px` | `${number}%` | `var(${string})`;
 export type AutolayoutSize = Size | 'fill-parent' | 'hug-contents';
