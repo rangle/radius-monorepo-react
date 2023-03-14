@@ -18,7 +18,7 @@ export type AutoLayoutProps = {
   isParent?: boolean;
   absolutePosition?: boolean;
   direction?: 'horizontal' | 'vertical';
-  space?: Size | 'auto'; //number is considered fixed auto is justify-content: space-between;
+  space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
   clippedContent?: boolean;
   alignment?: keyof typeof mapAlignments;
   width?: AutolayoutSize;

@@ -533,7 +533,7 @@ Effects.parameters = {
 const LayoutsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     width="fill-parent"
-    space={20}
+    space="--spacing-core-space-5x"
     alignment="center"
     isParent={true}
     style={{ color: 'var(--color-button-primary-surface-default)' }}

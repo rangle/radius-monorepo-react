@@ -121,7 +121,9 @@ export const getStyles = <T extends AutoLayoutProps>({
       : ''};
     ${space === 'auto'
       ? 'justify-content: space-between;'
-      : `gap: ${getSize(space || 10)};`};
+      : `gap: ${renderCSSProp(
+          space ?? { css: '10px' } // does this 10px space exist in figma?
+        )};`};
     ${clippedContent ? 'overflow: hidden;' : ''};
     ${padding ? `padding: ${getPadding(padding)}` : ''};
     ${opacity !== undefined ? `opacity: ${renderCSSProp(opacity)};` : ''}
