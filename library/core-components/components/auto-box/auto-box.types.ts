@@ -25,7 +25,7 @@ export type AutoLayoutProps = {
   height?: AutolayoutSize;
 
   padding?: CSSProp<'spacing'>;
-  opacity?: CSSProp; // TODO: narrow this type
+  opacity?: CSSProp<'opacity'>;
 
   x?: Size;
   y?: Size;
@@ -34,16 +34,16 @@ export type AutoLayoutProps = {
 
   fill?: CSSProp<'color'>;
   stroke?: CSSProp<'color'>;
-  strokeWidth?: CSSProp; // TODO: narrow this type
+  strokeWidth?: CSSProp<'borderWidth'>;
   strokeAlign?: StrokeAlign;
   // strokeSide?: StrokeSide;
   // strokeCap?: StrokeCap;
 
-  cornerRadius?: CSSProp; // TODO: narrow this type
+  cornerRadius?: CSSProp<'borderRadius'>;
 
   // effects
-  dropShadow?: DropShadow;
-  innerShadow?: InnerShadow;
+  dropShadow?: CSSProp<'boxShadow'>;
+  innerShadow?: CSSProp<'boxShadow'>;
   layerBlur?: Blur;
   backgroundBlur?: Blur;
 
@@ -67,10 +67,6 @@ export type BlendMode =
   | 'color'
   | 'luminosity';
 
-// effects
-// TODO: narrow these types (in generator)
-export type DropShadow = CSSProp;
-export type InnerShadow = CSSProp;
 export type Blur = Size;
 
 export type Size = number | `${number}px` | `${number}%` | `var(${string})`;

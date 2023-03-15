@@ -4,7 +4,7 @@
 */
 import type { TokenLayers } from '../lib/token-parser';
 
-const EXCLUDE_LAYERS = ['radius--core'];
+const EXCLUDE_LAYERS: string[] = [];
 
 // convert kebab case to CamelCase. convers a special case when there's two dashes
 const toCamelCase = (str: string) =>
