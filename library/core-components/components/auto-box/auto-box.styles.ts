@@ -8,7 +8,6 @@ import {
   mapStrokeAlign,
   AutolayoutSize,
   Size,
-  Padding,
   HorizontalConstraint,
   VerticalConstraint,
 } from './auto-box.types';
@@ -22,29 +21,6 @@ export const getSize = (size?: AutolayoutSize) => {
 export const getCssValue = (size?: Size) => {
   if (typeof size === 'number') return `${size}px`;
   if (size) return size;
-  return '0px';
-};
-
-export const getPadding = (padding?: Padding) => {
-  if (typeof padding !== 'object' && padding !== undefined)
-    return `${getSize(padding)}`;
-  if (typeof padding === 'object') {
-    if ('vertical' in padding || 'horizontal' in padding) {
-      return `${getCssValue(padding.vertical)} ${getCssValue(
-        padding.horizontal
-      )}`;
-    }
-    if (
-      'top' in padding ||
-      'right' in padding ||
-      'bottom' in padding ||
-      'left' in padding
-    ) {
-      return `${getCssValue(padding?.top)} ${getCssValue(
-        padding.right
-      )} ${getCssValue(padding.bottom)} ${getCssValue(padding.left)}`;
-    }
-  }
   return '0px';
 };
 
@@ -125,7 +101,7 @@ export const getStyles = <T extends AutoLayoutProps>({
           space ?? { css: '10px' } // does this 10px space exist in figma?
         )};`};
     ${clippedContent ? 'overflow: hidden;' : ''};
-    ${padding ? `padding: ${getPadding(padding)}` : ''};
+    ${padding ? `padding: ${renderCSSProp(padding)}` : ''};
     ${opacity !== undefined ? `opacity: ${renderCSSProp(opacity)};` : ''}
     ${fill ? `background-color: ${renderCSSProp(fill)};` : ''}
     ${stroke || strokeWidth ? 'border-style: solid;' : ''}

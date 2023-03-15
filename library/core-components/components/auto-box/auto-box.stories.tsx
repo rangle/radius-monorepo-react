@@ -181,7 +181,7 @@ AutoBox.args = {
   width: 'fill-parent',
   height: '200px',
   space: 'auto',
-  padding: { top: 20, right: 20, bottom: 20, left: 20 },
+  padding: '--spacing-core-space-5x',
   fill: '--color-button-primary-surface-default',
   stroke: '--color-text-secondary-action-default',
   strokeWidth: '--borderWidth-core-border-width-sm',
@@ -205,20 +205,20 @@ const paddingTemplate: ComponentStory<typeof RadiusAutoBox> = (
     <RadiusAutoBox
       width={100}
       height={25}
-      padding={{ left: '20px', top: '50px' }}
+      padding={{ css: '50px 0 0 20px' }}
       fill="--color-button-primary-surface-hover"
     />
 
     <RadiusAutoBox
       width={100}
       height={25}
-      padding={{ vertical: 30 }}
+      padding={{ css: '30px 0' }}
       fill="--color-button-primary-surface-hover"
     />
     <RadiusAutoBox
       width={100}
       height={25}
-      padding={50}
+      padding="--spacing-core-space-12x"
       fill="--color-button-primary-surface-hover"
     />
   </RadiusAutoBox>
@@ -235,7 +235,7 @@ const OpacityTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     direction="horizontal"
     alignment="top"
     width="fill-parent"
-    padding={10}
+    padding="--spacing-core-space-3x"
   >
     <RadiusAutoBox
       width={100}
@@ -285,25 +285,21 @@ const BackgroundColorTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     direction="horizontal"
     alignment="top"
     width="fill-parent"
-    padding={10}
+    padding="--spacing-core-space-3x"
   >
-    <RadiusAutoBox width={100} height={25} fill={{ r: 0, g: 0, b: 0, a: 1 }} />
+    <RadiusAutoBox width={100} height={25} fill="--color-background-inverse" />
+    <RadiusAutoBox width={100} height={25} fill="--color-background-accent" />
+    <RadiusAutoBox width={100} height={25} fill={{ css: 'red' }} />
+    <RadiusAutoBox width={100} height={25} fill={{ css: '#0000ff' }} />
     <RadiusAutoBox
       width={100}
       height={25}
-      fill={{ r: 255, g: 0, b: 0, a: 1 }}
-    />
-    <RadiusAutoBox width={100} height={25} fill={'#0f0'} />
-    <RadiusAutoBox width={100} height={25} fill={'#0000ff'} />
-    <RadiusAutoBox
-      width={100}
-      height={25}
-      fill={{ r: 255, g: 150, b: 150, a: 20 }}
+      fill={{ css: 'rgba(255, 150, 150, 20)' }}
     />
     <RadiusAutoBox
       width={100}
       height={25}
-      fill={{ r: 150, g: 255, b: 150, a: 0.2 }}
+      fill={{ css: 'rgba(150, 255, 150, 0.2)' }}
     />
   </RadiusAutoBox>
 );
@@ -319,7 +315,7 @@ const BorderTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     direction="horizontal"
     alignment="top"
     width="fill-parent"
-    padding={10}
+    padding="--spacing-core-space-3x"
   >
     <RadiusAutoBox
       width={50}
@@ -355,7 +351,7 @@ const BorderRadiusTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     direction={'horizontal'}
     alignment={'top'}
     width={'fill-parent'}
-    padding={10}
+    padding="--spacing-core-space-3x"
   >
     <RadiusAutoBox
       width={50}
@@ -390,14 +386,14 @@ const AbsoluteTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     width={'fill-parent'}
     strokeAlign={'inside'}
     stroke="--color-button-primary-surface-default"
-    padding={20}
+    padding="--spacing-core-space-5x"
     isParent={true}
     height={200}
   >
     <RadiusAutoBox
       fill="--color-button-primary-surface-default"
       style={{ color: 'var(--color-button-primary-label-default)' }}
-      padding={10}
+      padding="--spacing-core-space-3x"
       absolutePosition={true}
       x="0%"
       y="0%"
@@ -405,7 +401,7 @@ const AbsoluteTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
       Top Left
     </RadiusAutoBox>
     <RadiusAutoBox
-      padding={10}
+      padding="--spacing-core-space-3x"
       fill="--color-button-primary-surface-default"
       style={{ color: 'var(--color-button-primary-label-default)' }}
       horizontalConstraint="right"
@@ -429,33 +425,33 @@ const AsElementsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction="horizontal"
     width="fill-parent"
-    padding={10}
+    padding="--spacing-core-space-3x"
     style={{ color: 'var(--color-button-primary-label-default)' }}
   >
     <RadiusAutoBox
       as="h1"
-      padding={20}
+      padding="--spacing-core-space-5x"
       fill="--color-button-primary-surface-default"
     >
       As h1
     </RadiusAutoBox>
     <RadiusAutoBox
       as="main"
-      padding={20}
+      padding="--spacing-core-space-5x"
       fill="--color-button-primary-surface-default"
     >
       As main
     </RadiusAutoBox>
     <RadiusAutoBox
       as="ul"
-      padding={20}
+      padding="--spacing-core-space-5x"
       fill="--color-button-primary-surface-default"
     >
       As ul
     </RadiusAutoBox>
     <RadiusAutoBox
       as="p"
-      padding={20}
+      padding="--spacing-core-space-5x"
       fill="--color-button-primary-surface-default"
     >
       As paragraph
@@ -473,25 +469,25 @@ const EffectsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
   <RadiusAutoBox
     direction="horizontal"
     width="fill-parent"
-    padding={10}
+    padding="--spacing-core-space-3x"
     style={{ color: 'var(--color-button-primary-label-default)' }}
   >
     <RadiusAutoBox
-      padding={20}
+      padding="--spacing-core-space-5x"
       dropShadow="--boxShadow-core-elevation-100"
       fill="--color-button-primary-surface-default"
     >
       drop-shadow
     </RadiusAutoBox>
     <RadiusAutoBox
-      padding={20}
+      padding="--spacing-core-space-5x"
       innerShadow="--boxShadow-core-elevation-100"
       fill="--color-button-primary-surface-default"
     >
       inner-shadow
     </RadiusAutoBox>
     <RadiusAutoBox
-      padding={20}
+      padding="--spacing-core-space-5x"
       layerBlur={1}
       fill="--color-button-primary-surface-default"
     >
@@ -507,14 +503,14 @@ const EffectsTemplate: ComponentStory<typeof RadiusAutoBox> = () => (
     >
       <RadiusAutoBox
         style={{ fontWeight: 'bold' }}
-        padding={20}
+        padding="--spacing-core-space-5x"
         backgroundBlur={3}
       >
         background-blur
       </RadiusAutoBox>
     </RadiusAutoBox>
     <RadiusAutoBox
-      padding={20}
+      padding="--spacing-core-space-5x"
       layerBlur={1}
       dropShadow="--boxShadow-core-elevation-100"
       fill="--color-button-primary-surface-default"

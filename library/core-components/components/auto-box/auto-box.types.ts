@@ -24,7 +24,7 @@ export type AutoLayoutProps = {
   width?: AutolayoutSize;
   height?: AutolayoutSize;
 
-  padding?: Padding;
+  padding?: CSSProp<'spacing'>;
   opacity?: CSSProp; // TODO: narrow this type
 
   x?: Size;
@@ -96,15 +96,3 @@ export type VerticalConstraint =
   | 'top and bottom'
   | 'center'
   | 'scale';
-
-type FullPadding = {
-  top?: Size;
-  left?: Size;
-  bottom?: Size;
-  right?: Size;
-};
-type VerticalHorizontalPadding = {
-  vertical?: Size;
-  horizontal?: Size;
-};
-export type Padding = Size | FullPadding | VerticalHorizontalPadding;
