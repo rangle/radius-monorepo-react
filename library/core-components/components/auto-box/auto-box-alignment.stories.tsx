@@ -42,22 +42,22 @@ const ThreeBoxesTemplateAlignmentHor = (args: {
       alignment={args.parent.alignment}
       width="fill-parent"
       height={args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'}
-      padding={10}
+      padding="--spacing-core-space-3x"
     >
       <RadiusAutoBox
         width={args.children.width}
         height={20}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
       <RadiusAutoBox
         width={args.children.width}
         height={40}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
       <RadiusAutoBox
         width={args.children.width}
         height={60}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
     </RadiusAutoBox>
   </RadiusAutoBox>
@@ -126,22 +126,22 @@ const ThreeBoxesTemplateAlignmentVert = (args: {
       alignment={args.parent.alignment}
       width="fill-parent"
       height={args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'}
-      padding={10}
+      padding="--spacing-core-space-3x"
     >
       <RadiusAutoBox
         width="25%"
         height={10}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
       <RadiusAutoBox
         width="50%"
         height={10}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
       <RadiusAutoBox
         width="75%"
         height={10}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
     </RadiusAutoBox>
   </RadiusAutoBox>

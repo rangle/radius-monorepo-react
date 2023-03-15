@@ -42,22 +42,22 @@ const ThreeBoxesTemplate = (args: {
       alignment={args.parent.alignment}
       width="fill-parent"
       height={args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'}
-      padding={10}
+      padding="--spacing-core-space-3x"
     >
       <RadiusAutoBox
         width={args.children.width}
         height={args.children.height}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
       <RadiusAutoBox
         width={args.children.width}
         height={args.children.height}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
       <RadiusAutoBox
         width={args.children.width}
         height={args.children.height}
-        fill="var(--color-button-primary-surface-hover)"
+        fill="--color-button-primary-surface-hover"
       />
     </RadiusAutoBox>
   </RadiusAutoBox>
@@ -88,7 +88,7 @@ export const FixedWidthHorizontalDefinedSpacing = ThreeBoxesTemplate.bind({});
 FixedWidthHorizontalDefinedSpacing.args = {
   parent: {
     direction: 'horizontal',
-    space: '10px',
+    space: '--spacing-core-space-3x',
     alignment: 'top',
   },
   children: {
@@ -106,7 +106,7 @@ export const FillWidthHorizontal = ThreeBoxesTemplate.bind({});
 FillWidthHorizontal.args = {
   parent: {
     direction: 'horizontal',
-    space: 5,
+    space: '--spacing-core-space-base',
     alignment: 'top',
   },
   children: {
@@ -142,7 +142,7 @@ export const FixedHeightVerticalDefinedSpacing = ThreeBoxesTemplate.bind({});
 FixedHeightVerticalDefinedSpacing.args = {
   parent: {
     direction: 'vertical',
-    space: '20px',
+    space: '--spacing-core-space-5x',
     alignment: 'left',
   },
   children: {
@@ -160,7 +160,7 @@ export const FillHeightVertical = ThreeBoxesTemplate.bind({});
 FillHeightVertical.args = {
   parent: {
     direction: 'vertical',
-    space: '5px',
+    space: '--spacing-core-space-base',
     alignment: 'left',
   },
   children: {
