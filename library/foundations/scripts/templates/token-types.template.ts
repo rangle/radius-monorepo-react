@@ -80,7 +80,14 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
       )
       .join('\n')};
 
+  // Token Subjects
+
+  export type RadiusTokenSubjects = ${subjectNames
+    .map((subject) => `'${subject}'`)
+    .join(' | ')};
+
   // Tokens By Subject (--color-button, --typography-button, etc.)
+
     ${subjectNames
       .map(
         (subject) => `
@@ -90,6 +97,46 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
       Extract<RadiusTokens, \`--\${T}-${subject}-\${string}\`>;`
       )
       .join('\n')};
+
+
+  // Utilities
+
+  export type CSSExpression =
+    | string
+    | number
+    | boolean
+    | null
+    | undefined
+    | CSSExpression[]
+    | { [key: string]: CSSExpression };
+
+
+  /**
+   * Returns a list of tokens that match the given type T and subject S. If no subject is provided, all subjects are returned, and if no type is provided, all types are returned.
+   *
+   * There can be multiple subjects for a given type, so for example you may have \`--color-text-primary\` and \`--color-background-primary\`, or \`--typography-heading-sm\` and \`--typography-body-sm\`.
+   *
+   * @example
+   * CSSProp<'color', 'text'> // returns \`--color-text-\${string}\`
+   * CSSProp<'typography'>; // returns \`--typography-\${string}\`
+   */
+  export type CSSTokensByTypeAndSubject<
+    T extends RadiusTokenTypes = RadiusTokenTypes,
+    S extends RadiusTokenSubjects = RadiusTokenSubjects
+  > = Extract<RadiusTokens, \`--\${T}-\${S}-\${string}\`>;
+
+
+  /** Returns a list of tokens tokens as described by {@link CSSTokensByTypeAndSubject}, or a custom CSS expression provided inside an object with the css property.
+   * @example
+   * <Typography color="--color-primary-base-500" font="--typography-base-lg" />
+   * // vs:
+   * <Typography color={{ css: "red" }} font={{ css: "Arial" }} />
+   */
+  export type CSSProp<
+    T extends RadiusTokenTypes = RadiusTokenTypes,
+    S extends RadiusTokenSubjects = RadiusTokenSubjects
+  > = CSSTokensByTypeAndSubject<T, S> | { css: CSSExpression };
+
 
   /** Utility type that returns the provided token type(s) wrapped with the \`var()\` function. */
   export type Var<T> = T extends string ? \`var(\${T})\` : T;

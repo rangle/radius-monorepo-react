@@ -1,3 +1,5 @@
+import { CSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
+
 export const mapAlignments = {
   top: 'flex-start',
   center: 'center',
@@ -16,29 +18,34 @@ export type AutoLayoutProps = {
   isParent?: boolean;
   absolutePosition?: boolean;
   direction?: 'horizontal' | 'vertical';
-  space?: Size | 'auto'; //number is considered fixed auto is justify-content: space-between;
+  space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
   clippedContent?: boolean;
   alignment?: keyof typeof mapAlignments;
   width?: AutolayoutSize;
   height?: AutolayoutSize;
 
-  padding?: Padding;
-  opacity?: number;
+  padding?: CSSProp<'spacing'>;
+  opacity?: CSSProp; // TODO: narrow this type
 
   x?: Size;
   y?: Size;
   horizontalConstraint?: HorizontalConstraint;
   verticalConstraint?: VerticalConstraint;
 
-  fill?: Color;
-  stroke?: Color;
-  strokeWidth?: StrokeWidth;
+  fill?: CSSProp<'color'>;
+  stroke?: CSSProp<'color'>;
+  strokeWidth?: CSSProp; // TODO: narrow this type
   strokeAlign?: StrokeAlign;
   // strokeSide?: StrokeSide;
   // strokeCap?: StrokeCap;
 
-  cornerRadius?: CornerRadius;
-  effect?: Effect | Effect[];
+  cornerRadius?: CSSProp; // TODO: narrow this type
+
+  // effects
+  dropShadow?: DropShadow;
+  innerShadow?: InnerShadow;
+  layerBlur?: Blur;
+  backgroundBlur?: Blur;
 
   // blendMode?: BlendMode; // not needed
 };
@@ -60,39 +67,11 @@ export type BlendMode =
   | 'color'
   | 'luminosity';
 
-type Vector = readonly [x: Size, y: Size];
-type HexCode = `#${string}`;
-export type Color =
-  | {
-      r: number;
-      g: number;
-      b: number;
-      a: number;
-    }
-  | `var(${string})`
-  | HexCode;
-
-export type Effect = DropShadowEffect | InnerShadowEffect | BlurEffect;
-
-type DropShadowEffect = {
-  type: 'drop-shadow';
-  color: HexCode | Color;
-  offset: Vector;
-  blur: Size;
-};
-type InnerShadowEffect = {
-  type: 'inner-shadow';
-  color: HexCode | Color;
-  offset: Vector;
-  blur: Size;
-};
-type BlurEffect = {
-  type: 'layer-blur' | 'background-blur';
-  blur: Size;
-};
-
-type StrokeSides = 'top' | 'left' | 'bottom' | 'right';
-export type StrokeWidth = Size | { [key in StrokeSides]: Size };
+// effects
+// TODO: narrow these types (in generator)
+export type DropShadow = CSSProp;
+export type InnerShadow = CSSProp;
+export type Blur = Size;
 
 export type Size = number | `${number}px` | `${number}%` | `var(${string})`;
 export type AutolayoutSize = Size | 'fill-parent' | 'hug-contents';
@@ -117,24 +96,3 @@ export type VerticalConstraint =
   | 'top and bottom'
   | 'center'
   | 'scale';
-
-export type CornerRadius =
-  | Size
-  | {
-      topLeft?: Size;
-      topRight?: Size;
-      bottomLeft?: Size;
-      bottomRight?: Size;
-    };
-
-type FullPadding = {
-  top?: Size;
-  left?: Size;
-  bottom?: Size;
-  right?: Size;
-};
-type VerticalHorizontalPadding = {
-  vertical?: Size;
-  horizontal?: Size;
-};
-export type Padding = Size | FullPadding | VerticalHorizontalPadding;

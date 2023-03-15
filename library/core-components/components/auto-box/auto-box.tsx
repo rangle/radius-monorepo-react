@@ -7,13 +7,13 @@ import { elementAndProps } from '../../utils/polymorphic.utils';
 import { AutoLayoutProps } from './auto-box.types';
 import { getStyles } from './auto-box.styles';
 
-type RadiusButtonTag = React.ElementType;
+type RadiusAutoBoxTag = React.ElementType;
 export type RadiusAutoBoxProps = PolymorphicComponentPropWithRef<
   React.ElementType,
   AutoLayoutProps
 >;
 
-export const RadiusAutoBox = forwardRef<RadiusButtonTag, RadiusAutoBoxProps>(
+export const RadiusAutoBox = forwardRef<RadiusAutoBoxTag, RadiusAutoBoxProps>(
   (
     {
       children,

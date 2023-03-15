@@ -26,10 +26,10 @@ export default {
       defaultValue: 'left',
     },
     color: {
-      defaultValue: 'var(--color-text-on-base-primary)',
+      defaultValue: '--color-text-on-base-primary',
     },
     font: {
-      defaultValue: 'var(--typography-body-md)',
+      defaultValue: '--typography-body-md',
     },
   },
 } as ComponentMeta<typeof Typography>;
@@ -43,14 +43,14 @@ Default.args = {};
 
 export const Example: ComponentStory<typeof Typography> = () => (
   <div>
-    <Typography font="var(--typography-heading-xl)">Title</Typography>
-    <Typography color="var(--color-text-on-base-accent)">
+    <Typography font="--typography-heading-xl">Title</Typography>
+    <Typography color="--color-text-on-base-accent">
       Some body text. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
       Fuga, blanditiis.
     </Typography>
     <Typography
-      font="var(--typography-body-sm)"
-      color="var(--color-text-on-base-secondary)"
+      font="--typography-body-sm"
+      color="--color-text-on-base-secondary"
       align="right"
     >
       *Footnote
