@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { renderCSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
+import { renderCSSProp } from '../../utils/design-tokens.utils';
 import { TypographyExtendedProps } from './typography';
 
 export type StylesProps = Pick<

@@ -101,7 +101,7 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
 
   // Utilities
 
-  type CSSExpression =
+  export type CSSExpression =
     | string
     | number
     | boolean
@@ -109,9 +109,6 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
     | undefined
     | CSSExpression[]
     | { [key: string]: CSSExpression };
-
-  export const renderCSSProp = (prop: RadiusTokens | { css: CSSExpression }) =>
-    typeof prop === 'string' ? \`var(\${prop})\` : prop.css;
 
 
   /**

@@ -1,10 +1,12 @@
 {
   "name": "@rangle/radius-foundations",
   "version": "1.1.0",
+  "main": "src/index.ts",
   "description": "Foundation scripts and variables for Design Systems",
   "files": [
     "docs/",
-    "generated/"
+    "generated/",
+    "src/"
   ],
   "types": "generated/design-tokens.types.ts",
   "repository": {
