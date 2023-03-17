@@ -1,0 +1,52 @@
+{
+  "migrations": [
+    {
+      "cli": "nx",
+      "version": "15.8.2-beta.0",
+      "description": "Updates the nx wrapper.",
+      "implementation": "./src/migrations/update-15-8-2/update-nxw",
+      "package": "nx",
+      "name": "15.8.2-update-nx-wrapper"
+    },
+    {
+      "cli": "nx",
+      "version": "15.7.0-beta.0",
+      "description": "Add @storybook/addon-essentials to all project-level configs and attempt to remove root config.",
+      "factory": "./src/migrations/update-15-7-0/add-addon-essentials-to-all",
+      "package": "@nrwl/storybook",
+      "name": "update-15-7-0"
+    },
+    {
+      "version": "15.8.0-beta.0",
+      "cli": "nx",
+      "description": "Update jest configs to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-configs-jest-29",
+      "package": "@nrwl/jest",
+      "name": "update-configs-jest-29"
+    },
+    {
+      "version": "15.8.0-beta.0",
+      "cli": "nx",
+      "description": "Update jest test files to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-tests-jest-29",
+      "package": "@nrwl/jest",
+      "name": "update-tests-jest-29"
+    },
+    {
+      "cli": "nx",
+      "version": "15.6.3-beta.0",
+      "description": "Creates or updates webpack.config.js file with the new options for webpack.",
+      "factory": "./src/migrations/update-15-6-3/webpack-config-setup",
+      "package": "@nrwl/react",
+      "name": "react-webpack-config-setup"
+    },
+    {
+      "cli": "nx",
+      "version": "15.5.4-beta.0",
+      "description": "Update `@nrwl/web/babel` preset to `@nrwl/js/babel` for projects that have a .babelrc file.",
+      "factory": "./src/migrations/update-15-5-4/update-babel-preset",
+      "package": "@nrwl/web",
+      "name": "update-babel-preset"
+    }
+  ]
+}
