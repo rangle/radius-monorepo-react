@@ -58,30 +58,115 @@ export default {
     space: {
       description:
         'The space between the children, can be number (gap) or auto (justify-content: space-between;).',
-      options: ['auto', '10px', '10%'],
+      options: [
+        'auto',
+        '--spacing-core-space-none',
+        '--spacing-core-space-half',
+        '--spacing-core-space-base',
+        '--spacing-core-space-2x',
+        '--spacing-core-space-3x',
+        '--spacing-core-space-4x',
+        '--spacing-core-space-5x',
+        '--spacing-core-space-6x',
+        '--spacing-core-space-8x',
+        '--spacing-core-space-10x',
+        '--spacing-core-space-12x',
+        '--spacing-core-space-16x',
+        '--spacing-core-space-18x',
+        '--spacing-core-space-20x',
+        '--spacing-core-space-26x',
+        '--spacing-core-space-45x',
+        '--spacing-core-space-60x',
+      ],
       control: 'select',
-      table: { defaultValue: { summary: '10px' } },
+      // table: { defaultValue: { summary: '10px' } },
     },
     padding: {
       description:
         'The padding around the content, can be number, object of vertical and horizontal, or object of top, right, bottom, left.',
-      control: 'object',
+      options: [
+        '',
+        '--spacing-core-space-none',
+        '--spacing-core-space-half',
+        '--spacing-core-space-base',
+        '--spacing-core-space-2x',
+        '--spacing-core-space-3x',
+        '--spacing-core-space-4x',
+        '--spacing-core-space-5x',
+        '--spacing-core-space-6x',
+        '--spacing-core-space-8x',
+        '--spacing-core-space-10x',
+        '--spacing-core-space-12x',
+        '--spacing-core-space-16x',
+        '--spacing-core-space-18x',
+        '--spacing-core-space-20x',
+        '--spacing-core-space-26x',
+        '--spacing-core-space-45x',
+        '--spacing-core-space-60x',
+      ],
+      control: 'select',
     },
     fill: {
       description:
         'Background colour. Color can be assigned as hex or rgba(0-255,0-255,0-255,0-1).',
-      control: 'color',
-      presetColors: ['#cccccc', '#000000'],
+      options: [
+        '',
+        '--color-background-base',
+        '--color-background-subtle',
+        '--color-background-accent',
+        '--color-background-inverse',
+        '--color-interaction-primary-default',
+        '--color-interaction-primary-hover',
+        '--color-interaction-primary-active',
+        '--color-interaction-primary-focus',
+        '--color-interaction-primary-disabled',
+        '--color-interaction-secondary-default',
+        '--color-interaction-secondary-hover',
+        '--color-interaction-secondary-active',
+        '--color-interaction-secondary-focus',
+        '--color-interaction-secondary-disabled',
+        '--color-interaction-tertiary-default',
+        '--color-interaction-tertiary-hover',
+        '--color-interaction-tertiary-active',
+        '--color-interaction-tertiary-focus',
+        '--color-interaction-tertiary-disabled',
+      ],
+      control: 'select',
     },
     stroke: {
       description: 'Border colour. We are currently missing dashed borders.',
-      control: 'color',
-      presetColors: ['#cccccc', '#000000'],
+      options: [
+        '',
+        '--color-background-base',
+        '--color-background-subtle',
+        '--color-background-accent',
+        '--color-background-inverse',
+        '--color-interaction-primary-default',
+        '--color-interaction-primary-hover',
+        '--color-interaction-primary-active',
+        '--color-interaction-primary-focus',
+        '--color-interaction-primary-disabled',
+        '--color-interaction-secondary-default',
+        '--color-interaction-secondary-hover',
+        '--color-interaction-secondary-active',
+        '--color-interaction-secondary-focus',
+        '--color-interaction-secondary-disabled',
+        '--color-interaction-tertiary-default',
+        '--color-interaction-tertiary-hover',
+        '--color-interaction-tertiary-active',
+        '--color-interaction-tertiary-focus',
+        '--color-interaction-tertiary-disabled',
+      ],
+      control: 'select',
     },
     strokeWidth: {
       description:
         'Border width, can be number or object of top, right, bottom, left.',
-      control: 'object',
+      options: [
+        '--borderWidth-core-border-width-sm',
+        '--borderWidth-core-border-width-md',
+      ],
+      control: 'select',
     },
     strokeAlign: {
       description:
@@ -91,11 +176,14 @@ export default {
     },
     opacity: {
       description: 'Opacity of the component. A number between 0 and 1.',
-      control: {
-        type: 'number',
-        min: 0,
-        max: 1,
-      },
+      options: [
+        '',
+        '--opacity-core-opacity-lighter',
+        '--opacity-core-opacity-light',
+        '--opacity-core-opacity-dark',
+        '--opacity-core-opacity-darker',
+      ],
+      control: 'select',
     },
     clippedContent: {
       description:
@@ -139,14 +227,25 @@ export default {
       control: 'select',
       table: { defaultValue: { summary: 'top' } },
     },
-    effect: {
-      description:
-        'Effects that are applied to the autoBox. We have inner/drop shadow and blur. Multiple filters can be applied by passing an array of filters. We are missing functionality from figma.',
-    },
+    // effect: {
+    //   description:
+    //     'Effects that are applied to the autoBox. We have inner/drop shadow and blur. Multiple filters can be applied by passing an array of filters. We are missing functionality from figma.',
+    // },
     cornerRadius: {
       description:
         'Border radius, can be number or object of topLeft, topRight, bottomRight, bottomLeft.',
-      control: 'object',
+      options: [
+        '--borderRadius-core-radius-none',
+        '--borderRadius-core-radius-xxs',
+        '--borderRadius-core-radius-xsm',
+        '--borderRadius-core-radius-sm',
+        '--borderRadius-core-radius-md',
+        '--borderRadius-core-radius-lg',
+        '--borderRadius-core-radius-xlg',
+        '--borderRadius-core-radius-xxlg',
+        '--borderRadius-core-radius-max',
+      ],
+      control: 'select',
     },
   },
 } as ComponentMeta<typeof RadiusAutoBox>;
@@ -195,7 +294,7 @@ AutoBox.args = {
   y: undefined,
   horizontalConstraint: 'left',
   verticalConstraint: 'top',
-  effect: [{ type: 'drop-shadow', color: '#ccc', offset: [0, 0], blur: 5 }],
+  // effect: [{ type: 'drop-shadow', color: '#ccc', offset: [0, 0], blur: 5 }],
 };
 
 const paddingTemplate: ComponentStory<typeof RadiusAutoBox> = (
