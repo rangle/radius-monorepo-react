@@ -1,20 +1,19 @@
-import React, { ComponentProps } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import React from 'react';
+import { Meta, StoryObj, ArgTypes, Args } from '@storybook/react';
+// import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from './typography';
 
-export default {
+const meta: Meta<typeof Typography> = {
   component: Typography,
-  title: `Core Components/Typography`,
+  // title: `Core Components/Typography`,
   parameters: {
-    badges: [BADGE.EXPERIMENTAL],
+    // badges: [BADGE.EXPERIMENTAL],
     componentSubtitle:
       'This Polymorphic component provides an interface to apply styles and semantics to text content.',
   },
   argTypes: {
     children: {
       type: { name: 'string', required: true },
-      defaultValue: 'Hello World!',
       control: {
         type: 'text',
       },
@@ -79,34 +78,41 @@ export default {
       ],
       control: 'select',
     },
-  },
-} as ComponentMeta<typeof Typography>;
+  } as ArgTypes, // TODO: Fix argTypes inference (broken due to polymorphic implementation?). This assertion is a workaround.
+  args: {
+    children: 'Hello World!',
+    as: 'p',
+    align: 'left',
+    color: '--color-text-on-base-primary',
+    font: '--typography-body-md',
+  } as Args, // TODO: Fix args inference (broken due to polymorphic implementation?). This assertion is a workaround.
+};
 
-const Template: ComponentStory<typeof Typography> = (
-  args: ComponentProps<typeof Typography>
-) => <Typography {...args} />;
+export default meta;
+type Story = StoryObj<typeof Typography>;
 
-export const Default: typeof Template = Template.bind({});
-Default.args = {};
+export const Basic: Story = {};
 
-export const Example: ComponentStory<typeof Typography> = () => (
-  <div>
-    <Typography font="--typography-heading-xl">Title</Typography>
-    <Typography color="--color-text-on-base-accent">
-      Some body text. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-      Fuga, blanditiis.
-    </Typography>
-    <Typography
-      font="--typography-body-sm"
-      color="--color-text-on-base-secondary"
-      align="right"
-    >
-      *Footnote
-    </Typography>
-  </div>
-);
-Example.parameters = {
-  controls: {
-    disable: true,
+export const Example: Story = {
+  render: () => (
+    <div>
+      <Typography font="--typography-heading-xl">Title</Typography>
+      <Typography color="--color-text-on-base-accent">
+        Some body text. Lorem ipsum dolor sit, amet consectetur adipisicing
+        elit. Fuga, blanditiis.
+      </Typography>
+      <Typography
+        font="--typography-body-sm"
+        color="--color-text-on-base-secondary"
+        align="right"
+      >
+        *Footnote
+      </Typography>
+    </div>
+  ),
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
 };
