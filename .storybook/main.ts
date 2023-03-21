@@ -9,7 +9,7 @@ module.exports = {
   stories: [
     {
       directory: '../library',
-      // titlePrefix: 'Core Components',
+      titlePrefix: 'Core Components',
       files: '**/(typography|auto-box).stories.*',
     },
   ],

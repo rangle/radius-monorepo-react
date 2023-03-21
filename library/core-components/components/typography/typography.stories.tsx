@@ -5,7 +5,7 @@ import { Typography } from './typography';
 
 const meta: Meta<typeof Typography> = {
   component: Typography,
-  // title: `Core Components/Typography`,
+  title: 'Typography',
   parameters: {
     // badges: [BADGE.EXPERIMENTAL],
     componentSubtitle:
