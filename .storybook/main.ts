@@ -8,9 +8,9 @@ module.exports = {
   // ],
   stories: [
     {
-      directory: '../library',
+      directory: '../library/core-components/components',
       titlePrefix: 'Core Components',
-      files: '**/(typography|auto-box?(|-*)).stories.*',
+      files: '**/*.stories.*',
     },
   ],
   // Add assets, these files will be added to the root of the build (/fonts.css)

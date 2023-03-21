@@ -28,7 +28,7 @@ export const RadiusHero = ({
     <RadiusAutoBox className={cx(heroStyle, className)} {...rest}>
       <RadiusAutoBox
         width="fill-parent"
-        space={24}
+        space="--spacing-core-space-6x"
         alignment="center"
         className="content-container"
       >

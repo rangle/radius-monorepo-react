@@ -20,7 +20,7 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
       <RadiusAutoBox
         ref={ref}
         className={cx(container, className)}
-        space="var(--spacing-core-space-8x)"
+        space="--spacing-core-space-8x"
         width="fill-parent"
         alignment="center"
         {...rest}
@@ -33,7 +33,7 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
         <RadiusAutoBox
           className={textContainer}
           direction="vertical"
-          space="var(--spacing-core-space-8x)"
+          space="--spacing-core-space-8x"
         >
           {/* Title */}
           <Typography

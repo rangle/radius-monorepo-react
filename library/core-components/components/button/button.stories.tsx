@@ -1,13 +1,14 @@
-import React, { ComponentProps } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import React from 'react';
+import { Meta, StoryObj, Args } from '@storybook/react';
+
+// import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusButton, RadiusButtonVariant } from './button';
 import { RadiusButtonSize } from './button.styles';
 import { css } from '@emotion/css';
 
-export default {
+const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
-  title: `Core Components/Button`,
+  title: 'Button',
   parameters: {
     design: {
       type: 'figma',
@@ -19,56 +20,52 @@ export default {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    badges: [BADGE.EXPERIMENTAL],
+    // badges: [BADGE.EXPERIMENTAL],
 
     componentSubtitle:
       'This Polymorphic component will style your component to render as a button.',
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
-} as ComponentMeta<typeof RadiusButton>;
+};
 
-const Template: ComponentStory<typeof RadiusButton> = (
-  args: ComponentProps<typeof RadiusButton>
-) => <RadiusButton {...args}>Controlled Button</RadiusButton>;
+export default meta;
+type Story = StoryObj<typeof RadiusButton>;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default: Story = {
+  args: {
+    children: 'Controlled Button',
+  } as Args,
+};
 
-const ButtonStatesTemplate: ComponentStory<typeof RadiusButton> = (
-  args: ComponentProps<typeof RadiusButton>
-) => (
-  <div style={{ display: 'flex', gap: '1em', padding: '1em 0' }}>
-    <div>
-      <RadiusButton {...args}>Normal</RadiusButton>
+export const ButtonStates: Story = {
+  render: (args) => (
+    <div style={{ display: 'flex', gap: '1em', padding: '1em 0' }}>
+      <div>
+        <RadiusButton {...args}>Normal</RadiusButton>
+      </div>
+      <div className="pseudo-hover">
+        <RadiusButton {...args}>Hover</RadiusButton>
+      </div>
+      <div className="pseudo-focus">
+        <RadiusButton {...args}>Focus</RadiusButton>
+      </div>
+      <div className="pseudo-active">
+        <RadiusButton {...args}>Active</RadiusButton>
+      </div>
+      <div className="pseudo-hover pseudo-focus">
+        <RadiusButton {...args}>Hover Focus</RadiusButton>
+      </div>
+      <div className="pseudo-hover pseudo-active">
+        <RadiusButton {...args}>Hover Active</RadiusButton>
+      </div>
+      <div className="pseudo-focus pseudo-active">
+        <RadiusButton {...args}>Focus Active</RadiusButton>
+      </div>
+      <div className="pseudo-hover pseudo-focus pseudo-active">
+        <RadiusButton {...args}>Hover Focus Active</RadiusButton>
+      </div>
     </div>
-    <div className="pseudo-hover">
-      <RadiusButton {...args}>Hover</RadiusButton>
-    </div>
-    <div className="pseudo-focus">
-      <RadiusButton {...args}>Focus</RadiusButton>
-    </div>
-    <div className="pseudo-active">
-      <RadiusButton {...args}>Active</RadiusButton>
-    </div>
-    <div className="pseudo-hover pseudo-focus">
-      <RadiusButton {...args}>Hover Focus</RadiusButton>
-    </div>
-    <div className="pseudo-hover pseudo-active">
-      <RadiusButton {...args}>Hover Active</RadiusButton>
-    </div>
-    <div className="pseudo-focus pseudo-active">
-      <RadiusButton {...args}>Focus Active</RadiusButton>
-    </div>
-    <div className="pseudo-hover pseudo-focus pseudo-active">
-      <RadiusButton {...args}>Hover Focus Active</RadiusButton>
-    </div>
-  </div>
-);
-
-export const ButtonStates = ButtonStatesTemplate.bind({});
-ButtonStates.args = {};
-ButtonStates.props = {
-  name: 'Button states',
+  ),
 };
 
 type ButtonVariations = {
@@ -117,9 +114,7 @@ const tableStyle = css`
   }
 `;
 
-const ButtonVariantsTemplateAutomated = (
-  options: ButtonVariations
-): ComponentStory<typeof RadiusButton> => {
+const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
   const { types, sizes, states } = options;
   const typeAndSize = types.flatMap((type) =>
     sizes.map((size) => [type, size] as const)
@@ -148,7 +143,3 @@ const ButtonVariantsTemplateAutomated = (
 export const ButtonVariants = ButtonVariantsTemplateAutomated(
   buttonVariations
 ).bind({});
-ButtonVariants.args = {};
-ButtonVariants.props = {
-  name: 'Button Variations',
-};
