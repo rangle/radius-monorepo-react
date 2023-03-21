@@ -35,11 +35,10 @@ import {
     Typeset,
   } from '@storybook/addon-docs';
   import { PropsTable } from '@storybook/components';
-  import { BADGE } from '@geometricpanda/storybook-addon-badges';
+  // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 <Meta
-  title="About/Layers and Tokens"
-  parameters={{ badges: [BADGE.BETA] }}
+  title="Token Documentation"
   decorators={[
     (Story) => (
       <div style={{ marginBottom: '4rem', marginTop: '1rem' }}>
@@ -197,10 +196,11 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
     })
     .join('');
 
+  // TODO: fix broken `radius--components` typography variables, they are not being generated correctly and are breaking the entire story. As a workaround, they are being temporarily excluded from generation.
   return `
   # ${name}
     ${colorVariables}
-    ${typographyVariables}
+    ${name !== 'radius--components' ? typographyVariables : ''}
     ${restVariables}
     `;
 };

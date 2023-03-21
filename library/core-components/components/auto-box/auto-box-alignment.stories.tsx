@@ -1,12 +1,12 @@
 import React, { ComponentProps } from 'react';
-import { ComponentMeta } from '@storybook/react';
-import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { Meta } from '@storybook/react';
+// import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './auto-box';
 import { Stories, Title, Description } from '@storybook/addon-docs';
 
-export default {
+const meta: Meta<typeof RadiusAutoBox> = {
   component: RadiusAutoBox,
-  title: `Core Components/AutoBox/Alignment`,
+  title: 'Auto Box/Alignment',
   parameters: {
     design: {
       type: 'figma',
@@ -18,7 +18,7 @@ export default {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    badges: [BADGE.EXPERIMENTAL],
+    // badges: [BADGE.EXPERIMENTAL],
     docs: {
       page: () => (
         <>
@@ -29,170 +29,196 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof RadiusAutoBox>;
+};
 
-const ThreeBoxesTemplateAlignmentHor = (args: {
-  parent: ComponentProps<typeof RadiusAutoBox>;
-  children: ComponentProps<typeof RadiusAutoBox>;
-}) => (
-  <RadiusAutoBox direction="vertical">
-    <RadiusAutoBox
-      direction={args.parent.direction}
-      space={args.parent.space}
-      alignment={args.parent.alignment}
-      width="fill-parent"
-      height={args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'}
-      padding="--spacing-core-space-3x"
-    >
+export default meta;
+// type Story = StoryObj<typeof RadiusAutoBox>;
+// TODO: apply `Story` type to all stories - causes issues due to parent and children args not existing in original component
+
+const ThreeBoxesTemplateAlignmentHor = {
+  render: (args: {
+    parent: ComponentProps<typeof RadiusAutoBox>;
+    children: ComponentProps<typeof RadiusAutoBox>;
+  }) => (
+    <RadiusAutoBox direction="vertical">
       <RadiusAutoBox
-        width={args.children.width}
-        height={20}
-        fill="--color-button-primary-surface-hover"
-      />
-      <RadiusAutoBox
-        width={args.children.width}
-        height={40}
-        fill="--color-button-primary-surface-hover"
-      />
-      <RadiusAutoBox
-        width={args.children.width}
-        height={60}
-        fill="--color-button-primary-surface-hover"
-      />
+        direction={args.parent.direction}
+        space={args.parent.space}
+        alignment={args.parent.alignment}
+        width="fill-parent"
+        height={
+          args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
+        }
+        padding="--spacing-core-space-3x"
+      >
+        <RadiusAutoBox
+          width={args.children.width}
+          height={20}
+          fill="--color-button-primary-surface-hover"
+        />
+        <RadiusAutoBox
+          width={args.children.width}
+          height={40}
+          fill="--color-button-primary-surface-hover"
+        />
+        <RadiusAutoBox
+          width={args.children.width}
+          height={60}
+          fill="--color-button-primary-surface-hover"
+        />
+      </RadiusAutoBox>
     </RadiusAutoBox>
-  </RadiusAutoBox>
-);
-
-export const AlignmentTop = ThreeBoxesTemplateAlignmentHor.bind({});
-AlignmentTop.args = {
-  parent: {
-    direction: 'horizontal',
-    space: 'auto',
-    alignment: 'top',
-  },
-  children: {
-    width: 100,
-  },
-};
-AlignmentTop.parameters = {
-  controls: {
-    disable: true,
-  },
+  ),
 };
 
-export const AlignmentCenter = ThreeBoxesTemplateAlignmentHor.bind({});
-AlignmentCenter.args = {
-  parent: {
-    direction: 'horizontal',
-    space: 'auto',
-    alignment: 'center',
+export const AlignmentTop = {
+  ...ThreeBoxesTemplateAlignmentHor,
+  args: {
+    parent: {
+      direction: 'horizontal',
+      space: 'auto',
+      alignment: 'top',
+    },
+    children: {
+      width: 100,
+    },
   },
-  children: {
-    width: 100,
-  },
-};
-AlignmentCenter.parameters = {
-  controls: {
-    disable: true,
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
 };
 
-export const AlignmentBottom = ThreeBoxesTemplateAlignmentHor.bind({});
-AlignmentBottom.args = {
-  parent: {
-    direction: 'horizontal',
-    space: 'auto',
-    alignment: 'bottom',
+export const AlignmentCenter = {
+  ...ThreeBoxesTemplateAlignmentHor,
+  args: {
+    parent: {
+      direction: 'horizontal',
+      space: 'auto',
+      alignment: 'center',
+    },
+    children: {
+      width: 100,
+    },
   },
-  children: {
-    width: 100,
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
-};
-AlignmentBottom.parameters = {
-  controls: {
-    disable: true,
-  },
-  sidebar: { disabled: true },
 };
 
-const ThreeBoxesTemplateAlignmentVert = (args: {
-  parent: ComponentProps<typeof RadiusAutoBox>;
-  children: ComponentProps<typeof RadiusAutoBox>;
-}) => (
-  <RadiusAutoBox direction="vertical">
-    <RadiusAutoBox
-      direction={args.parent.direction}
-      space={args.parent.space}
-      alignment={args.parent.alignment}
-      width="fill-parent"
-      height={args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'}
-      padding="--spacing-core-space-3x"
-    >
+export const AlignmentBottom = {
+  ...ThreeBoxesTemplateAlignmentHor,
+  args: {
+    parent: {
+      direction: 'horizontal',
+      space: 'auto',
+      alignment: 'bottom',
+    },
+    children: {
+      width: 100,
+    },
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+    sidebar: { disabled: true },
+  },
+};
+
+const ThreeBoxesTemplateAlignmentVert = {
+  render: (args: {
+    parent: ComponentProps<typeof RadiusAutoBox>;
+    children: ComponentProps<typeof RadiusAutoBox>;
+  }) => (
+    <RadiusAutoBox direction="vertical">
       <RadiusAutoBox
-        width="25%"
-        height={10}
-        fill="--color-button-primary-surface-hover"
-      />
-      <RadiusAutoBox
-        width="50%"
-        height={10}
-        fill="--color-button-primary-surface-hover"
-      />
-      <RadiusAutoBox
-        width="75%"
-        height={10}
-        fill="--color-button-primary-surface-hover"
-      />
+        direction={args.parent.direction}
+        space={args.parent.space}
+        alignment={args.parent.alignment}
+        width="fill-parent"
+        height={
+          args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
+        }
+        padding="--spacing-core-space-3x"
+      >
+        <RadiusAutoBox
+          width="25%"
+          height={10}
+          fill="--color-button-primary-surface-hover"
+        />
+        <RadiusAutoBox
+          width="50%"
+          height={10}
+          fill="--color-button-primary-surface-hover"
+        />
+        <RadiusAutoBox
+          width="75%"
+          height={10}
+          fill="--color-button-primary-surface-hover"
+        />
+      </RadiusAutoBox>
     </RadiusAutoBox>
-  </RadiusAutoBox>
-);
-
-export const AlignmentLeft = ThreeBoxesTemplateAlignmentVert.bind({});
-AlignmentLeft.args = {
-  parent: {
-    direction: 'vertical',
-    space: 'auto',
-    alignment: 'left',
-  },
-};
-AlignmentLeft.parameters = {
-  controls: {
-    disable: true,
-  },
-  sidebar: { disabled: true },
+  ),
 };
 
-export const AlignmentCenterVertically = ThreeBoxesTemplateAlignmentVert.bind(
-  {}
-);
-AlignmentCenterVertically.args = {
-  parent: {
-    direction: 'vertical',
-    space: 'auto',
-    alignment: 'center',
+export const AlignmentLeft = {
+  ...ThreeBoxesTemplateAlignmentVert,
+  args: {
+    parent: {
+      direction: 'vertical',
+      space: 'auto',
+      alignment: 'left',
+    },
+    children: {
+      width: 100,
+    },
   },
-};
-AlignmentCenterVertically.parameters = {
-  controls: {
-    disable: true,
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
-  sidebar: { disabled: true },
 };
 
-export const AlignmentRight = ThreeBoxesTemplateAlignmentVert.bind({});
-AlignmentRight.args = {
-  parent: {
-    direction: 'vertical',
-    space: 'auto',
-    alignment: 'right',
+export const AlignmentCenterVertically = {
+  ...ThreeBoxesTemplateAlignmentVert,
+  args: {
+    parent: {
+      direction: 'vertical',
+      space: 'auto',
+      alignment: 'center',
+    },
+    children: {
+      width: 100,
+    },
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
 };
-AlignmentRight.parameters = {
-  name: 'Right',
-  Title: 'Right',
-  namespace: 'Right',
-  controls: {
-    disable: true,
+
+export const AlignmentRight = {
+  ...ThreeBoxesTemplateAlignmentVert,
+  args: {
+    parent: {
+      direction: 'vertical',
+      space: 'auto',
+      alignment: 'right',
+    },
   },
-  sidebar: { disabled: true },
+  parameters: {
+    name: 'Right',
+    Title: 'Right',
+    namespace: 'Right',
+    controls: {
+      disable: true,
+    },
+    sidebar: { disabled: true },
+  },
 };
