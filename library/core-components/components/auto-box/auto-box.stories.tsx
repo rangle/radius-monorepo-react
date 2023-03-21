@@ -7,7 +7,7 @@ import { RadiusButton } from '../button/button';
 const meta: Meta<typeof RadiusAutoBox> = {
   component: RadiusAutoBox,
   // title: `Core Components/AutoBox`,
-  title: 'AutoBox',
+  title: 'Auto Box',
   parameters: {
     design: {
       type: 'figma',

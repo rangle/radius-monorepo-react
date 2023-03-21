@@ -10,7 +10,7 @@ module.exports = {
     {
       directory: '../library',
       titlePrefix: 'Core Components',
-      files: '**/(typography|auto-box).stories.*',
+      files: '**/(typography|auto-box?(|-*)).stories.*',
     },
   ],
   // Add assets, these files will be added to the root of the build (/fonts.css)

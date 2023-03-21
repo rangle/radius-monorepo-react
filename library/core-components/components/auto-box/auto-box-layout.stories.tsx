@@ -1,12 +1,13 @@
 import React, { ComponentProps } from 'react';
-import { ComponentMeta } from '@storybook/react';
-import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { Meta } from '@storybook/react';
+
+// import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './auto-box';
 import { Title, Stories, Description } from '@storybook/addon-docs';
 
-export default {
+const meta: Meta<typeof RadiusAutoBox> = {
   component: RadiusAutoBox,
-  title: `Core Components/AutoBox/Layout`,
+  title: 'Auto Box/Layout',
   parameters: {
     design: {
       type: 'figma',
@@ -18,7 +19,7 @@ export default {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    badges: [BADGE.EXPERIMENTAL],
+    // badges: [BADGE.EXPERIMENTAL],
     docs: {
       page: () => (
         <>
@@ -29,147 +30,167 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof RadiusAutoBox>;
+};
 
-const ThreeBoxesTemplate = (args: {
-  parent: ComponentProps<typeof RadiusAutoBox>;
-  children: ComponentProps<typeof RadiusAutoBox>;
-}) => (
-  <RadiusAutoBox direction="vertical">
-    <RadiusAutoBox
-      direction={args.parent.direction}
-      space={args.parent.space}
-      alignment={args.parent.alignment}
-      width="fill-parent"
-      height={args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'}
-      padding="--spacing-core-space-3x"
-    >
+export default meta;
+// type Story = StoryObj<typeof RadiusAutoBox>;
+// TODO: apply `Story` type to all stories - causes issues due to parent and children args not existing in original component
+
+const ThreeBoxesTemplate = {
+  render: (args: {
+    parent: ComponentProps<typeof RadiusAutoBox>;
+    children: ComponentProps<typeof RadiusAutoBox>;
+  }) => (
+    <RadiusAutoBox direction="vertical">
       <RadiusAutoBox
-        width={args.children.width}
-        height={args.children.height}
-        fill="--color-button-primary-surface-hover"
-      />
-      <RadiusAutoBox
-        width={args.children.width}
-        height={args.children.height}
-        fill="--color-button-primary-surface-hover"
-      />
-      <RadiusAutoBox
-        width={args.children.width}
-        height={args.children.height}
-        fill="--color-button-primary-surface-hover"
-      />
+        direction={args.parent.direction}
+        space={args.parent.space}
+        alignment={args.parent.alignment}
+        width="fill-parent"
+        height={
+          args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
+        }
+        padding="--spacing-core-space-3x"
+      >
+        <RadiusAutoBox
+          width={args.children.width}
+          height={args.children.height}
+          fill="--color-button-primary-surface-hover"
+        />
+        <RadiusAutoBox
+          width={args.children.width}
+          height={args.children.height}
+          fill="--color-button-primary-surface-hover"
+        />
+        <RadiusAutoBox
+          width={args.children.width}
+          height={args.children.height}
+          fill="--color-button-primary-surface-hover"
+        />
+      </RadiusAutoBox>
     </RadiusAutoBox>
-  </RadiusAutoBox>
-);
-
-export const FixedWidthHorizontal = ThreeBoxesTemplate.bind({});
-FixedWidthHorizontal.args = {
-  parent: {
-    direction: 'horizontal',
-    space: 'auto',
-    alignment: 'top',
-  },
-  children: {
-    width: 100,
-    height: 25,
-  },
-};
-FixedWidthHorizontal.parameters = {
-  controls: {
-    disable: true,
-  },
-  table: {
-    disable: true,
-  },
+  ),
 };
 
-export const FixedWidthHorizontalDefinedSpacing = ThreeBoxesTemplate.bind({});
-FixedWidthHorizontalDefinedSpacing.args = {
-  parent: {
-    direction: 'horizontal',
-    space: '--spacing-core-space-3x',
-    alignment: 'top',
+export const FixedWidthHorizontal = {
+  ...ThreeBoxesTemplate,
+  args: {
+    parent: {
+      direction: 'horizontal',
+      space: 'auto',
+      alignment: 'top',
+    },
+    children: {
+      width: 100,
+      height: 25,
+    },
   },
-  children: {
-    width: 100,
-    height: 25,
-  },
-};
-FixedWidthHorizontalDefinedSpacing.parameters = {
-  controls: {
-    disable: true,
+  parameters: {
+    controls: {
+      disable: true,
+    },
+    table: {
+      disable: true,
+    },
   },
 };
 
-export const FillWidthHorizontal = ThreeBoxesTemplate.bind({});
-FillWidthHorizontal.args = {
-  parent: {
-    direction: 'horizontal',
-    space: '--spacing-core-space-base',
-    alignment: 'top',
+export const FixedWidthHorizontalDefinedSpacing = {
+  ...ThreeBoxesTemplate,
+  args: {
+    parent: {
+      direction: 'horizontal',
+      space: '--spacing-core-space-3x',
+      alignment: 'top',
+    },
+    children: {
+      width: 100,
+      height: 25,
+    },
   },
-  children: {
-    width: 'fill-parent',
-    height: 25,
-  },
-};
-FillWidthHorizontal.parameters = {
-  controls: {
-    disable: true,
-  },
-};
-
-export const FixedHeightVertical = ThreeBoxesTemplate.bind({});
-FixedHeightVertical.args = {
-  parent: {
-    direction: 'vertical',
-    space: 'auto',
-    alignment: 'left',
-  },
-  children: {
-    width: '100%',
-    height: 10,
-  },
-};
-FixedHeightVertical.parameters = {
-  controls: {
-    disable: true,
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
 };
 
-export const FixedHeightVerticalDefinedSpacing = ThreeBoxesTemplate.bind({});
-FixedHeightVerticalDefinedSpacing.args = {
-  parent: {
-    direction: 'vertical',
-    space: '--spacing-core-space-5x',
-    alignment: 'left',
+export const FillWidthHorizontal = {
+  ...ThreeBoxesTemplate,
+  args: {
+    parent: {
+      direction: 'horizontal',
+      space: '--spacing-core-space-base',
+      alignment: 'top',
+    },
+    children: {
+      width: 'fill-parent',
+      height: 25,
+    },
   },
-  children: {
-    width: '100%',
-    height: 10,
-  },
-};
-FixedHeightVerticalDefinedSpacing.parameters = {
-  controls: {
-    disable: true,
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
 };
 
-export const FillHeightVertical = ThreeBoxesTemplate.bind({});
-FillHeightVertical.args = {
-  parent: {
-    direction: 'vertical',
-    space: '--spacing-core-space-base',
-    alignment: 'left',
+export const FixedHeightVertical = {
+  ...ThreeBoxesTemplate,
+  args: {
+    parent: {
+      direction: 'vertical',
+      space: 'auto',
+      alignment: 'left',
+    },
+    children: {
+      width: '100%',
+      height: 10,
+    },
   },
-  children: {
-    width: '100%',
-    height: 'fill-parent',
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
 };
-FillHeightVertical.parameters = {
-  controls: {
-    disable: true,
+
+export const FixedHeightVerticalDefinedSpacing = {
+  ...ThreeBoxesTemplate,
+  args: {
+    parent: {
+      direction: 'vertical',
+      space: '--spacing-core-space-5x',
+      alignment: 'left',
+    },
+    children: {
+      width: '100%',
+      height: 10,
+    },
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+};
+
+export const FillHeightVertical = {
+  ...ThreeBoxesTemplate,
+  args: {
+    parent: {
+      direction: 'vertical',
+      space: '--spacing-core-space-base',
+      alignment: 'left',
+    },
+    children: {
+      width: '100%',
+      height: 'fill-parent',
+    },
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
 };
