@@ -2,12 +2,15 @@ import { Config } from '@storybook/addons';
 const versions = process.env.VERSION?.split('.') || ['0', '0', '0'];
 module.exports = {
   // the location of where storybook should look for it's stories
-  // stories: ['../library/**/*.mdx', '../library/**/*.stories.@(js|jsx|ts|tsx)'],
+  // stories: [
+  //   // '../library/**/*.mdx',
+  //   '../library/**/*.stories.@(js|jsx|ts|tsx)',
+  // ],
   stories: [
     {
       directory: '../library',
       // titlePrefix: 'Core Components',
-      files: '**/typography.stories.*',
+      files: '**/(typography|auto-box).stories.*',
     },
   ],
   // Add assets, these files will be added to the root of the build (/fonts.css)
