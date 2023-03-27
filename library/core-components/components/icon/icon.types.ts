@@ -7,16 +7,14 @@ export const ICON_SIZES = {
 } as const;
 
 type ComponentProps = {
-  /** Mutually exclusive with `path` prop */
+  /** The React SVG component to render. Mutually exclusive with `path` prop */
   component: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  /** Mutually exclusive with `component` prop */
+  /** The path string to render as an SVG. Mutually exclusive with `component` prop */
   path?: never;
 };
 
 type PathProps = {
-  /** Mutually exclusive with `path` prop */
   component?: never;
-  /** Mutually exclusive with `component` prop */
   path: string;
 };
 
@@ -37,9 +35,9 @@ type ExclusiveProps = ComponentProps | PathProps;
 
 /** Custom props extending the functionality of the base svg component */
 type RadiusIconExtendedProps = {
-  /** Icon size */
+  /** Icon size. Will automatically set the `width` and `height` of the SVG */
   size?: keyof typeof ICON_SIZES;
-  /** Icon color */
+  /** Icon fill color. Defaults to `currentColor` so that the icon will inherit the color of the parent element */
   fill?: CSSProp<'color'>;
   /** Custom class name to override styling if needed */
   className?: string;

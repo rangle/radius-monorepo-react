@@ -70,6 +70,7 @@ const meta: Meta<typeof RadiusIcon> = {
         '--color-interaction-tertiary-focus',
         '--color-interaction-tertiary-disabled',
       ],
+      defaultValue: 'currentColor',
     },
   } as ArgTypes,
   args: {

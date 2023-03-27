@@ -12,8 +12,7 @@ import { withIcon } from './utils';
  * It can be used in two ways:
  *
  * 1. by passing an SVG component using the `component` prop, like those generated in
- * `'@rangle/radius-foundations/generated/icons'`. Note: the component must not have a `fill` attribute on any of its
- * children or it will override the `fill` prop of this component.
+ * `'@rangle/radius-foundations/generated/icons'`.
  * 2. by passing the path of the icon as a string using the `path` prop. This is useful when you want
  * to use an icon that is not in the library.
  *
