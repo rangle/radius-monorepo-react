@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { RadiusIcon, withIcon } from '.';
+import { RadiusIcon } from '.';
 import * as icons from '@rangle/radius-foundations/generated/icons';
 
 const meta: Meta<typeof RadiusIcon> = {
@@ -94,10 +94,8 @@ export const AllIcons: Story = {
 
 const customSVGPath = 'M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z';
 
-const CustomSVGComponent = withIcon(customSVGPath);
-
 export const CustomSVGPath: Story = {
   args: {
-    component: CustomSVGComponent,
+    path: customSVGPath,
   },
 };
