@@ -83,10 +83,35 @@ type Story = StoryObj<typeof RadiusIcon>;
 
 export const AllIcons: Story = {
   render: (args) => (
-    <div>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, 85px)',
+        gap: '1rem',
+        margin: '1rem',
+      }}
+    >
       {icons &&
-        Object.values(icons).map((icon) => (
-          <RadiusIcon component={icon} {...args} />
+        Object.entries(icons).map(([iconName, icon]) => (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '85px',
+            }}
+          >
+            <RadiusIcon component={icon} {...args} />
+            <span
+              style={{
+                font: '400 0.75rem/150% Riforma LL',
+              }}
+            >
+              {iconName}
+            </span>
+          </div>
         ))}
     </div>
   ),
