@@ -21,7 +21,8 @@
     "tokens:generate": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts css > generated/theme.css",
     "tokens:docs": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts storybook > generated/04-token-documentation.mdx && prettier --version && prettier --config ../../.prettierrc --parser mdx --write generated/04-token-documentation.mdx",
     "tokens:types": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts types > generated/design-tokens.types.ts && prettier --config ../../.prettierrc --write generated/design-tokens.types.ts",
-    "build": "yarn tokens:update"
+    "build-icons": "rm -rf generated/icons && svgr --icon --typescript --filename-case kebab --out-dir generated/icons --svgo-config ./svgo.config.js src/assets/icons/svg",
+    "build": "yarn tokens:update && yarn build-icons"
   },
   "jest": {
     "transform": {
@@ -29,6 +30,7 @@
     }
   },
   "devDependencies": {
+    "@svgr/cli": "^6.5.1",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
     "ts-node": "10.9.1"
