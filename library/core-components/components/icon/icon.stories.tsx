@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj, ArgTypes, Args } from '@storybook/react';
 
 import { RadiusIcon } from '.';
 import * as icons from '@rangle/radius-foundations/generated/icons';
@@ -71,11 +71,11 @@ const meta: Meta<typeof RadiusIcon> = {
         '--color-interaction-tertiary-disabled',
       ],
     },
-  },
+  } as ArgTypes,
   args: {
     fill: '--color-text-on-base-primary',
     size: 'medium',
-  },
+  } as Args,
 };
 
 export default meta;
@@ -97,5 +97,5 @@ const customSVGPath = 'M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z';
 export const CustomSVGPath: Story = {
   args: {
     path: customSVGPath,
-  },
+  } as Args,
 };
