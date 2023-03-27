@@ -1,15 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
-import { RadiusIcon } from '.';
+import { RadiusIcon, withIcon } from '.';
 import * as icons from '@rangle/radius-foundations/generated/icons';
-// import AccountCircle from '@rangle/radius-foundations/src/assets/icons/svg/account-circle.svg';
-
-// const componentOptions = Object.keys(icons).reduce((options, componentName) => {
-//   options[componentName] = componentName;
-//   return options;
-// }, {});
 
 const meta: Meta<typeof RadiusIcon> = {
   component: RadiusIcon,
@@ -88,17 +81,6 @@ const meta: Meta<typeof RadiusIcon> = {
 export default meta;
 type Story = StoryObj<typeof RadiusIcon>;
 
-// const ComponentWrapper = ({ component }) => {
-//   return <RadiusIcon component={component} />;
-// };
-
-// export const Default: Story = {
-//   render: (args) => <ComponentWrapper {...args} />,
-//   args: {
-//     component: icons.AccountCircle,
-//   },
-// };
-
 export const AllIcons: Story = {
   render: (args) => (
     <div>
@@ -110,14 +92,12 @@ export const AllIcons: Story = {
   ),
 };
 
-// console.log(AccountCircle);
-// // const CustomRadiusIcon = withRadiusIcon(AccountCircle);
+const customSVGPath = 'M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z';
 
-// // const CustomIcon = () => <>{AccountCircle}</>;
+const CustomSVGComponent = withIcon(customSVGPath);
 
-// export const CustomIcon: Story = {
-//   render: () => <img scr={AccountCircle} />,
-//   // args: {
-//   //   children: AccountCircle,
-//   // },
-// };
+export const CustomSVGPath: Story = {
+  args: {
+    component: CustomSVGComponent,
+  },
+};

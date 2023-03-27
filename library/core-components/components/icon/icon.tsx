@@ -18,8 +18,6 @@ export interface RadiusIconProps
   className?: string;
 }
 
-// TODO: utility to convert svg to react component? For 3rd party icons. Maybe using svgr?
-
 export const RadiusIcon = ({
   component: IconComponent,
   size = 'medium',
