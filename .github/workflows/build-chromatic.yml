@@ -73,3 +73,48 @@ jobs:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           buildScriptName: build-storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+      # This checks if there's an existing comment in the PR with the Chromatic link, and either updates the existing comment or creates a new one.
+      - name: Create PR comment with Chromatic link
+        if: steps.chromatic.outputs.chromaticUrl != ''
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const chromaticUrl = '${{ steps.chromatic.outputs.chromaticUrl }}';
+            const prComment = `:art: [Chromatic preview](${chromaticUrl}) :art:`;
+
+            const { data: pullRequest } = await github.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            const comments = await github.pulls.listReviewComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            const botComment = comments.data.find(
+              (comment) => comment.user.login === 'github-actions[bot]' && comment.body.includes('Chromatic preview')
+            );
+
+            if (botComment) {
+              await github.pulls.updateReviewComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: prComment,
+              });
+            } else {
+              await github.pulls.createReviewComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                commit_id: pullRequest.head.sha,
+                body: prComment,
+                path: '', // You can specify a path if you want the comment to appear on a specific file
+                position: null, // You can specify a position if you want the comment to appear on a specific line
+              });
+            }
