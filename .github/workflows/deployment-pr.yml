@@ -59,9 +59,20 @@ jobs:
       - name: Deploy Demo App to AWS
         run: yarn sst deploy --stage radius-pr
 
+      # Find existing Demo App comment
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Demo App Preview
+
+      # Create new comment with Demo App URL, if one does not exist already
       - name: Comment on PR with link to deployed demo app
-        uses: peter-evans/create-or-update-comment@v1
+        if: steps.fc.outputs.comment-id == ''
+        uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Preview the demo app on https://d11mwnosflssyy.cloudfront.net/
+            Demo App Preview: https://d11mwnosflssyy.cloudfront.net/
