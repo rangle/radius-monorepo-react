@@ -70,9 +70,11 @@ jobs:
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           buildScriptName: build-storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        id: chromatic
 
       - name: Publish Summary
         run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
