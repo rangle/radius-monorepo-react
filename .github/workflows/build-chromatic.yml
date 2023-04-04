@@ -70,24 +70,28 @@ jobs:
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           buildScriptName: build-storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+          traceChanged: true
         id: chromatic
 
-      - name: Publish Summary
-        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
+      # - name: Publish Summary
+      #   run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
 
       # # This checks if there's an existing comment in the PR with the Chromatic link, and either updates the existing comment or creates a new one.
       # - name: Create PR comment with Chromatic link
-      #   if: steps.chromatic.outputs.url != ''
       #   uses: actions/github-script@v5
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
       #     script: |
-      #       const chromaticUrl = '${{ steps.chromatic.outputs.url }}';
-      #       const prComment = `:art: [Chromatic preview](${chromaticUrl}) :art:`;
+      #       const prComment = `
+      #       | Chromatic Results  |   |
+      #       | --- | --- |
+      #       | Build URL | ${{steps.chromatic.outputs.buildUrl}} |
+      #       | Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |
+      #       | Component Count | ${{steps.chromatic.outputs.componentCount}} |`;
 
       #       const { data: pullRequest } = await github.pulls.get({
       #         owner: context.repo.owner,
@@ -123,3 +127,14 @@ jobs:
       #           position: null, // You can specify a position if you want the comment to appear on a specific line
       #         });
       #       }
+
+      - name: Create PR comment with Chromatic link
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            | Chromatic Results  |   |
+            | --- | --- |
+            | Build URL | ${{steps.chromatic.outputs.buildUrl}} |
+            | Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |
+            | Component Count | ${{steps.chromatic.outputs.componentCount}} |
