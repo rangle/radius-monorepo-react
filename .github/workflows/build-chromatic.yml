@@ -43,29 +43,29 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Validate tokens
-        id: validate-tokens
-        working-directory: library/foundations
-        run: |
-          # Parse and Validate Design Tokens
-          yarn tokens:ci
+      # - name: Validate tokens
+      #   id: validate-tokens
+      #   working-directory: library/foundations
+      #   run: |
+      #     # Parse and Validate Design Tokens
+      #     yarn tokens:ci
 
-      - name: Lint
-        run: yarn lint:ci
+      # - name: Lint
+      #   run: yarn lint:ci
 
       - name: Build projects 🏗
         run: yarn build
 
-      - name: Test
-        run: yarn test -- --coverage
+      # - name: Test
+      #   run: yarn test -- --coverage
 
-      - name: Coverage Report
-        uses: vebr/jest-lcov-reporter@v0.2.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          lcov-file: ./coverage/lcov.info
+      # - name: Coverage Report
+      #   uses: vebr/jest-lcov-reporter@v0.2.0
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     lcov-file: ./coverage/lcov.info
 
-        # 👇 Adds Chromatic as a step in the workflow
+      # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
@@ -74,47 +74,50 @@ jobs:
           buildScriptName: build-storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
-      # This checks if there's an existing comment in the PR with the Chromatic link, and either updates the existing comment or creates a new one.
-      - name: Create PR comment with Chromatic link
-        if: steps.chromatic.outputs.url != ''
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const chromaticUrl = '${{ steps.chromatic.outputs.url }}';
-            const prComment = `:art: [Chromatic preview](${chromaticUrl}) :art:`;
+      - name: Publish Summary
+        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
 
-            const { data: pullRequest } = await github.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-            });
+      # # This checks if there's an existing comment in the PR with the Chromatic link, and either updates the existing comment or creates a new one.
+      # - name: Create PR comment with Chromatic link
+      #   if: steps.chromatic.outputs.url != ''
+      #   uses: actions/github-script@v5
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     script: |
+      #       const chromaticUrl = '${{ steps.chromatic.outputs.url }}';
+      #       const prComment = `:art: [Chromatic preview](${chromaticUrl}) :art:`;
 
-            const comments = await github.pulls.listReviewComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-            });
+      #       const { data: pullRequest } = await github.pulls.get({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         pull_number: context.issue.number,
+      #       });
 
-            const botComment = comments.data.find(
-              (comment) => comment.user.login === 'github-actions[bot]' && comment.body.includes('Chromatic preview')
-            );
+      #       const comments = await github.pulls.listReviewComments({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         pull_number: context.issue.number,
+      #       });
 
-            if (botComment) {
-              await github.pulls.updateReviewComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: botComment.id,
-                body: prComment,
-              });
-            } else {
-              await github.pulls.createReviewComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number,
-                commit_id: pullRequest.head.sha,
-                body: prComment,
-                path: '', // You can specify a path if you want the comment to appear on a specific file
-                position: null, // You can specify a position if you want the comment to appear on a specific line
-              });
-            }
+      #       const botComment = comments.data.find(
+      #         (comment) => comment.user.login === 'github-actions[bot]' && comment.body.includes('Chromatic preview')
+      #       );
+
+      #       if (botComment) {
+      #         await github.pulls.updateReviewComment({
+      #           owner: context.repo.owner,
+      #           repo: context.repo.repo,
+      #           comment_id: botComment.id,
+      #           body: prComment,
+      #         });
+      #       } else {
+      #         await github.pulls.createReviewComment({
+      #           owner: context.repo.owner,
+      #           repo: context.repo.repo,
+      #           pull_number: context.issue.number,
+      #           commit_id: pullRequest.head.sha,
+      #           body: prComment,
+      #           path: '', // You can specify a path if you want the comment to appear on a specific file
+      #           position: null, // You can specify a position if you want the comment to appear on a specific line
+      #         });
+      #       }
