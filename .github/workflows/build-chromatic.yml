@@ -79,7 +79,7 @@ jobs:
         id: chromatic
 
       # Find existing Chromatic URL comment
-      - name: Find Comment
+      - name: Find Existing Comment
         uses: peter-evans/find-comment@v2
         id: fc
         with:

@@ -60,7 +60,7 @@ jobs:
         run: yarn sst deploy --stage radius-pr
 
       # Find existing Demo App comment
-      - name: Find Comment
+      - name: Find Existing Comment
         uses: peter-evans/find-comment@v2
         id: fc
         with:
