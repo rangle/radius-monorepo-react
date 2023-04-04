@@ -80,61 +80,25 @@ jobs:
       # - name: Publish Summary
       #   run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
 
-      # # This checks if there's an existing comment in the PR with the Chromatic link, and either updates the existing comment or creates a new one.
-      # - name: Create PR comment with Chromatic link
-      #   uses: actions/github-script@v5
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     script: |
-      #       const prComment = `
-      #       | Chromatic Results  |   |
-      #       | --- | --- |
-      #       | Build URL | ${{steps.chromatic.outputs.buildUrl}} |
-      #       | Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |
-      #       | Component Count | ${{steps.chromatic.outputs.componentCount}} |`;
-
-      #       const { data: pullRequest } = await github.pulls.get({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         pull_number: context.issue.number,
-      #       });
-
-      #       const comments = await github.pulls.listReviewComments({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         pull_number: context.issue.number,
-      #       });
-
-      #       const botComment = comments.data.find(
-      #         (comment) => comment.user.login === 'github-actions[bot]' && comment.body.includes('Chromatic preview')
-      #       );
-
-      #       if (botComment) {
-      #         await github.pulls.updateReviewComment({
-      #           owner: context.repo.owner,
-      #           repo: context.repo.repo,
-      #           comment_id: botComment.id,
-      #           body: prComment,
-      #         });
-      #       } else {
-      #         await github.pulls.createReviewComment({
-      #           owner: context.repo.owner,
-      #           repo: context.repo.repo,
-      #           pull_number: context.issue.number,
-      #           commit_id: pullRequest.head.sha,
-      #           body: prComment,
-      #           path: '', // You can specify a path if you want the comment to appear on a specific file
-      #           position: null, // You can specify a position if you want the comment to appear on a specific line
-      #         });
-      #       }
-
-      - name: Create PR comment with Chromatic link
-        uses: peter-evans/create-or-update-comment@v1
+      # Find existing Chromatic URL comment
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Chromatic Results
+
+      # Either create new comment with Chromatic links, or replace content of existing comment if found in previous step
+      - name: Create or update PR comment with Chromatic links
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
           body: |
-            | Chromatic Results  |   |
+            | :art: Chromatic Results :art:  |   |
             | --- | --- |
             | Build URL | ${{steps.chromatic.outputs.buildUrl}} |
             | Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |
             | Component Count | ${{steps.chromatic.outputs.componentCount}} |
+          edit-mode: replace
