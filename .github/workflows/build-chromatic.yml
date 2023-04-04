@@ -40,7 +40,29 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: Install dependencies
+      # Cache node_modules to speed up future builds
+      # For more info see: https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.cache-nodemodules.outputs.cache-hit == 'false' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: npm list
+
+        # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock changes)
+      - name: Install Dependencies
+        if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
         run: yarn install --frozen-lockfile
 
       - name: Validate tokens
