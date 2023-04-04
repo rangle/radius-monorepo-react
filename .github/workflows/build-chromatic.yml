@@ -24,15 +24,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.npm
-            ~/.cache
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -54,11 +45,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
-      - if: ${{ steps.cache-nodemodules.outputs.cache-hit == 'false' }}
-        name: List the state of node modules
-        continue-on-error: true
-        run: npm list
 
         # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock changes)
       - name: Install Dependencies
