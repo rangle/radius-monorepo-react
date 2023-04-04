@@ -43,27 +43,27 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      # - name: Validate tokens
-      #   id: validate-tokens
-      #   working-directory: library/foundations
-      #   run: |
-      #     # Parse and Validate Design Tokens
-      #     yarn tokens:ci
+      - name: Validate tokens
+        id: validate-tokens
+        working-directory: library/foundations
+        run: |
+          # Parse and Validate Design Tokens
+          yarn tokens:ci
 
-      # - name: Lint
-      #   run: yarn lint:ci
+      - name: Lint
+        run: yarn lint:ci
 
       - name: Build projects 🏗
         run: yarn build
 
-      # - name: Test
-      #   run: yarn test -- --coverage
+      - name: Test
+        run: yarn test -- --coverage
 
-      # - name: Coverage Report
-      #   uses: vebr/jest-lcov-reporter@v0.2.0
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     lcov-file: ./coverage/lcov.info
+      - name: Coverage Report
+        uses: vebr/jest-lcov-reporter@v0.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          lcov-file: ./coverage/lcov.info
 
       # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
@@ -76,9 +76,6 @@ jobs:
           onlyChanged: true
           traceChanged: true
         id: chromatic
-
-      # - name: Publish Summary
-      #   run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
 
       # Find existing Chromatic URL comment
       - name: Find Comment
@@ -96,9 +93,9 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            | :art: Chromatic Results :art:  |   |
+            | :art: Chromatic Results :art: |  |
             | --- | --- |
-            | Build URL | ${{steps.chromatic.outputs.buildUrl}} |
+            | Chromatic URL | ${{steps.chromatic.outputs.buildUrl}} |
             | Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |
             | Component Count | ${{steps.chromatic.outputs.componentCount}} |
           edit-mode: replace
