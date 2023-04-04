@@ -64,6 +64,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           lcov-file: ./coverage/lcov.info
+          update-comment: true
 
       # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
