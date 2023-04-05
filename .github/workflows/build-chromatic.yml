@@ -25,6 +25,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      # For NX caching
+      # For more info see: https://nx.dev/recipes/ci/monorepo-ci-github-actions
+      - uses: nrwl/nx-set-shas@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -51,6 +55,8 @@ jobs:
         if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
         run: yarn install --frozen-lockfile
 
+      - run: npx nx format:check
+
       - name: Validate tokens
         id: validate-tokens
         working-directory: library/foundations
@@ -62,10 +68,12 @@ jobs:
         run: yarn lint:ci
 
       - name: Build projects 🏗
-        run: yarn build
+        run: npx nx affected --target=build --parallel=3
+        # run: yarn build
 
       - name: Test
-        run: yarn test -- --coverage
+        run: npx nx affected --target=test --parallel=3 --configuration=ci
+        # run: yarn test -- --coverage
 
       - name: Coverage Report
         uses: vebr/jest-lcov-reporter@v0.2.1
