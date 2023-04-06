@@ -29,6 +29,15 @@
       "^.+\\.tsx?$": "ts-jest"
     }
   },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/generated"
+        ]
+      }
+    }
+  },
   "devDependencies": {
     "@svgr/cli": "^6.5.1",
     "jest": "^29.3.1",
