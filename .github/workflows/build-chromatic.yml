@@ -27,7 +27,7 @@ jobs:
 
       # For NX caching
       # For more info see: https://nx.dev/recipes/ci/monorepo-ci-github-actions
-      # - uses: nrwl/nx-set-shas@v3
+      - uses: nrwl/nx-set-shas@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -67,22 +67,28 @@ jobs:
       - name: Lint
         run: yarn lint:ci
 
-      - name: Nx Cloud - Build & Test
-        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
-        with:
-          number-of-agents: 3
-          parallel-commands: |
-            npx nx-cloud record -- npx nx format:check
-          parallel-commands-on-agents: |
-            npx nx affected npx nx affected -t test --parallel=2 --coverage & npx nx affected -t build --parallel=2
-
+      # # Runs the build and test commands using NX Cloud in order to utilize cloud caching and distributed task execution
+      # # For more info see: https://github.com/nrwl/ci
+      # - name: Nx Cloud - Build & Test
+      #   uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+      #   with:
+      #     number-of-agents: 2
+      #     parallel-commands: |
+      #       npx nx-cloud record -- npx nx format:check
+      #     parallel-commands-on-agents: |
+      #       npx nx affected -t test --parallel=2 --coverage
+      #       npx nx affected -t build --parallel=2
+      # - name: Nx Cloud - Agents
+      #   uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.11.3
+      #   with:
+      #     number-of-agents: 2
       - name: Build projects 🏗
-        run: npx nx affected --target=build --parallel=3
+        run: npx nx affected --target=build
         # run: yarn build
 
       - name: Test
-        run: npx nx affected --target=test --parallel=3 --coverage
-        # run: yarn test -- --coverage
+        run: npx nx affected --target=test --coverage
+      # run: yarn test -- --coverage
 
       - name: Coverage Report
         uses: vebr/jest-lcov-reporter@v0.2.1
