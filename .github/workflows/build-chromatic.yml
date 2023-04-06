@@ -27,7 +27,7 @@ jobs:
 
       # For NX caching
       # For more info see: https://nx.dev/recipes/ci/monorepo-ci-github-actions
-      - uses: nrwl/nx-set-shas@v3
+      # - uses: nrwl/nx-set-shas@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -55,7 +55,7 @@ jobs:
         if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
         run: yarn install --frozen-lockfile
 
-      - run: npx nx format:check
+      # - run: npx nx format:check
 
       - name: Validate tokens
         id: validate-tokens
@@ -66,6 +66,15 @@ jobs:
 
       - name: Lint
         run: yarn lint:ci
+
+      - name: Nx Cloud - Build & Test
+        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+        with:
+          number-of-agents: 3
+          parallel-commands: |
+            npx nx-cloud record -- npx nx format:check
+          parallel-commands-on-agents: |
+            npx nx affected npx nx affected -t test --parallel=2 --coverage & npx nx affected -t build --parallel=2
 
       - name: Build projects 🏗
         run: npx nx affected --target=build --parallel=3
