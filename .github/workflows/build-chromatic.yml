@@ -72,7 +72,7 @@ jobs:
         # run: yarn build
 
       - name: Test
-        run: npx nx affected --target=test --parallel=3 --configuration=ci
+        run: npx nx affected --target=test --parallel=3 --coverage
         # run: yarn test -- --coverage
 
       - name: Coverage Report
