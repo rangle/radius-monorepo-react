@@ -2,7 +2,7 @@
   "layers": [
     {
       "name": "radius--core",
-      "isDynamic": true,
+      "isStatic": true,
       "variables": [
         {
           "key": "--color-core-primary-50",
@@ -730,8 +730,8 @@
       "dependencies": []
     },
     {
-      "name": "radius--mode--light",
-      "isDynamic": false,
+      "name": "radius--semantic",
+      "isStatic": false,
       "variables": [
         {
           "key": "--color-text-on-base-primary",
@@ -1084,15 +1084,14 @@
       "dependencies": []
     },
     {
-      "name": "radius--mode--dark",
-      "isDynamic": false,
+      "name": "radius--semantic-dark",
+      "isStatic": false,
       "variables": [
         {
           "key": "--color-text-on-base-primary",
           "name": "text.onBase.primary",
           "value": "#FFFFFF",
           "type": "color",
-          "description": "Color on base",
           "rawValue": "{core.neutral.white}"
         },
         {
@@ -1138,29 +1137,29 @@
           "rawValue": "{core.primary.500}"
         },
         {
-          "key": "--color-text--on-subtle-primary",
-          "name": "text.OnSubtle.primary",
+          "key": "--color-text-on-subtle-primary",
+          "name": "text.onSubtle.primary",
           "value": "#FFFFFF",
           "type": "color",
           "rawValue": "{core.neutral.white}"
         },
         {
-          "key": "--color-text--on-subtle-secondary",
-          "name": "text.OnSubtle.secondary",
+          "key": "--color-text-on-subtle-secondary",
+          "name": "text.onSubtle.secondary",
           "value": "#F1F3F4",
           "type": "color",
           "rawValue": "{core.neutral.200}"
         },
         {
-          "key": "--color-text--on-subtle-accent",
-          "name": "text.OnSubtle.accent",
+          "key": "--color-text-on-subtle-accent",
+          "name": "text.onSubtle.accent",
           "value": "#D44527",
           "type": "color",
           "rawValue": "{core.primary.500}"
         },
         {
-          "key": "--color-text--on-subtle-disabled",
-          "name": "text.OnSubtle.disabled",
+          "key": "--color-text-on-subtle-disabled",
+          "name": "text.onSubtle.disabled",
           "value": "#CCCCCC",
           "type": "color",
           "rawValue": "{core.neutral.500}"
@@ -1431,14 +1430,6 @@
           "type": "other",
           "description": "Describes the name of the section that triggers this Dynamic Layer",
           "rawValue": "Dark Mode"
-        },
-        {
-          "key": "--other-description",
-          "name": "description",
-          "value": "Colors for light mode",
-          "type": "other",
-          "description": "Light mode is the default mode for the Design System",
-          "rawValue": "Colors for light mode"
         }
       ],
       "parameters": {
@@ -1447,8 +1438,8 @@
       "dependencies": []
     },
     {
-      "name": "radius--breakpoint--lg",
-      "isDynamic": false,
+      "name": "radius--lg-breakpoint",
+      "isStatic": false,
       "variables": [
         {
           "key": "--typography-heading-xxl",
@@ -1530,9 +1521,9 @@
         {
           "key": "--typography-btn-md",
           "name": "btn.md",
-          "value": "Medium 1.125rem/150% Riforma LL",
+          "value": "Medium 1.25rem/150% Riforma LL",
           "type": "typography",
-          "rawValue": "{fontWeight.med} {fontSize.400}/{lineHeights.regular} {fontFamilies.default}"
+          "rawValue": "{fontWeight.med} {fontSize.500}/{lineHeights.regular} {fontFamilies.default}"
         },
         {
           "key": "--typography-btn-sm",
@@ -1546,7 +1537,7 @@
           "name": "screen-min-width",
           "value": "900px",
           "type": "dimension",
-          "description": "Breakpoint minimum width",
+          "description": "Breakpoint minimim width",
           "rawValue": "900px"
         }
       ],
@@ -1556,8 +1547,8 @@
       "dependencies": []
     },
     {
-      "name": "radius--breakpoint--md",
-      "isDynamic": false,
+      "name": "radius--md-breakpoint",
+      "isStatic": false,
       "variables": [
         {
           "key": "--typography-heading-xxl",
@@ -1630,8 +1621,22 @@
           "rawValue": "{fontWeight.med} {fontSize.200}/{lineHeights.regular} {fontFamilies.default}"
         },
         {
+          "key": "--typography-btn-lg",
+          "name": "btn.lg",
+          "value": "Medium 1rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
           "key": "--typography-btn-md",
           "name": "btn.md",
+          "value": "Medium 1rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-btn-sm",
+          "name": "btn.sm",
           "value": "Medium 1rem/150% Riforma LL",
           "type": "typography",
           "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
@@ -1641,7 +1646,7 @@
           "name": "screen-min-width",
           "value": "600px",
           "type": "dimension",
-          "description": "Breakpoint Minimum Width",
+          "description": "Breakpoint minimum width",
           "rawValue": "600px"
         },
         {
@@ -1660,9 +1665,211 @@
       "dependencies": []
     },
     {
-      "name": "radius--components",
-      "isDynamic": true,
+      "name": "radius--sm-breakpoint",
+      "isStatic": false,
       "variables": [
+        {
+          "key": "--typography-heading-xxl",
+          "name": "heading.xxl",
+          "value": "Bold 2.5rem/100% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.bold} {fontSize.800}/{lineHeights.tight} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-heading-xl",
+          "name": "heading.xl",
+          "value": "Bold 2.25rem/100% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.bold} {fontSize.700}/{lineHeights.tight} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-heading-lg",
+          "name": "heading.lg",
+          "value": "Bold 1.5rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.bold} {fontSize.600}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-heading-md",
+          "name": "heading.md",
+          "value": "Regular 1.25rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.reg} {fontSize.500}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-heading-sm",
+          "name": "heading.sm",
+          "value": "Medium 1.125rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.med} {fontSize.400}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-heading-xs",
+          "name": "heading.xs",
+          "value": "Light 0.875rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.lt} {fontSize.200}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-body-xl",
+          "name": "body.xl",
+          "value": "Regular 1.25rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.reg} {fontSize.500}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-body-md",
+          "name": "body.md",
+          "value": "Regular 1.125rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.reg} {fontSize.400}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-body-sm",
+          "name": "body.sm",
+          "value": "Bold 1rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.bold} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-link-sm",
+          "name": "link.sm",
+          "value": "Medium 0.875rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.med} {fontSize.200}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-btn-lg",
+          "name": "btn.lg",
+          "value": "Medium 1.5rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.med} {fontSize.600}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-btn-md",
+          "name": "btn.md",
+          "value": "Medium 0.875rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.med} {fontSize.200}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--typography-btn-sm",
+          "name": "btn.sm",
+          "value": "Medium 1rem/150% Riforma LL",
+          "type": "typography",
+          "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
+        },
+        {
+          "key": "--dimension-screen-min-width",
+          "name": "screen-min-width",
+          "value": "320px",
+          "type": "dimension",
+          "description": "Breakpoint minimum width",
+          "rawValue": "320px"
+        },
+        {
+          "key": "--dimension-screen-max-width",
+          "name": "screen-max-width",
+          "value": "599px",
+          "type": "dimension",
+          "description": "Breakpoint maximum width",
+          "rawValue": "599px"
+        }
+      ],
+      "parameters": {
+        "screen-min-width": "320px",
+        "screen-max-width": "599px"
+      },
+      "dependencies": []
+    },
+    {
+      "name": "radius--components",
+      "isStatic": true,
+      "variables": [
+        {
+          "key": "--typography-text-image-text-paragraph",
+          "name": "text+image.text.paragraph",
+          "value": "{--typography-body-md}",
+          "type": "typography",
+          "rawValue": "{body.md}"
+        },
+        {
+          "key": "--typography-text-image-text-title",
+          "name": "text+image.text.title",
+          "value": "{--typography-heading-lg}",
+          "type": "typography",
+          "rawValue": "{heading.lg}"
+        },
+        {
+          "key": "--typography-button-label-large",
+          "name": "button.label.large",
+          "value": "{--typography-btn-lg}",
+          "type": "typography",
+          "rawValue": "{btn.lg}"
+        },
+        {
+          "key": "--typography-button-label-medium",
+          "name": "button.label.medium",
+          "value": "{--typography-btn-md}",
+          "type": "typography",
+          "rawValue": "{btn.md}"
+        },
+        {
+          "key": "--typography-button-label-small",
+          "name": "button.label.small",
+          "value": "{--typography-btn-sm}",
+          "type": "typography",
+          "rawValue": "{btn.sm}"
+        },
+        {
+          "key": "--spacing-button-horizontal-padding-lg",
+          "name": "button.horizontal-padding.lg",
+          "value": "0.25rem*8",
+          "type": "spacing",
+          "rawValue": "{core.space.8x}"
+        },
+        {
+          "key": "--spacing-button-horizontal-padding-md",
+          "name": "button.horizontal-padding.md",
+          "value": "0.25rem*6",
+          "type": "spacing",
+          "rawValue": "{core.space.6x}"
+        },
+        {
+          "key": "--spacing-button-horizontal-padding-sm",
+          "name": "button.horizontal-padding.sm",
+          "value": "0.25rem*4",
+          "type": "spacing",
+          "rawValue": "{core.space.4x}"
+        },
+        {
+          "key": "--spacing-button-vertical-padding-lg",
+          "name": "button.vertical-padding.lg",
+          "value": "0.25rem*4",
+          "type": "spacing",
+          "rawValue": "{core.space.4x}"
+        },
+        {
+          "key": "--spacing-button-vertical-padding-md",
+          "name": "button.vertical-padding.md",
+          "value": "0.25rem * 3",
+          "type": "spacing",
+          "rawValue": "{core.space.3x}"
+        },
+        {
+          "key": "--spacing-button-vertical-padding-sm",
+          "name": "button.vertical-padding.sm",
+          "value": "0.25rem * 2",
+          "type": "spacing",
+          "rawValue": "{core.space.2x}"
+        },
+        {
+          "key": "--spacing-button-gap-default",
+          "name": "button.gap.default",
+          "value": "0.25rem * 2",
+          "type": "spacing",
+          "rawValue": "{core.space.2x}"
+        },
         {
           "key": "--color-button-primary-surface-default",
           "name": "button.primary.surface.default",
@@ -1767,76 +1974,6 @@
           "value": "{--color-text-primary-action-disabled}",
           "type": "color",
           "rawValue": "{text.primary-action.disabled}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-lg",
-          "name": "button.horizontal-padding.lg",
-          "value": "0.25rem*8",
-          "type": "spacing",
-          "rawValue": "{core.space.8x}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-md",
-          "name": "button.horizontal-padding.md",
-          "value": "0.25rem*6",
-          "type": "spacing",
-          "rawValue": "{core.space.6x}"
-        },
-        {
-          "key": "--spacing-button-horizontal-padding-sm",
-          "name": "button.horizontal-padding.sm",
-          "value": "0.25rem*4",
-          "type": "spacing",
-          "rawValue": "{core.space.4x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-lg",
-          "name": "button.vertical-padding.lg",
-          "value": "0.25rem*4",
-          "type": "spacing",
-          "rawValue": "{core.space.4x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-md",
-          "name": "button.vertical-padding.md",
-          "value": "0.25rem * 3",
-          "type": "spacing",
-          "rawValue": "{core.space.3x}"
-        },
-        {
-          "key": "--spacing-button-vertical-padding-sm",
-          "name": "button.vertical-padding.sm",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--spacing-button-gap-default",
-          "name": "button.gap.default",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--borderRadius-button-border-radius-none",
-          "name": "button.border-radius.none",
-          "value": "0rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.none}"
-        },
-        {
-          "key": "--borderWidth-button-border-width-sm",
-          "name": "button.border-width.sm",
-          "value": "1px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.sm}"
-        },
-        {
-          "key": "--borderWidth-button-border-width-md",
-          "name": "button.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
         },
         {
           "key": "--color-button-secondary-surface-default",
@@ -1944,137 +2081,32 @@
           "rawValue": "{text.secondary-action.disabled}"
         },
         {
-          "key": "--color-focus-outline-default",
-          "name": "focus-outline.default",
+          "key": "--color-button-focus-outline-default",
+          "name": "button.focus-outline.default",
           "value": "{--color-interaction-primary-focus}",
           "type": "color",
           "rawValue": "{interaction.primary.focus}"
         },
         {
-          "key": "--borderRadius-focus-outline-border-radius-sm",
-          "name": "focus-outline.border-radius.sm",
-          "value": "0.125rem",
-          "type": "borderRadius",
-          "rawValue": "{core.radius.xxs}"
-        },
-        {
-          "key": "--borderWidth-focus-outline-border-width-md",
-          "name": "focus-outline.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        },
-        {
-          "key": "--color-link-border-default",
-          "name": "link.border.default",
-          "value": "{--color-text-tertiary-action-default}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.default}"
-        },
-        {
-          "key": "--color-link-border-hover",
-          "name": "link.border.hover",
-          "value": "{--color-text-tertiary-action-hover}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.hover}"
-        },
-        {
-          "key": "--color-link-border-active",
-          "name": "link.border.active",
-          "value": "{--color-text-tertiary-action-active}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.active}"
-        },
-        {
-          "key": "--color-link-border-focus",
-          "name": "link.border.focus",
-          "value": "{--color-text-tertiary-action-focus}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.focus}"
-        },
-        {
-          "key": "--color-link-border-disabled",
-          "name": "link.border.disabled",
-          "value": "{--color-text-tertiary-action-disabled}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.disabled}"
-        },
-        {
-          "key": "--spacing-link-gap-default",
-          "name": "link.gap.default",
-          "value": "0.25rem * 2",
-          "type": "spacing",
-          "rawValue": "{core.space.2x}"
-        },
-        {
-          "key": "--borderWidth-link-border-width-sm",
-          "name": "link.border-width.sm",
-          "value": "1px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.sm}"
-        },
-        {
-          "key": "--borderWidth-link-border-width-md",
-          "name": "link.border-width.md",
-          "value": "2px",
-          "type": "borderWidth",
-          "rawValue": "{core.borderWidth.md}"
-        },
-        {
-          "key": "--spacing-link-horizontal-padding-none",
-          "name": "link.horizontal-padding.none",
-          "value": "0px",
-          "type": "spacing",
-          "rawValue": "{core.space.none}"
-        },
-        {
-          "key": "--spacing-link-vertical-padding-none",
-          "name": "link.vertical-padding.none",
-          "value": "0px",
-          "type": "spacing",
-          "rawValue": "{core.space.none}"
-        },
-        {
-          "key": "--borderRadius-link-border-radius-none",
-          "name": "link.border-radius.none",
+          "key": "--borderRadius-button-border-radius-none",
+          "name": "button.border-radius.none",
           "value": "0rem",
           "type": "borderRadius",
           "rawValue": "{core.radius.none}"
         },
         {
-          "key": "--color-link-label-default",
-          "name": "link.label.default",
-          "value": "{--color-text-tertiary-action-default}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.default}"
+          "key": "--borderWidth-button-border-width-sm",
+          "name": "button.border-width.sm",
+          "value": "1px",
+          "type": "borderWidth",
+          "rawValue": "{core.borderWidth.sm}"
         },
         {
-          "key": "--color-link-label-hover",
-          "name": "link.label.hover",
-          "value": "{--color-text-tertiary-action-hover}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.hover}"
-        },
-        {
-          "key": "--color-link-label-active",
-          "name": "link.label.active",
-          "value": "{--color-text-tertiary-action-active}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.active}"
-        },
-        {
-          "key": "--color-link-label-focus",
-          "name": "link.label.focus",
-          "value": "{--color-text-tertiary-action-focus}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.focus}"
-        },
-        {
-          "key": "--color-link-label-disabled",
-          "name": "link.label.disabled",
-          "value": "{--color-text-tertiary-action-disabled}",
-          "type": "color",
-          "rawValue": "{text.tertiary-action.disabled}"
+          "key": "--borderWidth-button-border-width-md",
+          "name": "button.border-width.md",
+          "value": "2px",
+          "type": "borderWidth",
+          "rawValue": "{core.borderWidth.md}"
         }
       ],
       "parameters": {},
@@ -2082,133 +2114,15 @@
         "Light Mode",
         "Dark Mode"
       ]
-    },
-    {
-      "name": "radius--breakpoint--sm",
-      "isDynamic": false,
-      "variables": [
-        {
-          "key": "--typography-heading-xxl",
-          "name": "heading.xxl",
-          "value": "Bold 2.5rem/100% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.bold} {fontSize.800}/{lineHeights.tight} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-heading-xl",
-          "name": "heading.xl",
-          "value": "Bold 2.25rem/100% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.bold} {fontSize.700}/{lineHeights.tight} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-heading-lg",
-          "name": "heading.lg",
-          "value": "Bold 1.5rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.bold} {fontSize.600}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-heading-md",
-          "name": "heading.md",
-          "value": "Regular 1.25rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.reg} {fontSize.500}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-heading-sm",
-          "name": "heading.sm",
-          "value": "Medium 1.125rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.med} {fontSize.400}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-heading-xs",
-          "name": "heading.xs",
-          "value": "Light 0.875rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.lt} {fontSize.200}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-body-xl",
-          "name": "body.xl",
-          "value": "Regular 1.25rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.reg} {fontSize.500}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-body-md",
-          "name": "body.md",
-          "value": "Regular 1.125rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.reg} {fontSize.400}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-body-sm",
-          "name": "body.sm",
-          "value": "Bold 1rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.bold} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-link-sm",
-          "name": "link.sm",
-          "value": "Medium 0.875rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.med} {fontSize.200}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-btn-lg",
-          "name": "btn.lg",
-          "value": "Medium 1.5rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.med} {fontSize.600}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-btn-md",
-          "name": "btn.md",
-          "value": "Medium 1.125rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.med} {fontSize.400}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--typography-btn-sm",
-          "name": "btn.sm",
-          "value": "Medium 1rem/150% Riforma LL",
-          "type": "typography",
-          "rawValue": "{fontWeight.med} {fontSize.300}/{lineHeights.regular} {fontFamilies.default}"
-        },
-        {
-          "key": "--dimension-screen-min-width",
-          "name": "screen-min-width",
-          "value": "320px",
-          "type": "dimension",
-          "description": "Breakpoint minimum width",
-          "rawValue": "320px"
-        },
-        {
-          "key": "--dimension-screen-max-width",
-          "name": "screen-max-width",
-          "value": "559px",
-          "type": "dimension",
-          "description": "Breakpoint maximum width",
-          "rawValue": "559px"
-        }
-      ],
-      "parameters": {
-        "screen-min-width": "320px",
-        "screen-max-width": "559px"
-      },
-      "dependencies": []
     }
   ],
   "order": [
     "radius--core",
-    "radius--mode--light",
-    "radius--mode--dark",
-    "radius--breakpoint--lg",
-    "radius--breakpoint--md",
-    "radius--breakpoint--sm",
+    "radius--semantic",
+    "radius--semantic-dark",
+    "radius--lg-breakpoint",
+    "radius--md-breakpoint",
+    "radius--sm-breakpoint",
     "radius--components"
   ]
 }

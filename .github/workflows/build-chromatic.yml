@@ -25,6 +25,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      # For NX caching
+      # For more info see: https://nx.dev/recipes/ci/monorepo-ci-github-actions
+      - uses: nrwl/nx-set-shas@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -62,10 +66,10 @@ jobs:
         run: yarn lint:ci
 
       - name: Build projects 🏗
-        run: yarn build
+        run: npx nx affected --parallel=2 --target=build
 
       - name: Test
-        run: yarn test -- --coverage
+        run: npx nx affected  --parallel=2 --target=test --coverage
 
       - name: Coverage Report
         uses: vebr/jest-lcov-reporter@v0.2.1

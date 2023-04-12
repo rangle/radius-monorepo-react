@@ -4,25 +4,44 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [],
-        "accessToken": "MjBkMDM5YjEtOGNmZi00ZjFjLWI5NDctMDBjNTRjMmE5MGMzfHJlYWQtd3JpdGU="
+        "cacheableOperations": [
+          "build",
+          "test",
+          "dev"
+        ],
+        "accessToken": "N2ZmNDhhYWYtOTEwZS00YjM1LTkwYmItNjBiN2U5ODk1OTU1fHJlYWQtd3JpdGU="
       }
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*"],
-    "prod": ["!{projectRoot}/**/*.spec.tsx"]
+    "default": [
+      "{projectRoot}/**/*"
+    ],
+    "prod": [
+      "!{projectRoot}/**/*.spec.tsx"
+    ]
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "test": {
-      "dependsOn": ["^test"],
-      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+      "dependsOn": [
+        "^test",
+        "build"
+      ],
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/jest.preset.js"
+      ]
     },
     "dev": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   },
   "defaultBase": "main",

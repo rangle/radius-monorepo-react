@@ -47,3 +47,4 @@ apps/**/.cache
 
 # Generated files (should be built on server)
 library/foundations/generated/*
+!library/foundations/generated/token-layers-*.json
