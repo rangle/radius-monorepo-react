@@ -26,8 +26,8 @@
     "lint:ci": "yarn lint && yarn ls-lint",
     "clean": "lerna run clean && rm -rf node_modules",
     "graph": "nx graph",
-    "storybook": "sb dev -p 6006",
-    "build-storybook": "sb build",
+    "storybook": "yarn run build && sb dev -p 6006",
+    "build-storybook": "yarn run build && sb build",
     "prepare": "husky install"
   },
   "workspaces": [
