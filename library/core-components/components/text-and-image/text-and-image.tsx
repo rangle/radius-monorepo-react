@@ -38,14 +38,18 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
           {/* Title */}
           <Typography
             as={headingLevel}
+            // @ts-expect-error - this component needs refactor with new tokens
             font="--typography-heading-lg"
+            // @ts-expect-error - this component needs refactor with new tokens
             color="--color-text-on-base-primary"
           >
             {title}
           </Typography>
           {/* Body */}
           <Typography
+            // @ts-expect-error - this component needs refactor with new tokens
             font="--typography-body-md"
+            // @ts-expect-error - this component needs refactor with new tokens
             color="--color-text-on-base-secondary"
           >
             {body}

@@ -30,7 +30,7 @@ export type TypographyExtendedProps = {
   /** Text alignment */
   align?: Alignment;
   /** Text color */
-  color?: CSSProp<'color', 'text'>;
+  color?: CSSProp<'color'>;
   /** Font (css shorthand property - see https://developer.mozilla.org/en-US/docs/Web/CSS/font) */
   font?: CSSProp<'typography'>;
   children: React.ReactNode;
