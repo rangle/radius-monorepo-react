@@ -4,7 +4,7 @@ import { cx } from '@emotion/css';
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 
-import { getStyles, StylesProps } from './button.styles';
+import { getStyles } from './button.styles';
 import { Typography } from '../typography/typography';
 
 /// Button types
