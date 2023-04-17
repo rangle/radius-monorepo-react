@@ -101,33 +101,27 @@ export const getStyles = <T extends StylesProps>({
     *  directly as css variables representing design tokens */
     color: ${normal.color};
     background: ${normal.background};
-    border: var(--borderWidth-component-border-width-button-border) solid
-      ${normal.border};
+    border-color: ${normal.border};
+    border-radius: var(--borderRadius-component-border-radius-button-border);
+    border-style: solid;
+    border-width: var(--borderWidth-component-border-width-button-border);
     padding: var(--spacing-component-spacing-button-padding-vertical)
       var(--spacing-component-spacing-button-padding-horizontal);
-    border-radius: var(--borderRadius-component-border-radius-button-border);
-    font-size: var(--button--typography-text);
-    margin: var(--button--typography-text);
-    font-size: var(--button--typography-text);
-    font-size: var(--button--typography-text);
     cursor: pointer;
     &:hover {
       color: ${hover.color};
       background: ${hover.background};
-      border: var(--borderWidth-component-border-width-button-border) solid
-        ${hover.border};
+      border-color: ${hover.border};
     }
     &:active {
       color: ${active.color};
       background: ${active.background};
-      border: var(--borderWidth-component-border-width-button-border) solid
-        ${active.border};
+      border-color: ${active.border};
     }
     &:disabled {
       color: ${disabled.color};
       background: ${disabled.background};
-      border: var(--borderWidth-component-border-width-button-border) solid
-        ${disabled.border};
+      border-color: ${disabled.border};
       cursor: default;
     }
   `;
