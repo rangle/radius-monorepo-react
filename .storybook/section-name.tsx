@@ -4,12 +4,13 @@ import { Story } from '@storybook/react';
 import { DecoratorFn } from '@storybook/react';
 
 const styles = {
-  backgroundColor: 'var(--color-background-base)',
+  backgroundColor:
+    'var(--color-semantic-theme-color-actions-default-primary-foreground)',
 };
 
 const removeClassesAndAddTheme = (mode: string) => {
-  const docsRoot = document.getElementById("docs-root");
-  const root = document.getElementById("root");
+  const docsRoot = document.getElementById('docs-root');
+  const root = document.getElementById('root');
   docsRoot?.classList.forEach((item) => docsRoot?.classList.remove(item));
   root?.classList.forEach((item) => root?.classList.remove(item));
   docsRoot?.classList.add(mode);

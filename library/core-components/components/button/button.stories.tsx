@@ -3,8 +3,8 @@ import { Meta, StoryObj, Args } from '@storybook/react';
 
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusButton, RadiusButtonVariant } from './button';
-import { RadiusButtonSize } from './button.styles';
 import { css } from '@emotion/css';
+import { Typography } from '../typography/typography';
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
@@ -46,23 +46,11 @@ export const ButtonStates: Story = {
       <div className="pseudo-hover">
         <RadiusButton {...args}>Hover</RadiusButton>
       </div>
-      <div className="pseudo-focus">
-        <RadiusButton {...args}>Focus</RadiusButton>
-      </div>
       <div className="pseudo-active">
         <RadiusButton {...args}>Active</RadiusButton>
       </div>
-      <div className="pseudo-hover pseudo-focus">
-        <RadiusButton {...args}>Hover Focus</RadiusButton>
-      </div>
       <div className="pseudo-hover pseudo-active">
         <RadiusButton {...args}>Hover Active</RadiusButton>
-      </div>
-      <div className="pseudo-focus pseudo-active">
-        <RadiusButton {...args}>Focus Active</RadiusButton>
-      </div>
-      <div className="pseudo-hover pseudo-focus pseudo-active">
-        <RadiusButton {...args}>Hover Focus Active</RadiusButton>
       </div>
     </div>
   ),
@@ -70,34 +58,29 @@ export const ButtonStates: Story = {
 
 type ButtonVariations = {
   types: readonly RadiusButtonVariant[];
-  sizes: readonly RadiusButtonSize[];
-  states: readonly ['Default', 'Hover', 'Active', 'Focus', 'Disabled'];
+  states: readonly ['Default', 'Hover', 'Active', 'Disabled'];
 };
 
 const buttonVariations: ButtonVariations = {
   types: ['primary', 'secondary'] as const,
-  sizes: ['large', 'medium', 'small'] as const,
-  states: ['Default', 'Hover', 'Active', 'Focus', 'Disabled'] as const,
+  states: ['Default', 'Hover', 'Active', 'Disabled'] as const,
 };
 
 const renderButtonVariationCell = (
   type: ButtonVariations['types'][number],
-  size: ButtonVariations['sizes'][number],
   state: ButtonVariations['states'][number]
 ) => {
   const className = `pseudo-${state.toLowerCase()}`;
   if (state !== 'Disabled') {
     return (
       <td className={className}>
-        <RadiusButton size={size} variant={type}>
-          Action
-        </RadiusButton>
+        <RadiusButton variant={type}>Action</RadiusButton>
       </td>
     );
   } else {
     return (
       <td>
-        <RadiusButton size={size} variant={type} disabled>
+        <RadiusButton variant={type} disabled>
           Action
         </RadiusButton>
       </td>
@@ -115,25 +98,35 @@ const tableStyle = css`
 `;
 
 const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
-  const { types, sizes, states } = options;
-  const typeAndSize = types.flatMap((type) =>
-    sizes.map((size) => [type, size] as const)
-  );
-  // renders a table with rows for each type and size and collumns for each state
+  const { types, states } = options;
+  // renders a table with rows for each type and size and columns for each state
   return () => (
     <table className={tableStyle}>
       <tr>
         <th></th>
         {states.map((state) => (
-          <th>{state}</th>
+          <th>
+            <Typography
+              color="--color-component-color-button-secondary-default-label"
+              font="--typography-semantic-theme-typography-actions-label"
+              align="center"
+            >
+              {state}
+            </Typography>
+          </th>
         ))}
       </tr>
-      {typeAndSize.map(([type, size]) => (
+      {types.map((type) => (
         <tr>
           <td>
-            {type} {size}
+            <Typography
+              color="--color-component-color-button-secondary-default-label"
+              font="--typography-semantic-theme-typography-actions-label"
+            >
+              {type}
+            </Typography>
           </td>
-          {states.map((state) => renderButtonVariationCell(type, size, state))}
+          {states.map((state) => renderButtonVariationCell(type, state))}
         </tr>
       ))}
     </table>

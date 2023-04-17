@@ -4,8 +4,8 @@ describe('utils', () => {
   describe('design-tokens.utils', () => {
     describe('renderCSSProp', () => {
       it('should return a CSS variable when passed a string', () => {
-        expect(renderCSSProp('--color-text-on-base-primary')).toBe(
-          'var(--color-text-on-base-primary)'
+        expect(renderCSSProp('--color-core-color-red-50')).toBe(
+          'var(--color-core-color-red-50)'
         );
       });
       it('should return a CSS expression when passed an object', () => {
