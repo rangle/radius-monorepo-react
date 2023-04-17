@@ -9,7 +9,7 @@ export type StylesProps = Pick<
 
 export const getStyles = ({
   align = 'left',
-  // NOTE: this component should not have default values for color and font as they should always come from the component layer
+  // NOTE: this component should not have default values for color and font as they should always come from the component layer or be inherited from the parent
   // @ts-expect-error - this component needs refactor with new tokens
   color = '--color-text-on-base-primary',
   // @ts-expect-error - this component needs refactor with new tokens

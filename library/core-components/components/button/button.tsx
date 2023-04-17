@@ -5,6 +5,7 @@ import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
 
 import { getStyles, StylesProps } from './button.styles';
+import { Typography } from '../typography/typography';
 
 /// Button types
 export type RadiusButtonVariant = 'primary' | 'secondary';
@@ -91,7 +92,9 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           ref={element.props.ref}
           {...element.props}
         >
-          {children}
+          <Typography font="--typography-component-typography-button-label">
+            {children}
+          </Typography>
         </element.Component>
       );
     } else {
@@ -107,7 +110,9 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           ref={element.props.ref}
           {...element.props}
         >
-          {children}
+          <Typography font="--typography-component-typography-button-label">
+            {children}
+          </Typography>
         </element.Component>
       );
     }
