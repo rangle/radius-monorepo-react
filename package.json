@@ -9,7 +9,7 @@
     "bootstrap": "lerna bootstrap",
     "demo": "nx run demo:dev",
     "build:demo": "nx run demo:build",
-    "run-many": "nx run-many --all --parallel --exclude=demo",
+    "run-many": "nx run-many --exclude=demo",
     "build": "yarn run run-many --target=build",
     "build:affected": "yarn run build --affected",
     "build:force": "yarn run build --skip-nx-cache",
