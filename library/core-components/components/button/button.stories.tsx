@@ -97,7 +97,6 @@ const tableStyle = css`
   }
 `;
 
-// TODO: add fonts to table headers once tokens are available
 const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
   const { types, states } = options;
   // renders a table with rows for each type and size and columns for each state
@@ -109,6 +108,7 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
           <th>
             <Typography
               color="--color-component-color-button-secondary-default-label"
+              font="--typography-semantic-theme-typography-actions-label"
               align="center"
             >
               {state}
@@ -119,7 +119,10 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
       {types.map((type) => (
         <tr>
           <td>
-            <Typography color="--color-component-color-button-secondary-default-label">
+            <Typography
+              color="--color-component-color-button-secondary-default-label"
+              font="--typography-semantic-theme-typography-actions-label"
+            >
               {type}
             </Typography>
           </td>
