@@ -5,6 +5,7 @@ import { Meta, StoryObj, Args } from '@storybook/react';
 import { RadiusButton, RadiusButtonVariant } from './button';
 import { RadiusButtonSize } from './button.styles';
 import { css } from '@emotion/css';
+import { Typography } from '../typography/typography';
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
@@ -102,6 +103,7 @@ const tableStyle = css`
   }
 `;
 
+// TODO: add fonts to table headers once tokens are available
 const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
   const { types, sizes, states } = options;
   const typeAndSize = types.flatMap((type) =>
@@ -113,13 +115,22 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
       <tr>
         <th></th>
         {states.map((state) => (
-          <th>{state}</th>
+          <th>
+            <Typography
+              color="--color-component-color-button-secondary-default-label"
+              align="center"
+            >
+              {state}
+            </Typography>
+          </th>
         ))}
       </tr>
       {typeAndSize.map(([type, size]) => (
         <tr>
           <td>
-            {type} {size}
+            <Typography color="--color-component-color-button-secondary-default-label">
+              {type} {size}
+            </Typography>
           </td>
           {states.map((state) => renderButtonVariationCell(type, size, state))}
         </tr>
