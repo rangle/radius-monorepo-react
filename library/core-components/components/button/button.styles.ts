@@ -1,20 +1,18 @@
 import { css } from '@emotion/css';
 import {
-  RadiusSpacingTokens,
   RadiusColorTokens,
   Var,
 } from '@rangle/radius-foundations/generated/design-tokens.types';
-// Discrimitated unions are an excellent way to add type safety
+
+// Discriminated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
 export type RadiusButtonSize = 'small' | 'medium' | 'large';
 export type RadiusButtonStyleType =
   | 'filled'
-  | 'filledFocus'
   | 'filledActive'
   | 'filledHover'
   | 'filledDisabled'
   | 'hollow'
-  | 'hollowFocus'
   | 'hollowActive'
   | 'hollowHover'
   | 'hollowDisabled';
@@ -29,21 +27,6 @@ export type StylesProps = {
   size?: RadiusButtonSize;
 };
 
-/** Simple Map from size props to spacing
- * An example of a useful map that helps select simple css values based on props
- */
-const buttonSize: Record<
-  RadiusButtonSize,
-  `${Var<RadiusSpacingTokens>} ${Var<RadiusSpacingTokens>}`
-> = {
-  small:
-    'var(--spacing-button-vertical-padding-sm) var(--spacing-button-horizontal-padding-sm)',
-  medium:
-    'var(--spacing-button-vertical-padding-md) var(--spacing-button-horizontal-padding-md)',
-  large:
-    'var(--spacing-button-vertical-padding-lg) var(--spacing-button-horizontal-padding-lg)',
-};
-
 /** Map from color props to css
  * An example of a useful map that helps select css props based on props
  */
@@ -54,69 +37,62 @@ const buttonColors: Record<
   }
 > = {
   filled: {
-    color: 'var(--color-button-primary-label-default)',
-    background: 'var(--color-button-primary-surface-default)',
-    border: 'var(--color-button-primary-border-default)',
-  },
-  filledFocus: {
-    color: 'var(--color-button-primary-label-focus)',
-    background: 'var(--color-button-primary-surface-focus)',
-    border: 'var(--color-button-primary-border-focus)',
+    color: 'var(--color-component-color-button-primary-default-label)',
+    background:
+      'var(--color-component-color-button-primary-default-background)',
+    border: 'var(--color-component-color-button-primary-default-border)',
   },
   filledActive: {
-    color: 'var(--color-button-primary-label-active)',
-    background: 'var(--color-button-primary-surface-active)',
-    border: 'var(--color-button-primary-border-active)',
+    color: 'var(--color-component-color-button-primary-active-label)',
+    background: 'var(--color-component-color-button-primary-active-background)',
+    border: 'var(--color-component-color-button-primary-active-border)',
   },
   filledHover: {
-    color: 'var(--color-button-primary-label-hover)',
-    background: 'var(--color-button-primary-surface-hover)',
-    border: 'var(--color-button-primary-border-hover)',
+    color: 'var(--color-component-color-button-primary-hover-label)',
+    background: 'var(--color-component-color-button-primary-hover-background)',
+    border: 'var(--color-component-color-button-primary-hover-border)',
   },
   filledDisabled: {
-    color: 'var(--color-button-primary-label-disabled)',
-    background: 'var(--color-button-primary-surface-disabled)',
-    border: 'var(--color-button-primary-border-disabled)',
+    color: 'var(--color-component-color-button-primary-disabled-label)',
+    background:
+      'var(--color-component-color-button-primary-disabled-background)',
+    border: 'var(--color-component-color-button-primary-disabled-border)',
   },
   hollow: {
-    color: 'var(--color-button-secondary-label-default)',
-    background: 'var(--color-button-secondary-surface-default)',
-    border: 'var(--color-button-secondary-border-default)',
-  },
-  hollowFocus: {
-    color: 'var(--color-button-secondary-label-focus)',
-    background: 'var(--color-button-secondary-surface-focus)',
-    border: 'var(--color-button-secondary-border-focus)',
+    color: 'var(--color-component-color-button-secondary-default-label)',
+    background:
+      'var(--color-component-color-button-secondary-default-background)',
+    border: 'var(--color-component-color-button-secondary-default-border)',
   },
   hollowActive: {
-    color: 'var(--color-button-secondary-label-active)',
-    background: 'var(--color-button-secondary-surface-active)',
-    border: 'var(--color-button-secondary-border-active)',
+    color: 'var(--color-component-color-button-secondary-active-label)',
+    background:
+      'var(--color-component-color-button-secondary-active-background)',
+    border: 'var(--color-component-color-button-secondary-active-border)',
   },
   hollowHover: {
-    color: 'var(--color-button-secondary-label-hover)',
-    background: 'var(--color-button-secondary-surface-hover)',
-    border: 'var(--color-button-secondary-border-hover)',
+    color: 'var(--color-component-color-button-secondary-hover-label)',
+    background:
+      'var(--color-component-color-button-secondary-hover-background)',
+    border: 'var(--color-component-color-button-secondary-hover-border)',
   },
   hollowDisabled: {
-    color: 'var(--color-button-secondary-label-disabled)',
-    background: 'var(--color-button-secondary-surface-disabled)',
-    border: 'var(--color-button-secondary-border-disabled)',
+    color: 'var(--color-component-color-button-secondary-disabled-label)',
+    background:
+      'var(--color-component-color-button-secondary-disabled-background)',
+    border: 'var(--color-component-color-button-secondary-disabled-border)',
   },
 };
 
 /** returns the className generated for the styles of this component */
 export const getStyles = <T extends StylesProps>({
   appearance = 'hollow',
-  size = 'medium',
 }: T) => {
   /* Example styles. Adjust with styles for your implementation */
   const normal = buttonColors[appearance];
-  const focus = buttonColors[`${appearance}Focus`];
   const active = buttonColors[`${appearance}Active`];
   const hover = buttonColors[`${appearance}Hover`];
   const disabled = buttonColors[`${appearance}Disabled`];
-  const padding = buttonSize[size];
   /* Emotion `css` function generates the CSS
    * and returns the class name pointing to those styles
    * HINT: it is important to memoize the results of this function
@@ -127,32 +103,34 @@ export const getStyles = <T extends StylesProps>({
     *  directly as css variables representing design tokens */
     color: ${normal.color};
     background: ${normal.background};
-    border: ${normal.border};
-    padding: ${padding};
-    border-radius: var(--borderWidth-button-border-width-md);
+    border: var(--borderWidth-component-border-width-button-border) solid
+      ${normal.border};
+    padding: var(--spacing-component-spacing-button-padding-vertical)
+      var(--spacing-component-spacing-button-padding-horizontal);
+    border-radius: var(--borderRadius-component-border-radius-button-border);
     font-size: var(--button--typography-text);
     margin: var(--button--typography-text);
     font-size: var(--button--typography-text);
     font-size: var(--button--typography-text);
+    cursor: pointer;
     &:hover {
       color: ${hover.color};
       background: ${hover.background};
-      border: ${hover.border};
-    }
-    &:focus {
-      color: ${focus.color};
-      background: ${focus.background};
-      border: ${focus.border};
+      border: var(--borderWidth-component-border-width-button-border) solid
+        ${hover.border};
     }
     &:active {
       color: ${active.color};
       background: ${active.background};
-      border: ${active.border};
+      border: var(--borderWidth-component-border-width-button-border) solid
+        ${active.border};
     }
     &:disabled {
       color: ${disabled.color};
       background: ${disabled.background};
-      border: ${disabled.border};
+      border: var(--borderWidth-component-border-width-button-border) solid
+        ${disabled.border};
+      cursor: default;
     }
   `;
 };

@@ -46,23 +46,11 @@ export const ButtonStates: Story = {
       <div className="pseudo-hover">
         <RadiusButton {...args}>Hover</RadiusButton>
       </div>
-      <div className="pseudo-focus">
-        <RadiusButton {...args}>Focus</RadiusButton>
-      </div>
       <div className="pseudo-active">
         <RadiusButton {...args}>Active</RadiusButton>
       </div>
-      <div className="pseudo-hover pseudo-focus">
-        <RadiusButton {...args}>Hover Focus</RadiusButton>
-      </div>
       <div className="pseudo-hover pseudo-active">
         <RadiusButton {...args}>Hover Active</RadiusButton>
-      </div>
-      <div className="pseudo-focus pseudo-active">
-        <RadiusButton {...args}>Focus Active</RadiusButton>
-      </div>
-      <div className="pseudo-hover pseudo-focus pseudo-active">
-        <RadiusButton {...args}>Hover Focus Active</RadiusButton>
       </div>
     </div>
   ),
@@ -71,13 +59,13 @@ export const ButtonStates: Story = {
 type ButtonVariations = {
   types: readonly RadiusButtonVariant[];
   sizes: readonly RadiusButtonSize[];
-  states: readonly ['Default', 'Hover', 'Active', 'Focus', 'Disabled'];
+  states: readonly ['Default', 'Hover', 'Active', 'Disabled'];
 };
 
 const buttonVariations: ButtonVariations = {
   types: ['primary', 'secondary'] as const,
   sizes: ['large', 'medium', 'small'] as const,
-  states: ['Default', 'Hover', 'Active', 'Focus', 'Disabled'] as const,
+  states: ['Default', 'Hover', 'Active', 'Disabled'] as const,
 };
 
 const renderButtonVariationCell = (
@@ -119,7 +107,7 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
   const typeAndSize = types.flatMap((type) =>
     sizes.map((size) => [type, size] as const)
   );
-  // renders a table with rows for each type and size and collumns for each state
+  // renders a table with rows for each type and size and columns for each state
   return () => (
     <table className={tableStyle}>
       <tr>
