@@ -18,7 +18,6 @@ export type RadiusButtonVariant = 'primary' | 'secondary';
  */
 export type RadiusButtonExtendedProps = {
   variant?: RadiusButtonVariant;
-  size?: StylesProps['size'];
 };
 
 /// Valid Element Types for the RadiusButton
@@ -54,7 +53,6 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
       children, // extract children
       variant,
       className, // extract className
-      size, // extract your extensions
       ...rest // the remainder should be the original tag's attributes
     },
     ref
@@ -73,9 +71,8 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
       () =>
         getStyles({
           appearance: variant === 'primary' ? 'filled' : 'hollow',
-          size,
         }),
-      [variant, size]
+      [variant]
     );
 
     if (element.Component === 'button') {

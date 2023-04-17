@@ -6,7 +6,6 @@ import {
 
 // Discriminated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
-export type RadiusButtonSize = 'small' | 'medium' | 'large';
 export type RadiusButtonStyleType =
   | 'filled'
   | 'filledActive'
@@ -24,7 +23,6 @@ export type RadiusButtonStyleType =
 export type StylesProps = {
   // TODO: replace example props with yours
   appearance?: 'filled' | 'hollow';
-  size?: RadiusButtonSize;
 };
 
 /** Map from color props to css

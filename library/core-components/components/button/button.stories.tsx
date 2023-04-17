@@ -3,7 +3,6 @@ import { Meta, StoryObj, Args } from '@storybook/react';
 
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusButton, RadiusButtonVariant } from './button';
-import { RadiusButtonSize } from './button.styles';
 import { css } from '@emotion/css';
 import { Typography } from '../typography/typography';
 
@@ -59,34 +58,29 @@ export const ButtonStates: Story = {
 
 type ButtonVariations = {
   types: readonly RadiusButtonVariant[];
-  sizes: readonly RadiusButtonSize[];
   states: readonly ['Default', 'Hover', 'Active', 'Disabled'];
 };
 
 const buttonVariations: ButtonVariations = {
   types: ['primary', 'secondary'] as const,
-  sizes: ['large', 'medium', 'small'] as const,
   states: ['Default', 'Hover', 'Active', 'Disabled'] as const,
 };
 
 const renderButtonVariationCell = (
   type: ButtonVariations['types'][number],
-  size: ButtonVariations['sizes'][number],
   state: ButtonVariations['states'][number]
 ) => {
   const className = `pseudo-${state.toLowerCase()}`;
   if (state !== 'Disabled') {
     return (
       <td className={className}>
-        <RadiusButton size={size} variant={type}>
-          Action
-        </RadiusButton>
+        <RadiusButton variant={type}>Action</RadiusButton>
       </td>
     );
   } else {
     return (
       <td>
-        <RadiusButton size={size} variant={type} disabled>
+        <RadiusButton variant={type} disabled>
           Action
         </RadiusButton>
       </td>
@@ -105,10 +99,7 @@ const tableStyle = css`
 
 // TODO: add fonts to table headers once tokens are available
 const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
-  const { types, sizes, states } = options;
-  const typeAndSize = types.flatMap((type) =>
-    sizes.map((size) => [type, size] as const)
-  );
+  const { types, states } = options;
   // renders a table with rows for each type and size and columns for each state
   return () => (
     <table className={tableStyle}>
@@ -125,14 +116,14 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
           </th>
         ))}
       </tr>
-      {typeAndSize.map(([type, size]) => (
+      {types.map((type) => (
         <tr>
           <td>
             <Typography color="--color-component-color-button-secondary-default-label">
-              {type} {size}
+              {type}
             </Typography>
           </td>
-          {states.map((state) => renderButtonVariationCell(type, size, state))}
+          {states.map((state) => renderButtonVariationCell(type, state))}
         </tr>
       ))}
     </table>
