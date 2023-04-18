@@ -103,7 +103,11 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
             padding="--spacing-component-spacing-button-padding-vertical
               --spacing-component-spacing-button-padding-horizontal"
           >
-            <Typography font="--typography-component-typography-button-label">
+            <Typography
+              // @ts-expect-error - type error will occur until Typography polymorphic implementation is fixed
+              as="span"
+              font="--typography-component-typography-button-label"
+            >
               {children}
             </Typography>
             {rightIcon && <RadiusIcon component={rightIcon} size="small" />}
@@ -127,7 +131,11 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
             space="--spacing-component-spacing-button-gap"
             alignment="center"
           >
-            <Typography font="--typography-component-typography-button-label">
+            <Typography
+              // @ts-expect-error - type error will occur until Typography polymorphic implementation is fixed
+              as="span"
+              font="--typography-component-typography-button-label"
+            >
               {children}
             </Typography>
             {rightIcon && <RadiusIcon component={rightIcon} size="small" />}
