@@ -21,6 +21,7 @@
     "tokens:generate": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts css > generated/theme.css",
     "tokens:docs": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts storybook > generated/04-token-documentation.mdx && prettier --version && prettier --config ../../.prettierrc --parser mdx --write generated/04-token-documentation.mdx",
     "tokens:types": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts types > generated/design-tokens.types.ts && prettier --config ../../.prettierrc --write generated/design-tokens.types.ts",
+    "tokens:constants": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts constants > generated/design-tokens.constants.ts && prettier --config ../../.prettierrc --write generated/design-tokens.objects.ts",
     "build-icons": "rm -rf generated/icons && svgr --icon --typescript --filename-case kebab --out-dir generated/icons --svgo-config ./svgo.config.js src/assets/icons/svg",
     "build": "yarn tokens:update && yarn build-icons"
   },

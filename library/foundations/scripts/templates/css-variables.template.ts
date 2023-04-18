@@ -16,7 +16,7 @@ import {
 // Wraps special layers based on detecting specific parameters.
 // It is possible to create more sophisticated parameters for layers in the future
 const layerWrapper = (
-  params: Record<string, string>,
+  params: Record<string, string | undefined>,
   dependencies: string[],
   template: string
 ) => {

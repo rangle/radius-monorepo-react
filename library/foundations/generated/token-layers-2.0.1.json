@@ -1006,6 +1006,20 @@
           "rawValue": "16px"
         },
         {
+          "key": "--sizing-core-sizing-24",
+          "name": "core.sizing.24",
+          "value": "24px",
+          "type": "sizing",
+          "rawValue": "24px"
+        },
+        {
+          "key": "--sizing-core-sizing-32",
+          "name": "core.sizing.32",
+          "value": "32px",
+          "type": "sizing",
+          "rawValue": "32px"
+        },
+        {
           "key": "--borderWidth-core-border-width-1",
           "name": "core.borderWidth.1",
           "value": "1px",
@@ -1355,6 +1369,27 @@
           "value": "1px",
           "type": "borderWidth",
           "rawValue": "{core.borderWidth.1}"
+        },
+        {
+          "key": "--sizing-semantic-sizing-images-and-icons-icons-default",
+          "name": "semantic.sizing.imagesAndIcons.icons.default",
+          "value": "16px",
+          "type": "sizing",
+          "rawValue": "{core.sizing.16}"
+        },
+        {
+          "key": "--sizing-semantic-sizing-images-and-icons-icons-large",
+          "name": "semantic.sizing.imagesAndIcons.icons.large",
+          "value": "24px",
+          "type": "sizing",
+          "rawValue": "{core.sizing.24}"
+        },
+        {
+          "key": "--sizing-semantic-sizing-images-and-icons-icons-huge",
+          "name": "semantic.sizing.imagesAndIcons.icons.huge",
+          "value": "32px",
+          "type": "sizing",
+          "rawValue": "{core.sizing.32}"
         }
       ],
       "parameters": {},
@@ -1974,6 +2009,13 @@
           "value": "0px",
           "type": "borderRadius",
           "rawValue": "{semantic.borderRadius.actions.border}"
+        },
+        {
+          "key": "--sizing-component-sizing-button-icon",
+          "name": "component.sizing.button.icon",
+          "value": "16px",
+          "type": "sizing",
+          "rawValue": "{semantic.sizing.imagesAndIcons.icons.default}"
         }
       ],
       "parameters": {},

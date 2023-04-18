@@ -123,7 +123,7 @@ export type CompositeLeafTypography = {
 export type TokenLayer = {
   variables: TokenOutput[];
   name: string;
-  parameters: Record<string, string>;
+  parameters: Record<string, string | undefined>;
   dependencies: string[];
   isStatic: boolean;
 };
@@ -269,7 +269,7 @@ export const toKebabCase = (s: string) =>
 // create a formatted key that's more css-friendly
 export const formatKey = (str: string) => toKebabCase(str);
 
-export const isEqual = <T extends Record<string, string>>(
+export const isEqual = <T extends Record<string, string | undefined>>(
   a: T,
   b: T
 ): boolean => {
