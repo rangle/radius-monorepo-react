@@ -100,6 +100,8 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           <RadiusAutoBox
             space="--spacing-component-spacing-button-gap"
             alignment="center"
+            padding="--spacing-component-spacing-button-padding-vertical
+              --spacing-component-spacing-button-padding-horizontal"
           >
             <Typography font="--typography-component-typography-button-label">
               {children}

@@ -105,8 +105,6 @@ export const getStyles = <T extends StylesProps>({
     border-radius: var(--borderRadius-component-border-radius-button-border);
     border-style: solid;
     border-width: var(--borderWidth-component-border-width-button-border);
-    padding: var(--spacing-component-spacing-button-padding-vertical)
-      var(--spacing-component-spacing-button-padding-horizontal);
     cursor: pointer;
     &:hover {
       color: ${hover.color};
