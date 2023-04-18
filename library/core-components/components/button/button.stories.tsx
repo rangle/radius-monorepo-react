@@ -5,6 +5,7 @@ import { Meta, StoryObj, Args } from '@storybook/react';
 import { RadiusButton, RadiusButtonVariant } from './button';
 import { css } from '@emotion/css';
 import { Typography } from '../typography/typography';
+import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
@@ -26,6 +27,11 @@ const meta: Meta<typeof RadiusButton> = {
       'This Polymorphic component will style your component to render as a button.',
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
+
+  args: {
+    variant: 'primary',
+    as: 'button',
+  } as Args,
 };
 
 export default meta;
@@ -34,6 +40,13 @@ type Story = StoryObj<typeof RadiusButton>;
 export const Default: Story = {
   args: {
     children: 'Controlled Button',
+  } as Args,
+};
+
+export const WithIcon: Story = {
+  args: {
+    children: 'With Right Icon',
+    rightIcon: ArrowRight,
   } as Args,
 };
 

@@ -6,6 +6,8 @@ import { elementAndProps } from '../../utils/polymorphic.utils';
 
 import { getStyles } from './button.styles';
 import { Typography } from '../typography/typography';
+import { RadiusIcon } from '../icon/icon';
+import { RadiusAutoBox } from '../auto-box/auto-box';
 
 /// Button types
 export type RadiusButtonVariant = 'primary' | 'secondary';
@@ -19,6 +21,8 @@ export type RadiusButtonVariant = 'primary' | 'secondary';
  */
 export type RadiusButtonExtendedProps = {
   variant?: RadiusButtonVariant;
+  /** Optional right icon */
+  rightIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 };
 
 /// Valid Element Types for the RadiusButton
@@ -53,6 +57,7 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
     {
       children, // extract children
       variant,
+      rightIcon,
       className, // extract className
       ...rest // the remainder should be the original tag's attributes
     },
@@ -92,9 +97,15 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           ref={element.props.ref}
           {...element.props}
         >
-          <Typography font="--typography-component-typography-button-label">
-            {children}
-          </Typography>
+          <RadiusAutoBox
+            space="--spacing-component-spacing-button-gap"
+            alignment="center"
+          >
+            <Typography font="--typography-component-typography-button-label">
+              {children}
+            </Typography>
+            {rightIcon && <RadiusIcon component={rightIcon} size="small" />}
+          </RadiusAutoBox>
         </element.Component>
       );
     } else {
@@ -110,9 +121,15 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           ref={element.props.ref}
           {...element.props}
         >
-          <Typography font="--typography-component-typography-button-label">
-            {children}
-          </Typography>
+          <RadiusAutoBox
+            space="--spacing-component-spacing-button-gap"
+            alignment="center"
+          >
+            <Typography font="--typography-component-typography-button-label">
+              {children}
+            </Typography>
+            {rightIcon && <RadiusIcon component={rightIcon} size="small" />}
+          </RadiusAutoBox>
         </element.Component>
       );
     }
