@@ -101,10 +101,9 @@ export const getStyles = <T extends StylesProps>({
     *  directly as css variables representing design tokens */
     color: ${normal.color};
     background: ${normal.background};
-    border-color: ${normal.border};
+    border: solid ${normal.border}
+      var(--borderWidth-component-border-width-button-border);
     border-radius: var(--borderRadius-component-border-radius-button-border);
-    border-style: solid;
-    border-width: var(--borderWidth-component-border-width-button-border);
     cursor: pointer;
     &:hover {
       color: ${hover.color};
