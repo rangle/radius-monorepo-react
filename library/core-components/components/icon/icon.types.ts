@@ -1,11 +1,5 @@
 import { CSSProp } from '@rangle/radius-foundations';
 
-export const ICON_SIZES = {
-  small: 16,
-  medium: 24,
-  large: 32,
-} as const;
-
 type ComponentProps = {
   /** The React SVG component to render. Mutually exclusive with `path` prop */
   component: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -36,7 +30,7 @@ type ExclusiveProps = ComponentProps | PathProps;
 /** Custom props extending the functionality of the base svg component */
 type RadiusIconExtendedProps = {
   /** Icon size. Will automatically set the `width` and `height` of the SVG */
-  size?: keyof typeof ICON_SIZES;
+  size: CSSProp<'sizing', 'semantic'>;
   /** Icon fill color. Defaults to `currentColor` so that the icon will inherit the color of the parent element */
   fill?: CSSProp<'color'>;
   /** Custom class name to override styling if needed */

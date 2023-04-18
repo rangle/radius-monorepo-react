@@ -2,7 +2,7 @@ import React, { forwardRef, useMemo } from 'react';
 import { cx } from '@emotion/css';
 
 import { getStyles } from './icon.styles';
-import { RadiusIconProps, ICON_SIZES } from './icon.types';
+import { RadiusIconProps } from './icon.types';
 import { withIcon } from './utils';
 
 /**
@@ -23,21 +23,15 @@ import { withIcon } from './utils';
  * means that the icon will inherit the color of the parent element.
  */
 export const RadiusIcon = forwardRef<SVGSVGElement, RadiusIconProps>(
-  ({ component, path, size = 'medium', fill, className, ...rest }, ref) => {
-    const styles = useMemo(() => getStyles({ fill }), [fill]);
+  ({ component, path, size, fill, className, ...rest }, ref) => {
+    const styles = useMemo(() => getStyles({ fill, size }), [fill, size]);
     const IconComponent = useMemo(
       () => (component ? component : withIcon(path)),
       [component, path]
     );
 
     return (
-      <IconComponent
-        className={cx(styles, className)}
-        width={ICON_SIZES[size]}
-        height={ICON_SIZES[size]}
-        ref={ref}
-        {...rest}
-      />
+      <IconComponent className={cx(styles, className)} ref={ref} {...rest} />
     );
   }
 );

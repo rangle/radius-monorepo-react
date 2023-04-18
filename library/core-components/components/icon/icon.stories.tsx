@@ -72,10 +72,20 @@ const meta: Meta<typeof RadiusIcon> = {
       ],
       defaultValue: 'currentColor',
     },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: [
+        '--sizing-semantic-sizing-images-and-icons-icons-default',
+        '--sizing-semantic-sizing-images-and-icons-icons-large',
+        '--sizing-semantic-sizing-images-and-icons-icons-huge',
+      ],
+    },
   } as ArgTypes,
   args: {
     fill: '--color-text-on-base-primary',
-    size: 'medium',
+    size: '--sizing-semantic-sizing-images-and-icons-icons-default',
   } as Args,
 };
 
