@@ -1,5 +1,6 @@
 import React, { useMemo, forwardRef } from 'react';
 import { cx } from '@emotion/css';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
@@ -110,7 +111,12 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
             >
               {children}
             </Typography>
-            {rightIcon && <RadiusIcon component={rightIcon} size="small" />}
+            {rightIcon && (
+              <RadiusIcon
+                component={rightIcon}
+                size={radiusTokens.component.sizing.button.icon}
+              />
+            )}
           </RadiusAutoBox>
         </element.Component>
       );
@@ -138,7 +144,12 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
             >
               {children}
             </Typography>
-            {rightIcon && <RadiusIcon component={rightIcon} size="small" />}
+            {rightIcon && (
+              <RadiusIcon
+                component={rightIcon}
+                size={radiusTokens.component.sizing.button.icon}
+              />
+            )}
           </RadiusAutoBox>
         </element.Component>
       );
