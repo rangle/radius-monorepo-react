@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj, ArgTypes, Args } from '@storybook/react';
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './auto-box';
 import { RadiusButton } from '../button/button';
 
@@ -19,7 +19,7 @@ const meta: Meta<typeof RadiusAutoBox> = {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.EXPERIMENTAL],
     componentSubtitle:
       "AutoBox duplicates Figma's Auto Layout API. In Fimga Auto Layout is a very powerful feature that allows you to create complex layouts with ease.  We've adapted it's API as a Polymorphic component that will work with many of the features in Auto Layout.",
 

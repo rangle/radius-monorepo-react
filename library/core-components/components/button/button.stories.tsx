@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj, Args } from '@storybook/react';
 
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusButton, RadiusButtonVariant } from './button';
 import { css } from '@emotion/css';
 import { Typography } from '../typography/typography';
@@ -20,7 +20,7 @@ const meta: Meta<typeof RadiusButton> = {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.EXPERIMENTAL],
 
     componentSubtitle:
       'This Polymorphic component will style your component to render as a button.',

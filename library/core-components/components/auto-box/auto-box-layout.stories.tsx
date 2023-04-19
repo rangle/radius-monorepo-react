@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { Meta } from '@storybook/react';
 
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './auto-box';
 import { Title, Stories, Description } from '@storybook/addon-docs';
 
@@ -19,7 +19,7 @@ const meta: Meta<typeof RadiusAutoBox> = {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.EXPERIMENTAL],
     docs: {
       page: () => (
         <>

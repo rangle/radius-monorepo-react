@@ -35,7 +35,7 @@ import {
     Typeset,
   } from '@storybook/addon-docs';
   import { PropsTable } from '@storybook/components';
-  // import { BADGE } from '@geometricpanda/storybook-addon-badges';
+  import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 <Meta
   title="Token Documentation"
