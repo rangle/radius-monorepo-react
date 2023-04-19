@@ -1,6 +1,5 @@
 import React, { useMemo, forwardRef } from 'react';
 import { cx } from '@emotion/css';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 import { elementAndProps } from '../../utils/polymorphic.utils';
@@ -114,7 +113,7 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
             {rightIcon && (
               <RadiusIcon
                 component={rightIcon}
-                size={radiusTokens.component.sizing.button.icon}
+                size="--sizing-component-sizing-button-icon"
               />
             )}
           </RadiusAutoBox>
@@ -136,6 +135,8 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           <RadiusAutoBox
             space="--spacing-component-spacing-button-gap"
             alignment="center"
+            padding="--spacing-component-spacing-button-padding-vertical
+              --spacing-component-spacing-button-padding-horizontal"
           >
             <Typography
               // @ts-expect-error - type error will occur until Typography polymorphic implementation is fixed
@@ -147,7 +148,7 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
             {rightIcon && (
               <RadiusIcon
                 component={rightIcon}
-                size={radiusTokens.component.sizing.button.icon}
+                size="--sizing-component-sizing-button-icon"
               />
             )}
           </RadiusAutoBox>
