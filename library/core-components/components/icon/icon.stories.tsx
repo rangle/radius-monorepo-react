@@ -68,6 +68,7 @@ export const AllIcons: Story = {
             <span
               style={{
                 font: '400 0.75rem/150% Riforma LL',
+                color: `var(${radiusTokens.component.color.button.secondary.default.label})`,
               }}
             >
               {iconName}
