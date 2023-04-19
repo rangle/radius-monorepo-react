@@ -38,18 +38,25 @@ export const RadiusHero = ({
         <RadiusAutoBox direction="vertical" className="text-container">
           <Typography
             as="p"
+            // @ts-expect-error TODO: fix this when we have the correct component tokens
             font="--typography-heading-md"
+            // @ts-expect-error TODO: fix this when we have the correct component tokens
             color="--color-text-on-base-secondary"
           >
             {eyebrow}
           </Typography>
-          <Typography as="h1" font="--typography-heading-xxl">
+          <Typography
+            as="h1"
+            // @ts-expect-error TODO: fix this when we have the correct component tokens
+            font="--typography-heading-xxl"
+          >
             {title}
           </Typography>
           <RadiusAutoBox className="buttonContainer">
             <RadiusButton
               as="a"
               variant="primary"
+              // @ts-expect-error TODO: fix this when we have the correct component tokens
               size="large"
               href={ctaUrl}
               // TODO: remove this className when the link button bug (R20-218) is fixed

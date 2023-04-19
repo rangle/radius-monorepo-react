@@ -1,4 +1,5 @@
 import { renderCSSProp } from './design-tokens.utils';
+import { flattenObject } from './flatten.utils';
 
 describe('utils', () => {
   describe('design-tokens.utils', () => {
@@ -14,6 +15,23 @@ describe('utils', () => {
             css: '1px solid red',
           })
         ).toBe('1px solid red');
+      });
+    });
+  });
+
+  describe('flatten.utils', () => {
+    describe('flattenObject', () => {
+      it('should flatten an object into an array', () => {
+        const obj = {
+          a: 1,
+          b: {
+            c: 2,
+            d: {
+              e: 3,
+            },
+          },
+        };
+        expect(flattenObject(obj)).toEqual([1, 2, 3]);
       });
     });
   });
