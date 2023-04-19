@@ -114,6 +114,7 @@ export const AllIcons: Story = {
               height: '85px',
             }}
           >
+            {/* @ts-expect-error - incorrect args type (possibly?) means that the component doesn't think it's getting required props. Bug: BOOST-232 */}
             <RadiusIcon component={icon} {...args} />
             <span
               style={{
