@@ -56,17 +56,23 @@ export const ButtonStates: Story = {
       <div>
         <RadiusButton {...args}>Normal</RadiusButton>
       </div>
-      <div className="pseudo-hover">
+      <div id="hover">
         <RadiusButton {...args}>Hover</RadiusButton>
       </div>
-      <div className="pseudo-active">
+      <div id="active">
         <RadiusButton {...args}>Active</RadiusButton>
       </div>
-      <div className="pseudo-hover pseudo-active">
+      <div id="hover-active">
         <RadiusButton {...args}>Hover Active</RadiusButton>
       </div>
     </div>
   ),
+  parameters: {
+    pseudo: {
+      hover: ['#hover', '#hover-active'],
+      active: ['#active', '#hover-active'],
+    },
+  },
 };
 
 type ButtonVariations = {
@@ -83,7 +89,7 @@ const renderButtonVariationCell = (
   type: ButtonVariations['types'][number],
   state: ButtonVariations['states'][number]
 ) => {
-  const className = `pseudo-${state.toLowerCase()}`;
+  const className = state.toLowerCase();
   if (state !== 'Disabled') {
     return (
       <td className={className}>
@@ -149,3 +155,10 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
 export const ButtonVariants = ButtonVariantsTemplateAutomated(
   buttonVariations
 ).bind({});
+
+ButtonVariants.parameters = {
+  pseudo: {
+    hover: ['.hover', '.hover-active'],
+    active: ['.active', '.hover-active'],
+  },
+};
