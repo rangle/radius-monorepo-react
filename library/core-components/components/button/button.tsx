@@ -76,7 +76,7 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
     const style = useMemo(
       () =>
         getStyles({
-          appearance: variant === 'primary' ? 'filled' : 'hollow',
+          variant,
         }),
       [variant]
     );
