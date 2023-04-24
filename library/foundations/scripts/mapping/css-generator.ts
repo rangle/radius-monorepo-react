@@ -14,5 +14,10 @@ export default {
         [/Heavy/g, '900'],
       ],
     ],
+    [
+      /--letterSpacing/,
+      // preserve sign ($1), divide value ($2) by 100, replace % with em
+      [[/(-?)([0-9]*)%/g, 'calc($1$2em/100)']],
+    ],
   ],
 } satisfies GeneratorMappingDictionary;
