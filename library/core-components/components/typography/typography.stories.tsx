@@ -35,12 +35,31 @@ const meta: Meta<typeof Typography> = {
         component: radiusTokens.component.typography,
       }),
     },
+    fontFamily: {
+      options: flattenObject(radiusTokens.core.fontFamilies),
+    },
+    lineHeight: {
+      options: flattenObject(radiusTokens.core.lineHeights),
+    },
+    fontWeight: {
+      options: flattenObject(radiusTokens.core.fontWeights),
+    },
+    fontSize: {
+      options: flattenObject(radiusTokens.core.fontSize),
+    },
+    letterSpacing: {
+      options: flattenObject(radiusTokens.core.letterSpacing),
+    },
+    textDecoration: {
+      options: flattenObject(radiusTokens.core.textDecoration),
+    },
   } as ArgTypes, // TODO: Fix argTypes inference (broken due to polymorphic implementation?). This assertion is a workaround.
   args: {
     children: 'Hello World!',
     as: 'p',
     align: 'left',
     font: radiusTokens.core.typography.desktop.body.md,
+    fill: radiusTokens.component.color.button.secondary.default.label,
   } as Args, // TODO: Fix args inference (broken due to polymorphic implementation?). This assertion is a workaround.
 };
 
@@ -48,27 +67,3 @@ export default meta;
 type Story = StoryObj<typeof Typography>;
 
 export const Default: Story = {};
-
-// export const Example: Story = {
-//   render: () => (
-//     <div>
-//       <Typography font={radiusTokens.semantic.typography.desktop.}>Title</Typography>
-//       <Typography fill="--color-text-on-base-accent">
-//         Some body text. Lorem ipsum dolor sit, amet consectetur adipisicing
-//         elit. Fuga, blanditiis.
-//       </Typography>
-//       <Typography
-//         font="--typography-body-sm"
-//         fill="--color-text-on-base-secondary"
-//         align="right"
-//       >
-//         *Footnote
-//       </Typography>
-//     </div>
-//   ),
-//   parameters: {
-//     controls: {
-//       disable: true,
-//     },
-//   },
-// };
