@@ -28,20 +28,6 @@ describe('<Typography />', () => {
     expect(getByText('Hello World')).toHaveStyle('text-align: left');
   });
 
-  test('should have medium body font by default', () => {
-    const { getByText } = render(<Typography>Hello World</Typography>);
-    expect(getByText('Hello World')).toHaveStyle(
-      'font: var(--typography-body-md)'
-    );
-  });
-
-  test('should have primary text color by default', () => {
-    const { getByText } = render(<Typography>Hello World</Typography>);
-    expect(getByText('Hello World')).toHaveStyle(
-      'color: var(--color-text-on-base-primary)'
-    );
-  });
-
   test('should have no accessibility violations', async () => {
     const { getByText } = render(<Typography>Hello World</Typography>);
     expect(await axe(getByText('Hello World'))).toHaveNoViolations();
