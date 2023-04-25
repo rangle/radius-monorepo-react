@@ -14,8 +14,8 @@ import { useStyles } from './typography.styles';
 export const Typography: TypographyComponent = forwardRef(
   <C extends React.ElementType = 'p'>(
     {
-      as,
-      align,
+      as: Component = 'p',
+      align = 'left',
       fill,
       font,
       fontFamily,
@@ -30,8 +30,6 @@ export const Typography: TypographyComponent = forwardRef(
     }: TypographyProps<C>,
     ref?: PolymorphicRef<C>
   ) => {
-    const Component = as || 'p';
-
     const styles = useStyles({
       align,
       fill,

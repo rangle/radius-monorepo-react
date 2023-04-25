@@ -16,6 +16,8 @@ export type TypographyTag =
   | 'strong';
 
 export type TypographyExtendedProps = {
+  /** The content of the Typography component */
+  children: React.ReactNode;
   /** Text color */
   fill?: CSSProp<'color'>;
   /** Text alignment (corresponds to `text-align` style) */
@@ -34,8 +36,6 @@ export type TypographyExtendedProps = {
   letterSpacing?: CSSProp<'letterSpacing'>;
   /** Text Decoration - will override `text-decoration` style of the `font` prop */
   textDecoration?: CSSProp<'textDecoration'>;
-  /** The content of the Typography component */
-  children: React.ReactNode;
 };
 
 export type TypographyProps<C extends React.ElementType> =

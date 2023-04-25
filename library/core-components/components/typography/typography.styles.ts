@@ -1,8 +1,8 @@
 import { renderCSSProp, createUseStyles } from '../../utils';
-import { TypographyExtendedProps } from './typography.types';
+import { Typography } from './typography';
 
 export type StylesProps = Pick<
-  TypographyExtendedProps,
+  React.ComponentProps<typeof Typography>,
   | 'align'
   | 'fill'
   | 'font'
@@ -15,7 +15,7 @@ export type StylesProps = Pick<
 >;
 
 export const useStyles = ({
-  align = 'left',
+  align,
   fill,
   font,
   fontFamily,
