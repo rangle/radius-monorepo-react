@@ -17,6 +17,18 @@ describe('utils', () => {
         ).toBe('1px solid red');
       });
     });
+
+    describe('PrefixWithVar', () => {
+      it('should return a CSS variable when passed a string', () => {
+        expect(renderCSSProp('--test')).toBe('var(--test)');
+      });
+
+      it('should return multiple CSS variables when passed a string with multiple tokens', () => {
+        expect(renderCSSProp('--test --test2')).toBe(
+          'var(--test) var(--test2)'
+        );
+      });
+    });
   });
 
   describe('flatten.utils', () => {

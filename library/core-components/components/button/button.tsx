@@ -6,6 +6,8 @@ import { elementAndProps } from '../../utils/polymorphic.utils';
 
 import { getStyles } from './button.styles';
 import { Typography } from '../typography/typography';
+import { RadiusIcon } from '../icon/icon';
+import { RadiusAutoBox } from '../auto-box/auto-box';
 
 /// Button types
 export type RadiusButtonVariant = 'primary' | 'secondary';
@@ -19,6 +21,8 @@ export type RadiusButtonVariant = 'primary' | 'secondary';
  */
 export type RadiusButtonExtendedProps = {
   variant?: RadiusButtonVariant;
+  /** Optional right icon */
+  rightIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 };
 
 /// Valid Element Types for the RadiusButton
@@ -53,6 +57,7 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
     {
       children, // extract children
       variant,
+      rightIcon,
       className, // extract className
       ...rest // the remainder should be the original tag's attributes
     },
@@ -71,7 +76,7 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
     const style = useMemo(
       () =>
         getStyles({
-          appearance: variant === 'primary' ? 'filled' : 'hollow',
+          variant,
         }),
       [variant]
     );
@@ -92,9 +97,26 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           ref={element.props.ref}
           {...element.props}
         >
-          <Typography font="--typography-component-typography-button-label">
-            {children}
-          </Typography>
+          <RadiusAutoBox
+            space="--spacing-component-spacing-button-gap"
+            alignment="center"
+            padding="--spacing-component-spacing-button-padding-vertical
+              --spacing-component-spacing-button-padding-horizontal"
+          >
+            <Typography
+              // @ts-expect-error - type error will occur until Typography polymorphic implementation is fixed
+              as="span"
+              font="--typography-component-typography-button-label"
+            >
+              {children}
+            </Typography>
+            {rightIcon && (
+              <RadiusIcon
+                component={rightIcon}
+                size="--sizing-component-sizing-button-icon"
+              />
+            )}
+          </RadiusAutoBox>
         </element.Component>
       );
     } else {
@@ -110,9 +132,26 @@ export const RadiusButton = forwardRef<RadiusButtonTag, RadiusButtonProps>(
           ref={element.props.ref}
           {...element.props}
         >
-          <Typography font="--typography-component-typography-button-label">
-            {children}
-          </Typography>
+          <RadiusAutoBox
+            space="--spacing-component-spacing-button-gap"
+            alignment="center"
+            padding="--spacing-component-spacing-button-padding-vertical
+              --spacing-component-spacing-button-padding-horizontal"
+          >
+            <Typography
+              // @ts-expect-error - type error will occur until Typography polymorphic implementation is fixed
+              as="span"
+              font="--typography-component-typography-button-label"
+            >
+              {children}
+            </Typography>
+            {rightIcon && (
+              <RadiusIcon
+                component={rightIcon}
+                size="--sizing-component-sizing-button-icon"
+              />
+            )}
+          </RadiusAutoBox>
         </element.Component>
       );
     }

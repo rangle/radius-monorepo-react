@@ -5,6 +5,7 @@ import { Meta, StoryObj, Args } from '@storybook/react';
 import { RadiusButton, RadiusButtonVariant } from './button';
 import { css } from '@emotion/css';
 import { Typography } from '../typography/typography';
+import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
@@ -26,6 +27,11 @@ const meta: Meta<typeof RadiusButton> = {
       'This Polymorphic component will style your component to render as a button.',
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
+
+  args: {
+    variant: 'primary',
+    as: 'button',
+  } as Args,
 };
 
 export default meta;
@@ -37,23 +43,36 @@ export const Default: Story = {
   } as Args,
 };
 
+export const WithIcon: Story = {
+  args: {
+    children: 'With Right Icon',
+    rightIcon: ArrowRight,
+  } as Args,
+};
+
 export const ButtonStates: Story = {
   render: (args) => (
     <div style={{ display: 'flex', gap: '1em', padding: '1em 0' }}>
       <div>
         <RadiusButton {...args}>Normal</RadiusButton>
       </div>
-      <div className="pseudo-hover">
+      <div id="hover">
         <RadiusButton {...args}>Hover</RadiusButton>
       </div>
-      <div className="pseudo-active">
+      <div id="active">
         <RadiusButton {...args}>Active</RadiusButton>
       </div>
-      <div className="pseudo-hover pseudo-active">
+      <div id="hover-active">
         <RadiusButton {...args}>Hover Active</RadiusButton>
       </div>
     </div>
   ),
+  parameters: {
+    pseudo: {
+      hover: ['#hover', '#hover-active'],
+      active: ['#active', '#hover-active'],
+    },
+  },
 };
 
 type ButtonVariations = {
@@ -70,7 +89,7 @@ const renderButtonVariationCell = (
   type: ButtonVariations['types'][number],
   state: ButtonVariations['states'][number]
 ) => {
-  const className = `pseudo-${state.toLowerCase()}`;
+  const className = state.toLowerCase();
   if (state !== 'Disabled') {
     return (
       <td className={className}>
@@ -136,3 +155,10 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
 export const ButtonVariants = ButtonVariantsTemplateAutomated(
   buttonVariations
 ).bind({});
+
+ButtonVariants.parameters = {
+  pseudo: {
+    hover: ['.hover', '.hover-active'],
+    active: ['.active', '.hover-active'],
+  },
+};
