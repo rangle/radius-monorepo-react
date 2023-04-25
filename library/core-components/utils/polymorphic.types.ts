@@ -9,7 +9,7 @@ import { ElementType, ComponentPropsWithRef } from 'react';
 // React components should expose typical HTML attributes,
 // like `aria-` and `readonly` for example.
 // Polymorphic components will change which attributes are exposed
-// based on the undelying html the component is using to render.
+// based on the underlying html the component is using to render.
 // For instance, a Button component can render as either <button> or <a>
 // if it is rendered as <button> it shouldn't have the href attribute
 // this is controlled by using the `as` prop.
@@ -21,31 +21,47 @@ import { ElementType, ComponentPropsWithRef } from 'react';
 /** type fragment containing the 'as' prop
  * the 'as' prop can be the name of a tag
  */
-export type AsProp<C extends ElementType> = {
-  as?: C;
+export type AsProp<AsType extends ElementType> = {
+  as?: AsType;
 };
 
-type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
+type PropsToOmit<C extends ElementType, P> = keyof (AsProp<C> & P);
 
 /*** generic type representing the `ref` prop */
 export type PolymorphicRef<C extends ElementType> =
   ComponentPropsWithRef<C>['ref'];
 
-// export type ComponentPropsWitAs<C extends ElementType> = AsProp<C> &
-//   ComponentPropsWithoutRef<C>;
-
-/*** generic type representing the props of a given component of type `C` - without the `ref` prop */
-// export type PolymorphicComponentProp<C extends ElementType, Props> = Props &
-//   ComponentPropsWitAs<C>;
-
+/**
+ * Generic type representing the props of a given component of type `C` -
+ * without the `ref` prop.
+ *
+ * Note: the `AsType` argument is optional - when provided, it can be used to
+ * narrow the allowed element types for the `as` prop.
+ * 
+ * @example
+ * PolymorphicComponentProp<C, Props, 'h1' | 'p'>;
+  // restricts the possible element types to 'h1' or 'p'
+ */
 export type PolymorphicComponentProp<
-  C extends React.ElementType,
-  Props = Record<string, never>
-> = React.PropsWithChildren<Props & AsProp<C>> &
+  C extends ElementType,
+  Props = Record<string, never>,
+  AsType extends ElementType = C
+> = React.PropsWithChildren<Props & AsProp<AsType>> &
   Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
-/*** generic type representing the props of a given component of type `C` - with the `ref` prop */
+/**
+ * Generic type representing the props of a given component of type `C` - with
+ * the `ref` prop.
+ *
+ * Note: the `AsType` argument is optional - when provided, it can be used to
+ * narrow the allowed element types for the `as` prop.
+ * 
+ * @example
+ * PolymorphicComponentPropWithRef<C, Props, 'h1' | 'p'>;
+  // restricts the possible element types to 'h1' or 'p'
+ * */
 export type PolymorphicComponentPropWithRef<
   C extends ElementType,
-  Props = Record<string, never>
-> = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };
+  Props = Record<string, never>,
+  AsType extends ElementType = C
+> = PolymorphicComponentProp<C, Props, AsType> & { ref?: PolymorphicRef<C> };

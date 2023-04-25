@@ -11,11 +11,7 @@ export type TypographyTag =
   | 'h5'
   | 'h6'
   | 'p'
-  | 'div'
   | 'span'
-  | 'a'
-  | 'article'
-  | 'section'
   | 'em'
   | 'strong';
 
@@ -43,7 +39,7 @@ export type TypographyExtendedProps = {
 };
 
 export type TypographyProps<C extends React.ElementType> =
-  PolymorphicComponentPropWithRef<C, TypographyExtendedProps>;
+  PolymorphicComponentPropWithRef<C, TypographyExtendedProps, TypographyTag>;
 
 export type TypographyComponent = <C extends React.ElementType = 'p'>(
   props: TypographyProps<C>
