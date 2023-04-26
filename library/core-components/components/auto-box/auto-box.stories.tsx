@@ -1,5 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj, ArgTypes, Args } from '@storybook/react';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './auto-box';
 import { RadiusButton } from '../button/button';
@@ -260,17 +262,17 @@ export const AutoBox: Story = {
       <RadiusAutoBox
         width={100}
         height="fill-parent"
-        fill="--color-button-primary-surface-hover"
+        fill={radiusTokens.component.color.button.primary.hover.background}
       />
       <RadiusAutoBox
         width={100}
         height="fill-parent"
-        fill="--color-button-primary-surface-hover"
+        fill={radiusTokens.component.color.button.primary.hover.background}
       />
       <RadiusAutoBox
         width={100}
         height="fill-parent"
-        fill="--color-button-primary-surface-hover"
+        fill={radiusTokens.component.color.button.primary.hover.background}
       />
     </RadiusAutoBox>
   ),
@@ -306,20 +308,20 @@ export const Padding: Story = {
         width={100}
         height={25}
         padding={{ css: '50px 0 0 20px' }}
-        fill="--color-button-primary-surface-hover"
+        fill={radiusTokens.component.color.button.primary.hover.background}
       />
 
       <RadiusAutoBox
         width={100}
         height={25}
         padding={{ css: '30px 0' }}
-        fill="--color-button-primary-surface-hover"
+        fill={radiusTokens.component.color.button.primary.hover.background}
       />
       <RadiusAutoBox
         width={100}
         height={25}
-        padding="--spacing-core-space-12x"
-        fill="--color-button-primary-surface-hover"
+        padding={{ css: '48px' }}
+        fill={radiusTokens.component.color.button.primary.hover.background}
       />
     </RadiusAutoBox>
   ),
@@ -336,41 +338,41 @@ export const Opacity: Story = {
       direction="horizontal"
       alignment="top"
       width="fill-parent"
-      padding="--spacing-core-space-3x"
+      padding={{ css: '12px' }}
     >
       <RadiusAutoBox
         width={100}
         height={25}
-        opacity="--opacity-core-opacity-lighter"
-        stroke="--color-button-primary-surface-default"
-        fill="--color-button-primary-surface-default"
+        opacity={radiusTokens.core.opacity['25percent']}
+        stroke={radiusTokens.component.color.button.primary.default.background}
+        fill={radiusTokens.component.color.button.primary.default.background}
       />
       <RadiusAutoBox
         width={100}
         height={25}
-        opacity="--opacity-core-opacity-light"
-        stroke="--color-button-primary-surface-default"
-        fill="--color-button-primary-surface-default"
+        opacity={radiusTokens.core.opacity['35percent']}
+        stroke={radiusTokens.component.color.button.primary.default.background}
+        fill={radiusTokens.component.color.button.primary.default.background}
       />
       <RadiusAutoBox
         width={100}
         height={25}
-        opacity="--opacity-core-opacity-dark"
-        stroke="--color-button-primary-surface-default"
-        fill="--color-button-primary-surface-default"
+        opacity={radiusTokens.core.opacity['65percent']}
+        stroke={radiusTokens.component.color.button.primary.default.background}
+        fill={radiusTokens.component.color.button.primary.default.background}
       />
       <RadiusAutoBox
         width={100}
         height={25}
-        opacity="--opacity-core-opacity-darker"
-        stroke="--color-button-primary-surface-default"
-        fill="--color-button-primary-surface-default"
+        opacity={radiusTokens.core.opacity['90percent']}
+        stroke={radiusTokens.component.color.button.primary.default.background}
+        fill={radiusTokens.component.color.button.primary.default.background}
       />
       <RadiusAutoBox
         width={100}
         height={25}
-        stroke="--color-button-primary-surface-default"
-        fill="--color-button-primary-surface-default"
+        stroke={radiusTokens.component.color.button.primary.default.background}
+        fill={radiusTokens.component.color.button.primary.default.background}
       />
     </RadiusAutoBox>
   ),
@@ -387,14 +389,18 @@ export const BackgroundColor: Story = {
       direction="horizontal"
       alignment="top"
       width="fill-parent"
-      padding="--spacing-core-space-3x"
+      padding={{ css: '12px' }}
     >
       <RadiusAutoBox
         width={100}
         height={25}
-        fill="--color-background-inverse"
+        fill={radiusTokens.component.color.button.primary.default.background}
       />
-      <RadiusAutoBox width={100} height={25} fill="--color-background-accent" />
+      <RadiusAutoBox
+        width={100}
+        height={25}
+        fill={radiusTokens.component.color.button.primary.hover.background}
+      />
       <RadiusAutoBox width={100} height={25} fill={{ css: 'red' }} />
       <RadiusAutoBox width={100} height={25} fill={{ css: '#0000ff' }} />
       <RadiusAutoBox
@@ -422,25 +428,25 @@ export const Border: Story = {
       direction="horizontal"
       alignment="top"
       width="fill-parent"
-      padding="--spacing-core-space-3x"
+      padding={{ css: '12px' }}
     >
       <RadiusAutoBox
         width={50}
         height={50}
-        stroke="--color-button-primary-surface-hover"
-        strokeWidth="--borderWidth-core-border-width-sm"
+        stroke={radiusTokens.component.color.button.primary.hover.background}
+        strokeWidth={radiusTokens.core.borderWidth['1']}
       />
       <RadiusAutoBox
         width={50}
         height={50}
-        stroke="--color-button-primary-surface-hover"
+        stroke={radiusTokens.component.color.button.primary.hover.background}
         strokeAlign={`outside`}
-        strokeWidth="--borderWidth-core-border-width-md: 2px;"
+        strokeWidth={radiusTokens.core.borderWidth['2']}
       />
       <RadiusAutoBox
         width={50}
         height={50}
-        stroke="--color-button-primary-surface-hover"
+        stroke={radiusTokens.component.color.button.primary.hover.background}
         strokeAlign={'inside'}
         strokeWidth={{ css: '20px 0 1px 5px' }}
       />
@@ -459,25 +465,25 @@ export const BorderRadius: Story = {
       direction={'horizontal'}
       alignment={'top'}
       width={'fill-parent'}
-      padding="--spacing-core-space-3x"
+      padding={{ css: '12px' }}
     >
       <RadiusAutoBox
         width={50}
         height={50}
-        cornerRadius="--borderRadius-core-radius-xsm"
-        stroke="--color-button-primary-surface-hover"
+        cornerRadius={radiusTokens.core.borderRadius[4]}
+        stroke={radiusTokens.component.color.button.primary.hover.background}
       />
       <RadiusAutoBox
         width={50}
         height={50}
-        cornerRadius="--borderRadius-core-radius-md"
-        stroke="--color-button-primary-surface-hover"
+        cornerRadius={radiusTokens.core.borderRadius[16]}
+        stroke={radiusTokens.component.color.button.primary.hover.background}
       />
       <RadiusAutoBox
         width={50}
         height={50}
-        cornerRadius="--borderRadius-core-radius-max"
-        stroke="--color-button-primary-surface-hover"
+        cornerRadius={radiusTokens.core.borderRadius.max}
+        stroke={radiusTokens.component.color.button.primary.hover.background}
       />
     </RadiusAutoBox>
   ),
@@ -494,15 +500,15 @@ export const Absolute: Story = {
       direction={'vertical'}
       width={'fill-parent'}
       strokeAlign={'inside'}
-      stroke="--color-button-primary-surface-default"
-      padding="--spacing-core-space-5x"
+      stroke={radiusTokens.component.color.button.primary.default.background}
+      padding={{ css: '20px' }}
       isParent={true}
       height={200}
     >
       <RadiusAutoBox
-        fill="--color-button-primary-surface-default"
+        fill={radiusTokens.component.color.button.primary.default.background}
         style={{ color: 'var(--color-button-primary-label-default)' }}
-        padding="--spacing-core-space-3x"
+        padding={{ css: '12px' }}
         absolutePosition={true}
         x="0%"
         y="0%"
@@ -510,8 +516,8 @@ export const Absolute: Story = {
         Top Left
       </RadiusAutoBox>
       <RadiusAutoBox
-        padding="--spacing-core-space-3x"
-        fill="--color-button-primary-surface-default"
+        padding={{ css: '12px' }}
+        fill={radiusTokens.component.color.button.primary.default.background}
         style={{ color: 'var(--color-button-primary-label-default)' }}
         horizontalConstraint="right"
         verticalConstraint="bottom"
@@ -535,34 +541,36 @@ export const AsElements: Story = {
     <RadiusAutoBox
       direction="horizontal"
       width="fill-parent"
-      padding="--spacing-core-space-3x"
-      style={{ color: 'var(--color-button-primary-label-default)' }}
+      padding={{ css: '12px' }}
+      style={{
+        color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+      }}
     >
       <RadiusAutoBox
         as="h1"
-        padding="--spacing-core-space-5x"
-        fill="--color-button-primary-surface-default"
+        padding={{ css: '20px' }}
+        fill={radiusTokens.component.color.button.primary.default.background}
       >
         As h1
       </RadiusAutoBox>
       <RadiusAutoBox
         as="main"
-        padding="--spacing-core-space-5x"
-        fill="--color-button-primary-surface-default"
+        padding={{ css: '20px' }}
+        fill={radiusTokens.component.color.button.primary.default.background}
       >
         As main
       </RadiusAutoBox>
       <RadiusAutoBox
         as="ul"
-        padding="--spacing-core-space-5x"
-        fill="--color-button-primary-surface-default"
+        padding={{ css: '20px' }}
+        fill={radiusTokens.component.color.button.primary.default.background}
       >
         As ul
       </RadiusAutoBox>
       <RadiusAutoBox
         as="p"
-        padding="--spacing-core-space-5x"
-        fill="--color-button-primary-surface-default"
+        padding={{ css: '20px' }}
+        fill={radiusTokens.component.color.button.primary.default.background}
       >
         As paragraph
       </RadiusAutoBox>
@@ -580,27 +588,34 @@ export const Effects: Story = {
     <RadiusAutoBox
       direction="horizontal"
       width="fill-parent"
-      padding="--spacing-core-space-3x"
-      style={{ color: 'var(--color-button-primary-label-default)' }}
+      padding={{ css: '12px' }}
+      style={{
+        color: `var(${radiusTokens.component.color.button.primary.default.background})`,
+      }}
     >
       <RadiusAutoBox
-        padding="--spacing-core-space-5x"
-        dropShadow="--boxShadow-core-elevation-100"
-        fill="--color-button-primary-surface-default"
+        dropShadow={radiusTokens.core.shadow[400]}
+        padding={{ css: '20px' }}
+        stroke={{ css: '#0005' }}
+        strokeWidth={radiusTokens.core.borderWidth['1']}
       >
         drop-shadow
       </RadiusAutoBox>
       <RadiusAutoBox
-        padding="--spacing-core-space-5x"
-        innerShadow="--boxShadow-core-elevation-100"
-        fill="--color-button-primary-surface-default"
+        innerShadow={radiusTokens.core.shadow[400]}
+        padding={{ css: '20px' }}
+        stroke={{ css: '#0005' }}
+        strokeWidth={radiusTokens.core.borderWidth['1']}
       >
         inner-shadow
       </RadiusAutoBox>
       <RadiusAutoBox
-        padding="--spacing-core-space-5x"
         layerBlur={1}
-        fill="--color-button-primary-surface-default"
+        padding={{ css: '20px' }}
+        fill={radiusTokens.component.color.button.primary.default.background}
+        style={{
+          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+        }}
       >
         layer-blur
       </RadiusAutoBox>
@@ -614,17 +629,20 @@ export const Effects: Story = {
       >
         <RadiusAutoBox
           style={{ fontWeight: 'bold' }}
-          padding="--spacing-core-space-5x"
+          padding={{ css: '20px' }}
           backgroundBlur={3}
         >
           background-blur
         </RadiusAutoBox>
       </RadiusAutoBox>
       <RadiusAutoBox
-        padding="--spacing-core-space-5x"
+        padding={{ css: '20px' }}
         layerBlur={1}
-        dropShadow="--boxShadow-core-elevation-100"
-        fill="--color-button-primary-surface-default"
+        dropShadow={radiusTokens.core.shadow[400]}
+        fill={radiusTokens.component.color.button.primary.default.background}
+        style={{
+          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+        }}
       >
         layer-blur and drop-shadow
       </RadiusAutoBox>
@@ -641,7 +659,7 @@ export const Layouts: Story = {
   render: () => (
     <RadiusAutoBox
       width="fill-parent"
-      space="--spacing-core-space-5x"
+      space={{ css: '20px' }}
       alignment="center"
       isParent={true}
       style={{ color: 'var(--color-button-primary-surface-default)' }}
