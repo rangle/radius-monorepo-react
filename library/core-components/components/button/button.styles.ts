@@ -1,9 +1,9 @@
-import { css } from '@emotion/css';
+import { css } from '../../utils';
 import {
   RadiusColorTokens,
   Var,
 } from '@rangle/radius-foundations/generated/design-tokens.types';
-import { RadiusButtonExtendedProps } from './button';
+import { RadiusButton } from './button';
 
 // Discriminated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
@@ -22,7 +22,10 @@ export type RadiusButtonStyleType =
  * of the props that are passed to the component, but can also contain custom
  * types if needed for the logic of any given component.
  */
-export type StylesProps = Pick<RadiusButtonExtendedProps, 'variant'>;
+export type StyleProps = Pick<
+  React.ComponentProps<typeof RadiusButton>,
+  'variant'
+>;
 
 /** Map from color props to css
  * An example of a useful map that helps select css props based on props
@@ -82,19 +85,21 @@ const buttonColors: Record<
 };
 
 /** returns the className generated for the styles of this component */
-export const getStyles = <T extends StylesProps>({
-  variant = 'primary',
-}: T) => {
+export const useStyles = ({ variant = 'primary' }: StyleProps) => {
   /* Example styles. Adjust with styles for your implementation */
   const normal = buttonColors[variant];
   const active = buttonColors[`${variant}Active`];
   const hover = buttonColors[`${variant}Hover`];
   const disabled = buttonColors[`${variant}Disabled`];
-  /* Emotion `css` function generates the CSS
-   * and returns the class name pointing to those styles
-   * HINT: it is important to memoize the results of this function
+  /**
+   * The `createUseStyles` function is a wrapper around the `css` function
+   * from the Emotion library. It is a function that takes a template literal
+   * and returns a hook that can be used to generate the class name. The hook
+   * is memoized so that the styles are only regenerated when the props change.
+   *
+   * If you are not using this hook, it is important to memoize the styles
+   * yourself to avoid generating the same styles multiple times.
    */
-
   return css`
     /* note that values that do not vary with props can be added 
     *  directly as css variables representing design tokens */

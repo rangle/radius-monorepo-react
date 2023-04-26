@@ -2,10 +2,12 @@ import React from 'react';
 import { Meta, StoryObj, Args } from '@storybook/react';
 
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusButton, RadiusButtonVariant } from './button';
+import { RadiusButton } from './button';
+import { RadiusButtonVariant } from './button.types';
 import { css } from '@emotion/css';
 import { Typography } from '../typography/typography';
 import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
@@ -126,8 +128,10 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
         {states.map((state) => (
           <th>
             <Typography
-              color="--color-component-color-button-secondary-default-label"
-              font="--typography-semantic-theme-typography-actions-label"
+              color={
+                radiusTokens.component.color.button.secondary.default.label
+              }
+              font={radiusTokens.semanticTheme.typography.actions.label}
               align="center"
             >
               {state}
@@ -139,8 +143,10 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
         <tr>
           <td>
             <Typography
-              color="--color-component-color-button-secondary-default-label"
-              font="--typography-semantic-theme-typography-actions-label"
+              color={
+                radiusTokens.component.color.button.secondary.default.label
+              }
+              font={radiusTokens.semanticTheme.typography.actions.label}
             >
               {type}
             </Typography>
