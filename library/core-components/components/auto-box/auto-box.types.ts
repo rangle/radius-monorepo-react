@@ -1,4 +1,5 @@
 import { CSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
+import { PolymorphicComponentPropWithRef } from '../../utils';
 
 export const mapAlignments = {
   top: 'flex-start',
@@ -14,41 +15,6 @@ export const mapStrokeAlign = {
   // center: 'content-box',
 };
 
-export type AutoLayoutProps = {
-  isParent?: boolean;
-  absolutePosition?: boolean;
-  direction?: 'horizontal' | 'vertical';
-  space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
-  clippedContent?: boolean;
-  alignment?: keyof typeof mapAlignments;
-  width?: AutolayoutSize;
-  height?: AutolayoutSize;
-
-  padding?: CSSProp<'spacing'>;
-  opacity?: CSSProp; // TODO: narrow this type
-
-  x?: Size;
-  y?: Size;
-  horizontalConstraint?: HorizontalConstraint;
-  verticalConstraint?: VerticalConstraint;
-
-  fill?: CSSProp<'color'>;
-  stroke?: CSSProp<'color'>;
-  strokeWidth?: CSSProp; // TODO: narrow this type
-  strokeAlign?: StrokeAlign;
-  // strokeSide?: StrokeSide;
-  // strokeCap?: StrokeCap;
-
-  cornerRadius?: CSSProp; // TODO: narrow this type
-
-  // effects
-  dropShadow?: DropShadow;
-  innerShadow?: InnerShadow;
-  layerBlur?: Blur;
-  backgroundBlur?: Blur;
-
-  // blendMode?: BlendMode; // not needed
-};
 export type BlendMode =
   | 'normal'
   | 'darken'
@@ -96,3 +62,46 @@ export type VerticalConstraint =
   | 'top and bottom'
   | 'center'
   | 'scale';
+
+export type AutoLayoutExtendedProps = {
+  isParent?: boolean;
+  absolutePosition?: boolean;
+  direction?: 'horizontal' | 'vertical';
+  space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
+  clippedContent?: boolean;
+  alignment?: keyof typeof mapAlignments;
+  width?: AutolayoutSize;
+  height?: AutolayoutSize;
+
+  padding?: CSSProp<'spacing'>;
+  opacity?: CSSProp; // TODO: narrow this type
+
+  x?: Size;
+  y?: Size;
+  horizontalConstraint?: HorizontalConstraint;
+  verticalConstraint?: VerticalConstraint;
+
+  fill?: CSSProp<'color'>;
+  stroke?: CSSProp<'color'>;
+  strokeWidth?: CSSProp; // TODO: narrow this type
+  strokeAlign?: StrokeAlign;
+  // strokeSide?: StrokeSide;
+  // strokeCap?: StrokeCap;
+
+  cornerRadius?: CSSProp; // TODO: narrow this type
+
+  // effects
+  dropShadow?: DropShadow;
+  innerShadow?: InnerShadow;
+  layerBlur?: Blur;
+  backgroundBlur?: Blur;
+
+  // blendMode?: BlendMode; // not needed
+};
+
+export type AutoLayoutProps<C extends React.ElementType> =
+  PolymorphicComponentPropWithRef<C, AutoLayoutExtendedProps>;
+
+export type AutoLayoutComponent = <C extends React.ElementType = 'div'>(
+  props: AutoLayoutProps<C>
+) => React.ReactElement | null;
