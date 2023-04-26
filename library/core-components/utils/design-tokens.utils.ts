@@ -20,6 +20,5 @@ export const renderCSSProp = (prop?: CSSProp) => {
 export const tokenArrayToString = (
   tokens: Array<CSSTokensByTypeAndSubject>
 ) => {
-  console.log('HELLOO');
   return tokens.map((token) => `var(${token})`).join(' ');
 };
