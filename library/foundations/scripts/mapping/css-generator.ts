@@ -19,5 +19,10 @@ export default {
       // preserve sign ($1), divide value ($2) by 100, replace % with em
       [[/(-?)([0-9]*)%/g, 'calc($1$2em/100)']],
     ],
+    [
+      /--boxShadow/,
+      // add missing `px` suffix to all lone numbers
+      [[/\d+(?![^()]*\))/g, '$&px']],
+    ],
   ],
 } satisfies GeneratorMappingDictionary;
