@@ -3,7 +3,8 @@ import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 export type RadiusButtonVariant = 'primary' | 'secondary';
 
 /** Valid Element Types for the RadiusButton  */
-export type RadiusButtonTag = 'a' | 'button' | 'img';
+// Not currently used - TODO: implement type restrictions on polymorphic components
+export type RadiusButtonTag = 'a' | 'button';
 
 /**
  * Props that belong the RadiusButton itself.

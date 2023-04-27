@@ -3,6 +3,7 @@ import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 
 export type Alignment = 'left' | 'center' | 'right';
 
+// Not currently used - TODO: implement type restrictions on polymorphic components
 export type TypographyTag =
   | 'h1'
   | 'h2'
