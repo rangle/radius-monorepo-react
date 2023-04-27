@@ -4,6 +4,17 @@ import { flattenObject } from './flatten.utils';
 describe('utils', () => {
   describe('design-tokens.utils', () => {
     describe('renderCSSProp', () => {
+      it('should return undefined when passed undefined', () => {
+        expect(renderCSSProp(undefined)).toBeUndefined();
+      });
+      it('should return a string with CSS variables when passed an array', () => {
+        expect(
+          renderCSSProp([
+            '--color-core-color-red-50',
+            '--color-core-color-red-50',
+          ])
+        ).toBe('var(--color-core-color-red-50) var(--color-core-color-red-50)');
+      });
       it('should return a CSS variable when passed a string', () => {
         expect(renderCSSProp('--color-core-color-red-50')).toBe(
           'var(--color-core-color-red-50)'
@@ -18,15 +29,14 @@ describe('utils', () => {
       });
     });
 
-    describe('PrefixWithVar', () => {
-      it('should return a CSS variable when passed a string', () => {
-        expect(renderCSSProp('--test')).toBe('var(--test)');
-      });
-
-      it('should return multiple CSS variables when passed a string with multiple tokens', () => {
-        expect(renderCSSProp('--test --test2')).toBe(
-          'var(--test) var(--test2)'
-        );
+    describe('tokenArrayToString', () => {
+      it('should return a string with CSS variables', () => {
+        expect(
+          renderCSSProp([
+            '--color-core-color-red-50',
+            '--color-core-color-red-50',
+          ])
+        ).toBe('var(--color-core-color-red-50) var(--color-core-color-red-50)');
       });
     });
   });

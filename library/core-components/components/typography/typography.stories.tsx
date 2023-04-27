@@ -1,4 +1,4 @@
-import { Meta, StoryObj, ArgTypes, Args } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from './typography';
@@ -20,10 +20,9 @@ const meta: Meta<typeof Typography> = {
       },
     },
     as: {
-      defaultValue: 'p',
-    },
-    align: {
-      defaultValue: 'left',
+      table: {
+        defaultValue: { summary: 'p' },
+      },
     },
     fill: {
       options: flattenObject(radiusTokens.component.color),
@@ -53,14 +52,15 @@ const meta: Meta<typeof Typography> = {
     textDecoration: {
       options: flattenObject(radiusTokens.core.textDecoration),
     },
-  } as ArgTypes, // TODO: Fix argTypes inference (broken due to polymorphic implementation?). This assertion is a workaround.
+    ref: { table: { disable: true } },
+  },
   args: {
     children: 'Hello World!',
     as: 'p',
     align: 'left',
     font: radiusTokens.core.typography.desktop.body.md,
     fill: radiusTokens.component.color.button.secondary.default.label,
-  } as Args, // TODO: Fix args inference (broken due to polymorphic implementation?). This assertion is a workaround.
+  },
 };
 
 export default meta;

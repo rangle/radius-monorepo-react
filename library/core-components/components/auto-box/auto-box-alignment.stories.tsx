@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './auto-box';
 import { Stories, Title, Description } from '@storybook/addon-docs';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusAutoBox> = {
   component: RadiusAutoBox,
@@ -49,22 +50,22 @@ const ThreeBoxesTemplateAlignmentHor = {
         height={
           args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
         }
-        padding="--spacing-core-space-3x"
+        padding={{ css: '12px' }}
       >
         <RadiusAutoBox
           width={args.children.width}
           height={20}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
         <RadiusAutoBox
           width={args.children.width}
           height={40}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
         <RadiusAutoBox
           width={args.children.width}
           height={60}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
       </RadiusAutoBox>
     </RadiusAutoBox>
@@ -143,22 +144,22 @@ const ThreeBoxesTemplateAlignmentVert = {
         height={
           args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
         }
-        padding="--spacing-core-space-3x"
+        padding={{ css: '12px' }}
       >
         <RadiusAutoBox
           width="25%"
           height={10}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
         <RadiusAutoBox
           width="50%"
           height={10}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
         <RadiusAutoBox
           width="75%"
           height={10}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
       </RadiusAutoBox>
     </RadiusAutoBox>

@@ -1,9 +1,7 @@
-import { css } from '@emotion/css';
-import { renderCSSProp } from '../../utils/design-tokens.utils';
-import './auto-box.tokens.css';
+import { renderCSSProp, css } from '../../utils';
 
+import { RadiusAutoBox } from './auto-box';
 import {
-  AutoLayoutProps,
   mapAlignments,
   mapStrokeAlign,
   AutolayoutSize,
@@ -51,13 +49,40 @@ export const setPosition = (
   return out;
 };
 
+export type StyleProps = Pick<
+  React.ComponentProps<typeof RadiusAutoBox>,
+  | 'direction'
+  | 'space'
+  | 'clippedContent'
+  | 'alignment'
+  | 'width'
+  | 'height'
+  | 'padding'
+  | 'opacity'
+  | 'fill'
+  | 'stroke'
+  | 'strokeWidth'
+  | 'strokeAlign'
+  | 'cornerRadius'
+  | 'isParent'
+  | 'absolutePosition'
+  | 'x'
+  | 'y'
+  | 'horizontalConstraint'
+  | 'verticalConstraint'
+  | 'dropShadow'
+  | 'innerShadow'
+  | 'layerBlur'
+  | 'backgroundBlur'
+>;
+
 // colours alpha can be 0-1 or 0-100
 // strokeAlign is missing middle
 // to add: strokeSide
 // to add: strokeCap
 // lines are different than borders (borders don't have ends)
 // Should we add type for using em or rem? or vw or vh? What should be our suggested unit?
-export const getStyles = <T extends AutoLayoutProps>({
+export const useStyles = ({
   direction, //flex-direction
   space, // is either auto or number or zero
   clippedContent, //overflow:hidden
@@ -81,7 +106,7 @@ export const getStyles = <T extends AutoLayoutProps>({
   innerShadow,
   layerBlur,
   backgroundBlur,
-}: T) => {
+}: StyleProps) => {
   return css`
     display: flex;
     margin: 0;

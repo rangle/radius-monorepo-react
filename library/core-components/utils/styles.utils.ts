@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { CSSInterpolation, css } from '@emotion/css';
+import { CSSInterpolation, css as emotionCSS } from '@emotion/css';
 
 /**
  * Uses the `@emotion/css` function and `useMemo` to create a `useStyles` hook,
@@ -11,13 +11,19 @@ import { CSSInterpolation, css } from '@emotion/css';
  *
  * For more information on the `@emotion/css` function see:
  * https://emotion.sh/docs/@emotion/css
+ *
+ * Note: You can take advantage of CSS syntax highlighting in your IDE by
+ * installing the `vscode-styled-components` extension:
+ * https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components.
+ * This extension recognizes the `css` function name (this also works for the
+ * native `@emotion/css` function).
  */
-export const createUseStyles = (
+export const css = (
   template: TemplateStringsArray,
   ...args: CSSInterpolation[]
 ) => {
   const useStyles = useMemo(() => {
-    return css(template, ...args);
+    return emotionCSS(template, ...args);
   }, args);
 
   return useStyles;

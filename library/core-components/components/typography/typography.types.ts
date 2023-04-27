@@ -3,7 +3,7 @@ import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 
 export type Alignment = 'left' | 'center' | 'right';
 
-// TODO - fix polymorphic types (type errors due to different expected props for some tags)
+// Not currently used - TODO: implement type restrictions on polymorphic components
 export type TypographyTag =
   | 'h1'
   | 'h2'
@@ -12,15 +12,13 @@ export type TypographyTag =
   | 'h5'
   | 'h6'
   | 'p'
-  | 'div';
-// | 'span'
-// | 'a'
-// | 'article'
-// | 'section'
-// | 'em'
-// | 'strong';
+  | 'span'
+  | 'em'
+  | 'strong';
 
 export type TypographyExtendedProps = {
+  /** The content of the Typography component */
+  children: React.ReactNode;
   /** Text color */
   fill?: CSSProp<'color'>;
   /** Text alignment (corresponds to `text-align` style) */
@@ -39,11 +37,11 @@ export type TypographyExtendedProps = {
   letterSpacing?: CSSProp<'letterSpacing'>;
   /** Text Decoration - will override `text-decoration` style of the `font` prop */
   textDecoration?: CSSProp<'textDecoration'>;
-  /** The content of the Typography component */
-  children: React.ReactNode;
 };
 
-export type TypographyProps = PolymorphicComponentPropWithRef<
-  TypographyTag,
-  TypographyExtendedProps
->;
+export type TypographyProps<C extends React.ElementType> =
+  PolymorphicComponentPropWithRef<C, TypographyExtendedProps>;
+
+export type TypographyComponent = <C extends React.ElementType = 'p'>(
+  props: TypographyProps<C>
+) => React.ReactElement | null;

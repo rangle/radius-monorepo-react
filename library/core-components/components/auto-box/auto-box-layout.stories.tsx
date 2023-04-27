@@ -4,6 +4,7 @@ import { Meta } from '@storybook/react';
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoBox } from './auto-box';
 import { Title, Stories, Description } from '@storybook/addon-docs';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusAutoBox> = {
   component: RadiusAutoBox,
@@ -50,22 +51,22 @@ const ThreeBoxesTemplate = {
         height={
           args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
         }
-        padding="--spacing-core-space-3x"
+        padding={{ css: '12px' }}
       >
         <RadiusAutoBox
           width={args.children.width}
           height={args.children.height}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
         <RadiusAutoBox
           width={args.children.width}
           height={args.children.height}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
         <RadiusAutoBox
           width={args.children.width}
           height={args.children.height}
-          fill="--color-button-primary-surface-hover"
+          fill={radiusTokens.component.color.button.primary.hover.background}
         />
       </RadiusAutoBox>
     </RadiusAutoBox>
