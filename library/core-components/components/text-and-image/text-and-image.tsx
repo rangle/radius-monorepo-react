@@ -6,7 +6,7 @@ import { getStyles } from './text-and-image.styles';
 import { RadiusAutoBox } from '../auto-box/auto-box';
 import { Typography } from '../typography/typography';
 
-export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
+export const TextAndImage = forwardRef<HTMLDivElement, TextAndImageProps>(
   (
     { title, headingLevel, body, media = 'left', src, alt, className, ...rest },
     ref
@@ -20,7 +20,7 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
       <RadiusAutoBox
         ref={ref}
         className={cx(container, className)}
-        space="--spacing-core-space-8x"
+        space="--spacing-core-spacing-8"
         width="fill-parent"
         alignment="center"
         {...rest}
@@ -33,7 +33,7 @@ export const TextAndImage = forwardRef<React.ElementType, TextAndImageProps>(
         <RadiusAutoBox
           className={textContainer}
           direction="vertical"
-          space="--spacing-core-space-8x"
+          space="--spacing-core-spacing-8"
         >
           {/* Title */}
           <Typography

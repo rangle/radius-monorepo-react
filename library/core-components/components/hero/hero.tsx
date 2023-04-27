@@ -28,6 +28,7 @@ export const RadiusHero = ({
     <RadiusAutoBox className={cx(heroStyle, className)} {...rest}>
       <RadiusAutoBox
         width="fill-parent"
+        // @ts-expect-error TODO: fix this when we have the correct component tokens
         space="--spacing-core-space-6x"
         alignment="center"
         className="content-container"
@@ -40,7 +41,6 @@ export const RadiusHero = ({
             as="p"
             // @ts-expect-error TODO: fix this when we have the correct component tokens
             font="--typography-heading-md"
-            // @ts-expect-error TODO: fix this when we have the correct component tokens
             color="--color-text-on-base-secondary"
           >
             {eyebrow}
