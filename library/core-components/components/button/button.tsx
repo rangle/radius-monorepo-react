@@ -25,7 +25,7 @@ export const RadiusButton: RadiusButtonComponent = forwardRef(
     {
       as,
       children, // extract children
-      variant,
+      variant = 'primary',
       rightIcon,
       className, // extract className
       ...rest // the remainder should be the original tag's attributes

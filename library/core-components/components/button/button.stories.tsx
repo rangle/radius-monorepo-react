@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj, Args } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusButton } from './button';
@@ -29,11 +29,13 @@ const meta: Meta<typeof RadiusButton> = {
       'This Polymorphic component will style your component to render as a button.',
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
-
+  argTypes: {
+    ref: { table: { disable: true } },
+  },
   args: {
     variant: 'primary',
     as: 'button',
-  } as Args,
+  },
 };
 
 export default meta;
@@ -42,14 +44,14 @@ type Story = StoryObj<typeof RadiusButton>;
 export const Default: Story = {
   args: {
     children: 'Controlled Button',
-  } as Args,
+  },
 };
 
 export const WithIcon: Story = {
   args: {
     children: 'With Right Icon',
     rightIcon: ArrowRight,
-  } as Args,
+  },
 };
 
 export const ButtonStates: Story = {

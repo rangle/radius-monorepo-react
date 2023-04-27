@@ -19,6 +19,11 @@ const meta: Meta<typeof Typography> = {
         type: 'text',
       },
     },
+    as: {
+      table: {
+        defaultValue: { summary: 'p' },
+      },
+    },
     fill: {
       options: flattenObject(radiusTokens.component.color),
     },

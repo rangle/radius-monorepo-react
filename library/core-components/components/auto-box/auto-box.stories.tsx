@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj, ArgTypes, Args } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
@@ -250,7 +250,8 @@ const meta: Meta<typeof RadiusAutoBox> = {
       ],
       control: 'select',
     },
-  } as ArgTypes,
+    ref: { table: { disable: true } },
+  },
 };
 
 export default meta;
@@ -298,7 +299,7 @@ export const AutoBox: Story = {
     horizontalConstraint: 'left',
     verticalConstraint: 'top',
     // effect: [{ type: 'drop-shadow', color: '#ccc', offset: [0, 0], blur: 5 }],
-  } as Args,
+  },
 };
 
 export const Padding: Story = {
