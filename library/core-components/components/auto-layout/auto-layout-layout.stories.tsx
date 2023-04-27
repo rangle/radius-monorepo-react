@@ -2,13 +2,13 @@ import React, { ComponentProps } from 'react';
 import { Meta } from '@storybook/react';
 
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusAutoBox } from './auto-box';
+import { RadiusAutoLayout } from './auto-layout';
 import { Title, Stories, Description } from '@storybook/addon-docs';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
-const meta: Meta<typeof RadiusAutoBox> = {
-  component: RadiusAutoBox,
-  title: 'Auto Box/Layout',
+const meta: Meta<typeof RadiusAutoLayout> = {
+  component: RadiusAutoLayout,
+  title: 'Auto Layout/Layout',
   parameters: {
     design: {
       type: 'figma',
@@ -34,16 +34,16 @@ const meta: Meta<typeof RadiusAutoBox> = {
 };
 
 export default meta;
-// type Story = StoryObj<typeof RadiusAutoBox>;
+// type Story = StoryObj<typeof RadiusAutoLayout>;
 // TODO: apply `Story` type to all stories - causes issues due to parent and children args not existing in original component
 
 const ThreeBoxesTemplate = {
   render: (args: {
-    parent: ComponentProps<typeof RadiusAutoBox>;
-    children: ComponentProps<typeof RadiusAutoBox>;
+    parent: ComponentProps<typeof RadiusAutoLayout>;
+    children: ComponentProps<typeof RadiusAutoLayout>;
   }) => (
-    <RadiusAutoBox direction="vertical">
-      <RadiusAutoBox
+    <RadiusAutoLayout direction="vertical">
+      <RadiusAutoLayout
         direction={args.parent.direction}
         space={args.parent.space}
         alignment={args.parent.alignment}
@@ -53,23 +53,23 @@ const ThreeBoxesTemplate = {
         }
         padding={{ css: '12px' }}
       >
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width={args.children.width}
           height={args.children.height}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width={args.children.width}
           height={args.children.height}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width={args.children.width}
           height={args.children.height}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-      </RadiusAutoBox>
-    </RadiusAutoBox>
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
   ),
 };
 

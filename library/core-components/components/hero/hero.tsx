@@ -1,7 +1,7 @@
 import React from 'react';
 import { cx } from '@emotion/css';
 
-import { RadiusAutoBox } from '../../components/auto-box/auto-box';
+import { RadiusAutoLayout } from '../../components/auto-layout/auto-layout';
 import { RadiusButton } from '../../components/button/button';
 import { Typography } from '../../components/typography/typography';
 import { getStyles } from './hero.styles';
@@ -25,18 +25,18 @@ export const RadiusHero = ({
 }: HeroProps) => {
   const heroStyle = getStyles();
   return (
-    <RadiusAutoBox className={cx(heroStyle, className)} {...rest}>
-      <RadiusAutoBox
+    <RadiusAutoLayout className={cx(heroStyle, className)} {...rest}>
+      <RadiusAutoLayout
         width="fill-parent"
         // @ts-expect-error TODO: fix this when we have the correct component tokens
         space="--spacing-core-space-6x"
         alignment="center"
         className="content-container"
       >
-        <RadiusAutoBox className="image-container" width="fill-parent">
-          <RadiusAutoBox as="img" src={imageSrc} width="fill-parent" />
-        </RadiusAutoBox>
-        <RadiusAutoBox direction="vertical" className="text-container">
+        <RadiusAutoLayout className="image-container" width="fill-parent">
+          <RadiusAutoLayout as="img" src={imageSrc} width="fill-parent" />
+        </RadiusAutoLayout>
+        <RadiusAutoLayout direction="vertical" className="text-container">
           <Typography
             as="p"
             // @ts-expect-error TODO: fix this when we have the correct component tokens
@@ -52,7 +52,7 @@ export const RadiusHero = ({
           >
             {title}
           </Typography>
-          <RadiusAutoBox className="buttonContainer">
+          <RadiusAutoLayout className="buttonContainer">
             <RadiusButton
               as="a"
               variant="primary"
@@ -64,9 +64,9 @@ export const RadiusHero = ({
             >
               {buttonLabel}
             </RadiusButton>
-          </RadiusAutoBox>
-        </RadiusAutoBox>
-      </RadiusAutoBox>
-    </RadiusAutoBox>
+          </RadiusAutoLayout>
+        </RadiusAutoLayout>
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
   );
 };

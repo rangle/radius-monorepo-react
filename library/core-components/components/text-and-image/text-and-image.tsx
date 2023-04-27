@@ -3,7 +3,7 @@ import { cx } from '@emotion/css';
 
 import { TextAndImageProps } from './text-and-image.types';
 import { getStyles } from './text-and-image.styles';
-import { RadiusAutoBox } from '../auto-box/auto-box';
+import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 import { Typography } from '../typography/typography';
 
 export const TextAndImage = forwardRef<HTMLDivElement, TextAndImageProps>(
@@ -17,7 +17,7 @@ export const TextAndImage = forwardRef<HTMLDivElement, TextAndImageProps>(
     );
 
     return (
-      <RadiusAutoBox
+      <RadiusAutoLayout
         ref={ref}
         className={cx(container, className)}
         space="--spacing-core-spacing-8"
@@ -26,11 +26,11 @@ export const TextAndImage = forwardRef<HTMLDivElement, TextAndImageProps>(
         {...rest}
       >
         {/* Image Container */}
-        <RadiusAutoBox className={imageContainer}>
-          <RadiusAutoBox as="img" src={src} alt={alt} width="fill-parent" />
-        </RadiusAutoBox>
+        <RadiusAutoLayout className={imageContainer}>
+          <RadiusAutoLayout as="img" src={src} alt={alt} width="fill-parent" />
+        </RadiusAutoLayout>
         {/* Text Container */}
-        <RadiusAutoBox
+        <RadiusAutoLayout
           className={textContainer}
           direction="vertical"
           space="--spacing-core-spacing-8"
@@ -54,8 +54,8 @@ export const TextAndImage = forwardRef<HTMLDivElement, TextAndImageProps>(
           >
             {body}
           </Typography>
-        </RadiusAutoBox>
-      </RadiusAutoBox>
+        </RadiusAutoLayout>
+      </RadiusAutoLayout>
     );
   }
 );

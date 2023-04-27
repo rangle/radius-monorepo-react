@@ -1,7 +1,7 @@
 // import userEvent from '@testing-library/user-event';
-import { getSize, getCssValue, setPosition } from '../auto-box.styles';
+import { getSize, getCssValue, setPosition } from '../auto-layout.styles';
 
-describe('AutoBox Styles', () => {
+describe('AutoLayout Styles', () => {
   test('getSize', () => {
     expect(getSize(5)).toBe('5px');
     expect(getSize('5px')).toBe('5px');

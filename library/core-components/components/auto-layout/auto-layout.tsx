@@ -3,10 +3,10 @@ import { cx } from '@emotion/css';
 
 import { PolymorphicRef } from '../../utils/polymorphic.types';
 
-import { AutoLayoutComponent, AutoLayoutProps } from './auto-box.types';
-import { useStyles } from './auto-box.styles';
+import { AutoLayoutComponent, AutoLayoutProps } from './auto-layout.types';
+import { useStyles } from './auto-layout.styles';
 
-export const RadiusAutoBox: AutoLayoutComponent = forwardRef(
+export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
   <C extends React.ElementType = 'div'>(
     {
       as,

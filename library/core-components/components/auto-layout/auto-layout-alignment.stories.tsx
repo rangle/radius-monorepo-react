@@ -1,13 +1,13 @@
 import React, { ComponentProps } from 'react';
 import { Meta } from '@storybook/react';
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusAutoBox } from './auto-box';
+import { RadiusAutoLayout } from './auto-layout';
 import { Stories, Title, Description } from '@storybook/addon-docs';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
-const meta: Meta<typeof RadiusAutoBox> = {
-  component: RadiusAutoBox,
-  title: 'Auto Box/Alignment',
+const meta: Meta<typeof RadiusAutoLayout> = {
+  component: RadiusAutoLayout,
+  title: 'Auto Layout/Alignment',
   parameters: {
     design: {
       type: 'figma',
@@ -33,16 +33,16 @@ const meta: Meta<typeof RadiusAutoBox> = {
 };
 
 export default meta;
-// type Story = StoryObj<typeof RadiusAutoBox>;
+// type Story = StoryObj<typeof RadiusAutoLayout>;
 // TODO: apply `Story` type to all stories - causes issues due to parent and children args not existing in original component
 
 const ThreeBoxesTemplateAlignmentHor = {
   render: (args: {
-    parent: ComponentProps<typeof RadiusAutoBox>;
-    children: ComponentProps<typeof RadiusAutoBox>;
+    parent: ComponentProps<typeof RadiusAutoLayout>;
+    children: ComponentProps<typeof RadiusAutoLayout>;
   }) => (
-    <RadiusAutoBox direction="vertical">
-      <RadiusAutoBox
+    <RadiusAutoLayout direction="vertical">
+      <RadiusAutoLayout
         direction={args.parent.direction}
         space={args.parent.space}
         alignment={args.parent.alignment}
@@ -52,23 +52,23 @@ const ThreeBoxesTemplateAlignmentHor = {
         }
         padding={{ css: '12px' }}
       >
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width={args.children.width}
           height={20}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width={args.children.width}
           height={40}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width={args.children.width}
           height={60}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-      </RadiusAutoBox>
-    </RadiusAutoBox>
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
   ),
 };
 
@@ -132,11 +132,11 @@ export const AlignmentBottom = {
 
 const ThreeBoxesTemplateAlignmentVert = {
   render: (args: {
-    parent: ComponentProps<typeof RadiusAutoBox>;
-    children: ComponentProps<typeof RadiusAutoBox>;
+    parent: ComponentProps<typeof RadiusAutoLayout>;
+    children: ComponentProps<typeof RadiusAutoLayout>;
   }) => (
-    <RadiusAutoBox direction="vertical">
-      <RadiusAutoBox
+    <RadiusAutoLayout direction="vertical">
+      <RadiusAutoLayout
         direction={args.parent.direction}
         space={args.parent.space}
         alignment={args.parent.alignment}
@@ -146,23 +146,23 @@ const ThreeBoxesTemplateAlignmentVert = {
         }
         padding={{ css: '12px' }}
       >
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width="25%"
           height={10}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width="50%"
           height={10}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-        <RadiusAutoBox
+        <RadiusAutoLayout
           width="75%"
           height={10}
           fill={radiusTokens.component.color.button.primary.hover.background}
         />
-      </RadiusAutoBox>
-    </RadiusAutoBox>
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
   ),
 };
 

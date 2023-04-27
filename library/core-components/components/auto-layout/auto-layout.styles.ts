@@ -1,6 +1,6 @@
 import { renderCSSProp, css } from '../../utils';
 
-import { RadiusAutoBox } from './auto-box';
+import { RadiusAutoLayout } from './auto-layout';
 import {
   mapAlignments,
   mapStrokeAlign,
@@ -8,7 +8,7 @@ import {
   Size,
   HorizontalConstraint,
   VerticalConstraint,
-} from './auto-box.types';
+} from './auto-layout.types';
 
 export const getSize = (size?: AutolayoutSize) => {
   if (size === 'fill-parent') return '100%';
@@ -50,7 +50,7 @@ export const setPosition = (
 };
 
 export type StyleProps = Pick<
-  React.ComponentProps<typeof RadiusAutoBox>,
+  React.ComponentProps<typeof RadiusAutoLayout>,
   | 'direction'
   | 'space'
   | 'clippedContent'
