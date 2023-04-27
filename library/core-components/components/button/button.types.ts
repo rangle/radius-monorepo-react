@@ -3,7 +3,7 @@ import { PolymorphicComponentPropWithRef } from '../../utils/polymorphic.types';
 export type RadiusButtonVariant = 'primary' | 'secondary';
 
 /** Valid Element Types for the RadiusButton  */
-export type RadiusButtonTag = 'a' | 'button';
+export type RadiusButtonTag = 'a' | 'button' | 'img';
 
 /**
  * Props that belong the RadiusButton itself.
@@ -32,11 +32,7 @@ export type RadiusButtonExtendedProps = {
  * like with the `RadiusButtonTag` type below.
  */
 export type RadiusButtonProps<C extends React.ElementType> =
-  PolymorphicComponentPropWithRef<
-    C,
-    RadiusButtonExtendedProps,
-    RadiusButtonTag
-  >;
+  PolymorphicComponentPropWithRef<C, RadiusButtonExtendedProps>;
 
 export type RadiusButtonComponent = <C extends React.ElementType = 'button'>(
   props: RadiusButtonProps<C>

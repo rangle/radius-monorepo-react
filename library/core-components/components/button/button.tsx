@@ -23,7 +23,7 @@ import { useStyles } from './button.styles';
 export const RadiusButton: RadiusButtonComponent = forwardRef(
   <C extends React.ElementType = 'button'>(
     {
-      as: Component = 'button',
+      as,
       children, // extract children
       variant,
       rightIcon,
@@ -32,6 +32,8 @@ export const RadiusButton: RadiusButtonComponent = forwardRef(
     }: RadiusButtonProps<C>,
     ref?: PolymorphicRef<C>
   ) => {
+    const Component = as || 'button';
+
     // one suggested idiom is to extract all specific props in the render function props param
     // and let 'rest' contain only the native html attributes
 

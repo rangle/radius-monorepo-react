@@ -21,8 +21,8 @@ import { ElementType, ComponentPropsWithRef } from 'react';
 /** type fragment containing the 'as' prop
  * the 'as' prop can be the name of a tag
  */
-export type AsProp<AsType extends ElementType> = {
-  as?: AsType;
+export type AsProp<C extends ElementType> = {
+  as?: C;
 };
 
 type PropsToOmit<C extends ElementType, P> = keyof (AsProp<C> & P);
@@ -44,9 +44,8 @@ export type PolymorphicRef<C extends ElementType> =
  */
 export type PolymorphicComponentProp<
   C extends ElementType,
-  Props = Record<string, never>,
-  AsType extends ElementType = C
-> = React.PropsWithChildren<Props & AsProp<AsType>> &
+  Props = Record<string, never>
+> = React.PropsWithChildren<Props & AsProp<C>> &
   Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
 /**
@@ -62,6 +61,5 @@ export type PolymorphicComponentProp<
  * */
 export type PolymorphicComponentPropWithRef<
   C extends ElementType,
-  Props = Record<string, never>,
-  AsType extends ElementType = C
-> = PolymorphicComponentProp<C, Props, AsType> & { ref?: PolymorphicRef<C> };
+  Props = Record<string, never>
+> = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };

@@ -39,7 +39,7 @@ export type TypographyExtendedProps = {
 };
 
 export type TypographyProps<C extends React.ElementType> =
-  PolymorphicComponentPropWithRef<C, TypographyExtendedProps, TypographyTag>;
+  PolymorphicComponentPropWithRef<C, TypographyExtendedProps>;
 
 export type TypographyComponent = <C extends React.ElementType = 'p'>(
   props: TypographyProps<C>
