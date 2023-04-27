@@ -49,6 +49,9 @@ export const setPosition = (
   return out;
 };
 
+/** When no item spacing is specified, figma defaults to 10px */
+const FIGMA_DEFAULT_SPACING = '10px';
+
 export type StyleProps = Pick<
   React.ComponentProps<typeof RadiusAutoLayout>,
   | 'direction'
@@ -122,9 +125,7 @@ export const useStyles = ({
       : ''};
     ${space === 'auto'
       ? 'justify-content: space-between;'
-      : `gap: ${renderCSSProp(
-          space ?? { css: '10px' } // ? does this 10px space exist in figma or is it an artifact?
-        )};`};
+      : `gap: ${renderCSSProp(space ?? { css: FIGMA_DEFAULT_SPACING })};`};
     ${clippedContent ? 'overflow: hidden;' : ''};
     ${padding ? `padding: ${renderCSSProp(padding)}` : ''};
     ${opacity !== undefined ? `opacity: ${renderCSSProp(opacity)};` : ''}
