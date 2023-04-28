@@ -64,30 +64,49 @@ export type VerticalConstraint =
   | 'scale';
 
 export type AutoLayoutExtendedProps = {
+  /** Used in conjunction with absolutePosition, uses and sets position: 'relative' */
   isParent?: boolean;
+  /** Used in conjunction with isParent, uses and sets position: absolute */
   absolutePosition?: boolean;
+  /** The direction of the layout, uses flex row or column */
   direction?: 'horizontal' | 'vertical';
+  /** The space between the children, can be number (gap) or auto (justify-content: space-between;) */
   space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
+  /** Whether the content should be clipped or not, uses overflow: hidden */
   clippedContent?: boolean;
+  /** The alignment of the layout, uses align-items */
   alignment?: keyof typeof mapAlignments;
+  /** The width of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%) */
   width?: AutolayoutSize;
+  /** The height of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%) */
   height?: AutolayoutSize;
 
+  /** The padding around the content, can be number, object of vertical and horizontal, or object of top, right, bottom, left */
   padding?: CSSProp<'spacing'>;
+  /** Opacity of the component. A number between 0 and 1 */
   opacity?: CSSProp; // TODO: narrow this type
 
+  /** Used in conjunction with absolutePosition, sets left or right depending on horizontal constraint. Does not act the same as Figma */
   x?: Size;
+  /** Used in conjunction with absolutePosition, sets top or bottom depending on verticalConstraint. Does not act the same as Figma */
   y?: Size;
+  /** Used in conjunction with absolutePosition, sets left or right. We are missing functionality from figma */
   horizontalConstraint?: HorizontalConstraint;
+  /** Used in conjunction with absolutePosition, sets top or bottom. We are missing functionality from figma */
   verticalConstraint?: VerticalConstraint;
 
+  /** Background colour. Color can be assigned as hex or rgba(0-255,0-255,0-255,0-1) */
   fill?: CSSProp<'color'>;
+  /** Border colour. We are currently missing dashed borders */
   stroke?: CSSProp<'color'>;
+  /** Border width, can be number or object of top, right, bottom, left */
   strokeWidth?: CSSProp; // TODO: narrow this type
+  /** Border alignment, inside or outside. We are missing middle alignment */
   strokeAlign?: StrokeAlign;
   // strokeSide?: StrokeSide;
   // strokeCap?: StrokeCap;
 
+  /** Border radius, can be number or object of topLeft, topRight, bottomRight, bottomLeft */
   cornerRadius?: CSSProp; // TODO: narrow this type
 
   // effects

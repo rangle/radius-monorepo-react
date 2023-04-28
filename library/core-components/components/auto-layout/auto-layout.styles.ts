@@ -1,4 +1,4 @@
-import { renderCSSProp, css } from '../../utils';
+import { renderCSSProp, css, PickWithRequired } from '../../utils';
 
 import { RadiusAutoLayout } from './auto-layout';
 import {
@@ -23,10 +23,10 @@ export const getCssValue = (size?: Size) => {
 };
 
 export const setPosition = (
-  x = 0 as Size,
-  y = 0 as Size,
-  horizontalConstraint = 'left' as HorizontalConstraint,
-  verticalConstraint = 'top' as VerticalConstraint
+  x: Size = 0,
+  y: Size = 0,
+  horizontalConstraint: HorizontalConstraint,
+  verticalConstraint: VerticalConstraint
 ) => {
   let out = '';
   switch (horizontalConstraint) {
@@ -52,14 +52,15 @@ export const setPosition = (
 /** When no item spacing is specified, figma defaults to 10px */
 const FIGMA_DEFAULT_SPACING = '10px';
 
-export type StyleProps = Pick<
+/**
+ * The component props that are used to generate the styles. The props passed as
+ * the third generic argument are required (eg. when we know a prop is assigned
+ * a default value in the component).
+ */
+// ? Is this too confusing? Would it be better to split the types out to make it more clear?
+export type StyleProps = PickWithRequired<
   React.ComponentProps<typeof RadiusAutoLayout>,
-  | 'direction'
   | 'space'
-  | 'clippedContent'
-  | 'alignment'
-  | 'width'
-  | 'height'
   | 'padding'
   | 'opacity'
   | 'fill'
@@ -67,16 +68,21 @@ export type StyleProps = Pick<
   | 'strokeWidth'
   | 'strokeAlign'
   | 'cornerRadius'
-  | 'isParent'
-  | 'absolutePosition'
   | 'x'
   | 'y'
-  | 'horizontalConstraint'
-  | 'verticalConstraint'
   | 'dropShadow'
   | 'innerShadow'
   | 'layerBlur'
-  | 'backgroundBlur'
+  | 'backgroundBlur',
+  | 'alignment'
+  | 'width'
+  | 'height'
+  | 'direction'
+  | 'clippedContent'
+  | 'isParent'
+  | 'absolutePosition'
+  | 'horizontalConstraint'
+  | 'verticalConstraint'
 >;
 
 // colours alpha can be 0-1 or 0-100
@@ -112,17 +118,15 @@ export const useStyles = ({
 }: StyleProps) => {
   return css`
     display: flex;
+    flex-direction: ${direction === 'horizontal' ? 'row' : 'column'};
     margin: 0;
     box-sizing: ${mapStrokeAlign[strokeAlign || 'inside']};
-    align-items: ${mapAlignments[alignment || 'top']};
+    align-items: ${mapAlignments[alignment]};
     width: ${getSize(width)};
     height: ${getSize(height)};
 
     ${isParent ? 'position: relative;' : ''}
     ${absolutePosition ? 'position: absolute;' : ''}
-    ${direction
-      ? `flex-direction: ${direction === 'horizontal' ? 'row' : 'column'}`
-      : ''};
     ${space === 'auto'
       ? 'justify-content: space-between;'
       : `gap: ${renderCSSProp(space ?? { css: FIGMA_DEFAULT_SPACING })};`};
