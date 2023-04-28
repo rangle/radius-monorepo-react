@@ -21,10 +21,10 @@ describe('AutoLayout Styles', () => {
   });
 
   test('setPosition', () => {
-    expect(setPosition(5, 'var(--var-width)')).toBe(
+    expect(setPosition(5, 'var(--var-width)', 'left', 'top')).toBe(
       'left: 5px;top: var(--var-width);'
     );
-    expect(setPosition('5px', '5%')).toBe('left: 5px;top: 5%;');
+    expect(setPosition('5px', '5%', 'left', 'top')).toBe('left: 5px;top: 5%;');
 
     expect(setPosition(5, 'var(--var-width)', 'right', 'bottom')).toBe(
       'right: 5px;bottom: var(--var-width);'
