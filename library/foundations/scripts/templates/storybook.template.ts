@@ -186,7 +186,7 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
           ({ key, name, value }) => `
     <tr>
         <td>${key}</td>
-        <td>${value}</td>   
+        <td>${!value.startsWith('{--') ? value : ''}</td>
     </tr>`
         )
         .join('')}
@@ -196,11 +196,11 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
     })
     .join('');
 
-  // TODO: fix broken `radius--components` typography variables, they are not being generated correctly and are breaking the entire story. As a workaround, they are being temporarily excluded from generation.
+  // TODO: fix broken `components--components` typography variables (as well as any other values starting with `{--` as excluded above), they are not being generated correctly and are breaking the entire story. As a workaround, they are being temporarily excluded from generation.
   return `
   # ${name}
     ${colorVariables}
-    ${name !== 'radius--components' ? typographyVariables : ''}
+    ${name !== 'components--components' ? typographyVariables : ''}
     ${restVariables}
     `;
 };
