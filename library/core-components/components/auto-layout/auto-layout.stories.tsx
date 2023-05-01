@@ -50,6 +50,7 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       options: [
         '',
         ...flattenObject(radiusTokens.semantic.color),
+        ...flattenObject(radiusTokens.semanticTheme.color),
         ...flattenObject(radiusTokens.component.color),
       ],
     },
@@ -57,6 +58,7 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       options: [
         '',
         ...flattenObject(radiusTokens.semantic.color),
+        ...flattenObject(radiusTokens.semanticTheme.color),
         ...flattenObject(radiusTokens.component.color),
       ],
     },
@@ -104,26 +106,21 @@ export const AutoLayout: Story = {
   ),
   args: {
     as: 'div',
-    direction: 'horizontal',
     alignment: 'top',
     width: 'fill-parent',
     height: '200px',
     space: 'auto',
-    padding: '--spacing-core-space-5x',
-    fill: '--color-background-base',
-    stroke: '--color-text-secondary-action-default',
-    strokeWidth: '--borderWidth-core-border-width-sm',
-    strokeAlign: undefined,
+    padding: radiusTokens.core.spacing[4],
+    fill: radiusTokens.semanticTheme.color.actions.default.secondaryBackground,
+    stroke:
+      radiusTokens.semanticTheme.color.actions.default.secondaryForeground,
+    strokeWidth: radiusTokens.core.borderWidth[2],
     cornerRadius: '--borderRadius-core-radius-none',
-    opacity: undefined,
     clippedContent: false,
     isParent: false,
     absolutePosition: false,
-    x: undefined,
-    y: undefined,
     horizontalConstraint: 'left',
     verticalConstraint: 'top',
-    // effect: [{ type: 'drop-shadow', color: '#ccc', offset: [0, 0], blur: 5 }],
   },
 };
 
@@ -334,10 +331,13 @@ export const Absolute: Story = {
       padding={{ css: '20px' }}
       isParent={true}
       height={200}
+      style={{ fontFamily: 'Riforma LL' }}
     >
       <RadiusAutoLayout
         fill={radiusTokens.component.color.button.primary.default.background}
-        style={{ color: 'var(--color-button-primary-label-default)' }}
+        style={{
+          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+        }}
         padding={{ css: '12px' }}
         absolutePosition={true}
         x="0%"
@@ -348,7 +348,9 @@ export const Absolute: Story = {
       <RadiusAutoLayout
         padding={{ css: '12px' }}
         fill={radiusTokens.component.color.button.primary.default.background}
-        style={{ color: 'var(--color-button-primary-label-default)' }}
+        style={{
+          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+        }}
         horizontalConstraint="right"
         verticalConstraint="bottom"
         absolutePosition={true}
@@ -374,6 +376,7 @@ export const AsElements: Story = {
       padding={{ css: '12px' }}
       style={{
         color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+        fontFamily: 'Riforma LL',
       }}
     >
       <RadiusAutoLayout
@@ -421,6 +424,7 @@ export const Effects: Story = {
       padding={{ css: '12px' }}
       style={{
         color: `var(${radiusTokens.component.color.button.primary.default.background})`,
+        fontFamily: 'Riforma LL',
       }}
     >
       <RadiusAutoLayout
@@ -458,7 +462,7 @@ export const Effects: Story = {
         }}
       >
         <RadiusAutoLayout
-          style={{ fontWeight: 'bold' }}
+          style={{ fontWeight: 'bold', fontFamily: 'Riforma LL' }}
           padding={{ css: '20px' }}
           backgroundBlur={3}
         >
@@ -492,7 +496,10 @@ export const Layouts: Story = {
       space={{ css: '20px' }}
       alignment="center"
       isParent={true}
-      style={{ color: 'var(--color-button-primary-surface-default)' }}
+      style={{
+        color: `var(${radiusTokens.component.color.button.primary.default.background})`,
+        fontFamily: 'Riforma LL',
+      }}
     >
       <RadiusAutoLayout width="fill-parent">
         <RadiusAutoLayout
