@@ -1,7 +1,7 @@
 // import userEvent from '@testing-library/user-event';
-import { getSize, getCssValue, setPosition } from '../auto-box.styles';
+import { getSize, getCssValue, setPosition } from '../auto-layout.styles';
 
-describe('AutoBox Styles', () => {
+describe('AutoLayout Styles', () => {
   test('getSize', () => {
     expect(getSize(5)).toBe('5px');
     expect(getSize('5px')).toBe('5px');
@@ -21,10 +21,10 @@ describe('AutoBox Styles', () => {
   });
 
   test('setPosition', () => {
-    expect(setPosition(5, 'var(--var-width)')).toBe(
+    expect(setPosition(5, 'var(--var-width)', 'left', 'top')).toBe(
       'left: 5px;top: var(--var-width);'
     );
-    expect(setPosition('5px', '5%')).toBe('left: 5px;top: 5%;');
+    expect(setPosition('5px', '5%', 'left', 'top')).toBe('left: 5px;top: 5%;');
 
     expect(setPosition(5, 'var(--var-width)', 'right', 'bottom')).toBe(
       'right: 5px;bottom: var(--var-width);'

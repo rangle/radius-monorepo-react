@@ -1,6 +1,6 @@
 # Folder and file naming standard
 #
-# kebab-case - file and direectories (ie.: components/auto-box/auto-box.tsx)
+# kebab-case - file and direectories (ie.: components/auto-layout/auto-layout.tsx)
 # kebab-case - used for any other folder and file
 # PascalCase - should be avoided
 # camelCase - should be avoided

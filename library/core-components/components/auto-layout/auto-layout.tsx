@@ -3,29 +3,29 @@ import { cx } from '@emotion/css';
 
 import { PolymorphicRef } from '../../utils/polymorphic.types';
 
-import { AutoLayoutComponent, AutoLayoutProps } from './auto-box.types';
-import { useStyles } from './auto-box.styles';
+import { AutoLayoutComponent, AutoLayoutProps } from './auto-layout.types';
+import { useStyles } from './auto-layout.styles';
 
-export const RadiusAutoBox: AutoLayoutComponent = forwardRef(
+export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
   <C extends React.ElementType = 'div'>(
     {
       as,
       children,
       className,
-      isParent,
-      absolutePosition,
+      isParent = false,
+      absolutePosition = false,
       direction,
       space,
-      clippedContent,
-      alignment,
-      width,
-      height,
+      clippedContent = false,
+      alignment = 'top',
+      width = 'hug-contents',
+      height = 'hug-contents',
       padding,
       opacity,
       x,
       y,
-      horizontalConstraint,
-      verticalConstraint,
+      horizontalConstraint = 'left',
+      verticalConstraint = 'top',
       fill,
       stroke,
       strokeWidth,
