@@ -3,6 +3,10 @@ import { TokenLayer, TokenLayers, TokenOutput } from '../lib/token-parser';
 // for debug purposes
 // import * as data from '../../generated/token-layers-1.0.1.json';
 
+// replace curly brackets with their escaped version
+const escapeJSXValue = (value: string) =>
+  value.replace(/{/g, '&#123;').replace(/}/g, '&#125;');
+
 const renderLayerDescription = (layer: TokenLayer | undefined) => {
   if (!layer) return '';
   const { name, parameters } = layer;
@@ -150,12 +154,12 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
 </thead>
 <tbody>${typography
     .map(
-      ({ key, name, value }) => `
+      ({ key, value }) => `
       <tr>
         <td>${key}</td>
-        <td>font: ${value}</td>
+        <td>font: ${escapeJSXValue(value)}</td>
         <td>
-          <span style={{ font: '${value}' }}>
+          <span style={{ font: '${escapeJSXValue(value)}' }}>
             The quick brown fox jumps over the lazy dog
           </span>
         </td>
@@ -183,10 +187,10 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
 </thead>
 <tbody>${typeVariables
         .map(
-          ({ key, name, value }) => `
+          ({ key, value }) => `
     <tr>
         <td>${key}</td>
-        <td>${!value.startsWith('{--') ? value : ''}</td>
+        <td>${escapeJSXValue(value)}</td>   
     </tr>`
         )
         .join('')}
