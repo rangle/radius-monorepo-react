@@ -138,15 +138,15 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
    * 
    * @example
    * // Single token
-   * <Autobox padding="--spacing-component-spacing-button-padding">
+   * <RadiusAutoLayout padding="--spacing-component-spacing-button-padding">
    * // Multiple tokens (will be resolved in order in CSS)
-   * <Autobox padding={[
+   * <RadiusAutoLayout padding={[
         '--spacing-component-spacing-button-padding-vertical',
         '--spacing-component-spacing-button-padding-horizontal',
       ]}
       >
    * // Custom CSS expression
-   * <Autobox padding={{ css: '10px 20px' }}>
+   * <RadiusAutoLayout padding={{ css: '10px 20px' }}>
    */
   export type CSSProp<
     T extends RadiusTokenTypes = RadiusTokenTypes,

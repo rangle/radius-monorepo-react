@@ -4,7 +4,7 @@ import { cx } from '@emotion/css';
 import { PolymorphicRef } from '../../utils';
 
 import { RadiusButtonProps, RadiusButtonComponent } from './button.types';
-import { RadiusAutoBox } from '../auto-box/auto-box';
+import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 import { RadiusIcon } from '../icon/icon';
 import { Typography } from '../typography/typography';
 import { useStyles } from './button.styles';
@@ -46,7 +46,7 @@ export const RadiusButton: RadiusButtonComponent = forwardRef(
 
     return (
       <Component className={cx(style, className)} ref={ref} {...rest}>
-        <RadiusAutoBox
+        <RadiusAutoLayout
           space="--spacing-component-spacing-button-gap"
           alignment="center"
           padding={[
@@ -66,7 +66,7 @@ export const RadiusButton: RadiusButtonComponent = forwardRef(
               size="--sizing-component-sizing-button-icon"
             />
           )}
-        </RadiusAutoBox>
+        </RadiusAutoLayout>
       </Component>
     );
   }

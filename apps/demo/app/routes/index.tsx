@@ -2,7 +2,7 @@ import React from 'react';
 import { RadiusHero } from '@rangle/radius-react-core-components';
 import { TextAndImage } from '@rangle/radius-react-core-components';
 import { Typography } from '@rangle/radius-react-core-components';
-import { RadiusAutoBox } from '@rangle/radius-react-core-components';
+import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 
 export default function Index() {
   return (
@@ -15,8 +15,8 @@ export default function Index() {
         ctaUrl="/posts"
       />
 
-      <RadiusAutoBox fill="var(--color-core-neutral-200)">
-        <RadiusAutoBox
+      <RadiusAutoLayout fill="var(--color-core-neutral-200)">
+        <RadiusAutoLayout
           as="section"
           direction="vertical"
           style={{ maxWidth: 1280, padding: '6rem 12rem', margin: '0 auto' }}
@@ -30,7 +30,7 @@ export default function Index() {
           >
             The benefits of Radius
           </Typography>
-          <RadiusAutoBox>
+          <RadiusAutoLayout>
             <TextAndImage
               title=""
               body="Eliminates ⅔ of time and money needed to build your core design system"
@@ -47,8 +47,8 @@ export default function Index() {
               alt="placeholder image"
               style={{ margin: '3rem' }}
             />
-          </RadiusAutoBox>
-          <RadiusAutoBox padding="25px">
+          </RadiusAutoLayout>
+          <RadiusAutoLayout padding="25px">
             <TextAndImage
               title=""
               body="Built-in documentation, design flow, component library, and developer sandbox"
@@ -65,7 +65,7 @@ export default function Index() {
               alt="placeholder image"
               style={{ margin: '3rem' }}
             />
-          </RadiusAutoBox>
+          </RadiusAutoLayout>
 
           <Typography
             font="var(--typography-body-md)"
@@ -76,11 +76,11 @@ export default function Index() {
             system, so your leaders and product teams can focus on the business
             outcomes.
           </Typography>
-        </RadiusAutoBox>
-      </RadiusAutoBox>
+        </RadiusAutoLayout>
+      </RadiusAutoLayout>
 
-      <RadiusAutoBox fill="var(--color-background-base)">
-        <RadiusAutoBox
+      <RadiusAutoLayout fill="var(--color-background-base)">
+        <RadiusAutoLayout
           as="section"
           direction="vertical"
           style={{ maxWidth: 1280, padding: '6rem 12rem', margin: '0 auto' }}
@@ -94,7 +94,7 @@ export default function Index() {
           >
             What makes Radius different?
           </Typography>
-          <RadiusAutoBox padding="25px">
+          <RadiusAutoLayout padding="25px">
             <TextAndImage
               title="It’s Flexible"
               body="Fit your design system build to your organization’s own ecosystem of tooling, processes and vendors, and scale as your product lines grow"
@@ -102,8 +102,8 @@ export default function Index() {
               src="images/flexible.png"
               alt="placeholder image"
             />
-          </RadiusAutoBox>
-          <RadiusAutoBox padding="25px">
+          </RadiusAutoLayout>
+          <RadiusAutoLayout padding="25px">
             <TextAndImage
               title="It’s Focused"
               body="Radius solves your business case and empowers you to communicate your brand, rather than focusing on building as many components as possible"
@@ -112,9 +112,9 @@ export default function Index() {
               alt="placeholder image"
               media="right"
             />
-          </RadiusAutoBox>
-        </RadiusAutoBox>
-      </RadiusAutoBox>
+          </RadiusAutoLayout>
+        </RadiusAutoLayout>
+      </RadiusAutoLayout>
     </>
   );
 }
