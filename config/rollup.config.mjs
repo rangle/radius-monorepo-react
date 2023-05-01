@@ -27,7 +27,14 @@ export default [
         minimize: true,
         use: ['sass'],
       }),
-      typescript({ tsconfig: '../../config/typescript/tsconfig.build.json' }),
+      typescript({
+        tsconfig: '../../config/typescript/tsconfig.build.json',
+        include: [
+          '*.ts+(|x)',
+          '**/*.ts+(|x)',
+          '../../library/foundations/**/*.ts+(|x)',
+        ],
+      }),
     ],
   },
 ];
