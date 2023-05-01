@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { cx } from '@emotion/css';
 import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
 
@@ -15,70 +15,68 @@ export type HeroProps = {
   ctaUrl: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export const RadiusHero = ({
-  header,
-  eyebrow,
-  buttonLabel,
-  imageSrc,
-  ctaUrl,
-  className,
-  ...rest
-}: HeroProps) => {
-  const { contentContainer, imageContainer, textContainer } = useStyles();
-  return (
-    <RadiusAutoLayout
-      className={cx(className)}
-      padding={[
-        '--spacing-component-spacing-hero-padding-vertical',
-        '--spacing-component-spacing-hero-padding-horizontal',
-      ]}
-      fill="--color-component-color-hero-background"
-      {...rest}
-    >
+export const RadiusHero = forwardRef<HTMLDivElement, HeroProps>(
+  (
+    { header, eyebrow, buttonLabel, imageSrc, ctaUrl, className, ...rest },
+    ref
+  ) => {
+    const { contentContainer, imageContainer, textContainer } = useStyles();
+    return (
       <RadiusAutoLayout
-        width="fill-parent"
-        space="--spacing-component-spacing-hero-gap-image"
-        alignment="center"
-        className={contentContainer}
+        className={cx(className)}
+        ref={ref}
+        padding={[
+          '--spacing-component-spacing-hero-padding-vertical',
+          '--spacing-component-spacing-hero-padding-horizontal',
+        ]}
+        fill="--color-component-color-hero-background"
+        {...rest}
       >
         <RadiusAutoLayout
-          className={imageContainer}
           width="fill-parent"
-          fill="--color-component-color-hero-image"
+          space="--spacing-component-spacing-hero-gap-image"
+          alignment="center"
+          className={contentContainer}
         >
-          <RadiusAutoLayout as="img" src={imageSrc} width="fill-parent" />
-        </RadiusAutoLayout>
-        <RadiusAutoLayout direction="vertical" className={textContainer}>
           <RadiusAutoLayout
-            padding={{
-              css: '0 0 var(--spacing-component-spacing-hero-gap-content) 0',
-            }}
+            className={imageContainer}
+            width="fill-parent"
+            fill="--color-component-color-hero-image"
           >
-            <Typography
-              font="--typography-component-typography-hero-eyebrow"
-              fill="--color-component-color-hero-eyebrow"
-            >
-              {eyebrow}
-            </Typography>
+            <RadiusAutoLayout as="img" src={imageSrc} width="fill-parent" />
           </RadiusAutoLayout>
-          <Typography
-            as="h1"
-            font="--typography-component-typography-hero-header"
-            fill="--color-component-color-hero-header"
-          >
-            {header}
-          </Typography>
-          <RadiusAutoLayout
-            padding={{
-              css: 'var(--spacing-component-spacing-hero-gap-above-button) 0 0 0',
-            }}
-          >
-            <RadiusButton as="a" href={ctaUrl} rightIcon={ArrowRight}>
-              {buttonLabel}
-            </RadiusButton>
+          <RadiusAutoLayout direction="vertical" className={textContainer}>
+            <RadiusAutoLayout
+              padding={{
+                css: '0 0 var(--spacing-component-spacing-hero-gap-content) 0',
+              }}
+            >
+              <Typography
+                font="--typography-component-typography-hero-eyebrow"
+                fill="--color-component-color-hero-eyebrow"
+              >
+                {eyebrow}
+              </Typography>
+            </RadiusAutoLayout>
+            <Typography
+              as="h1"
+              font="--typography-component-typography-hero-header"
+              fill="--color-component-color-hero-header"
+            >
+              {header}
+            </Typography>
+            <RadiusAutoLayout
+              padding={{
+                css: 'var(--spacing-component-spacing-hero-gap-above-button) 0 0 0',
+              }}
+            >
+              <RadiusButton as="a" href={ctaUrl} rightIcon={ArrowRight}>
+                {buttonLabel}
+              </RadiusButton>
+            </RadiusAutoLayout>
           </RadiusAutoLayout>
         </RadiusAutoLayout>
       </RadiusAutoLayout>
-    </RadiusAutoLayout>
-  );
-};
+    );
+  }
+);
