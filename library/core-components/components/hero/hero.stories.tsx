@@ -9,7 +9,7 @@ const meta: Meta<HeroProps> = {
     // badges: [BADGE.EXPERIMENTAL],
   },
   argTypes: {
-    title: {
+    header: {
       type: { name: 'string', required: true },
       control: {
         type: 'text',
@@ -41,7 +41,7 @@ const meta: Meta<HeroProps> = {
     },
   },
   args: {
-    title: 'Design systems, Accelerated',
+    header: 'Design systems, Accelerated',
     eyebrow: 'For business',
     buttonLabel: 'Get info',
     imageSrc: 'https://via.placeholder.com/1500',
