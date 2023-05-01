@@ -18,6 +18,7 @@ module.exports = {
   staticDirs: [
     '../shared/fonts',
     '../shared/assets',
+    '../library/foundations/src/styles',
     '../library/foundations/generated',
   ],
   addons: [
