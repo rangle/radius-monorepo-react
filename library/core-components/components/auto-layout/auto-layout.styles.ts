@@ -60,6 +60,7 @@ const FIGMA_DEFAULT_SPACING = '10px';
 // ? Is this too confusing? Would it be better to split the types out to make it more clear?
 export type StyleProps = PickWithRequired<
   React.ComponentProps<typeof RadiusAutoLayout>,
+  | 'direction'
   | 'space'
   | 'padding'
   | 'opacity'
@@ -77,7 +78,6 @@ export type StyleProps = PickWithRequired<
   | 'alignment'
   | 'width'
   | 'height'
-  | 'direction'
   | 'clippedContent'
   | 'isParent'
   | 'absolutePosition'
@@ -118,7 +118,11 @@ export const useStyles = ({
 }: StyleProps) => {
   return css`
     display: flex;
-    flex-direction: ${direction === 'horizontal' ? 'row' : 'column'};
+    flex-direction: ${direction === 'horizontal'
+      ? 'row'
+      : direction === 'vertical'
+      ? 'column'
+      : ''};
     margin: 0;
     box-sizing: ${mapStrokeAlign[strokeAlign || 'inside']};
     align-items: ${mapAlignments[alignment]};

@@ -14,7 +14,7 @@ export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
       className,
       isParent = false,
       absolutePosition = false,
-      direction = 'vertical',
+      direction,
       space,
       clippedContent = false,
       alignment = 'top',
