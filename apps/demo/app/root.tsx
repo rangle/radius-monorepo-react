@@ -14,24 +14,14 @@ export const meta: MetaFunction = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-import reset from '../../../library/foundations/src/styles/reset.css';
-import styles from './styles/global.css';
-import theme from '../../../library/foundations/generated/theme.css';
+import styles from '../../../library/foundations/src/styles/styles.css';
 import font from '../../../shared/fonts/fonts.css';
 
 export const links: LinksFunction = () => {
   return [
     {
       rel: 'stylesheet',
-      href: reset,
-    },
-    {
-      rel: 'stylesheet',
       href: styles,
-    },
-    {
-      rel: 'stylesheet',
-      href: theme,
     },
     {
       rel: 'stylesheet',
