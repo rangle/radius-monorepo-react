@@ -38,7 +38,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
     { header, eyebrow, buttonLabel, imageSrc, imageAlt, ctaUrl, className },
     ref
   ) => {
-    const { contentContainer, imageContainer, textContainer } = useStyles();
+    const { contentContainer } = useStyles();
     return (
       <RadiusAutoLayout
         className={className}
@@ -52,6 +52,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
         {/* Content Container */}
         <RadiusAutoLayout
           height="fill-parent"
+          width="fill-parent"
           alignment="center"
           space={radiusTokens.component.spacing.hero.gap.image}
           className={contentContainer}
@@ -61,7 +62,6 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
             width="fill-parent"
             height="fill-parent"
             fill={radiusTokens.component.color.hero.image}
-            className={imageContainer}
           >
             {/* Image */}
             <RadiusAutoLayout
@@ -76,7 +76,6 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
             width="fill-parent"
             direction="vertical"
             space={radiusTokens.component.spacing.hero.gap.aboveButton}
-            className={textContainer}
           >
             {/* Inner Text Container */}
             <RadiusAutoLayout

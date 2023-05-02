@@ -9,17 +9,5 @@ export const useStyles = () => {
         flex-direction: row;
       }
     `,
-    imageContainer: css`
-      width: 100%;
-      @media (min-width: 900px) {
-        width: 50%;
-      }
-    `,
-    textContainer: css`
-      width: 100%;
-      @media (min-width: 900px) {
-        width: 50%;
-      }
-    `,
   };
 };
