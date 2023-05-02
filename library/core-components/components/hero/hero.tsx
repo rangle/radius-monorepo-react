@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 import { RadiusAutoLayout } from '../../components/auto-layout/auto-layout';
 import { RadiusButton } from '../../components/button/button';
@@ -36,53 +37,53 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
         className={className}
         ref={ref}
         padding={[
-          '--spacing-component-spacing-hero-padding-vertical',
-          '--spacing-component-spacing-hero-padding-horizontal',
+          radiusTokens.component.spacing.hero.padding.vertical,
+          radiusTokens.component.spacing.hero.padding.horizontal,
         ]}
-        fill="--color-component-color-hero-background"
+        fill={radiusTokens.component.color.hero.background}
       >
         {/* Content Container */}
         <RadiusAutoLayout
           height="fill-parent"
-          space="--spacing-component-spacing-hero-gap-image"
           alignment="center"
+          space={radiusTokens.component.spacing.hero.gap.image}
           className={contentContainer}
         >
           {/* Image Container */}
           <RadiusAutoLayout
-            className={imageContainer}
             width="fill-parent"
             height="fill-parent"
-            fill="--color-component-color-hero-image"
+            fill={radiusTokens.component.color.hero.image}
+            className={imageContainer}
           >
             {/* Image */}
             <RadiusAutoLayout as="img" src={imageSrc} width="fill-parent" />
           </RadiusAutoLayout>
           {/* Outer Text Container */}
           <RadiusAutoLayout
-            direction="vertical"
-            space="--spacing-component-spacing-hero-gap-above-button"
             width="fill-parent"
+            direction="vertical"
+            space={radiusTokens.component.spacing.hero.gap.aboveButton}
             className={textContainer}
           >
             {/* Inner Text Container */}
             <RadiusAutoLayout
-              direction="vertical"
-              space="--spacing-component-spacing-hero-gap-content"
               width="fill-parent"
+              direction="vertical"
+              space={radiusTokens.component.spacing.hero.gap.content}
             >
               {/* Eyebrow */}
               <Typography
-                font="--typography-component-typography-hero-eyebrow"
-                fill="--color-component-color-hero-eyebrow"
+                font={radiusTokens.component.typography.hero.eyebrow}
+                fill={radiusTokens.component.color.hero.eyebrow}
               >
                 {eyebrow}
               </Typography>
               {/* Header */}
               <Typography
                 as="h1"
-                font="--typography-component-typography-hero-header"
-                fill="--color-component-color-hero-header"
+                font={radiusTokens.component.typography.hero.header}
+                fill={radiusTokens.component.color.hero.header}
               >
                 {header}
               </Typography>
