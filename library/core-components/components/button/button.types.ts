@@ -17,6 +17,8 @@ export type RadiusButtonTag = 'a' | 'button';
 export type RadiusButtonExtendedProps = {
   /** The design variant of the button (eg. Primary vs. Secondary) */
   variant?: RadiusButtonVariant;
+  /** The optional icon to display to the right of the content */
+  rightIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 };
 
 /**

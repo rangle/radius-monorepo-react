@@ -1,55 +1,27 @@
 import { Meta, StoryObj } from '@storybook/react';
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusHero, HeroProps } from './hero';
+import { RadiusHero, RadiusHeroProps } from './hero';
 
-const meta: Meta<HeroProps> = {
+const meta: Meta<RadiusHeroProps> = {
   component: RadiusHero,
   title: 'Hero',
   parameters: {
     // badges: [BADGE.EXPERIMENTAL],
   },
   argTypes: {
-    title: {
-      type: { name: 'string', required: true },
-      control: {
-        type: 'text',
-      },
-    },
-    eyebrow: {
-      type: { name: 'string', required: true },
-      control: {
-        type: 'text',
-      },
-    },
-    buttonLabel: {
-      type: { name: 'string', required: true },
-      control: {
-        type: 'text',
-      },
-    },
-    imageSrc: {
-      type: { name: 'string', required: true },
-      control: {
-        type: 'text',
-      },
-    },
-    ctaUrl: {
-      type: { name: 'string', required: true },
-      control: {
-        type: 'text',
-      },
-    },
+    className: { table: { disable: true } },
   },
   args: {
-    title: 'Design systems, Accelerated',
-    eyebrow: 'For business',
-    buttonLabel: 'Get info',
+    header: 'Header',
+    eyebrow: 'Eyebrow',
     imageSrc: 'https://via.placeholder.com/1500',
+    imageAlt: 'Image Description',
+    buttonLabel: 'Action',
     ctaUrl: '#',
   },
 };
 
 export default meta;
-type Story = StoryObj<HeroProps>;
+type Story = StoryObj<RadiusHeroProps>;
 
 export const Default: Story = {};

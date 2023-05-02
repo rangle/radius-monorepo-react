@@ -1,72 +1,114 @@
-import React from 'react';
-import { cx } from '@emotion/css';
+import React, { forwardRef } from 'react';
+import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 import { RadiusAutoLayout } from '../../components/auto-layout/auto-layout';
 import { RadiusButton } from '../../components/button/button';
 import { Typography } from '../../components/typography/typography';
-import { getStyles } from './hero.styles';
+import { useStyles } from './hero.styles';
 
-export type HeroProps = {
-  title: string;
+export type RadiusHeroProps = {
+  /** The main header text */
+  header: string;
+  /** The eyebrow text */
   eyebrow: string;
-  buttonLabel: string;
+  /** The image source */
   imageSrc: string;
-  ctaUrl: string;
-} & React.HTMLAttributes<HTMLDivElement>;
+  /** The image alt text */
+  imageAlt: string;
+  /** The button label text. If not provided, the button will not be shown */
+  buttonLabel?: string;
+  /** The url for the Call To Action link button. If not provided, the button will not be shown */
+  ctaUrl?: string;
+  className?: string;
+};
 
-export const RadiusHero = ({
-  title,
-  eyebrow,
-  buttonLabel,
-  imageSrc,
-  ctaUrl,
-  className,
-  ...rest
-}: HeroProps) => {
-  const heroStyle = getStyles();
-  return (
-    <RadiusAutoLayout className={cx(heroStyle, className)} {...rest}>
+/**
+ * The Hero component is used to display a large image with a header, eyebrow,
+ * and optional CTA button.
+ *
+ * If either the `ctaUrl` or `buttonLabel` prop are not provided, the Call To
+ * Action link button will not be shown.
+ *
+ * ### Resources
+ * [Figma Design Specs](https://www.figma.com/file/hW6DtJyTGtGlLkRB3jK68v/Booster---Hero?node-id=2-2)
+ */
+export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
+  (
+    { header, eyebrow, buttonLabel, imageSrc, imageAlt, ctaUrl, className },
+    ref
+  ) => {
+    const { contentContainer, imageContainer, textContainer } = useStyles();
+    return (
       <RadiusAutoLayout
-        width="fill-parent"
-        // @ts-expect-error TODO: fix this when we have the correct component tokens
-        space="--spacing-core-space-6x"
-        alignment="center"
-        className="content-container"
+        className={className}
+        ref={ref}
+        padding={[
+          radiusTokens.component.spacing.hero.padding.vertical,
+          radiusTokens.component.spacing.hero.padding.horizontal,
+        ]}
+        fill={radiusTokens.component.color.hero.background}
       >
-        <RadiusAutoLayout className="image-container" width="fill-parent">
-          <RadiusAutoLayout as="img" src={imageSrc} width="fill-parent" />
-        </RadiusAutoLayout>
-        <RadiusAutoLayout direction="vertical" className="text-container">
-          <Typography
-            as="p"
-            // @ts-expect-error TODO: fix this when we have the correct component tokens
-            font="--typography-heading-md"
-            color="--color-text-on-base-secondary"
+        {/* Content Container */}
+        <RadiusAutoLayout
+          height="fill-parent"
+          alignment="center"
+          space={radiusTokens.component.spacing.hero.gap.image}
+          className={contentContainer}
+        >
+          {/* Image Container */}
+          <RadiusAutoLayout
+            width="fill-parent"
+            height="fill-parent"
+            fill={radiusTokens.component.color.hero.image}
+            className={imageContainer}
           >
-            {eyebrow}
-          </Typography>
-          <Typography
-            as="h1"
-            // @ts-expect-error TODO: fix this when we have the correct component tokens
-            font="--typography-heading-xxl"
+            {/* Image */}
+            <RadiusAutoLayout
+              as="img"
+              src={imageSrc}
+              alt={imageAlt}
+              width="fill-parent"
+            />
+          </RadiusAutoLayout>
+          {/* Outer Text Container */}
+          <RadiusAutoLayout
+            width="fill-parent"
+            direction="vertical"
+            space={radiusTokens.component.spacing.hero.gap.aboveButton}
+            className={textContainer}
           >
-            {title}
-          </Typography>
-          <RadiusAutoLayout className="buttonContainer">
-            <RadiusButton
-              as="a"
-              variant="primary"
-              // @ts-expect-error TODO: fix this when we have the correct component tokens
-              size="large"
-              href={ctaUrl}
-              // TODO: remove this className when the link button bug (R20-218) is fixed
-              className="call-to-action"
+            {/* Inner Text Container */}
+            <RadiusAutoLayout
+              width="fill-parent"
+              direction="vertical"
+              space={radiusTokens.component.spacing.hero.gap.content}
             >
-              {buttonLabel}
-            </RadiusButton>
+              {/* Eyebrow */}
+              <Typography
+                font={radiusTokens.component.typography.hero.eyebrow}
+                fill={radiusTokens.component.color.hero.eyebrow}
+              >
+                {eyebrow}
+              </Typography>
+              {/* Header */}
+              <Typography
+                as="h1"
+                font={radiusTokens.component.typography.hero.header}
+                fill={radiusTokens.component.color.hero.header}
+              >
+                {header}
+              </Typography>
+            </RadiusAutoLayout>
+            {/* CTA Button */}
+            {ctaUrl && buttonLabel && (
+              <RadiusButton as="a" href={ctaUrl} rightIcon={ArrowRight}>
+                {buttonLabel}
+              </RadiusButton>
+            )}
           </RadiusAutoLayout>
         </RadiusAutoLayout>
       </RadiusAutoLayout>
-    </RadiusAutoLayout>
-  );
-};
+    );
+  }
+);

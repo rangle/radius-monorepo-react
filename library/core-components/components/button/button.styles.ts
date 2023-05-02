@@ -111,6 +111,7 @@ export const useStyles = ({ variant = 'primary' }: StyleProps) => {
     cursor: pointer;
     display: inline-block;
     padding: 0;
+    text-decoration: none;
     &:hover {
       color: ${hover.color};
       background: ${hover.background};
