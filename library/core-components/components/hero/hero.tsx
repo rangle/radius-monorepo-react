@@ -20,6 +20,14 @@ export type RadiusHeroProps = {
   className?: string;
 };
 
+/**
+ * The Hero component is used to display a large image with a header, eyebrow,
+ * and optional CTA button. If the `ctaUrl` prop is not provided, the Call To
+ * Action link button will not be shown.
+ *
+ * ### Resources
+ * [Figma Design Specs](https://www.figma.com/file/hW6DtJyTGtGlLkRB3jK68v/Booster---Hero?node-id=2-2)
+ */
 export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
   ({ header, eyebrow, buttonLabel, imageSrc, ctaUrl, className }, ref) => {
     const { contentContainer, imageContainer, textContainer } = useStyles();
