@@ -12,10 +12,10 @@ export type RadiusHeroProps = {
   header: string;
   /** The eyebrow text */
   eyebrow: string;
-  /** The button label text */
-  buttonLabel: string;
   /** The image source */
   imageSrc: string;
+  /** The button label text. If not provided, the button will not be shown */
+  buttonLabel?: string;
   /** The url for the Call To Action link button. If not provided, the button will not be shown */
   ctaUrl?: string;
   className?: string;
@@ -23,7 +23,9 @@ export type RadiusHeroProps = {
 
 /**
  * The Hero component is used to display a large image with a header, eyebrow,
- * and optional CTA button. If the `ctaUrl` prop is not provided, the Call To
+ * and optional CTA button.
+ *
+ * If either the `ctaUrl` or `buttonLabel` prop are not provided, the Call To
  * Action link button will not be shown.
  *
  * ### Resources
@@ -89,7 +91,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
               </Typography>
             </RadiusAutoLayout>
             {/* CTA Button */}
-            {ctaUrl && (
+            {ctaUrl && buttonLabel && (
               <RadiusButton as="a" href={ctaUrl} rightIcon={ArrowRight}>
                 {buttonLabel}
               </RadiusButton>

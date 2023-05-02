@@ -14,8 +14,8 @@ const meta: Meta<RadiusHeroProps> = {
   args: {
     header: 'Header',
     eyebrow: 'Eyebrow',
-    buttonLabel: 'Action',
     imageSrc: 'https://via.placeholder.com/1500',
+    buttonLabel: 'Action',
     ctaUrl: '#',
   },
 };
