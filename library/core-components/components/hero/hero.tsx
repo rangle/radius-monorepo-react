@@ -14,6 +14,8 @@ export type RadiusHeroProps = {
   eyebrow: string;
   /** The image source */
   imageSrc: string;
+  /** The image alt text */
+  imageAlt: string;
   /** The button label text. If not provided, the button will not be shown */
   buttonLabel?: string;
   /** The url for the Call To Action link button. If not provided, the button will not be shown */
@@ -32,7 +34,10 @@ export type RadiusHeroProps = {
  * [Figma Design Specs](https://www.figma.com/file/hW6DtJyTGtGlLkRB3jK68v/Booster---Hero?node-id=2-2)
  */
 export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
-  ({ header, eyebrow, buttonLabel, imageSrc, ctaUrl, className }, ref) => {
+  (
+    { header, eyebrow, buttonLabel, imageSrc, imageAlt, ctaUrl, className },
+    ref
+  ) => {
     const { contentContainer, imageContainer, textContainer } = useStyles();
     return (
       <RadiusAutoLayout
@@ -59,7 +64,12 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
             className={imageContainer}
           >
             {/* Image */}
-            <RadiusAutoLayout as="img" src={imageSrc} width="fill-parent" />
+            <RadiusAutoLayout
+              as="img"
+              src={imageSrc}
+              alt={imageAlt}
+              width="fill-parent"
+            />
           </RadiusAutoLayout>
           {/* Outer Text Container */}
           <RadiusAutoLayout
