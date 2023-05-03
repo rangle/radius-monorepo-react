@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 
-import { ImageTextItemProps } from './image-text-item.types';
+import { ImageTextItemProps } from './image-text-item';
 
 // TODO: breakpoints should be generated using importer - this is a temporary solution. See https://rangle.atlassian.net/browse/R20-201
 const breakpoints = {

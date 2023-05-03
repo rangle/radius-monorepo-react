@@ -2,8 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { ImageTextItem } from './image-text-item';
-import { ImageTextItemProps } from './image-text-item.types';
+import { ImageTextItem, ImageTextItemProps } from './image-text-item';
 
 const meta: Meta<ImageTextItemProps> = {
   component: ImageTextItem,
