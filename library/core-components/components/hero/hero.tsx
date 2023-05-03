@@ -5,7 +5,6 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 import { RadiusAutoLayout } from '../../components/auto-layout/auto-layout';
 import { RadiusButton } from '../../components/button/button';
 import { Typography } from '../../components/typography/typography';
-import { useStyles } from './hero.styles';
 
 export type RadiusHeroProps = {
   /** The main header text */
@@ -38,7 +37,6 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
     { header, eyebrow, buttonLabel, imageSrc, imageAlt, ctaUrl, className },
     ref
   ) => {
-    const { contentContainer } = useStyles();
     return (
       <RadiusAutoLayout
         className={className}
@@ -55,7 +53,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
           width="fill-parent"
           alignment="center"
           space={radiusTokens.component.spacing.hero.gap.image}
-          className={contentContainer}
+          direction={radiusTokens.component.direction.hero.contentContainer}
         >
           {/* Image Container */}
           <RadiusAutoLayout
@@ -74,13 +72,17 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
           {/* Outer Text Container */}
           <RadiusAutoLayout
             width="fill-parent"
-            direction="vertical"
+            direction={
+              radiusTokens.component.direction.hero.textContainer.outer
+            }
             space={radiusTokens.component.spacing.hero.gap.aboveButton}
           >
             {/* Inner Text Container */}
             <RadiusAutoLayout
               width="fill-parent"
-              direction="vertical"
+              direction={
+                radiusTokens.component.direction.hero.textContainer.inner
+              }
               space={radiusTokens.component.spacing.hero.gap.content}
             >
               {/* Eyebrow */}

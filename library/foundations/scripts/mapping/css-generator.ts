@@ -24,5 +24,13 @@ export default {
       // add missing `px` suffix to all lone numbers
       [[/\d+(?![^()]*\))/g, '$&px']],
     ],
+    [
+      /--other.*-direction/,
+      // replace `vertical` with `column` and `horizontal` with `row`
+      [
+        [/vertical/g, 'column'],
+        [/horizontal/g, 'row'],
+      ],
+    ],
   ],
 } satisfies GeneratorMappingDictionary;
