@@ -3,16 +3,16 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
-import { TextAndImage, TextAndImageProps } from '..';
+import { ImageTextItem, ImageTextItemProps } from '..';
 
 expect.extend(toHaveNoViolations);
 
 describe('<TextAndImage />', () => {
   const renderTestComponent = (
-    props?: Partial<TextAndImageProps & React.HTMLAttributes<HTMLDivElement>>
+    props?: Partial<ImageTextItemProps & React.HTMLAttributes<HTMLDivElement>>
   ) => {
     return render(
-      <TextAndImage
+      <ImageTextItem
         title="Hello World"
         body="body text"
         headingLevel="h2"

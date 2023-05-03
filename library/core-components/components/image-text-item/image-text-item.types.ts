@@ -1,4 +1,4 @@
-export type TextAndImageProps = {
+export type ImageTextItemProps = {
   /** Title text */
   title: string;
   /** Body text */

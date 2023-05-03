@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 
-import { TextAndImageProps } from './text-and-image.types';
+import { ImageTextItemProps } from './image-text-item.types';
 
 // TODO: breakpoints should be generated using importer - this is a temporary solution. See https://rangle.atlassian.net/browse/R20-201
 const breakpoints = {
@@ -17,7 +17,7 @@ const breakpoints = {
   },
 };
 
-type StyleProps = Pick<TextAndImageProps, 'media'>;
+type StyleProps = Pick<ImageTextItemProps, 'media'>;
 
 export const getStyles = <T extends StyleProps>({ media }: T) => {
   const breakpointSm = `@media screen and (min-width: ${breakpoints.sm.min}px) and (max-width: ${breakpoints.sm.max}px)`;

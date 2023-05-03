@@ -2,11 +2,11 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { TextAndImage } from './text-and-image';
-import { TextAndImageProps } from './text-and-image.types';
+import { ImageTextItem } from './image-text-item';
+import { ImageTextItemProps } from './image-text-item.types';
 
-const meta: Meta<TextAndImageProps> = {
-  component: TextAndImage,
+const meta: Meta<ImageTextItemProps> = {
+  component: ImageTextItem,
   title: 'Text And Image',
   parameters: {
     badges: [BADGE.NEEDS_REVISION],
@@ -33,7 +33,7 @@ const meta: Meta<TextAndImageProps> = {
 };
 
 export default meta;
-type Story = StoryObj<TextAndImageProps>;
+type Story = StoryObj<ImageTextItemProps>;
 
 export const Default: Story = {};
 
@@ -43,10 +43,10 @@ export const Multiple: Story = {
       style={{ display: 'flex', flexDirection: 'column', gap: 32, padding: 20 }}
     >
       <div style={{ display: 'flex', gap: 32 }}>
-        <TextAndImage {...args} />
-        <TextAndImage {...args} />
+        <ImageTextItem {...args} />
+        <ImageTextItem {...args} />
       </div>
-      <TextAndImage {...args} />
+      <ImageTextItem {...args} />
     </div>
   ),
 };

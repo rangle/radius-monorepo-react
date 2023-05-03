@@ -1,12 +1,12 @@
 import React, { useMemo, forwardRef } from 'react';
 import { cx } from '@emotion/css';
 
-import { TextAndImageProps } from './text-and-image.types';
-import { getStyles } from './text-and-image.styles';
+import { ImageTextItemProps } from './image-text-item.types';
+import { getStyles } from './image-text-item.styles';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 import { Typography } from '../typography/typography';
 
-export const TextAndImage = forwardRef<HTMLDivElement, TextAndImageProps>(
+export const ImageTextItem = forwardRef<HTMLDivElement, ImageTextItemProps>(
   (
     { title, headingLevel, body, media = 'left', src, alt, className, ...rest },
     ref
