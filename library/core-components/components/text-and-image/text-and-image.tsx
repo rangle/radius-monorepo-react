@@ -32,6 +32,7 @@ export const TextAndImage = forwardRef<HTMLDivElement, TextAndImageProps>(
         {/* Text Container */}
         <RadiusAutoLayout
           className={textContainer}
+          // @ts-expect-error - this component needs refactor with new tokens
           direction="vertical"
           space="--spacing-core-spacing-8"
         >
