@@ -20,7 +20,8 @@ export type RadiusLinkIconProps = {
 };
 
 /**
- * TODO: Add description
+ * A component that renders an icon as a link. It is a wrapper around the
+ * RadiusIcon component, and can be passed any react SVG icon component.
  *
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/f8ht6hWwgGcBAjRvhPAiOZ/Link-Icon?type=design&node-id=2-2&t=FZCihaVJwuEpv1c6-0)
