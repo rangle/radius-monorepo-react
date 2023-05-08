@@ -69,7 +69,7 @@ export type AutoLayoutExtendedProps = {
   /** Used in conjunction with isParent, uses and sets position: absolute */
   absolutePosition?: boolean;
   /** The direction of the layout, uses flex row or column */
-  direction?: CSSProp<'other', 'component'>;
+  direction?: CSSProp<'other', 'component'> | 'horizontal' | 'vertical';
   /** The space between the children, can be number (gap) or auto (justify-content: space-between;) */
   space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
   /** Whether the content should be clipped or not, uses overflow: hidden */
