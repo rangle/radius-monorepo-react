@@ -118,7 +118,11 @@ export const useStyles = ({
 }: StyleProps) => {
   return css`
     display: flex;
-    flex-direction: ${renderCSSProp(direction)};
+    flex-direction: ${direction === 'vertical'
+      ? 'column'
+      : direction === 'horizontal'
+      ? 'row'
+      : renderCSSProp(direction)};
     margin: 0;
     box-sizing: ${mapStrokeAlign[strokeAlign || 'inside']};
     align-items: ${mapAlignments[alignment]};
