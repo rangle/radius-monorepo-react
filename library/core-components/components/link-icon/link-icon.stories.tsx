@@ -30,6 +30,7 @@ const meta: Meta<typeof RadiusLinkIcon> = {
   args: {
     as: 'a',
     href: '#',
+    'aria-label': 'Descriptive text',
     icon: AccountCircle,
     size: radiusTokens.component.sizing.linkIcon.medium,
   },

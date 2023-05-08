@@ -25,6 +25,7 @@ describe('<RadiusLinkIcon />', () => {
     const { container } = render(
       <RadiusLinkIcon
         href="#"
+        aria-label="Descriptive text"
         icon={AccountCircle}
         size={radiusTokens.component.sizing.linkIcon.small}
       />
