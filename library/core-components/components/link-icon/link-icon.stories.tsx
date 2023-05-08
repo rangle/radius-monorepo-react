@@ -4,22 +4,31 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 import { AccountCircle } from '@rangle/radius-foundations/generated/icons';
 
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusLinkIcon, RadiusLinkIconProps } from './link-icon';
+import { RadiusLinkIcon } from './link-icon';
 import { flattenObject } from '../../utils';
+import { RadiusLinkIconExtendedProps } from './link-icon.types';
 
-const meta: Meta<RadiusLinkIconProps> = {
+const meta: Meta<typeof RadiusLinkIcon> = {
   component: RadiusLinkIcon,
   title: 'Link Icon',
   parameters: {
     // badges: [BADGE.EXPERIMENTAL],
   },
   argTypes: {
+    as: {
+      options: ['a', 'button'],
+      table: {
+        defaultValue: { summary: 'a' },
+      },
+    },
     size: {
       options: flattenObject(radiusTokens.component.sizing.linkIcon),
     },
     className: { table: { disable: true } },
+    ref: { table: { disable: true } },
   },
   args: {
+    as: 'a',
     href: '#',
     icon: AccountCircle,
     size: radiusTokens.component.sizing.linkIcon.medium,
@@ -27,7 +36,7 @@ const meta: Meta<RadiusLinkIconProps> = {
 };
 
 export default meta;
-type Story = StoryObj<RadiusLinkIconProps>;
+type Story = StoryObj<typeof RadiusLinkIcon>;
 
 export const Default: Story = {};
 
@@ -51,7 +60,8 @@ const sizes = {
 };
 
 export const Variants: Story = {
-  render: (args) => (
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: (args: RadiusLinkIconExtendedProps) => (
     <div
       style={{
         display: 'grid',

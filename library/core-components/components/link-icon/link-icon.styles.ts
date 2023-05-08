@@ -8,6 +8,13 @@ export type StyleProps = Pick<
 >;
 
 export const useStyles = ({ disabled }: StyleProps) => ({
+  // TODO: add these styles to a global reset style sheet
+  parent: css`
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: ${disabled ? 'default' : 'pointer'};
+  `,
   icon: css`
     &:hover {
       fill: ${!disabled
