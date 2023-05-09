@@ -1,16 +1,25 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { RadiusNavItem, RadiusNavItemProps } from './nav-item';
+import { RadiusNavItem } from './nav-item';
 
-const meta: Meta<RadiusNavItemProps> = {
+const meta: Meta<typeof RadiusNavItem> = {
   component: RadiusNavItem,
   title: 'Nav Item',
   parameters: {
     // badges: [BADGE.EXPERIMENTAL],
   },
   argTypes: {
+    as: {
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'a' },
+      },
+    },
     className: { table: { disable: true } },
+    ref: { table: { disable: true } },
   },
   args: {
     label: 'Menu Item',
@@ -26,7 +35,7 @@ const meta: Meta<RadiusNavItemProps> = {
 };
 
 export default meta;
-type Story = StoryObj<RadiusNavItemProps>;
+type Story = StoryObj<typeof RadiusNavItem>;
 
 export const Default: Story = {};
 
