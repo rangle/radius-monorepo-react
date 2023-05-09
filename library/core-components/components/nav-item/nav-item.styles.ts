@@ -8,18 +8,18 @@ export type StyleProps = Pick<
 >;
 
 export const useStyles = ({ selected }: StyleProps) => ({
-  link: css`
-    // TODO: remove this once we have new destructured typography object containing this property
+  styles: css`
+    // TODO: remove this once we have new destructured typography object containing this property, or add this to a global reset
     text-decoration: none;
 
     &:hover {
       // apply label color when link is hovered
-      > span {
+      .nav-item-label {
         color: var(${radiusTokens.component.color.navigationItem.hover.label});
       }
 
       // apply underline color when link is hovered but not selected
-      > div {
+      .nav-item-underline {
         ${!selected
           ? `background-color: var(
               ${radiusTokens.component.color.navigationItem.hover.accent}
@@ -28,6 +28,7 @@ export const useStyles = ({ selected }: StyleProps) => ({
       }
     }
   `,
+
   underline: css`
     // TODO: add height tokenization to AutoLayout component
     height: var(${radiusTokens.component.sizing.navigationItem.accent});
