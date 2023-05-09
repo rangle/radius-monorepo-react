@@ -23,7 +23,7 @@ export const RadiusNavItem: RadiusNavItemComponent = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'a';
-    const { styles, underline } = useStyles({ selected });
+    const { styles, label: labelStyles, underline } = useStyles({ selected });
 
     return (
       <Component ref={ref} className={cx(className, styles)} {...rest}>
@@ -34,7 +34,7 @@ export const RadiusNavItem: RadiusNavItemComponent = forwardRef(
           }
         >
           <Typography
-            className="nav-item-label"
+            className={cx(labelStyles, 'nav-item-label')}
             as="span"
             font={radiusTokens.component.typography.navigationItem.label}
             fill={

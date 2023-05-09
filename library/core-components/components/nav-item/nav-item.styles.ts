@@ -28,9 +28,12 @@ export const useStyles = ({ selected }: StyleProps) => ({
       }
     }
   `,
-
+  label: css`
+    transition: color 0.2s;
+  `,
   underline: css`
     // TODO: add height tokenization to AutoLayout component
     height: var(${radiusTokens.component.sizing.navigationItem.accent});
+    transition: background-color 0.2s;
   `,
 });
