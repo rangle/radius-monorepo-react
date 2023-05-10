@@ -1,7 +1,20 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import {
+  Github,
+  Figma,
+  EventNote,
+  Instagram,
+  LinkedIn,
+  Twitter,
+  Youtube,
+} from '@rangle/radius-foundations/generated/icons';
+
 // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNav } from './nav';
+import { RadiusNavItem } from '../nav-item';
+import { RadiusLinkIcon } from '../link-icon';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusNav> = {
   component: RadiusNav,
@@ -32,20 +45,46 @@ const meta: Meta<typeof RadiusNav> = {
     ),
     navItems: (
       <>
-        <p>nav item 1</p>
-        <p>nav item 2</p>
+        <RadiusNavItem selected>Menu Item 1</RadiusNavItem>
+        <RadiusNavItem>Menu Item 2</RadiusNavItem>
+        <RadiusNavItem>Menu Item 3</RadiusNavItem>
+        <RadiusNavItem>Menu Item 4</RadiusNavItem>
       </>
     ),
     linkIcons: (
       <>
-        <p>X</p>
-        <p>0</p>
+        <RadiusLinkIcon
+          icon={Github}
+          size={radiusTokens.component.sizing.linkIcon.large}
+        />
+        <RadiusLinkIcon
+          icon={Figma}
+          size={radiusTokens.component.sizing.linkIcon.large}
+        />
+        <RadiusLinkIcon
+          icon={EventNote}
+          size={radiusTokens.component.sizing.linkIcon.large}
+        />
       </>
     ),
     socials: (
       <>
-        <p>social 1</p>
-        <p>social 2</p>
+        <RadiusLinkIcon
+          icon={Instagram}
+          size={radiusTokens.component.sizing.linkIcon.medium}
+        />
+        <RadiusLinkIcon
+          icon={LinkedIn}
+          size={radiusTokens.component.sizing.linkIcon.medium}
+        />
+        <RadiusLinkIcon
+          icon={Twitter}
+          size={radiusTokens.component.sizing.linkIcon.medium}
+        />
+        <RadiusLinkIcon
+          icon={Youtube}
+          size={radiusTokens.component.sizing.linkIcon.medium}
+        />
       </>
     ),
   },
