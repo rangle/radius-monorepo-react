@@ -55,10 +55,12 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
             radiusTokens.component.spacing.navigation.margins.horizontal,
           ]}
           direction="vertical"
+          // TODO: add spacing token when available
         >
           {/* Navigation container */}
           <RadiusAutoLayout
             className={navContainer}
+            // TODO: make this dynamic with a token
             space="auto"
             width="fill-parent"
             fill={radiusTokens.component.color.navigation.background}
@@ -101,7 +103,7 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
               </RadiusAutoLayout>
             </RadiusAutoLayout>
           </RadiusAutoLayout>
-          {/* Info Container */}
+          {/* Secondary Action Container */}
           <RadiusAutoLayout
             className={info}
             space={radiusTokens.component.spacing.navigation.gap.infoMenu}
