@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react';
-// import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
-
-// import { RadiusAutoLayout } from '../../components/auto-layout/auto-layout';
-// import { Typography } from '../typography/typography';
-// import { useStyles } from './nav.styles';
 import { cx } from '@emotion/css';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+
+import { useStyles } from './nav.styles';
 import { RadiusNavComponent, RadiusNavProps } from './nav.types';
 import { PolymorphicRef } from '../../utils';
+import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 
 /**
  * TODO: Write description
@@ -16,15 +15,47 @@ import { PolymorphicRef } from '../../utils';
  */
 export const RadiusNav: RadiusNavComponent = forwardRef(
   <C extends React.ElementType = 'nav'>(
-    { as, className, ...rest }: RadiusNavProps<C>,
+    { as, logos, navItems, linkIcons, className, ...rest }: RadiusNavProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'nav';
-    // const { styles, label: labelStyles, underline } = useStyles({ selected });
+    const { styles } = useStyles();
 
     return (
-      <Component ref={ref} className={cx(className)} {...rest}>
-        hi
+      <Component ref={ref} className={cx(styles, className)} {...rest}>
+        {/* Navigation container */}
+        <RadiusAutoLayout
+          padding={[
+            radiusTokens.component.spacing.navigation.margins.vertical,
+            radiusTokens.component.spacing.navigation.margins.horizontal,
+          ]}
+          space="auto"
+          width="fill-parent"
+        >
+          {/* Company Logos */}
+          <RadiusAutoLayout
+            space={radiusTokens.component.spacing.navigation.gap.logos}
+          >
+            {logos}
+          </RadiusAutoLayout>
+          {/* Menu */}
+          <RadiusAutoLayout
+            space={radiusTokens.component.spacing.navigation.gap.menu}
+          >
+            {/* Nav Items */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.navigation.gap.navItems}
+            >
+              {navItems}
+            </RadiusAutoLayout>
+            {/* Link Icons */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.navigation.gap.resources}
+            >
+              {linkIcons}
+            </RadiusAutoLayout>
+          </RadiusAutoLayout>
+        </RadiusAutoLayout>
       </Component>
     );
   }

@@ -24,6 +24,24 @@ const meta: Meta<typeof RadiusNav> = {
   args: {
     label: 'Menu Item',
     href: '#',
+    logos: (
+      <>
+        <p>logo 1</p>
+        <p>logo 2</p>
+      </>
+    ),
+    navItems: (
+      <>
+        <p>nav item 1</p>
+        <p>nav item 2</p>
+      </>
+    ),
+    linkIcons: (
+      <>
+        <p>X</p>
+        <p>0</p>
+      </>
+    ),
   },
   decorators: [
     (Story) => (
