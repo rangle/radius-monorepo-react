@@ -27,6 +27,13 @@ const meta: Meta<typeof RadiusLinkIcon> = {
     className: { table: { disable: true } },
     ref: { table: { disable: true } },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex' }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     as: 'a',
     href: '#',
