@@ -31,6 +31,11 @@ export const useStyles = () => ({
     }
   `,
   info: css`
+    // TODO: add a token for this
+    @media screen and (min-width: 900px) {
+      display: none;
+    }
+
     // TODO: tokenize this
     @media screen and (max-width: 599px) {
       flex-direction: column;
