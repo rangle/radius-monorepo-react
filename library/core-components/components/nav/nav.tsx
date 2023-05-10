@@ -34,6 +34,9 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'nav';
+
+    const [isOpen, setOpen] = useState(false);
+
     const {
       styles,
       navContainer,
@@ -41,9 +44,7 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
       navItems: navItemsStyles,
       toggleButton,
       info,
-    } = useStyles();
-
-    const [isOpen, setOpen] = useState(false);
+    } = useStyles({ isOpen });
 
     return (
       <Component ref={ref} className={cx(styles, className)} {...rest}>
