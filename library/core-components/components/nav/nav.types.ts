@@ -11,6 +11,8 @@ export type RadiusNavExtendedProps = {
   navItems: React.ReactNode;
   /** The link icons to display to the right of the nav items. */
   linkIcons: React.ReactNode;
+  /** The social icons to display at the bottom of the mobile nav */
+  socials: React.ReactNode;
   className?: string;
 };
 

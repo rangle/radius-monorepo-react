@@ -42,6 +42,12 @@ const meta: Meta<typeof RadiusNav> = {
         <p>0</p>
       </>
     ),
+    socials: (
+      <>
+        <p>social 1</p>
+        <p>social 2</p>
+      </>
+    ),
   },
   decorators: [
     (Story) => (
