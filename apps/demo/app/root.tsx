@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-import styles from '../../../library/foundations/src/styles/styles.css';
+import styles from '../../../library/foundations/styles.css';
 import font from '../../../shared/fonts/fonts.css';
 
 export const links: LinksFunction = () => {

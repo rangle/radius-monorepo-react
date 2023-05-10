@@ -18,7 +18,7 @@
     "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:validate && yarn tokens:parse && yarn tokens:generate && yarn tokens:docs && yarn tokens:constants && yarn tokens:types",
     "tokens:parse": "mkdir -p generated && cat ./tokens.json | ts-node scripts/to-layers.ts > generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:validate": "cat ./tokens.json | ts-node scripts/validate-layers.ts generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
-    "tokens:generate": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts css > src/styles/theme.css",
+    "tokens:generate": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts css > generated/theme.css",
     "tokens:docs": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts storybook > generated/04-token-documentation.mdx && prettier --version && prettier --config ../../.prettierrc --parser mdx --write generated/04-token-documentation.mdx",
     "tokens:types": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts types > generated/design-tokens.types.ts && prettier --config ../../.prettierrc --write generated/design-tokens.types.ts",
     "tokens:constants": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts constants > generated/design-tokens.constants.ts && prettier --config ../../.prettierrc --write generated/design-tokens.constants.ts",
