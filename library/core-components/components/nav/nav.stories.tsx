@@ -45,10 +45,12 @@ const meta: Meta<typeof RadiusNav> = {
     ),
     navItems: (
       <>
-        <RadiusNavItem selected>Menu Item 1</RadiusNavItem>
-        <RadiusNavItem>Menu Item 2</RadiusNavItem>
-        <RadiusNavItem>Menu Item 3</RadiusNavItem>
-        <RadiusNavItem>Menu Item 4</RadiusNavItem>
+        <RadiusNavItem href="#" selected>
+          Menu Item 1
+        </RadiusNavItem>
+        <RadiusNavItem href="#">Menu Item 2</RadiusNavItem>
+        <RadiusNavItem href="#">Menu Item 3</RadiusNavItem>
+        <RadiusNavItem href="#">Menu Item 4</RadiusNavItem>
       </>
     ),
     linkIcons: (
@@ -56,14 +58,17 @@ const meta: Meta<typeof RadiusNav> = {
         <RadiusLinkIcon
           icon={Github}
           size={radiusTokens.component.sizing.linkIcon.large}
+          href="#"
         />
         <RadiusLinkIcon
           icon={Figma}
           size={radiusTokens.component.sizing.linkIcon.large}
+          href="#"
         />
         <RadiusLinkIcon
           icon={EventNote}
           size={radiusTokens.component.sizing.linkIcon.large}
+          href="#"
         />
       </>
     ),
@@ -72,18 +77,22 @@ const meta: Meta<typeof RadiusNav> = {
         <RadiusLinkIcon
           icon={Instagram}
           size={radiusTokens.component.sizing.linkIcon.medium}
+          href="#"
         />
         <RadiusLinkIcon
           icon={LinkedIn}
           size={radiusTokens.component.sizing.linkIcon.medium}
+          href="#"
         />
         <RadiusLinkIcon
           icon={Twitter}
           size={radiusTokens.component.sizing.linkIcon.medium}
+          href="#"
         />
         <RadiusLinkIcon
           icon={Youtube}
           size={radiusTokens.component.sizing.linkIcon.medium}
+          href="#"
         />
       </>
     ),

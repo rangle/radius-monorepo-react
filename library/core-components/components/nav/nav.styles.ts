@@ -24,6 +24,11 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
     }
   `,
   menu: css`
+    // TODO: add a token for this (alignment)
+    @media screen and (min-width: 900px) {
+      align-items: flex-end;
+    }
+
     @media screen and (max-width: 899px) {
       ${!isOpen ? 'display: none;' : ''}
       // TODO: tokenize this
@@ -44,7 +49,6 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
 
     @media screen and (max-width: 899px) {
       ${!isOpen ? 'display: none;' : ''}
-      flex-direction: column;
     }
 
     // TODO: tokenize this
