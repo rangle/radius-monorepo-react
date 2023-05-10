@@ -1,11 +1,14 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { cx } from '@emotion/css';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+import { Close, Menu } from '@rangle/radius-foundations/generated/icons';
 
 import { useStyles } from './nav.styles';
 import { RadiusNavComponent, RadiusNavProps } from './nav.types';
 import { PolymorphicRef } from '../../utils';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
+import { RadiusLinkIcon } from '../link-icon';
+import { RadiusButton } from '../button/button';
 
 /**
  * TODO: Write description
@@ -15,35 +18,68 @@ import { RadiusAutoLayout } from '../auto-layout/auto-layout';
  */
 export const RadiusNav: RadiusNavComponent = forwardRef(
   <C extends React.ElementType = 'nav'>(
-    { as, logos, navItems, linkIcons, className, ...rest }: RadiusNavProps<C>,
+    {
+      as,
+      logos,
+      navItems,
+      linkIcons,
+      socials,
+      className,
+      ...rest
+    }: RadiusNavProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'nav';
-    const { styles } = useStyles();
+    const {
+      styles,
+      navContainer,
+      menu,
+      navItems: navItemsStyles,
+      toggleButton,
+      info,
+    } = useStyles();
+
+    const [isOpen, setOpen] = useState(false);
 
     return (
       <Component ref={ref} className={cx(styles, className)} {...rest}>
         {/* Navigation container */}
         <RadiusAutoLayout
+          className={navContainer}
           padding={[
             radiusTokens.component.spacing.navigation.margins.vertical,
             radiusTokens.component.spacing.navigation.margins.horizontal,
           ]}
           space="auto"
           width="fill-parent"
+          fill={radiusTokens.component.color.navigation.background}
         >
-          {/* Company Logos */}
-          <RadiusAutoLayout
-            space={radiusTokens.component.spacing.navigation.gap.logos}
-          >
-            {logos}
+          {/* Controls */}
+          <RadiusAutoLayout space="auto" width="fill-parent">
+            {/* Company Logos */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.navigation.gap.logos}
+            >
+              {logos}
+            </RadiusAutoLayout>
+            {/* Toggle Button */}
+            <RadiusLinkIcon
+              className={toggleButton}
+              as="button"
+              icon={isOpen ? Close : Menu}
+              // TODO: replace this with component token once created
+              size={radiusTokens.component.sizing.linkIcon.large}
+              onClick={() => setOpen(!isOpen)}
+            />
           </RadiusAutoLayout>
           {/* Menu */}
           <RadiusAutoLayout
+            className={menu}
             space={radiusTokens.component.spacing.navigation.gap.menu}
           >
             {/* Nav Items */}
             <RadiusAutoLayout
+              className={navItemsStyles}
               space={radiusTokens.component.spacing.navigation.gap.navItems}
             >
               {navItems}
@@ -54,6 +90,20 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
             >
               {linkIcons}
             </RadiusAutoLayout>
+          </RadiusAutoLayout>
+        </RadiusAutoLayout>
+        {/* Info Container */}
+        <RadiusAutoLayout
+          className={info}
+          space={radiusTokens.component.spacing.navigation.gap.infoMenu}
+          width="fill-parent"
+        >
+          <RadiusButton>Action</RadiusButton>
+          {/* Social Container */}
+          <RadiusAutoLayout
+            space={radiusTokens.component.spacing.navigation.gap.socials}
+          >
+            {socials}
           </RadiusAutoLayout>
         </RadiusAutoLayout>
       </Component>
