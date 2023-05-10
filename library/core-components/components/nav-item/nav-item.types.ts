@@ -1,8 +1,8 @@
 import { PolymorphicComponentPropWithRef } from '../../utils';
 
 export type RadiusNavItemExtendedProps = {
-  /** The label text */
-  label: string;
+  /** The content to display in the nav item */
+  children: React.ReactNode;
   /** Whether the item is selected */
   selected?: boolean;
   className?: string;

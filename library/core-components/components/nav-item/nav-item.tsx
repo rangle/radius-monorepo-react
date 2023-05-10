@@ -19,7 +19,7 @@ import { PolymorphicRef } from '../../utils';
  */
 export const RadiusNavItem: RadiusNavItemComponent = forwardRef(
   <C extends React.ElementType = 'a'>(
-    { as, label, selected, className, ...rest }: RadiusNavItemProps<C>,
+    { as, selected, className, children, ...rest }: RadiusNavItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'a';
@@ -43,7 +43,7 @@ export const RadiusNavItem: RadiusNavItemComponent = forwardRef(
                 : radiusTokens.component.color.navigationItem.default.label
             }
           >
-            {label}
+            {children}
           </Typography>
           <RadiusAutoLayout
             className={cx(underline, 'nav-item-underline')}
