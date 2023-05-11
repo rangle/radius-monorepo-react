@@ -10,7 +10,7 @@ import {
   Youtube,
 } from '@rangle/radius-foundations/generated/icons';
 
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNav } from './nav';
 import { RadiusNavItem } from '../nav-item';
 import { RadiusLinkIcon } from '../link-icon';
@@ -20,7 +20,7 @@ const meta: Meta<typeof RadiusNav> = {
   component: RadiusNav,
   title: 'Nav',
   parameters: {
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.EXPERIMENTAL],
   },
   argTypes: {
     as: {
