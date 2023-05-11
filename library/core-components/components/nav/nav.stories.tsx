@@ -16,6 +16,9 @@ import { RadiusNavItem } from '../nav-item';
 import { RadiusLinkIcon } from '../link-icon';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
+import RangleLogoLight from '../../../../radius/assets/rangle-logo-light.svg';
+import RadiusLogoLight from '../../../../radius/assets/radius-logo-light.svg';
+
 const meta: Meta<typeof RadiusNav> = {
   component: RadiusNav,
   title: 'Nav',
@@ -37,10 +40,16 @@ const meta: Meta<typeof RadiusNav> = {
   args: {
     label: 'Menu Item',
     href: '#',
+
+    // TODO: apply height to all logos as children?
     logos: (
       <>
-        <p>logo 1</p>
-        <p>logo 2</p>
+        <img
+          src={RangleLogoLight}
+          alt="Rangle.io"
+          style={{ maxHeight: '24px' }}
+        />
+        <img src={RadiusLogoLight} alt="Radius" style={{ maxHeight: '24px' }} />
       </>
     ),
     navItems: (
@@ -53,6 +62,8 @@ const meta: Meta<typeof RadiusNav> = {
         <RadiusNavItem href="#">Menu Item 4</RadiusNavItem>
       </>
     ),
+
+    // TODO: apply size to all icons as children?
     linkIcons: (
       <>
         <RadiusLinkIcon
@@ -72,6 +83,8 @@ const meta: Meta<typeof RadiusNav> = {
         />
       </>
     ),
+
+    // TODO: apply size to all icons as children?
     socials: (
       <>
         <RadiusLinkIcon

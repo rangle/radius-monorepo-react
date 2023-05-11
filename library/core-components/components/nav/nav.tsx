@@ -66,7 +66,11 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
             fill={radiusTokens.component.color.navigation.background}
           >
             {/* Controls */}
-            <RadiusAutoLayout space="auto" width="fill-parent">
+            <RadiusAutoLayout
+              space="auto"
+              width="fill-parent"
+              alignment="center"
+            >
               {/* Company Logos */}
               <RadiusAutoLayout
                 space={radiusTokens.component.spacing.navigation.gap.logos}
@@ -77,6 +81,9 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
               <RadiusLinkIcon
                 className={toggleButton}
                 as="button"
+                aria-label={
+                  isOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'
+                }
                 icon={isOpen ? Close : Menu}
                 // TODO: replace this with component token once created
                 size={radiusTokens.component.sizing.linkIcon.large}
