@@ -74,7 +74,8 @@ readStdin()
       console.warn('## TOKENS VERSION UPGRADED!');
       return;
     }
-    const diff = compareTokenLayers(previousLayerList, layerList, true);
+    // TODO: make showValueDifferences parameter configurable via command line
+    const diff = compareTokenLayers(previousLayerList, layerList, false);
     console.warn(snapshotFileName, diff);
     if (diff.length) {
       console.warn('## NEW TOKENS HAVE BREAKING CHANGES');

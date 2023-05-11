@@ -1,25 +1,39 @@
-import { css } from '@emotion/css';
-import { renderCSSProp } from '../../utils/design-tokens.utils';
-import { TypographyExtendedProps } from './typography';
+import { renderCSSProp, css } from '../../utils';
+import { Typography } from './typography';
 
-export type StylesProps = Pick<
-  TypographyExtendedProps,
-  'align' | 'color' | 'font'
+export type StyleProps = Pick<
+  React.ComponentProps<typeof Typography>,
+  | 'align'
+  | 'fill'
+  | 'font'
+  | 'fontFamily'
+  | 'lineHeight'
+  | 'fontSize'
+  | 'fontWeight'
+  | 'letterSpacing'
+  | 'textDecoration'
 >;
 
-export const getStyles = ({
-  align = 'left',
-  // NOTE: this component should not have default values for color and font as they should always come from the component layer or be inherited from the parent
-  // @ts-expect-error - this component needs refactor with new tokens
-  color = '--color-text-on-base-primary',
-  // @ts-expect-error - this component needs refactor with new tokens
-  font = '--typography-body-md',
-}: StylesProps) => {
-  return css`
-    color: ${renderCSSProp(color)};
-    text-align: ${align};
-    font: ${renderCSSProp(font)};
-    margin: 0;
-    padding: 0;
-  `;
-};
+export const useStyles = ({
+  align,
+  fill,
+  font,
+  fontFamily,
+  lineHeight,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  textDecoration,
+}: StyleProps) => css`
+  color: ${renderCSSProp(fill)};
+  text-align: ${align};
+  font: ${renderCSSProp(font)};
+  font-family: ${renderCSSProp(fontFamily)};
+  line-height: ${renderCSSProp(lineHeight)};
+  font-size: ${renderCSSProp(fontSize)};
+  font-weight: ${renderCSSProp(fontWeight)};
+  letter-spacing: ${renderCSSProp(letterSpacing)};
+  text-decoration: ${renderCSSProp(textDecoration)};
+  margin: 0;
+  padding: 0;
+`;

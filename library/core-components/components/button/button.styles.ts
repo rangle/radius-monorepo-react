@@ -1,29 +1,31 @@
-import { css } from '@emotion/css';
+import { css } from '../../utils';
 import {
   RadiusColorTokens,
   Var,
 } from '@rangle/radius-foundations/generated/design-tokens.types';
+import { RadiusButton } from './button';
 
 // Discriminated unions are an excellent way to add type safety
 // and self-documentation to your code -- even internal implementations
 export type RadiusButtonStyleType =
-  | 'filled'
-  | 'filledActive'
-  | 'filledHover'
-  | 'filledDisabled'
-  | 'hollow'
-  | 'hollowActive'
-  | 'hollowHover'
-  | 'hollowDisabled';
-/** Props that affect the CSS of this component
- * this type can be merged directly into the component props
- * _if and only if_ they map 1:1 with those. otherwise this type can be used by the
- * component code to set styles properly
+  | 'primary'
+  | 'primaryActive'
+  | 'primaryHover'
+  | 'primaryDisabled'
+  | 'secondary'
+  | 'secondaryActive'
+  | 'secondaryHover'
+  | 'secondaryDisabled';
+
+/**
+ * The props that are used to select the css styles. In this case it is a subset
+ * of the props that are passed to the component, but can also contain custom
+ * types if needed for the logic of any given component.
  */
-export type StylesProps = {
-  // TODO: replace example props with yours
-  appearance?: 'filled' | 'hollow';
-};
+export type StyleProps = Pick<
+  React.ComponentProps<typeof RadiusButton>,
+  'variant'
+>;
 
 /** Map from color props to css
  * An example of a useful map that helps select css props based on props
@@ -34,47 +36,47 @@ const buttonColors: Record<
     [key in 'color' | 'background' | 'border']: Var<RadiusColorTokens>;
   }
 > = {
-  filled: {
+  primary: {
     color: 'var(--color-component-color-button-primary-default-label)',
     background:
       'var(--color-component-color-button-primary-default-background)',
     border: 'var(--color-component-color-button-primary-default-border)',
   },
-  filledActive: {
+  primaryActive: {
     color: 'var(--color-component-color-button-primary-active-label)',
     background: 'var(--color-component-color-button-primary-active-background)',
     border: 'var(--color-component-color-button-primary-active-border)',
   },
-  filledHover: {
+  primaryHover: {
     color: 'var(--color-component-color-button-primary-hover-label)',
     background: 'var(--color-component-color-button-primary-hover-background)',
     border: 'var(--color-component-color-button-primary-hover-border)',
   },
-  filledDisabled: {
+  primaryDisabled: {
     color: 'var(--color-component-color-button-primary-disabled-label)',
     background:
       'var(--color-component-color-button-primary-disabled-background)',
     border: 'var(--color-component-color-button-primary-disabled-border)',
   },
-  hollow: {
+  secondary: {
     color: 'var(--color-component-color-button-secondary-default-label)',
     background:
       'var(--color-component-color-button-secondary-default-background)',
     border: 'var(--color-component-color-button-secondary-default-border)',
   },
-  hollowActive: {
+  secondaryActive: {
     color: 'var(--color-component-color-button-secondary-active-label)',
     background:
       'var(--color-component-color-button-secondary-active-background)',
     border: 'var(--color-component-color-button-secondary-active-border)',
   },
-  hollowHover: {
+  secondaryHover: {
     color: 'var(--color-component-color-button-secondary-hover-label)',
     background:
       'var(--color-component-color-button-secondary-hover-background)',
     border: 'var(--color-component-color-button-secondary-hover-border)',
   },
-  hollowDisabled: {
+  secondaryDisabled: {
     color: 'var(--color-component-color-button-secondary-disabled-label)',
     background:
       'var(--color-component-color-button-secondary-disabled-background)',
@@ -83,31 +85,33 @@ const buttonColors: Record<
 };
 
 /** returns the className generated for the styles of this component */
-export const getStyles = <T extends StylesProps>({
-  appearance = 'hollow',
-}: T) => {
+export const useStyles = ({ variant = 'primary' }: StyleProps) => {
   /* Example styles. Adjust with styles for your implementation */
-  const normal = buttonColors[appearance];
-  const active = buttonColors[`${appearance}Active`];
-  const hover = buttonColors[`${appearance}Hover`];
-  const disabled = buttonColors[`${appearance}Disabled`];
-  /* Emotion `css` function generates the CSS
-   * and returns the class name pointing to those styles
-   * HINT: it is important to memoize the results of this function
+  const normal = buttonColors[variant];
+  const active = buttonColors[`${variant}Active`];
+  const hover = buttonColors[`${variant}Hover`];
+  const disabled = buttonColors[`${variant}Disabled`];
+  /**
+   * The `createUseStyles` function is a wrapper around the `css` function
+   * from the Emotion library. It is a function that takes a template literal
+   * and returns a hook that can be used to generate the class name. The hook
+   * is memoized so that the styles are only regenerated when the props change.
+   *
+   * If you are not using this hook, it is important to memoize the styles
+   * yourself to avoid generating the same styles multiple times.
    */
-
   return css`
     /* note that values that do not vary with props can be added 
     *  directly as css variables representing design tokens */
     color: ${normal.color};
     background: ${normal.background};
-    border-color: ${normal.border};
+    border: solid ${normal.border}
+      var(--borderWidth-component-border-width-button-border);
     border-radius: var(--borderRadius-component-border-radius-button-border);
-    border-style: solid;
-    border-width: var(--borderWidth-component-border-width-button-border);
-    padding: var(--spacing-component-spacing-button-padding-vertical)
-      var(--spacing-component-spacing-button-padding-horizontal);
     cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    text-decoration: none;
     &:hover {
       color: ${hover.color};
       background: ${hover.background};

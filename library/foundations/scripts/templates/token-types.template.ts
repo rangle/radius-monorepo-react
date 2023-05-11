@@ -112,9 +112,13 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
 
 
   /**
-   * Returns a list of tokens that match the given type T and subject S. If no subject is provided, all subjects are returned, and if no type is provided, all types are returned.
+   * Describes a token that matches the given type T and subject S. If no
+   * subject is provided, all subjects are returned, and if no type is provided,
+   * all types are returned.
    *
-   * There can be multiple subjects for a given type, so for example you may have \`--color-text-primary\` and \`--color-background-primary\`, or \`--typography-heading-sm\` and \`--typography-body-sm\`.
+   * There can be multiple subjects for a given type, so for example you may
+   * have \`--color-text-primary\` and \`--color-background-primary\`, or
+   * \`--typography-heading-sm\` and \`--typography-body-sm\`.
    *
    * @example
    * CSSProp<'color', 'text'> // returns \`--color-text-\${string}\`
@@ -126,16 +130,31 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
   > = Extract<RadiusTokens, \`--\${T}-\${S}-\${string}\`>;
 
 
-  /** Returns a list of tokens tokens as described by {@link CSSTokensByTypeAndSubject}, or a custom CSS expression provided inside an object with the css property.
+  /** 
+   * Describes a single token as described by
+   * {@link CSSTokensByTypeAndSubject}, an array of
+   * {@link CSSTokensByTypeAndSubject}, or a custom CSS expression provided
+   * inside an object with the css property.
+   * 
    * @example
-   * <Typography color="--color-primary-base-500" font="--typography-base-lg" />
-   * // vs:
-   * <Typography color={{ css: "red" }} font={{ css: "Arial" }} />
+   * // Single token
+   * <RadiusAutoLayout padding="--spacing-component-spacing-button-padding">
+   * // Multiple tokens (will be resolved in order in CSS)
+   * <RadiusAutoLayout padding={[
+        '--spacing-component-spacing-button-padding-vertical',
+        '--spacing-component-spacing-button-padding-horizontal',
+      ]}
+      >
+   * // Custom CSS expression
+   * <RadiusAutoLayout padding={{ css: '10px 20px' }}>
    */
   export type CSSProp<
     T extends RadiusTokenTypes = RadiusTokenTypes,
     S extends RadiusTokenSubjects = RadiusTokenSubjects
-  > = CSSTokensByTypeAndSubject<T, S> | { css: CSSExpression };
+  > =
+    | CSSTokensByTypeAndSubject<T, S>
+    | Array<CSSTokensByTypeAndSubject<T, S>>
+    | { css: CSSExpression };
 
 
   /** Utility type that returns the provided token type(s) wrapped with the \`var()\` function. */

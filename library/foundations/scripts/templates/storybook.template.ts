@@ -3,6 +3,10 @@ import { TokenLayer, TokenLayers, TokenOutput } from '../lib/token-parser';
 // for debug purposes
 // import * as data from '../../generated/token-layers-1.0.1.json';
 
+// replace curly brackets with their escaped version
+const escapeJSXValue = (value: string) =>
+  value.replace(/{/g, '&#123;').replace(/}/g, '&#125;');
+
 const renderLayerDescription = (layer: TokenLayer | undefined) => {
   if (!layer) return '';
   const { name, parameters } = layer;
@@ -35,7 +39,6 @@ import {
     Typeset,
   } from '@storybook/addon-docs';
   import { PropsTable } from '@storybook/components';
-  // import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 <Meta
   title="Token Documentation"
@@ -150,12 +153,12 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
 </thead>
 <tbody>${typography
     .map(
-      ({ key, name, value }) => `
+      ({ key, value }) => `
       <tr>
         <td>${key}</td>
-        <td>font: ${value}</td>
+        <td>font: ${escapeJSXValue(value)}</td>
         <td>
-          <span style={{ font: '${value}' }}>
+          <span style={{ font: '${escapeJSXValue(value)}' }}>
             The quick brown fox jumps over the lazy dog
           </span>
         </td>
@@ -183,10 +186,10 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
 </thead>
 <tbody>${typeVariables
         .map(
-          ({ key, name, value }) => `
+          ({ key, value }) => `
     <tr>
         <td>${key}</td>
-        <td>${value}</td>   
+        <td>${escapeJSXValue(value)}</td>   
     </tr>`
         )
         .join('')}
@@ -196,11 +199,11 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
     })
     .join('');
 
-  // TODO: fix broken `radius--components` typography variables, they are not being generated correctly and are breaking the entire story. As a workaround, they are being temporarily excluded from generation.
+  // TODO: fix broken `components--components` typography variables (as well as any other values starting with `{--` as excluded above), they are not being generated correctly and are breaking the entire story. As a workaround, they are being temporarily excluded from generation.
   return `
   # ${name}
     ${colorVariables}
-    ${name !== 'radius--components' ? typographyVariables : ''}
+    ${name !== 'components--components' ? typographyVariables : ''}
     ${restVariables}
     `;
 };

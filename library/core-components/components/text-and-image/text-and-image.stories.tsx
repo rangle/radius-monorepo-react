@@ -1,16 +1,16 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { TextAndImage } from './text-and-image';
 import { TextAndImageProps } from './text-and-image.types';
 
 const meta: Meta<TextAndImageProps> = {
   component: TextAndImage,
   title: 'Text And Image',
-  // parameters: {
-  //   badges: [BADGE.EXPERIMENTAL],
-  // },
+  parameters: {
+    badges: [BADGE.NEEDS_REVISION],
+  },
   args: {
     src: 'https://via.placeholder.com/1500',
     alt: 'placeholder image',

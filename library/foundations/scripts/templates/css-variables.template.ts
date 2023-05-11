@@ -109,7 +109,6 @@ export const renderCSSVariables = (
       dependencies,
       `
         ${variables
-          .filter(({ type }) => type !== 'other')
           .map(convertVariableReferences)
           .map(convertExpressions)
           .map(
