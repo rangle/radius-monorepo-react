@@ -15,7 +15,12 @@ module.exports = {
     },
   ],
   // Add assets, these files will be added to the root of the build (/fonts.css)
-  staticDirs: ['../shared/fonts', '../shared/assets', '../library/foundations'],
+  staticDirs: [
+    '../shared/fonts',
+    '../shared/assets',
+    '../library/foundations',
+    '../radius/assets',
+  ],
   addons: [
     'storybook-version',
     '@storybook/addon-links',
