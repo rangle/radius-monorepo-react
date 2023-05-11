@@ -55,5 +55,9 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
     @media screen and (max-width: 599px) {
       flex-direction: column;
     }
+
+    @media screen and (min-width: 600px) {
+      align-items: center;
+    }
   `,
 });
