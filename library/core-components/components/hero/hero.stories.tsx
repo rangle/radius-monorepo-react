@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusHero, RadiusHeroProps } from './hero';
 
 const meta: Meta<RadiusHeroProps> = {
   component: RadiusHero,
   title: 'Hero',
   parameters: {
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
   },
   argTypes: {
     className: { table: { disable: true } },

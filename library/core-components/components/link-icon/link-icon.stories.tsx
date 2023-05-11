@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { AccountCircle } from '@rangle/radius-foundations/generated/icons';
 
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusLinkIcon } from './link-icon';
 import { flattenObject } from '../../utils';
 import { RadiusLinkIconExtendedProps } from './link-icon.types';
@@ -12,7 +12,7 @@ const meta: Meta<typeof RadiusLinkIcon> = {
   component: RadiusLinkIcon,
   title: 'Link Icon',
   parameters: {
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
   },
   argTypes: {
     as: {

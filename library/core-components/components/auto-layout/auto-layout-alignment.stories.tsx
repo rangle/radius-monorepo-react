@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { Meta } from '@storybook/react';
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
 import { Stories, Title, Description } from '@storybook/addon-docs';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
@@ -19,7 +19,7 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
     docs: {
       page: () => (
         <>

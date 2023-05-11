@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNavItem } from './nav-item';
 
 const meta: Meta<typeof RadiusNavItem> = {
   component: RadiusNavItem,
   title: 'Nav Item',
   parameters: {
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.EXPERIMENTAL],
   },
   argTypes: {
     as: {
