@@ -16,6 +16,11 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
     @media screen and (max-width: 899px) {
       flex-direction: column;
     }
+
+    // TODO: add a token for this (alignment)
+    @media screen and (min-width: 900px) {
+      align-items: center;
+    }
   `,
   toggleButton: css`
     // TODO: add a token for this
@@ -56,6 +61,7 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
       flex-direction: column;
     }
 
+    // TODO: add a token for this (alignment)
     @media screen and (min-width: 600px) {
       align-items: center;
     }
