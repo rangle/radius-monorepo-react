@@ -5,18 +5,13 @@ import '@testing-library/jest-dom';
 import { AccountCircle } from '@rangle/radius-foundations/generated/icons';
 
 import { RadiusLinkIcon } from '..';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 expect.extend(toHaveNoViolations);
 
 describe('<RadiusLinkIcon />', () => {
   test('should render', () => {
     const { getByRole } = render(
-      <RadiusLinkIcon
-        href="#"
-        icon={AccountCircle}
-        size={radiusTokens.component.sizing.linkIcon.small}
-      />
+      <RadiusLinkIcon href="#" icon={AccountCircle} size={{ css: '24px' }} />
     );
     expect(getByRole('link')).toBeInTheDocument();
   });
@@ -27,7 +22,7 @@ describe('<RadiusLinkIcon />', () => {
         href="#"
         aria-label="Descriptive text"
         icon={AccountCircle}
-        size={radiusTokens.component.sizing.linkIcon.small}
+        size={{ css: '24px' }}
       />
     );
     expect(await axe(container)).toHaveNoViolations();

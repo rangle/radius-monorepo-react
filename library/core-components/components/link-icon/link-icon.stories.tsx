@@ -22,7 +22,7 @@ const meta: Meta<typeof RadiusLinkIcon> = {
       },
     },
     size: {
-      options: flattenObject(radiusTokens.component.sizing.linkIcon),
+      options: flattenObject(radiusTokens.core.sizing),
     },
     className: { table: { disable: true } },
     ref: { table: { disable: true } },
@@ -32,7 +32,7 @@ const meta: Meta<typeof RadiusLinkIcon> = {
     href: '#',
     'aria-label': 'Descriptive text',
     icon: AccountCircle,
-    size: radiusTokens.component.sizing.linkIcon.medium,
+    size: radiusTokens.core.sizing[24],
   },
 };
 
@@ -55,9 +55,9 @@ const Cell = ({ children, id }: { children: React.ReactNode; id?: string }) => (
 );
 
 const sizes = {
-  Small: radiusTokens.component.sizing.linkIcon.small,
-  Medium: radiusTokens.component.sizing.linkIcon.medium,
-  Large: radiusTokens.component.sizing.linkIcon.large,
+  '16px': radiusTokens.core.sizing[16],
+  '24px': radiusTokens.core.sizing[24],
+  '32px': radiusTokens.core.sizing[32],
 };
 
 export const Variants: Story = {
@@ -83,15 +83,19 @@ export const Variants: Story = {
           <Cell>{key}</Cell>
 
           <Cell>
+            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
             <RadiusLinkIcon {...args} size={value} />
           </Cell>
           <Cell id="hover">
+            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
             <RadiusLinkIcon {...args} size={value} />
           </Cell>
           <Cell id="active">
+            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
             <RadiusLinkIcon {...args} size={value} />
           </Cell>
           <Cell>
+            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
             <RadiusLinkIcon {...args} size={value} disabled />
           </Cell>
         </>
