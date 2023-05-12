@@ -13,6 +13,7 @@ import { PolymorphicRef } from '../../utils';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 import { RadiusLinkIcon } from '../link-icon';
 import { RadiusButton } from '../button/button';
+import { RadiusNavItem } from '../nav-item';
 
 /**
  * TODO: Write description
@@ -100,7 +101,9 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
                 className={navItemsStyles}
                 space={radiusTokens.component.spacing.navigation.gap.navItems}
               >
-                {navItems}
+                {navItems.map((navItemProps) => (
+                  <RadiusNavItem {...navItemProps} />
+                ))}
               </RadiusAutoLayout>
               {/* Link Icons */}
               <RadiusAutoLayout

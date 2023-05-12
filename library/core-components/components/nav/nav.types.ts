@@ -3,6 +3,7 @@ import {
   PolymorphicComponentPropWithRef,
 } from '../../utils';
 import { RadiusLinkIconProps } from '../link-icon/link-icon.types';
+import { RadiusNavItemProps } from '../nav-item/nav-item.types';
 
 export type RadiusNavExtendedProps = {
   /**
@@ -11,11 +12,35 @@ export type RadiusNavExtendedProps = {
    * be wrapped in a Fragment (`<></>`), or passed as an array.
    */
   logos: React.ReactNode;
-  /** The nav items to display on the right side of the nav. */
-  navItems: React.ReactNode;
+  /**
+   * The nav items to display on the right side of the nav.
+   * Takes an array of objects, containing the props for each nav item (see the
+   * `RadiusNavItem` component for the available props).
+   *
+   * @example
+   * ```
+   * navItems={[
+   *   { children: 'Menu Item 1', href: '#', selected: true },
+   *   { children: 'Menu Item 2', href: '#' }
+   * ]}
+   * ```
+   *
+   * Since the nav items are polymorphic, they can be rendered as any element
+   * or component using the `as` prop, like (for example) a React Router Link:
+   *
+   * @example
+   * ```
+   * navItems={[
+   *   { children: 'Menu Item 1', as: Link, to: '/menu-item-1', selected: true },
+   *   { children: 'Menu Item 2', as: Link, to: '/menu-item-2' }
+   * ]}
+   * ```
+   */
+  navItems: Array<RadiusNavItemProps<React.ElementType>>;
   /**
    * The link icons to display to the right of the nav items.
-   * Takes an array of objects, containing the props for each link icon.
+   * Takes an array of objects, containing the props for each link icon (see the
+   * `RadiusLinkIcon` component for the available props).
    *
    * Note: the `size` prop is not required here as it is automatically set
    * within the nav component.
@@ -43,12 +68,12 @@ export type RadiusNavExtendedProps = {
   linkIcons: Array<
     OmitPolymorphicProp<RadiusLinkIconProps<React.ElementType>, 'size'>
   >;
-  // linkIcons: Array<RadiusLinkIconExtendedProps>;
 
   /**
    * The social icons to display at the bottom of the mobile nav
-   * Takes an array of objects, containing the props for each link icon.
-   *
+   * Takes an array of objects, containing the props for each link icon (see the
+   * `RadiusLinkIcon` component for the available props).
+   * 
    * Note: the `size` prop is not required here as it is automatically set
    * within the nav component.
    *

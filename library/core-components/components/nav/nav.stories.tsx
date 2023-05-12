@@ -12,8 +12,6 @@ import {
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNav } from './nav';
-import { RadiusNavItem } from '../nav-item';
-import { RadiusLinkIcon } from '../link-icon';
 
 // import RangleLogoLight from '../../../../radius/assets/rangle-logo-light.svg';
 // import RadiusLogoLight from '../../../../radius/assets/radius-logo-light.svg';
@@ -51,16 +49,13 @@ const meta: Meta<typeof RadiusNav> = {
         <p>logo 2</p>
       </>
     ),
-    navItems: (
-      <>
-        <RadiusNavItem href="#" selected>
-          Menu Item 1
-        </RadiusNavItem>
-        <RadiusNavItem href="#">Menu Item 2</RadiusNavItem>
-        <RadiusNavItem href="#">Menu Item 3</RadiusNavItem>
-        <RadiusNavItem href="#">Menu Item 4</RadiusNavItem>
-      </>
-    ),
+    // TODO: maybe better to use `label` instead of `children` if this is how we're implementing it
+    navItems: [
+      { children: 'Menu Item 1', href: '#', selected: true },
+      { children: 'Menu Item 2', href: '#' },
+      { children: 'Menu Item 3', href: '#' },
+      { children: 'Menu Item 4', href: '#' },
+    ],
     linkIcons: [
       { icon: Github, href: '#' },
       { icon: Figma, href: '#' },
