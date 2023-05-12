@@ -63,3 +63,17 @@ export type PolymorphicComponentPropWithRef<
   C extends ElementType,
   Props = Record<string, never>
 > = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };
+
+/**
+ * Utility to omit the specified prop(s) from complex polymorphic types.
+ * The standard `Omit` utility doesn't work as expected with polymorphic types.
+ *
+ * @example
+ * ```
+ * // Omits the `size` prop from the `RadiusLinkIconProps` type
+ * OmitPolymorphicProp<RadiusLinkIconProps<React.ElementType>, 'size'>
+ * ```
+ * */
+export type OmitPolymorphicProp<T, Prop extends string> = {
+  [P in keyof T as P extends Prop ? never : P]: T[P];
+};
