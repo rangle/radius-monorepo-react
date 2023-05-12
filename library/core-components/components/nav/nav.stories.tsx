@@ -14,10 +14,9 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNav } from './nav';
 import { RadiusNavItem } from '../nav-item';
 import { RadiusLinkIcon } from '../link-icon';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
-import RangleLogoLight from '../../../../radius/assets/rangle-logo-light.svg';
-import RadiusLogoLight from '../../../../radius/assets/radius-logo-light.svg';
+// import RangleLogoLight from '../../../../radius/assets/rangle-logo-light.svg';
+// import RadiusLogoLight from '../../../../radius/assets/radius-logo-light.svg';
 
 const meta: Meta<typeof RadiusNav> = {
   component: RadiusNav,
@@ -38,18 +37,18 @@ const meta: Meta<typeof RadiusNav> = {
     ref: { table: { disable: true } },
   },
   args: {
-    label: 'Menu Item',
-    href: '#',
-
     // TODO: apply height to all logos as children?
+    // TODO: height should be tokenized
     logos: (
       <>
-        <img
+        {/* <img
           src={RangleLogoLight}
           alt="Rangle.io"
           style={{ maxHeight: '24px' }}
         />
-        <img src={RadiusLogoLight} alt="Radius" style={{ maxHeight: '24px' }} />
+        <img src={RadiusLogoLight} alt="Radius" style={{ maxHeight: '24px' }} /> */}
+        <p>logo 1</p>
+        <p>logo 2</p>
       </>
     ),
     navItems: (
@@ -62,53 +61,17 @@ const meta: Meta<typeof RadiusNav> = {
         <RadiusNavItem href="#">Menu Item 4</RadiusNavItem>
       </>
     ),
-
-    // TODO: apply size to all icons as children?
-    linkIcons: (
-      <>
-        <RadiusLinkIcon
-          icon={Github}
-          size={radiusTokens.component.sizing.linkIcon.large}
-          href="#"
-        />
-        <RadiusLinkIcon
-          icon={Figma}
-          size={radiusTokens.component.sizing.linkIcon.large}
-          href="#"
-        />
-        <RadiusLinkIcon
-          icon={EventNote}
-          size={radiusTokens.component.sizing.linkIcon.large}
-          href="#"
-        />
-      </>
-    ),
-
-    // TODO: apply size to all icons as children?
-    socials: (
-      <>
-        <RadiusLinkIcon
-          icon={Instagram}
-          size={radiusTokens.component.sizing.linkIcon.medium}
-          href="#"
-        />
-        <RadiusLinkIcon
-          icon={LinkedIn}
-          size={radiusTokens.component.sizing.linkIcon.medium}
-          href="#"
-        />
-        <RadiusLinkIcon
-          icon={Twitter}
-          size={radiusTokens.component.sizing.linkIcon.medium}
-          href="#"
-        />
-        <RadiusLinkIcon
-          icon={Youtube}
-          size={radiusTokens.component.sizing.linkIcon.medium}
-          href="#"
-        />
-      </>
-    ),
+    linkIcons: [
+      { icon: Github, href: '#' },
+      { icon: Figma, href: '#' },
+      { icon: EventNote, href: '#' },
+    ],
+    socials: [
+      { icon: Instagram, href: '#' },
+      { icon: LinkedIn, href: '#' },
+      { icon: Twitter, href: '#' },
+      { icon: Youtube, href: '#' },
+    ],
   },
   decorators: [
     (Story) => (

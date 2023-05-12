@@ -106,7 +106,12 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
               <RadiusAutoLayout
                 space={radiusTokens.component.spacing.navigation.gap.resources}
               >
-                {linkIcons}
+                {linkIcons.map((linkIconProps) => (
+                  <RadiusLinkIcon
+                    {...linkIconProps}
+                    size={radiusTokens.component.sizing.linkIcon.large}
+                  />
+                ))}
               </RadiusAutoLayout>
             </RadiusAutoLayout>
           </RadiusAutoLayout>
@@ -122,7 +127,12 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
             <RadiusAutoLayout
               space={radiusTokens.component.spacing.navigation.gap.socials}
             >
-              {socials}
+              {socials.map((socialIconProps) => (
+                <RadiusLinkIcon
+                  {...socialIconProps}
+                  size={radiusTokens.component.sizing.linkIcon.medium}
+                />
+              ))}
             </RadiusAutoLayout>
           </RadiusAutoLayout>
         </RadiusAutoLayout>
