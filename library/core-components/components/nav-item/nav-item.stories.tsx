@@ -10,11 +10,6 @@ const meta: Meta<typeof RadiusNavItem> = {
     badges: [BADGE.EXPERIMENTAL],
   },
   argTypes: {
-    children: {
-      control: {
-        type: 'text',
-      },
-    },
     as: {
       control: {
         type: 'text',
@@ -27,7 +22,7 @@ const meta: Meta<typeof RadiusNavItem> = {
     ref: { table: { disable: true } },
   },
   args: {
-    children: 'Menu Item',
+    label: 'Menu Item',
     href: '#',
   },
   decorators: [
@@ -53,11 +48,9 @@ export const Selected: Story = {
 export const Multiple: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '10px' }}>
-      <RadiusNavItem href="#" selected>
-        Item 1
-      </RadiusNavItem>
-      <RadiusNavItem href="#">Item 2</RadiusNavItem>
-      <RadiusNavItem href="#">Item 3</RadiusNavItem>
+      <RadiusNavItem href="#" label="Item 1" selected />
+      <RadiusNavItem href="#" label="Item 2" />
+      <RadiusNavItem href="#" label="Item 3" />
     </div>
   ),
 };

@@ -62,12 +62,11 @@ const meta: Meta<typeof RadiusNav> = {
         </a>
       </>
     ),
-    // TODO: maybe better to use `label` instead of `children` if this is how we're implementing it
     navItems: [
-      { children: 'Menu Item 1', href: '#', selected: true },
-      { children: 'Menu Item 2', href: '#' },
-      { children: 'Menu Item 3', href: '#' },
-      { children: 'Menu Item 4', href: '#' },
+      { label: 'Menu Item 1', href: '#', selected: true },
+      { label: 'Menu Item 2', href: '#' },
+      { label: 'Menu Item 3', href: '#' },
+      { label: 'Menu Item 4', href: '#' },
     ],
     linkIcons: [
       { icon: Github, href: '#' },
@@ -94,5 +93,3 @@ export default meta;
 type Story = StoryObj<typeof RadiusNav>;
 
 export const Default: Story = {};
-
-// TODO: create generic placeholder story (to demonstrate layout), and one with actual content
