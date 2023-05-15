@@ -13,8 +13,9 @@ import {
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNav } from './nav';
 
-// import RangleLogoLight from '../../../../radius/assets/rangle-logo-light.svg';
-// import RadiusLogoLight from '../../../../radius/assets/radius-logo-light.svg';
+import RangleLogoLight from '../../../../radius/assets/rangle-logo-light.svg';
+import RadiusLogoLight from '../../../../radius/assets/radius-logo-light.svg';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusNav> = {
   component: RadiusNav,
@@ -35,18 +36,30 @@ const meta: Meta<typeof RadiusNav> = {
     ref: { table: { disable: true } },
   },
   args: {
+    // TODO: make image src dynamic based on token (WIP)
     // TODO: apply height to all logos as children?
-    // TODO: height should be tokenized
     logos: (
       <>
-        {/* <img
-          src={RangleLogoLight}
-          alt="Rangle.io"
-          style={{ maxHeight: '24px' }}
-        />
-        <img src={RadiusLogoLight} alt="Radius" style={{ maxHeight: '24px' }} /> */}
-        <p>logo 1</p>
-        <p>logo 2</p>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a href="#">
+          <img
+            src={RangleLogoLight}
+            alt="Rangle.io logo"
+            style={{
+              height: `var(${radiusTokens.component.sizing.navigation.secondaryLogo})`,
+            }}
+          />
+        </a>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a href="#">
+          <img
+            src={RadiusLogoLight}
+            alt="Radius logo"
+            style={{
+              height: `var(${radiusTokens.component.sizing.navigation.primaryLogo})`,
+            }}
+          />
+        </a>
       </>
     ),
     // TODO: maybe better to use `label` instead of `children` if this is how we're implementing it

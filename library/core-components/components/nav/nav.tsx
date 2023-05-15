@@ -69,6 +69,8 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
             {/* Company Logos */}
             <RadiusAutoLayout
               space={radiusTokens.component.spacing.navigation.gap.logos}
+              direction={radiusTokens.component.direction.navigation.logos}
+              // TODO: set height of all children using token
             >
               {logos}
             </RadiusAutoLayout>
