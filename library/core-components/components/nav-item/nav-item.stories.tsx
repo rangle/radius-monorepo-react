@@ -48,9 +48,9 @@ export const Selected: Story = {
 export const Multiple: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '10px' }}>
-      <RadiusNavItem label="Item 1" href="#" selected />
-      <RadiusNavItem label="Item 2" href="#" />
-      <RadiusNavItem label="Item 3" href="#" />
+      <RadiusNavItem href="#" label="Item 1" selected />
+      <RadiusNavItem href="#" label="Item 2" />
+      <RadiusNavItem href="#" label="Item 3" />
     </div>
   ),
 };

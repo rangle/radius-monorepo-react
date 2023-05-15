@@ -9,6 +9,8 @@ export type StyleProps = Pick<
 
 export const useStyles = ({ selected }: StyleProps) => ({
   styles: css`
+    cursor: pointer;
+    white-space: nowrap;
     // TODO: remove this once we have new destructured typography object containing this property, or add this to a global reset
     text-decoration: none;
 

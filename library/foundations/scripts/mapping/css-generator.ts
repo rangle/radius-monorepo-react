@@ -28,8 +28,8 @@ export default {
       /--other.*-direction/,
       // replace `vertical` with `column` and `horizontal` with `row`
       [
-        [/vertical/g, 'column'],
-        [/horizontal/g, 'row'],
+        [/^vertical$/, 'column'],
+        [/^horizontal$/, 'row'],
       ],
     ],
   ],

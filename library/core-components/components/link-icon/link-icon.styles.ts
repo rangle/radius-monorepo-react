@@ -13,6 +13,7 @@ export const useStyles = ({ disabled }: StyleProps) => ({
     padding: 0;
     border: none;
     background: none;
+    display: flex;
     cursor: ${disabled ? 'default' : 'pointer'};
   `,
   icon: css`

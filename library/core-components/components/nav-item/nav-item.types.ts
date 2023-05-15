@@ -1,7 +1,7 @@
 import { PolymorphicComponentPropWithRef } from '../../utils';
 
 export type RadiusNavItemExtendedProps = {
-  /** The label text */
+  /** The content to display in the nav item */
   label: string;
   /** Whether the item is selected */
   selected?: boolean;
