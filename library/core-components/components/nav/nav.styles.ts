@@ -12,11 +12,6 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
   `,
 
   navContainer: css`
-    // TODO: tokenize this
-    @media screen and (max-width: 899px) {
-      flex-direction: column;
-    }
-
     // TODO: add a token for this (alignment)
     @media screen and (min-width: 900px) {
       align-items: center;
@@ -36,17 +31,12 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
 
     @media screen and (max-width: 899px) {
       ${!isOpen ? 'display: none;' : ''}
-      // TODO: tokenize this
-      flex-direction: column;
     }
   `,
-  navItems: css`
-    // TODO: tokenize this
-    @media screen and (max-width: 899px) {
-      flex-direction: column;
-    }
-  `,
-  info: css`
+  secondaryActionsContainer: css`
+    // note: figma 'auto' spacing isn't supported yet so we're using justify-content: space-between
+    justify-content: space-between;
+
     // TODO: add a token for this
     @media screen and (min-width: 900px) {
       display: none;
@@ -54,11 +44,6 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
 
     @media screen and (max-width: 899px) {
       ${!isOpen ? 'display: none;' : ''}
-    }
-
-    // TODO: tokenize this
-    @media screen and (max-width: 599px) {
-      flex-direction: column;
     }
 
     // TODO: add a token for this (alignment)

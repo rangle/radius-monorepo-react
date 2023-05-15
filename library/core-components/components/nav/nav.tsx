@@ -42,88 +42,88 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
       styles,
       navContainer,
       menu,
-      navItems: navItemsStyles,
       toggleButton,
-      info,
-    } = useStyles({ isOpen });
+      secondaryActionsContainer,
+    } = useStyles({
+      isOpen,
+    });
 
     return (
       <Component ref={ref} className={cx(styles, className)} {...rest}>
-        {/* Outer Container */}
+        {/* Navigation container */}
         <RadiusAutoLayout
+          className={navContainer}
           padding={[
             radiusTokens.component.spacing.navigation.margins.vertical,
             radiusTokens.component.spacing.navigation.margins.horizontal,
           ]}
-          direction="vertical"
-          // TODO: add spacing token when available
+          space={radiusTokens.component.spacing.navigation.gap.navContainer}
+          direction={
+            radiusTokens.component.direction.navigation.navigationContainer
+          }
+          width="fill-parent"
+          fill={radiusTokens.component.color.navigation.background}
         >
-          {/* Navigation container */}
-          <RadiusAutoLayout
-            className={navContainer}
-            // TODO: make this dynamic with a token
-            space="auto"
-            width="fill-parent"
-            fill={radiusTokens.component.color.navigation.background}
-          >
-            {/* Controls */}
+          {/* Controls */}
+          <RadiusAutoLayout space="auto" width="fill-parent" alignment="center">
+            {/* Company Logos */}
             <RadiusAutoLayout
-              space="auto"
-              width="fill-parent"
-              alignment="center"
+              space={radiusTokens.component.spacing.navigation.gap.logos}
             >
-              {/* Company Logos */}
-              <RadiusAutoLayout
-                space={radiusTokens.component.spacing.navigation.gap.logos}
-              >
-                {logos}
-              </RadiusAutoLayout>
-              {/* Toggle Button */}
-              <RadiusLinkIcon
-                className={toggleButton}
-                as="button"
-                aria-label={
-                  isOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'
-                }
-                icon={isOpen ? Close : Menu}
-                // TODO: replace this with component token once created
-                size={radiusTokens.component.sizing.linkIcon.large}
-                onClick={() => setOpen(!isOpen)}
-              />
+              {logos}
             </RadiusAutoLayout>
-            {/* Menu */}
+            {/* Toggle Button */}
+            <RadiusLinkIcon
+              className={toggleButton}
+              as="button"
+              aria-label={
+                isOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'
+              }
+              icon={isOpen ? Close : Menu}
+              size={radiusTokens.component.sizing.navigation.controlIcon}
+              onClick={() => setOpen(!isOpen)}
+            />
+          </RadiusAutoLayout>
+          {/* Menu */}
+          <RadiusAutoLayout
+            className={menu}
+            space={radiusTokens.component.spacing.navigation.gap.menu}
+            direction={
+              radiusTokens.component.direction.navigation.menuContainer
+            }
+          >
+            {/* Nav Items */}
             <RadiusAutoLayout
-              className={menu}
-              space={radiusTokens.component.spacing.navigation.gap.menu}
+              space={radiusTokens.component.spacing.navigation.gap.navItems}
+              direction={radiusTokens.component.direction.navigation.navItems}
             >
-              {/* Nav Items */}
-              <RadiusAutoLayout
-                className={navItemsStyles}
-                space={radiusTokens.component.spacing.navigation.gap.navItems}
-              >
-                {navItems.map((navItemProps) => (
-                  <RadiusNavItem {...navItemProps} />
-                ))}
-              </RadiusAutoLayout>
-              {/* Link Icons */}
-              <RadiusAutoLayout
-                space={radiusTokens.component.spacing.navigation.gap.resources}
-              >
-                {linkIcons.map((linkIconProps) => (
-                  <RadiusLinkIcon
-                    {...linkIconProps}
-                    size={radiusTokens.component.sizing.linkIcon.large}
-                  />
-                ))}
-              </RadiusAutoLayout>
+              {navItems.map((navItemProps) => (
+                <RadiusNavItem {...navItemProps} />
+              ))}
+            </RadiusAutoLayout>
+            {/* Link Icons */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.navigation.gap.resources}
+            >
+              {linkIcons.map((linkIconProps) => (
+                <RadiusLinkIcon
+                  {...linkIconProps}
+                  size={radiusTokens.component.sizing.navigation.menuIcon}
+                />
+              ))}
             </RadiusAutoLayout>
           </RadiusAutoLayout>
-          {/* Info Container */}
+          {/* Secondary Actions Container */}
           <RadiusAutoLayout
-            className={info}
-            // TODO: make this dynamic with a token
-            space={radiusTokens.component.spacing.navigation.gap.infoMenu}
+            className={secondaryActionsContainer}
+            space={
+              radiusTokens.component.spacing.navigation.gap.secondaryAction
+            }
             width="fill-parent"
+            direction={
+              radiusTokens.component.direction.navigation
+                .secondaryActionContainer
+            }
           >
             <RadiusButton rightIcon={ArrowRight}>Action</RadiusButton>
             {/* Social Container */}
@@ -133,7 +133,7 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
               {socials.map((socialIconProps) => (
                 <RadiusLinkIcon
                   {...socialIconProps}
-                  size={radiusTokens.component.sizing.linkIcon.medium}
+                  size={radiusTokens.component.sizing.navigation.socialIcon}
                 />
               ))}
             </RadiusAutoLayout>
