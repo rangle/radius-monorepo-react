@@ -34,7 +34,11 @@ export const useStyles = ({ isOpen }: StyleProps) => ({
     }
   `,
   secondaryActionsContainer: css`
-    // note: figma 'auto' spacing isn't supported yet so we're using justify-content: space-between
+    // note: tokenized 'auto' spacing isn't supported yet so we're hard-coding
+    // this for now. 'auto' spacing tokens requires knowing the value of the
+    // token to be able to choose between the 'gap' and 'justify-content'
+    // properties, but the value isn't known ahead of time (getComputedStyle
+    // doesn't work on component tokens because they're not applied to the root)
     justify-content: space-between;
 
     // TODO: add a token for this
