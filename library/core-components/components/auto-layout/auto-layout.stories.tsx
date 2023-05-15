@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
 import { RadiusButton } from '../button/button';
 import { flattenObject } from '../../utils';
@@ -21,7 +21,7 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       minor: process.env.COMPONENT_VERSION?.[1],
       patch: process.env.COMPONENT_VERSION?.[2],
     },
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
     componentSubtitle:
       "RadiusAutoLayout duplicates Figma's Auto Layout API. In Figma Auto Layout is a very powerful feature that allows you to create complex layouts with ease.  We've adapted its API as a Polymorphic component that will work with many of the features in Auto Layout.",
 

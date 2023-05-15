@@ -18,7 +18,8 @@ module.exports = {
   staticDirs: [
     '../shared/fonts',
     '../shared/assets',
-    '../library/foundations/generated',
+    '../library/foundations',
+    '../radius/assets',
   ],
   addons: [
     'storybook-version',

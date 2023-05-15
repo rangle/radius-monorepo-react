@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj, ArgTypes, Args } from '@storybook/react';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 import { RadiusIcon } from '.';
 import * as icons from '@rangle/radius-foundations/generated/icons';
@@ -10,7 +11,7 @@ const meta: Meta<typeof RadiusIcon> = {
   component: RadiusIcon,
   title: 'Icon',
   parameters: {
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
   },
   argTypes: {
     component: {

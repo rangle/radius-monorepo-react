@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
-// import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from './typography';
 import { flattenObject } from '../../utils';
 
@@ -8,7 +8,7 @@ const meta: Meta<typeof Typography> = {
   component: Typography,
   title: 'Typography',
   parameters: {
-    // badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
     componentSubtitle:
       'This Polymorphic component provides an interface to apply styles and semantics to text content.',
   },
