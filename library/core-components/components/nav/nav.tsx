@@ -16,7 +16,10 @@ import { RadiusButton } from '../button/button';
 import { RadiusNavItem } from '../nav-item';
 
 /**
- * TODO: Write description
+ * A navigation component that renders a navigation menu, with a toggle button
+ * at tablet and mobile breakpoints to open and close the menu. It is polymorphic and
+ * can be passed a custom wrapper component via the `as` prop, but by default
+ * renders a `nav` tag.
  *
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/cr1TnhNnQE1q93AXS7pAoo/Navigation?type=design&node-id=1-2880)
