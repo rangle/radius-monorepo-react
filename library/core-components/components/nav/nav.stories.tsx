@@ -69,15 +69,15 @@ const meta: Meta<typeof RadiusNav> = {
       { label: 'Menu Item 4', href: '#' },
     ],
     linkIcons: [
-      { icon: Github, href: '#' },
-      { icon: Figma, href: '#' },
-      { icon: EventNote, href: '#' },
+      { icon: Github, href: '#', 'aria-label': 'Descriptive text' },
+      { icon: Figma, href: '#', 'aria-label': 'Descriptive text' },
+      { icon: EventNote, href: '#', 'aria-label': 'Descriptive text' },
     ],
     socials: [
-      { icon: Instagram, href: '#' },
-      { icon: LinkedIn, href: '#' },
-      { icon: Twitter, href: '#' },
-      { icon: Youtube, href: '#' },
+      { icon: Instagram, href: '#', 'aria-label': 'Descriptive text' },
+      { icon: LinkedIn, href: '#', 'aria-label': 'Descriptive text' },
+      { icon: Twitter, href: '#', 'aria-label': 'Descriptive text' },
+      { icon: Youtube, href: '#', 'aria-label': 'Descriptive text' },
     ],
   },
   decorators: [
