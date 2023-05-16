@@ -1,74 +1,104 @@
-import React, { useMemo, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { cx } from '@emotion/css';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
-import { getStyles } from './image-text-item.styles';
+import { useStyles } from './image-text-item.styles';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 import { Typography } from '../typography/typography';
+import { RadiusImageTextItemProps } from './image-text-item.types';
 
-export type ImageTextItemProps = {
-  /** Whether to render the large or small Image Text Item variant */
-  // variant: 'large' | 'small';
-  /** Title text */
-  title: string;
-  /** Body text */
-  body: string;
-  /** The tag to be used for the title. Should be specified on a case-by-case basis to ensure correct semantics for accessibility */
-  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  /** Which side of the text the image should be displayed on */
-  media?: 'left' | 'right';
-  /** The image source */
-  src: string;
-  /** The image alt text */
-  alt?: string; // ? Should this be required?
-  /** Optional classname to add to the container */
-  className?: string;
-};
-
-export const ImageTextItem = forwardRef<HTMLDivElement, ImageTextItemProps>(
+/**
+ * A component that renders an image and text side by side. It has two variants,
+ * large and small, which can be passed via the `variant` prop. The large variant
+ * has a larger image and a header, while the small variant has a smaller image
+ * and no header.
+ *
+ * It should be used in conjunction with the `RadiusImageTextList` component,
+ * which handles the layout of the items.
+ *
+ * ### Resources
+ * [Figma Design Specs](https://www.figma.com/file/84QBrU7F6mSMEwQhxYrffk/Image-Text-List?type=design&node-id=2-2)
+ */
+export const RadiusImageTextItem = forwardRef<
+  HTMLDivElement,
+  RadiusImageTextItemProps
+>(
   (
-    { title, headingLevel, body, media = 'left', src, alt, className, ...rest },
+    {
+      variant,
+      header,
+      headingLevel,
+      body,
+      imageAlignment = 'left',
+      src,
+      alt,
+      className,
+      ...rest
+    },
     ref
   ) => {
-    const { container, imageContainer, textContainer } = useMemo(
-      () => getStyles({ media }),
-      [media]
-    );
+    const { styles, imageContainer, textContainer } = useStyles({
+      imageAlignment,
+      variant,
+    });
 
     return (
       <RadiusAutoLayout
         ref={ref}
-        className={cx(container, className)}
-        space="--spacing-core-spacing-8"
+        className={cx(styles, className)}
+        direction={
+          variant === 'large'
+            ? radiusTokens.component.direction.largeImageTextItem.component
+            : radiusTokens.component.direction.smallImageTextItem.component
+        }
+        space={
+          variant === 'large'
+            ? radiusTokens.component.spacing.largeImageTextItem.gap.content
+            : radiusTokens.component.spacing.smallImageTextItem.gap.image
+        }
         width="fill-parent"
         alignment="center"
         {...rest}
       >
         {/* Image Container */}
-        <RadiusAutoLayout className={imageContainer}>
+        <RadiusAutoLayout
+          className={imageContainer}
+          width="fill-parent"
+          height="fill-parent"
+        >
           <RadiusAutoLayout as="img" src={src} alt={alt} width="fill-parent" />
         </RadiusAutoLayout>
-        {/* Content Block */}
+        {/* Text Container */}
         <RadiusAutoLayout
           className={textContainer}
-          direction="vertical"
-          space="--spacing-core-spacing-8"
+          direction={
+            radiusTokens.component.direction.largeImageTextItem.textContainer
+          }
+          space={radiusTokens.component.spacing.largeImageTextItem.gap.content}
+          width="fill-parent"
         >
           {/* Header */}
-          <Typography
-            as={headingLevel}
-            // @ts-expect-error - this component needs refactor with new tokens
-            font="--typography-heading-lg"
-            // @ts-expect-error - this component needs refactor with new tokens
-            fill="--color-text-on-base-primary"
-          >
-            {title}
-          </Typography>
+          {variant === 'large' && (
+            <Typography
+              as={headingLevel}
+              font={radiusTokens.component.typography.largeImageTextItem.header}
+              fill={radiusTokens.component.color.largeImageTextItem.header}
+            >
+              {header}
+            </Typography>
+          )}
           {/* Body */}
           <Typography
-            // @ts-expect-error - this component needs refactor with new tokens
-            font="--typography-body-md"
-            // @ts-expect-error - this component needs refactor with new tokens
-            fill="--color-text-on-base-secondary"
+            font={
+              variant === 'large'
+                ? radiusTokens.component.typography.largeImageTextItem.body
+                : radiusTokens.component.typography.smallImageTextItem.body
+            }
+            fill={
+              variant === 'large'
+                ? radiusTokens.component.color.largeImageTextItem.body
+                : radiusTokens.component.color.smallImageTextitem.body
+            }
           >
             {body}
           </Typography>

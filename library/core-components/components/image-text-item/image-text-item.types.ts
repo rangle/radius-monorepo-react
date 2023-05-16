@@ -11,9 +11,9 @@ type SmallRadiusImageTextItemProps = {
   /** Whether to render the large or small Image Text Item variant */
   variant: 'small';
   /** Doesn't exist on small variant */
-  header: never;
+  header?: never;
   /** Doesn't exist on small variant */
-  headingLevel: never;
+  headingLevel?: never;
 };
 
 export type RadiusImageTextItemProps = {
