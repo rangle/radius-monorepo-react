@@ -21,8 +21,8 @@ export const RadiusImageTextList = forwardRef<
       className={className}
       space={
         variant === 'large'
-          ? radiusTokens.component.spacing.imageTextList.large.gap.vertical
-          : radiusTokens.component.spacing.imageTextList.small.gap.vertical
+          ? radiusTokens.component.spacing.imageTextList.large.gap.column
+          : radiusTokens.component.spacing.imageTextList.small.gap.column
       }
       direction={radiusTokens.component.direction.imageTextList.component}
       {...rest}
@@ -52,8 +52,7 @@ export const RadiusImageTextList = forwardRef<
           .map((row) => (
             <RadiusAutoLayout
               space={
-                radiusTokens.component.spacing.imageTextList.small.gap
-                  .horizontal
+                radiusTokens.component.spacing.imageTextList.small.gap.column
               }
               direction={
                 radiusTokens.component.direction.imageTextList.rowContainer
