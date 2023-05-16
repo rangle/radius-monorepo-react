@@ -1,6 +1,6 @@
 {
   "name": "@rangle/radius-foundations",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "src/index.ts",
   "description": "Foundation scripts and variables for Design Systems",
   "files": [
