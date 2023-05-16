@@ -9,15 +9,10 @@ const meta: Meta<RadiusImageTextListProps> = {
   title: 'ImageTextList',
   parameters: {
     badges: [BADGE.EXPERIMENTAL],
+    controls: {
+      disable: true,
+    },
   },
-  // args: {
-  //   src: 'https://via.placeholder.com/1500',
-  //   alt: 'Descriptive text',
-  //   variant: 'large',
-  //   header: 'Header',
-  //   body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-  //   headingLevel: 'h2',
-  // },
   argTypes: {
     className: {
       table: {
@@ -30,4 +25,76 @@ const meta: Meta<RadiusImageTextListProps> = {
 export default meta;
 type Story = StoryObj<RadiusImageTextListProps>;
 
-export const Default: Story = {};
+export const LargeVariant: Story = {
+  args: {
+    variant: 'large',
+    items: [
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        header: 'Header',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+        headingLevel: 'h2',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        header: 'Header',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+        headingLevel: 'h2',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        header: 'Header',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+        headingLevel: 'h2',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        header: 'Header',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+        headingLevel: 'h2',
+      },
+    ],
+  },
+};
+
+export const SmallVariant: Story = {
+  args: {
+    variant: 'small',
+    items: [
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+      },
+      {
+        src: 'https://via.placeholder.com/1500',
+        alt: 'Descriptive text',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+      },
+    ],
+  },
+};

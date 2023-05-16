@@ -1,13 +1,9 @@
 import React, { forwardRef } from 'react';
-import { cx } from '@emotion/css';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 import { RadiusImageTextListProps } from './image-text-list.types';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
-
-// import { useStyles } from './image-text-item.styles';
-// import { RadiusAutoLayout } from '../auto-layout/auto-layout';
-// import { Typography } from '../typography/typography';
+import { RadiusImageTextItem } from '../image-text-item';
 
 /**
  * TODO: Write description
@@ -18,30 +14,59 @@ import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 export const RadiusImageTextList = forwardRef<
   HTMLDivElement,
   RadiusImageTextListProps
->(
-  (
-    {
-      variant,
-      // header,
-      // headingLevel,
-      // body,
-      // imageAlignment = 'left',
-      // src,
-      // alt,
-      className,
-      ...rest
-    },
-    ref
-  ) => {
-    // const { styles, imageContainer, textContainer } = useStyles({
-    //   imageAlignment,
-    //   variant,
-    // });
-
-    return (
-      <RadiusAutoLayout ref={ref} className={className} {...rest}>
-        hi
-      </RadiusAutoLayout>
-    );
-  }
-);
+>(({ variant, items, className, ...rest }, ref) => {
+  return (
+    <RadiusAutoLayout
+      ref={ref}
+      className={className}
+      space={
+        variant === 'large'
+          ? radiusTokens.component.spacing.imageTextList.large.gap.vertical
+          : radiusTokens.component.spacing.imageTextList.small.gap.vertical
+      }
+      direction={radiusTokens.component.direction.imageTextList.component}
+      {...rest}
+    >
+      {variant === 'large' &&
+        items.map((itemProps, idx) => (
+          <RadiusImageTextItem
+            {...itemProps}
+            variant={variant}
+            imageAlignment={
+              variant === 'large' ? (idx % 2 ? 'right' : 'left') : undefined
+            }
+          />
+        ))}
+      {variant === 'small' &&
+        // for every 2 items, create a row using RadiusAutoLayout
+        items
+          .reduce<JSX.Element[][]>((acc, item, idx) => {
+            const newItem = <RadiusImageTextItem {...item} variant={variant} />;
+            if (idx % 2 === 0) {
+              acc.push([newItem]);
+            } else {
+              acc[acc.length - 1].push(newItem);
+            }
+            return acc;
+          }, [])
+          .map((row) => (
+            <RadiusAutoLayout
+              space={
+                radiusTokens.component.spacing.imageTextList.small.gap
+                  .horizontal
+              }
+              direction={
+                radiusTokens.component.direction.imageTextList.rowContainer
+              }
+              padding={[
+                0,
+                radiusTokens.component.spacing.imageTextList.small.padding
+                  .horizontal,
+              ]}
+            >
+              {row.map((item) => item)}
+            </RadiusAutoLayout>
+          ))}
+    </RadiusAutoLayout>
+  );
+});
