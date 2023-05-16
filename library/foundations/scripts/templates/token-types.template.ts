@@ -153,7 +153,7 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
     S extends RadiusTokenSubjects = RadiusTokenSubjects
   > =
     | CSSTokensByTypeAndSubject<T, S>
-    | Array<CSSTokensByTypeAndSubject<T, S>>
+    | Array<CSSTokensByTypeAndSubject<T, S> | 0>
     | { css: CSSExpression };
 
 
