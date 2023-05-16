@@ -782,6 +782,13 @@
           "rawValue": "auto"
         },
         {
+          "key": "--spacing-core-spacing-854percent",
+          "name": "core.spacing.854percent",
+          "value": "8.54%",
+          "type": "spacing",
+          "rawValue": "8.54%"
+        },
+        {
           "key": "--typography-core-typography-desktop-heading-xxl",
           "name": "core.typography.desktop.heading.xxl",
           "value": "Bold 64px/150% Riforma LL",
@@ -1910,6 +1917,14 @@
           "rawValue": "{core.spacing.16}"
         },
         {
+          "key": "--spacing-semantic-spacing-desktop-lists-grid-column",
+          "name": "semantic.spacing.desktop.lists.gridColumn",
+          "value": "8.54%",
+          "type": "spacing",
+          "description": "This is the percentage width of a single grid column + spacing",
+          "rawValue": "{core.spacing.854percent}"
+        },
+        {
           "key": "--spacing-semantic-spacing-desktop-navigation-vertical-margins",
           "name": "semantic.spacing.desktop.navigation.verticalMargins",
           "value": "32px",
@@ -2085,6 +2100,14 @@
           "rawValue": "{core.spacing.0}"
         },
         {
+          "key": "--spacing-semantic-spacing-tablet-lists-grid-column",
+          "name": "semantic.spacing.tablet.lists.gridColumn",
+          "value": "0px",
+          "type": "spacing",
+          "description": "This is the percentage width of a single grid column + spacing",
+          "rawValue": "{core.spacing.0}"
+        },
+        {
           "key": "--spacing-semantic-spacing-tablet-navigation-vertical-margins",
           "name": "semantic.spacing.tablet.navigation.verticalMargins",
           "value": "24px",
@@ -2255,6 +2278,13 @@
         {
           "key": "--spacing-semantic-spacing-mobile-lists-small-horizontal-gap",
           "name": "semantic.spacing.mobile.lists.smallHorizontalGap",
+          "value": "0px",
+          "type": "spacing",
+          "rawValue": "{core.spacing.0}"
+        },
+        {
+          "key": "--spacing-semantic-spacing-mobile-lists-grid-column",
+          "name": "semantic.spacing.mobile.lists.gridColumn",
           "value": "0px",
           "type": "spacing",
           "rawValue": "{core.spacing.0}"
@@ -3653,6 +3683,13 @@
           "rawValue": "{semantic.spacing.desktop.lists.smallHorizontalGap}"
         },
         {
+          "key": "--spacing-semantic-theme-spacing-lists-grid-column",
+          "name": "semanticTheme.spacing.lists.gridColumn",
+          "value": "8.54%",
+          "type": "spacing",
+          "rawValue": "{semantic.spacing.desktop.lists.gridColumn}"
+        },
+        {
           "key": "--spacing-semantic-theme-spacing-navigation-vertical-margins",
           "name": "semanticTheme.spacing.navigation.verticalMargins",
           "value": "32px",
@@ -4004,6 +4041,13 @@
           "value": "0px",
           "type": "spacing",
           "rawValue": "{semantic.spacing.tablet.lists.smallHorizontalGap}"
+        },
+        {
+          "key": "--spacing-semantic-theme-spacing-lists-grid-column",
+          "name": "semanticTheme.spacing.lists.gridColumn",
+          "value": "0px",
+          "type": "spacing",
+          "rawValue": "{semantic.spacing.tablet.lists.gridColumn}"
         },
         {
           "key": "--spacing-semantic-theme-spacing-navigation-vertical-margins",
@@ -4365,6 +4409,13 @@
           "value": "0px",
           "type": "spacing",
           "rawValue": "{semantic.spacing.mobile.lists.smallHorizontalGap}"
+        },
+        {
+          "key": "--spacing-semantic-theme-spacing-lists-grid-column",
+          "name": "semanticTheme.spacing.lists.gridColumn",
+          "value": "0px",
+          "type": "spacing",
+          "rawValue": "{semantic.spacing.mobile.lists.gridColumn}"
         },
         {
           "key": "--spacing-semantic-theme-spacing-navigation-vertical-margins",
@@ -5105,6 +5156,13 @@
           "rawValue": "{semanticTheme.spacing.lists.smallVerticalGap}"
         },
         {
+          "key": "--spacing-component-spacing-image-text-list-small-padding-horizontal",
+          "name": "component.spacing.imageTextList.small.padding.horizontal",
+          "value": "{--spacing-semantic-theme-spacing-lists-grid-column}",
+          "type": "spacing",
+          "rawValue": "{semanticTheme.spacing.lists.gridColumn}"
+        },
+        {
           "key": "--spacing-component-spacing-navigation-margins-vertical",
           "name": "component.spacing.navigation.margins.vertical",
           "value": "{--spacing-semantic-theme-spacing-navigation-vertical-margins}",
@@ -5455,10 +5513,10 @@
           "rawValue": "{semanticTheme.direction.lists.imageTextList.column}"
         },
         {
-          "key": "--lone-string-component-direction-image-text-list-row-container-value",
-          "name": "component.direction.imageTextList.rowContainer.value",
+          "key": "--other-component-direction-image-text-list-row-container",
+          "name": "component.direction.imageTextList.rowContainer",
           "value": "{--other-semantic-theme-direction-lists-image-text-list-row}",
-          "type": "lone-string",
+          "type": "other",
           "rawValue": "{semanticTheme.direction.lists.imageTextList.row}"
         },
         {
