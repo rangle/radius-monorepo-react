@@ -32,9 +32,7 @@ export const RadiusImageTextList = forwardRef<
           <RadiusImageTextItem
             {...itemProps}
             variant={variant}
-            imageAlignment={
-              variant === 'large' ? (idx % 2 ? 'right' : 'left') : undefined
-            }
+            imageAlignment={idx % 2 ? 'right' : 'left'}
           />
         ))}
       {variant === 'small' &&
