@@ -6,6 +6,7 @@ import React, { forwardRef } from 'react';
 import { RadiusFooterComponent, RadiusFooterProps } from './footer.types';
 import { PolymorphicRef } from '../../utils';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 /**
  * TODO: Add description
@@ -26,7 +27,7 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
     }: RadiusFooterProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const Component = as || 'nav';
+    const Component = as || 'footer';
 
     // const {
     //   styles,
@@ -40,7 +41,65 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
 
     return (
       <Component ref={ref} className={className} {...rest}>
-        <RadiusAutoLayout>hi</RadiusAutoLayout>
+        {/* Footer Container */}
+        <RadiusAutoLayout
+          padding={[
+            radiusTokens.component.spacing.footer.margins.vertical,
+            radiusTokens.component.spacing.footer.margins.horizontal,
+          ]}
+          space={radiusTokens.component.spacing.footer.gap.rows}
+          fill={radiusTokens.component.color.footer.background}
+          direction="vertical"
+        >
+          <p>logo</p>
+          {/* Menu */}
+          <RadiusAutoLayout
+            space={radiusTokens.component.spacing.footer.gap.menu}
+          >
+            {/* Pages */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.footer.gap.links}
+              direction="vertical"
+            >
+              <p>Design</p>
+              <p>Development</p>
+            </RadiusAutoLayout>
+            {/* General Inquiries */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.footer.gap.categories}
+              direction="vertical"
+            >
+              <p>General Inquiries</p>
+              <p>info@rangle.io</p>
+            </RadiusAutoLayout>
+            {/* Newsletter */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.footer.gap.categories}
+              direction="vertical"
+            >
+              <p>Our Newsletter</p>
+              <p>Sign up</p>
+            </RadiusAutoLayout>
+          </RadiusAutoLayout>
+          {/* Legal & Connect */}
+          <RadiusAutoLayout width="fill-parent" space="auto">
+            {/* Legal */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.footer.gap.legal}
+            >
+              <p>Copyright</p>
+              <p>Privacy Policy</p>
+            </RadiusAutoLayout>
+            {/* Connect */}
+            <RadiusAutoLayout
+              space={radiusTokens.component.spacing.footer.gap.connect}
+            >
+              <p>Connect with us</p>
+              <p>icons icons</p>
+              <p>Button</p>
+            </RadiusAutoLayout>
+          </RadiusAutoLayout>
+        </RadiusAutoLayout>
       </Component>
     );
   }
