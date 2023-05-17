@@ -6,7 +6,12 @@ import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 import { RadiusImageTextItem } from '../image-text-item';
 
 /**
- * TODO: Write description
+ * A component that renders a list of `RadiusImageTextItem` components. It has
+ * two variants, large and small, which can be passed via the `variant` prop,
+ * and automatically determines the variant of the children.
+ *
+ * See the `RadiusImageTextItem` component for details on expected props for
+ * each item.
  *
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/84QBrU7F6mSMEwQhxYrffk/Image-Text-List?type=design&node-id=2-2)
