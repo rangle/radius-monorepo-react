@@ -116,6 +116,11 @@ export type AutoLayoutExtendedProps = {
   backgroundBlur?: Blur;
 
   // blendMode?: BlendMode; // not needed
+
+  /** Whether this AutoLayout should behave as a grid */
+  grid?: boolean;
+  /** The number of columns this item should take up in a parent's grid */
+  gridSpan?: number;
 };
 
 export type AutoLayoutProps<C extends React.ElementType> =

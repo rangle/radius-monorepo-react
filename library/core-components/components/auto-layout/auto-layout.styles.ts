@@ -74,6 +74,8 @@ export type StyleProps = PickWithRequired<
   | 'dropShadow'
   | 'innerShadow'
   | 'layerBlur'
+  | 'grid'
+  | 'gridSpan'
   | 'backgroundBlur',
   | 'alignment'
   | 'width'
@@ -84,6 +86,33 @@ export type StyleProps = PickWithRequired<
   | 'horizontalConstraint'
   | 'verticalConstraint'
 >;
+
+/** The number of grid columns at each breakpoint */
+const gridColumns = {
+  desktop: 12,
+  tablet: 8,
+  mobile: 4,
+};
+
+const mediaQueries = {
+  desktop: `@media screen and (min-width: ${900}px)`,
+  tablet: `@media screen and (min-width: ${600}px) and (max-width: ${899}px)`,
+  mobile: `@media screen and (max-width: ${599}px)`,
+};
+
+const gridStyles = `
+  display: grid;
+  grid-template-columns: repeat(${gridColumns.desktop}, 1fr);
+  gap: 24px;
+
+  ${mediaQueries.tablet} {
+    grid-template-columns: repeat(${gridColumns.tablet}, 1fr);
+  }
+
+  ${mediaQueries.mobile} {
+    grid-template-columns: repeat(${gridColumns.mobile}, 1fr);
+  }
+`;
 
 // colours alpha can be 0-1 or 0-100
 // strokeAlign is missing middle
@@ -115,6 +144,8 @@ export const useStyles = ({
   innerShadow,
   layerBlur,
   backgroundBlur,
+  grid,
+  gridSpan,
 }: StyleProps) => {
   return css`
     display: flex;
@@ -151,5 +182,8 @@ export const useStyles = ({
     ${backgroundBlur
       ? `backdrop-filter: blur(${getCssValue(backgroundBlur)});`
       : ''}
+
+    ${grid ? gridStyles : ''}
+    ${gridSpan ? `grid-column: span ${gridSpan};` : ''}
   `;
 };
