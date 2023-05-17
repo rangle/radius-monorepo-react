@@ -28,3 +28,6 @@ export type RadiusImageTextItemProps = {
   /** Optional className to add to the container */
   className?: string;
 } & (LargeRadiusImageTextItemProps | SmallRadiusImageTextItemProps);
+
+export type ExcludeSmallVariant<T> = T extends { variant: 'small' } ? never : T;
+export type ExcludeLargeVariant<T> = T extends { variant: 'large' } ? never : T;

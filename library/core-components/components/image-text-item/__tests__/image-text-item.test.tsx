@@ -4,14 +4,15 @@ import '@testing-library/jest-dom';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { RadiusImageTextItem } from '..';
-import { RadiusImageTextItemProps } from '../image-text-item.types';
+import {
+  ExcludeLargeVariant,
+  ExcludeSmallVariant,
+  RadiusImageTextItemProps,
+} from '../image-text-item.types';
 
 expect.extend(toHaveNoViolations);
 
 describe('<RadiusImageTextItem />', () => {
-  type ExcludeSmallVariant<T> = T extends { variant: 'small' } ? never : T;
-  type ExcludeLargeVariant<T> = T extends { variant: 'large' } ? never : T;
-
   const renderLargeVariant = (
     props?: Partial<ExcludeSmallVariant<RadiusImageTextItemProps>>
   ) => {

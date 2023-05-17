@@ -18,7 +18,7 @@ export const renderCSSProp = (prop?: CSSProp) => {
  * tokenArrayToString(['--a', '--b']) // returns 'var(--a) var(--b)'
  */
 export const tokenArrayToString = (
-  tokens: Array<CSSTokensByTypeAndSubject>
+  tokens: Array<CSSTokensByTypeAndSubject | 0>
 ) => {
-  return tokens.map((token) => `var(${token})`).join(' ');
+  return tokens.map((token) => (token === 0 ? '0' : `var(${token})`)).join(' ');
 };
