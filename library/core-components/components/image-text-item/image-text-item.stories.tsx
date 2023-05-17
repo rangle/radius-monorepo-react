@@ -10,6 +10,21 @@ const meta: Meta<RadiusImageTextItemProps> = {
   parameters: {
     badges: [BADGE.EXPERIMENTAL],
   },
+  argTypes: {
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+    header: { if: { arg: 'variant', eq: 'large' } },
+    headingLevel: { if: { arg: 'variant', eq: 'large' } },
+  },
+};
+
+export default meta;
+type Story = StoryObj<RadiusImageTextItemProps>;
+
+export const LargeVariant: Story = {
   args: {
     src: 'https://via.placeholder.com/1500',
     alt: 'Descriptive text',
@@ -18,16 +33,13 @@ const meta: Meta<RadiusImageTextItemProps> = {
     body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
     headingLevel: 'h2',
   },
-  argTypes: {
-    className: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 };
 
-export default meta;
-type Story = StoryObj<RadiusImageTextItemProps>;
-
-export const Default: Story = {};
+export const SmallVariant: Story = {
+  args: {
+    src: 'https://via.placeholder.com/1500',
+    alt: 'Descriptive text',
+    variant: 'small',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
+  },
+};
