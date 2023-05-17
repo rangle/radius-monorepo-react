@@ -1,10 +1,4 @@
 module.exports = {
-  globals: {
-    'ts-jest': {
-      diagnostics: true,
-      tsconfig: '<rootDir>/config/typescript/tsconfig.lint.json',
-    },
-  },
   setupFilesAfterEnv: ['<rootDir>/config/jest/setup-tests.ts'],
   testEnvironment: 'jsdom',
   moduleNameMapper: {
@@ -13,7 +7,13 @@ module.exports = {
     '\\.(css|less|scss|sass)$': '<rootDir>/__mocks__/file-mock.js',
   },
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      {
+        diagnostics: true,
+        tsconfig: '<rootDir>/config/typescript/tsconfig.lint.json',
+      },
+    ],
   },
   testPathIgnorePatterns: ['.d.ts'],
   modulePathIgnorePatterns: ['dist'],

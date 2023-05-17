@@ -36,7 +36,7 @@ export const RadiusNavItem: RadiusNavItemComponent = forwardRef(
           <Typography
             className={cx(labelStyles, 'nav-item-label')}
             as="span"
-            font={radiusTokens.component.typography.navigationItem.label}
+            font={radiusTokens.component.typography.navigationItem.label.font}
             fill={
               selected
                 ? radiusTokens.component.color.navigationItem.selected.label

@@ -9,8 +9,8 @@ import {
   PARAM_SCREEN_MIN_WIDTH,
   PARAM_SECTION_NAME,
   PARAM_SCREEN_MAX_WIDTH,
-  isReference,
 } from './lib/token-parser';
+import { isReference } from './lib/token-parser';
 
 // For debugging purposes, you can run this script with:
 // import * as data from '../tokens.json';

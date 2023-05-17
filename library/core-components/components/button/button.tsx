@@ -1,6 +1,8 @@
 import React, { forwardRef } from 'react';
 import { cx } from '@emotion/css';
 
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+
 import { PolymorphicRef } from '../../utils';
 
 import { RadiusButtonProps, RadiusButtonComponent } from './button.types';
@@ -47,23 +49,23 @@ export const RadiusButton: RadiusButtonComponent = forwardRef(
     return (
       <Component className={cx(style, className)} ref={ref} {...rest}>
         <RadiusAutoLayout
-          space="--spacing-component-spacing-button-gap"
+          space="--spacing-component-button-gap"
           alignment="center"
           padding={[
-            '--spacing-component-spacing-button-padding-vertical',
-            '--spacing-component-spacing-button-padding-horizontal',
+            '--spacing-component-button-padding-vertical',
+            '--spacing-component-button-padding-horizontal',
           ]}
         >
           <Typography
             as="span"
-            font="--typography-component-typography-button-label"
+            {...radiusTokens.component.typography.button.label}
           >
             {children}
           </Typography>
           {rightIcon && (
             <RadiusIcon
               component={rightIcon}
-              size="--sizing-component-sizing-button-icon"
+              size={radiusTokens.component.sizing.button.icon}
             />
           )}
         </RadiusAutoLayout>
