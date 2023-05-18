@@ -23,7 +23,6 @@ export const RadiusLinkButton: RadiusLinkButtonComponent = forwardRef(
     {
       as,
       href,
-      // size,
       disabled,
       iconRight,
       className,
@@ -33,32 +32,33 @@ export const RadiusLinkButton: RadiusLinkButtonComponent = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'a';
-    const {
-      parent,
-      button: buttonStyles,
-      children: childrenStyles,
-    } = useStyles({ disabled });
+    const styles = useStyles({ disabled });
 
     return (
       <Component
-        className={cx(parent, className)}
+        className={cx(styles, className)}
         ref={ref}
         href={!disabled ? href : undefined}
         disabled={disabled}
         {...rest}
       >
-        <Typography
-        // className={buttonStyles}
-        // component={button}
-        // size={size}
-        // fill={
-        //   disabled
-        //     ? radiusTokens.component.color.linkIcon.disabled
-        //     : radiusTokens.component.color.linkIcon.default
-        // }
+        <RadiusAutoLayout
+          space={radiusTokens.component.spacing.linkButton.gap}
+          alignment="center"
         >
-          {children}
-        </Typography>
+          <Typography
+            as="span"
+            font={radiusTokens.component.typography.linkButton.label}
+          >
+            {children}
+          </Typography>
+          {iconRight && (
+            <RadiusIcon
+              component={iconRight}
+              size={radiusTokens.component.sizing.button.icon}
+            />
+          )}
+        </RadiusAutoLayout>
       </Component>
     );
   }

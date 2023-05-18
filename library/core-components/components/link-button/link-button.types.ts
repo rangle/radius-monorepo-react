@@ -1,11 +1,6 @@
-import { CSSProp } from '@rangle/radius-foundations';
 import { PolymorphicComponentPropWithRef } from '../../utils';
 
 export type RadiusLinkButtonExtendedProps = {
-  /** The icon to display */
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  /** The size of the icon */
-  size: CSSProp<'sizing', 'component'>;
   /** Whether the link is disabled */
   disabled?: boolean;
   /** The optional icon to display to the right of the content */
