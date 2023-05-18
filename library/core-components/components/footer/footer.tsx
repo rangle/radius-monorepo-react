@@ -55,11 +55,16 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
           {/* Menu */}
           <RadiusAutoLayout
             space={radiusTokens.component.spacing.footer.gap.menu}
+            width="fill-parent"
+            grid
           >
             {/* Pages */}
             <RadiusAutoLayout
               space={radiusTokens.component.spacing.footer.gap.links}
               direction="vertical"
+              gridSpan={
+                radiusTokens.component.layout.footer.gridSpan.rowContainer
+              }
             >
               <p>Design</p>
               <p>Development</p>
@@ -68,6 +73,9 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
             <RadiusAutoLayout
               space={radiusTokens.component.spacing.footer.gap.categories}
               direction="vertical"
+              gridSpan={
+                radiusTokens.component.layout.footer.gridSpan.rowContainer
+              }
             >
               <p>General Inquiries</p>
               <p>info@rangle.io</p>
@@ -76,16 +84,23 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
             <RadiusAutoLayout
               space={radiusTokens.component.spacing.footer.gap.categories}
               direction="vertical"
+              gridSpan={
+                radiusTokens.component.layout.footer.gridSpan.rowContainer
+              }
             >
               <p>Our Newsletter</p>
               <p>Sign up</p>
             </RadiusAutoLayout>
           </RadiusAutoLayout>
           {/* Legal & Connect */}
-          <RadiusAutoLayout width="fill-parent" space="auto">
+          <RadiusAutoLayout width="fill-parent" grid>
             {/* Legal */}
             <RadiusAutoLayout
               space={radiusTokens.component.spacing.footer.gap.legal}
+              gridSpan={
+                radiusTokens.component.layout.footer.gridSpan.legalContainer
+              }
+              direction={radiusTokens.component.direction.footer.legalContainer}
             >
               <p>Copyright</p>
               <p>Privacy Policy</p>
@@ -93,6 +108,12 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
             {/* Connect */}
             <RadiusAutoLayout
               space={radiusTokens.component.spacing.footer.gap.connect}
+              gridSpan={
+                radiusTokens.component.layout.footer.gridSpan.connectContainer
+              }
+              direction={
+                radiusTokens.component.direction.footer.connectContainer
+              }
             >
               <p>Connect with us</p>
               <p>icons icons</p>
