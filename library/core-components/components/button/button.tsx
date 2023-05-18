@@ -45,6 +45,9 @@ export const RadiusButton: RadiusButtonComponent = forwardRef(
     // prevent unnecessary renders.
     // note that we only pass the props that are needed.
     const style = useStyles({ variant });
+    // extracting the props that are supported by Typography from the token
+    const { font, letterSpacing, textDecoration } =
+      radiusTokens.component.typography.button.label;
 
     return (
       <Component className={cx(style, className)} ref={ref} {...rest}>
@@ -56,10 +59,7 @@ export const RadiusButton: RadiusButtonComponent = forwardRef(
             '--spacing-component-button-padding-horizontal',
           ]}
         >
-          <Typography
-            as="span"
-            {...radiusTokens.component.typography.button.label}
-          >
+          <Typography as="span" {...{ font, letterSpacing, textDecoration }}>
             {children}
           </Typography>
           {rightIcon && (
