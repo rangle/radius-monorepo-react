@@ -20,6 +20,7 @@ export const useStyles = ({ variant = 'primary' }: StyleProps) => {
   const { primary, secondary } = radiusTokens.component.color.button;
   const colors = { primary, secondary }[variant];
   const { default: normal, active, hover, disabled } = colors;
+
   /**
    * The `createUseStyles` function is a wrapper around the `css` function
    * from the Emotion library. It is a function that takes a template literal
@@ -32,29 +33,29 @@ export const useStyles = ({ variant = 'primary' }: StyleProps) => {
   return css`
     /* note that values that do not vary with props can be added 
     *  directly as css variables representing design tokens */
-    color: var{${normal.label});
-    background: var{${normal.background});
-    border: solid var{${normal.border})
-      var(${radiusTokens.component.borderWidth.button.border});
+    color: var(${normal.label});
+    background: var(${normal.background});
+    border: var(${radiusTokens.component.borderWidth.button.border}) solid
+      var(${normal.border});
     border-radius: var(${radiusTokens.component.borderRadius.button.border});
     cursor: pointer;
     display: inline-block;
     padding: 0;
     text-decoration: none;
     &:hover {
-      color: ${hover.label};
-      background: ${hover.background};
-      border-color: ${hover.border};
+      color: var(${hover.label});
+      background: var(${hover.background});
+      border-color: var(${hover.border});
     }
     &:active {
-      color: ${active.label};
-      background: ${active.background};
-      border-color: ${active.border};
+      color: var(${active.label});
+      background: var(${active.background});
+      border-color: var(${active.border});
     }
     &:disabled {
-      color: ${disabled.label};
-      background: ${disabled.background};
-      border-color: ${disabled.border};
+      color: var(${disabled.label});
+      background: var(${disabled.background});
+      border-color: var(${disabled.border});
       cursor: default;
     }
   `;

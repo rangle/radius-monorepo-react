@@ -25,7 +25,7 @@ export default {
       [[/\d+(?![^()]*\))/g, '$&px']],
     ],
     [
-      /--other.*-direction/,
+      /--direction.*/,
       // replace `vertical` with `column` and `horizontal` with `row`
       [
         [/^vertical$/, 'column'],
