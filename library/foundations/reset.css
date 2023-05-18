@@ -349,3 +349,17 @@ template {
 [hidden] {
   display: none;
 }
+
+/* Custom
+    ========================================================================== */
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
