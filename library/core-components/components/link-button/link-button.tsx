@@ -13,7 +13,9 @@ import { Typography } from '../typography/typography';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 
 /**
- * TODO: Write description
+ * A component that renders a link button. It is polymorphic and can be passed a
+ * custom wrapper component via the `as` prop, eg. using React Router's `Link`
+ * component. By default it renders an `a` tag.
  *
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/GyMbhen70fwnSFOXriDZWZ/Link-Button?type=design&node-id=2-2)
