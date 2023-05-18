@@ -190,8 +190,8 @@ export const useStyles = ({
       : ''}
 
     ${grid ? gridStyles : ''}
-    ${gridSpan ? `grid-column: span ${gridSpan};` : ''}
-    ${gridEnd ? `grid-column-end: ${gridEnd};` : ''}
-    ${gridStart ? `grid-column-start: ${gridStart};` : ''}
+    ${gridSpan ? `grid-column: span ${renderCSSProp(gridSpan)};` : ''}
+    ${gridEnd ? `grid-column-end: ${renderCSSProp(gridEnd)};` : ''}
+    ${gridStart ? `grid-column-start: ${renderCSSProp(gridStart)};` : ''}
   `;
 };
