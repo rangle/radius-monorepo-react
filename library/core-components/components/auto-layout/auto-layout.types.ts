@@ -121,6 +121,10 @@ export type AutoLayoutExtendedProps = {
   grid?: boolean;
   /** The number of columns this item should take up in a parent's grid */
   gridSpan?: number;
+  /** The start position of this item in a parent's grid */
+  gridStart?: number;
+  /** The end position of this item in a parent's grid */
+  gridEnd?: number;
 };
 
 export type AutoLayoutProps<C extends React.ElementType> =
