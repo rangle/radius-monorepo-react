@@ -5583,183 +5583,183 @@
           "rawValue": "{semantic.sizing.imagesAndIcons.logo.default}"
         },
         {
-          "key": "--other-component-other-direction-hero-content-container",
-          "name": "component.other.direction.hero.contentContainer",
+          "key": "--other-component-direction-hero-content-container",
+          "name": "component.direction.hero.contentContainer",
           "value": "{--other-semantic-theme-direction-containment-content-container-top-hierarchy}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.containment.contentContainer.topHierarchy}"
         },
         {
-          "key": "--other-component-other-direction-hero-text-container-outer",
-          "name": "component.other.direction.hero.textContainer.outer",
+          "key": "--other-component-direction-hero-text-container-outer",
+          "name": "component.direction.hero.textContainer.outer",
           "value": "{--other-semantic-theme-direction-containment-text-container}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.containment.textContainer}"
         },
         {
-          "key": "--other-component-other-direction-hero-text-container-inner",
-          "name": "component.other.direction.hero.textContainer.inner",
+          "key": "--other-component-direction-hero-text-container-inner",
+          "name": "component.direction.hero.textContainer.inner",
           "value": "{--other-semantic-theme-direction-containment-text-container}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.containment.textContainer}"
         },
         {
-          "key": "--other-component-other-direction-large-image-text-item-component",
-          "name": "component.other.direction.largeImageTextItem.component",
+          "key": "--other-component-direction-large-image-text-item-component",
+          "name": "component.direction.largeImageTextItem.component",
           "value": "{--other-semantic-theme-direction-containment-content-container-secondary-hierarchy}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.containment.contentContainer.secondaryHierarchy}"
         },
         {
-          "key": "--other-component-other-direction-large-image-text-item-text-container",
-          "name": "component.other.direction.largeImageTextItem.textContainer",
+          "key": "--other-component-direction-large-image-text-item-text-container",
+          "name": "component.direction.largeImageTextItem.textContainer",
           "value": "{--other-semantic-theme-direction-containment-text-container}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.containment.textContainer}"
         },
         {
-          "key": "--other-component-other-direction-small-image-text-item-component",
-          "name": "component.other.direction.smallImageTextItem.component",
+          "key": "--other-component-direction-small-image-text-item-component",
+          "name": "component.direction.smallImageTextItem.component",
           "value": "{--other-semantic-theme-direction-containment-content-container-secondary-hierarchy}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.containment.contentContainer.secondaryHierarchy}"
         },
         {
-          "key": "--other-component-other-direction-image-text-list-component",
-          "name": "component.other.direction.imageTextList.component",
+          "key": "--other-component-direction-image-text-list-component",
+          "name": "component.direction.imageTextList.component",
           "value": "{--other-semantic-theme-direction-lists-image-text-list-column}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.lists.imageTextList.column}"
         },
         {
-          "key": "--other-component-other-direction-image-text-list-row-container",
-          "name": "component.other.direction.imageTextList.rowContainer",
+          "key": "--other-component-direction-image-text-list-row-container",
+          "name": "component.direction.imageTextList.rowContainer",
           "value": "{--other-semantic-theme-direction-lists-image-text-list-row}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.lists.imageTextList.row}"
         },
         {
-          "key": "--other-component-other-direction-footer-rows-container",
-          "name": "component.other.direction.footer.rowsContainer",
+          "key": "--other-component-direction-footer-rows-container",
+          "name": "component.direction.footer.rowsContainer",
           "value": "{--other-semantic-theme-direction-navigation-all-vertical}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.allVertical}"
         },
         {
-          "key": "--other-component-other-direction-footer-menu-container",
-          "name": "component.other.direction.footer.menuContainer",
+          "key": "--other-component-direction-footer-menu-container",
+          "name": "component.direction.footer.menuContainer",
           "value": "{--other-semantic-theme-direction-navigation-vertical-on-mobile}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.verticalOnMobile}"
         },
         {
-          "key": "--other-component-other-direction-footer-links-container",
-          "name": "component.other.direction.footer.linksContainer",
+          "key": "--other-component-direction-footer-links-container",
+          "name": "component.direction.footer.linksContainer",
           "value": "{--other-semantic-theme-direction-navigation-all-vertical}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.allVertical}"
         },
         {
-          "key": "--other-component-other-direction-footer-legal-container",
-          "name": "component.other.direction.footer.legalContainer",
+          "key": "--other-component-direction-footer-legal-container",
+          "name": "component.direction.footer.legalContainer",
           "value": "{--other-semantic-theme-direction-navigation-vertical-on-mobile}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.verticalOnMobile}"
         },
         {
-          "key": "--other-component-other-direction-footer-connect-container",
-          "name": "component.other.direction.footer.connectContainer",
+          "key": "--other-component-direction-footer-connect-container",
+          "name": "component.direction.footer.connectContainer",
           "value": "{--other-semantic-theme-direction-navigation-horizontal-desktop-only}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.horizontalDesktopOnly}"
         },
         {
-          "key": "--other-component-other-direction-footer-icons-container",
-          "name": "component.other.direction.footer.iconsContainer",
+          "key": "--other-component-direction-footer-icons-container",
+          "name": "component.direction.footer.iconsContainer",
           "value": "{--other-semantic-theme-direction-navigation-all-horizontal}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.allHorizontal}"
         },
         {
-          "key": "--other-component-other-direction-navigation-menu-container",
-          "name": "component.other.direction.navigation.menuContainer",
+          "key": "--other-component-direction-navigation-menu-container",
+          "name": "component.direction.navigation.menuContainer",
           "value": "{--other-semantic-theme-direction-navigation-horizontal-desktop-only}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.horizontalDesktopOnly}"
         },
         {
-          "key": "--other-component-other-direction-navigation-nav-items",
-          "name": "component.other.direction.navigation.navItems",
+          "key": "--other-component-direction-navigation-nav-items",
+          "name": "component.direction.navigation.navItems",
           "value": "{--other-semantic-theme-direction-navigation-horizontal-desktop-only}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.horizontalDesktopOnly}"
         },
         {
-          "key": "--other-component-other-direction-navigation-link-icons",
-          "name": "component.other.direction.navigation.linkIcons",
+          "key": "--other-component-direction-navigation-link-icons",
+          "name": "component.direction.navigation.linkIcons",
           "value": "{--other-semantic-theme-direction-navigation-all-horizontal}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.allHorizontal}"
         },
         {
-          "key": "--other-component-other-direction-navigation-navigation-container",
-          "name": "component.other.direction.navigation.navigationContainer",
+          "key": "--other-component-direction-navigation-navigation-container",
+          "name": "component.direction.navigation.navigationContainer",
           "value": "{--other-semantic-theme-direction-navigation-horizontal-desktop-only}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.horizontalDesktopOnly}"
         },
         {
-          "key": "--other-component-other-direction-navigation-social-icon",
-          "name": "component.other.direction.navigation.socialIcon",
+          "key": "--other-component-direction-navigation-social-icon",
+          "name": "component.direction.navigation.socialIcon",
           "value": "{--other-semantic-theme-direction-navigation-all-horizontal}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.allHorizontal}"
         },
         {
-          "key": "--other-component-other-direction-navigation-secondary-action-container",
-          "name": "component.other.direction.navigation.secondaryActionContainer",
+          "key": "--other-component-direction-navigation-secondary-action-container",
+          "name": "component.direction.navigation.secondaryActionContainer",
           "value": "{--other-semantic-theme-direction-navigation-vertical-on-mobile}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.verticalOnMobile}"
         },
         {
-          "key": "--other-component-other-direction-navigation-logos",
-          "name": "component.other.direction.navigation.logos",
+          "key": "--other-component-direction-navigation-logos",
+          "name": "component.direction.navigation.logos",
           "value": "{--other-semantic-theme-direction-navigation-all-horizontal}",
           "type": "other",
           "rawValue": "{semanticTheme.direction.navigation.allHorizontal}"
         },
         {
-          "key": "--other-component-other-asset-navigation-primary-logo",
-          "name": "component.other.asset.navigation.primaryLogo",
+          "key": "--other-component-asset-navigation-primary-logo",
+          "name": "component.asset.navigation.primaryLogo",
           "value": "{--other-semantic-theme-asset-logo-primary}",
           "type": "other",
           "rawValue": "{semanticTheme.asset.logo.primary}"
         },
         {
-          "key": "--other-component-other-asset-navigation-secondary-logo",
-          "name": "component.other.asset.navigation.secondaryLogo",
+          "key": "--other-component-asset-navigation-secondary-logo",
+          "name": "component.asset.navigation.secondaryLogo",
           "value": "{--other-semantic-theme-asset-logo-secondary}",
           "type": "other",
           "rawValue": "{semanticTheme.asset.logo.secondary}"
         },
         {
-          "key": "--other-component-other-layout-footer-row-container",
-          "name": "component.other.layout.footer.rowContainer",
+          "key": "--other-component-layout-footer-row-container",
+          "name": "component.layout.footer.rowContainer",
           "value": "{--other-semantic-other-layout-navigation-grid-span-3desk-to4tab-mob}",
           "type": "other",
           "rawValue": "{semantic.other.layout.navigation.gridSpan.3deskTo4tabMob}"
         },
         {
-          "key": "--other-component-other-layout-footer-legal-container",
-          "name": "component.other.layout.footer.legalContainer",
+          "key": "--other-component-layout-footer-legal-container",
+          "name": "component.layout.footer.legalContainer",
           "value": "{--other-semantic-other-layout-navigation-grid-span-6desk-to-full-tab-mob}",
           "type": "other",
           "rawValue": "{semantic.other.layout.navigation.gridSpan.6deskToFullTabMob}"
         },
         {
-          "key": "--other-component-other-layout-footer-connect-container",
-          "name": "component.other.layout.footer.connectContainer",
+          "key": "--other-component-layout-footer-connect-container",
+          "name": "component.layout.footer.connectContainer",
           "value": "{--other-semantic-other-layout-navigation-grid-span-6desk-to4tab-mob}",
           "type": "other",
           "rawValue": "{semantic.other.layout.navigation.gridSpan.6deskTo4tabMob}"
