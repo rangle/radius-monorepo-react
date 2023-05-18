@@ -5744,22 +5744,22 @@
           "rawValue": "{semanticTheme.asset.logo.secondary}"
         },
         {
-          "key": "--other-component-layout-footer-row-container",
-          "name": "component.layout.footer.rowContainer",
+          "key": "--other-component-layout-footer-grid-span-row-container",
+          "name": "component.layout.footer.gridSpan.rowContainer",
           "value": "{--other-semantic-other-layout-navigation-grid-span-3desk-to4tab-mob}",
           "type": "other",
           "rawValue": "{semantic.other.layout.navigation.gridSpan.3deskTo4tabMob}"
         },
         {
-          "key": "--other-component-layout-footer-legal-container",
-          "name": "component.layout.footer.legalContainer",
+          "key": "--other-component-layout-footer-grid-span-legal-container",
+          "name": "component.layout.footer.gridSpan.legalContainer",
           "value": "{--other-semantic-other-layout-navigation-grid-span-6desk-to-full-tab-mob}",
           "type": "other",
           "rawValue": "{semantic.other.layout.navigation.gridSpan.6deskToFullTabMob}"
         },
         {
-          "key": "--other-component-layout-footer-connect-container",
-          "name": "component.layout.footer.connectContainer",
+          "key": "--other-component-layout-footer-grid-span-connect-container",
+          "name": "component.layout.footer.gridSpan.connectContainer",
           "value": "{--other-semantic-other-layout-navigation-grid-span-6desk-to4tab-mob}",
           "type": "other",
           "rawValue": "{semantic.other.layout.navigation.gridSpan.6deskTo4tabMob}"
