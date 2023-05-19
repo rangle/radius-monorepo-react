@@ -120,11 +120,17 @@ export type AutoLayoutExtendedProps = {
   /** Whether this AutoLayout should behave as a grid */
   grid?: boolean;
   /** The number of columns this item should take up in a parent's grid */
-  gridSpan?: CSSProp<'other'>;
-  /** The start position of this item in a parent's grid */
-  gridStart?: CSSProp<'other'>;
-  /** The end position of this item in a parent's grid */
-  gridEnd?: CSSProp<'other'>;
+  gridColSpan?: CSSProp<'other'>;
+  /** The starting column position of this item in a parent's grid */
+  gridColStart?: CSSProp<'other'>;
+  /** The ending column position of this item in a parent's grid */
+  gridColEnd?: CSSProp<'other'>;
+  /** The number of rows this item should take up in a parent's grid */
+  gridRowSpan?: CSSProp<'other'>;
+  /** The starting row position of this item in a parent's grid */
+  gridRowStart?: CSSProp<'other'>;
+  /** The ending row position of this item in a parent's grid */
+  gridRowEnd?: CSSProp<'other'>;
 };
 
 export type AutoLayoutProps<C extends React.ElementType> =

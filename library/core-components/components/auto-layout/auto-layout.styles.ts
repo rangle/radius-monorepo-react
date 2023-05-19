@@ -75,9 +75,12 @@ export type StyleProps = PickWithRequired<
   | 'innerShadow'
   | 'layerBlur'
   | 'grid'
-  | 'gridSpan'
-  | 'gridEnd'
-  | 'gridStart'
+  | 'gridColSpan'
+  | 'gridColEnd'
+  | 'gridColStart'
+  | 'gridRowSpan'
+  | 'gridRowEnd'
+  | 'gridRowStart'
   | 'backgroundBlur',
   | 'alignment'
   | 'width'
@@ -149,9 +152,12 @@ export const useStyles = ({
   layerBlur,
   backgroundBlur,
   grid,
-  gridSpan,
-  gridEnd,
-  gridStart,
+  gridColSpan,
+  gridColEnd,
+  gridColStart,
+  gridRowSpan,
+  gridRowEnd,
+  gridRowStart,
 }: StyleProps) => {
   return css`
     display: flex;
@@ -190,8 +196,11 @@ export const useStyles = ({
       : ''}
 
     ${grid ? gridStyles : ''}
-    ${gridSpan ? `grid-column: span ${renderCSSProp(gridSpan)};` : ''}
-    ${gridEnd ? `grid-column-end: ${renderCSSProp(gridEnd)};` : ''}
-    ${gridStart ? `grid-column-start: ${renderCSSProp(gridStart)};` : ''}
+    ${gridColSpan ? `grid-column: span ${renderCSSProp(gridColSpan)};` : ''}
+    ${gridColEnd ? `grid-column-end: ${renderCSSProp(gridColEnd)};` : ''}
+    ${gridColStart ? `grid-column-start: ${renderCSSProp(gridColStart)};` : ''}
+    ${gridRowSpan ? `grid-row: span ${renderCSSProp(gridRowSpan)};` : ''}
+    ${gridRowEnd ? `grid-row-end: ${renderCSSProp(gridRowEnd)};` : ''}
+    ${gridRowStart ? `grid-row-start: ${renderCSSProp(gridRowStart)};` : ''}
   `;
 };

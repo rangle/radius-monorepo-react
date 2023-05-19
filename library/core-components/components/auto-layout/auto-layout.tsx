@@ -36,9 +36,12 @@ export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
       layerBlur,
       backgroundBlur,
       grid,
-      gridSpan,
-      gridEnd,
-      gridStart,
+      gridColSpan,
+      gridColEnd,
+      gridColStart,
+      gridRowSpan,
+      gridRowEnd,
+      gridRowStart,
       ...rest // the remainder should be the original tag's attributes
     }: AutoLayoutProps<C>,
     ref?: PolymorphicRef<C>
@@ -69,9 +72,12 @@ export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
       layerBlur,
       backgroundBlur,
       grid,
-      gridSpan,
-      gridEnd,
-      gridStart,
+      gridColSpan,
+      gridColEnd,
+      gridColStart,
+      gridRowSpan,
+      gridRowEnd,
+      gridRowStart,
     });
     return (
       <Component className={cx(styles, className)} {...rest} ref={ref}>
