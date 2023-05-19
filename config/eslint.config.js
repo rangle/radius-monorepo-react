@@ -9,7 +9,13 @@ const rulesBase = {
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
-  ignorePatterns: ['**/dist/**'],
+  ignorePatterns: [
+    '**/dist/**',
+    '**/node_modules/**',
+    '**/*.d.ts',
+    '**/*.js',
+    '**/*.mjs',
+  ],
   env: {
     browser: true,
     commonjs: true,

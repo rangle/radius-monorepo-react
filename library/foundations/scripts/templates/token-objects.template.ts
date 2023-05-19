@@ -5,7 +5,7 @@
 import type { TokenLayers } from '../lib/token-parser';
 
 // for debug purposes
-// import * as sourceLayers from '../../generated/token-layers-1.2.0.json';
+// import * as sourceLayers from '../../generated/token-layers-2.1.0.json';
 
 const EXCLUDE_LAYERS = ['radius--core'];
 
@@ -103,3 +103,6 @@ export const renderTokenObjects = ({ order, layers }: TokenLayers) => {
         
         `);
 };
+
+// const res = renderTokenObjects(sourceLayers);
+// res; //?

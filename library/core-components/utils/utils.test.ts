@@ -10,15 +10,17 @@ describe('utils', () => {
       it('should return a string with CSS variables when passed an array', () => {
         expect(
           renderCSSProp([
-            '--color-core-color-red-50',
-            '--color-core-color-red-50',
+            '--color-semantic-theme-navigation-primary-background',
+            '--color-semantic-theme-navigation-primary-foreground',
           ])
-        ).toBe('var(--color-core-color-red-50) var(--color-core-color-red-50)');
+        ).toBe(
+          'var(--color-semantic-theme-navigation-primary-background) var(--color-semantic-theme-navigation-primary-foreground)'
+        );
       });
       it('should return a CSS variable when passed a string', () => {
-        expect(renderCSSProp('--color-core-color-red-50')).toBe(
-          'var(--color-core-color-red-50)'
-        );
+        expect(
+          renderCSSProp('--color-semantic-theme-navigation-primary-foreground')
+        ).toBe('var(--color-semantic-theme-navigation-primary-foreground)');
       });
       it('should return a CSS expression when passed an object', () => {
         expect(
@@ -33,10 +35,12 @@ describe('utils', () => {
       it('should return a string with CSS variables', () => {
         expect(
           renderCSSProp([
-            '--color-core-color-red-50',
-            '--color-core-color-red-50',
+            '--color-semantic-theme-navigation-primary-foreground',
+            '--color-semantic-theme-navigation-primary-foreground',
           ])
-        ).toBe('var(--color-core-color-red-50) var(--color-core-color-red-50)');
+        ).toBe(
+          'var(--color-semantic-theme-navigation-primary-foreground) var(--color-semantic-theme-navigation-primary-foreground)'
+        );
       });
     });
   });

@@ -2,9 +2,14 @@
    TEMPLATE FOR TYPESCRIPT TOKEN TYPES
   Generates a TypeScript file with all the tokens in the theme
 */
-import type { TokenLayers } from '../lib/token-parser';
+import {
+  TYPOGRAPHY_TOKEN_PROPS,
+  TokenLayers,
+  toKebabCase,
+} from '../lib/token-parser';
 
-const EXCLUDE_LAYERS = ['radius--core'];
+const EXCLUDE_LAYERS = ['core'];
+const COMPONENT_LAYER_NAME = 'Component';
 
 // convert kebab case to CamelCase. convers a special case when there's two dashes
 const toCamelCase = (str: string) =>
@@ -15,7 +20,7 @@ const toCamelCase = (str: string) =>
 
 // groups an array of dash-separated strings into an object with the first part of the string as the key
 // and the value is an array of all the strings that start with the key
-const groupByPrefix = (index: number, arr: string[]) =>
+const groupByKeyPrefix = (index: number, arr: string[]) =>
   arr.reduce((acc, curr) => {
     const prefix = curr.split('-')[index];
     if (!acc[prefix]) {
@@ -23,6 +28,22 @@ const groupByPrefix = (index: number, arr: string[]) =>
     }
     return { ...acc, [prefix]: [...acc[prefix], curr] };
   }, {} as Record<string, string[]>);
+
+const groupIndexByNamePrefix = (index: number, arr: string[]) =>
+  arr.reduce((acc, curr, idx) => {
+    const prefix = toCamelCase(curr.split('.')[index]);
+    if (!acc[prefix]) {
+      acc[prefix] = [];
+    }
+    return { ...acc, [prefix]: [...acc[prefix], idx] };
+  }, {} as Record<string, number[]>);
+
+const fromIndexGroupToKeyGroup =
+  <R extends Record<string, string[]>>(names: string[]) =>
+  (acc: R, [subject, indexes]: [string, number[]]) => ({
+    ...acc,
+    [subject]: indexes.map((idx) => names[idx]),
+  });
 
 type NU<T> = T extends undefined ? never : T;
 const isNotUndefined = <T>(u: T): u is NU<T> => u !== undefined;
@@ -38,15 +59,32 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
       return {
         name: toCamelCase(name),
         keys: variables.map((variable) => variable.key),
+        names: variables.map((variable) => variable.name),
       };
     });
 
   const allKeys = layerVariables.flatMap(({ keys }) => keys);
-  const allKeysByType = groupByPrefix(2, allKeys);
-  const allKeysBySubject = groupByPrefix(3, allKeys);
+  const allNames = layerVariables.flatMap(({ names }) => names);
+
+  const indexToKeys = (indexGroup: Record<string, number[]>) =>
+    Object.entries(indexGroup).reduce(
+      fromIndexGroupToKeyGroup(allKeys),
+      {} as Record<string, string[]>
+    );
+
+  const allKeysByType = groupByKeyPrefix(2, allKeys);
+  const allIndexesByLayer = groupIndexByNamePrefix(0, allNames);
+  const allKeysByLayer = indexToKeys(allIndexesByLayer);
+  const componentIndexes = allIndexesByLayer[COMPONENT_LAYER_NAME];
+  const componentNames = componentIndexes.map((idx) => allNames[idx]);
+  const componentIndexesBySubject = componentIndexes
+    ? groupIndexByNamePrefix(2, componentNames)
+    : {};
+  const componentKeysBySubject = indexToKeys(componentIndexesBySubject);
 
   const typeNames = Object.keys(allKeysByType);
-  const subjectNames = Object.keys(allKeysBySubject);
+  const layerNames = Object.keys(allKeysByLayer);
+  const subjectNames = Object.keys(componentKeysBySubject);
 
   return Buffer.from(`
   // Layer Types
@@ -70,6 +108,11 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
     .map((type) => `'${type}'`)
     .join(' | ')};
 
+  export type RadiusSubTokenTypes = ${TYPOGRAPHY_TOKEN_PROPS.map(toKebabCase)
+    .map((type) => `'${type}'`)
+    .join(' | ')};
+  
+
   // Tokens By Type (--color, --typography, etc.)
     ${typeNames
       .map(
@@ -80,24 +123,58 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
       )
       .join('\n')};
 
+    // Typography SubTokens By Type (--typography-..-font-size, --typography-..-font-weight, etc.)
+    ${TYPOGRAPHY_TOKEN_PROPS.map(toKebabCase)
+      .map(
+        (type) => `
+    export type Radius${toCamelCase(
+      type
+    )}SubTokens = Extract<RadiusTokens, \`--typography-\${string}-${type}\`>;`
+      )
+      .join('\n')};
+
+  // Token Layers
+
+  export type RadiusTokenLayers = ${layerNames
+    .map(toKebabCase)
+    .map((layer) => `'${layer}'`)
+    .join(' | ')};
+
+  // Tokens By Layer (--color-core, --typography-mode, etc.)
+
+    ${layerNames
+      .map(toKebabCase)
+      .map(
+        (layer) => `
+    export type Radius${toCamelCase(
+      layer
+    )}Tokens<T extends RadiusTokenTypes=RadiusTokenTypes> = 
+      Extract<RadiusTokens, \`--\${T}-${layer}-\${string}\`>;`
+      )
+      .join('\n')};
+
   // Token Subjects
 
   export type RadiusTokenSubjects = ${subjectNames
-    .map((subject) => `'${subject}'`)
+    .map((subject) => `'${toKebabCase(subject)}'`)
     .join(' | ')};
 
-  // Tokens By Subject (--color-button, --typography-button, etc.)
+  // Tokens By Subject (--color-core-button, --typography-component-button, etc.)
 
     ${subjectNames
+      .map(toKebabCase)
       .map(
         (subject) => `
     export type Radius${toCamelCase(
       subject
-    )}Tokens<T extends RadiusTokenTypes=RadiusTokenTypes> = 
-      Extract<RadiusTokens, \`--\${T}-${subject}-\${string}\`>;`
+    )}Tokens<T extends RadiusTokenTypes=RadiusTokenTypes, U extends RadiusTokenLayers=RadiusTokenLayers> = 
+      Extract<RadiusTokens, \`--\${T}-\${U}-${subject}-\${string}\`>;`
       )
       .join('\n')};
 
+
+  // for Typography, Create an umbrella type that includes subtokens
+  export type TokenAndSubtokenTypes = RadiusTokenTypes | RadiusSubTokenTypes;
 
   // Utilities
 
@@ -125,9 +202,10 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
    * CSSProp<'typography'>; // returns \`--typography-\${string}\`
    */
   export type CSSTokensByTypeAndSubject<
-    T extends RadiusTokenTypes = RadiusTokenTypes,
-    S extends RadiusTokenSubjects = RadiusTokenSubjects
-  > = Extract<RadiusTokens, \`--\${T}-\${S}-\${string}\`>;
+    T extends TokenAndSubtokenTypes = TokenAndSubtokenTypes,
+    S extends RadiusTokenSubjects = RadiusTokenSubjects,
+    L extends RadiusTokenLayers = RadiusTokenLayers
+  > = Extract<RadiusTokens, \`--\${T}-\${L}-\${S}-\${string}\` | \`--typography-\${L}-\${S}-\${string}-\${T}\`>;
 
 
   /** 
@@ -149,11 +227,12 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
    * <RadiusAutoLayout padding={{ css: '10px 20px' }}>
    */
   export type CSSProp<
-    T extends RadiusTokenTypes = RadiusTokenTypes,
-    S extends RadiusTokenSubjects = RadiusTokenSubjects
+    T extends TokenAndSubtokenTypes = TokenAndSubtokenTypes,
+    S extends RadiusTokenSubjects = RadiusTokenSubjects,
+    L extends RadiusTokenLayers = RadiusTokenLayers
   > =
-    | CSSTokensByTypeAndSubject<T, S>
-    | Array<CSSTokensByTypeAndSubject<T, S> | 0>
+    | CSSTokensByTypeAndSubject<T, S, L>
+    | Array<CSSTokensByTypeAndSubject<T, S, L> | 0>
     | { css: CSSExpression };
 
 

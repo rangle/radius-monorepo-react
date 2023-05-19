@@ -81,7 +81,9 @@ export const RadiusImageTextItem = forwardRef<
           {variant === 'large' && (
             <Typography
               as={headingLevel}
-              font={radiusTokens.component.typography.largeImageTextItem.header}
+              font={
+                radiusTokens.component.typography.largeImageTextItem.header.font
+              }
               fill={radiusTokens.component.color.largeImageTextItem.header}
             >
               {header}
@@ -91,8 +93,8 @@ export const RadiusImageTextItem = forwardRef<
           <Typography
             font={
               variant === 'large'
-                ? radiusTokens.component.typography.largeImageTextItem.body
-                : radiusTokens.component.typography.smallImageTextItem.body
+                ? radiusTokens.component.typography.largeImageTextItem.body.font
+                : radiusTokens.component.typography.smallImageTextItem.body.font
             }
             fill={
               variant === 'large'

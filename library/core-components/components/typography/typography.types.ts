@@ -24,19 +24,19 @@ export type TypographyExtendedProps = {
   /** Text alignment (corresponds to `text-align` style) */
   align?: Alignment;
   /** Font (css shorthand property - see https://developer.mozilla.org/en-US/docs/Web/CSS/font) */
-  font?: CSSProp<'typography'>;
+  font?: CSSProp<'font'>;
   /** Font Family - will override `font-family` style of the `font` prop */
-  fontFamily?: CSSProp<'fontFamilies'>;
+  fontFamily?: CSSProp<'font-family'>;
   /** Line Height - will override `line-height` style of the `font` prop */
-  lineHeight?: CSSProp<'lineHeights'>;
+  lineHeight?: CSSProp<'line-height'>;
   /** Font Weight - will override `font-weight` style of the `font` prop */
-  fontWeight?: CSSProp<'fontWeights'>;
+  fontWeight?: CSSProp<'font-weight'>;
   /** Font Size - will override `font-size` style of the `font` prop */
-  fontSize?: CSSProp<'fontSizes'>;
-  /** Letter Spacing - will override `letter-spacing` style of the `font` prop */
-  letterSpacing?: CSSProp<'letterSpacing'>;
-  /** Text Decoration - will override `text-decoration` style of the `font` prop */
-  textDecoration?: CSSProp<'textDecoration'>;
+  fontSize?: CSSProp<'font-size'>;
+  /** Letter Spacing - affect `letter-spacing` style in addition to `font` prop */
+  letterSpacing?: CSSProp<'letter-spacing'>;
+  /** Text Decoration - affect `text-decoration` style in addition to `font` prop */
+  textDecoration?: CSSProp<'text-decoration'>;
 };
 
 export type TypographyProps<C extends React.ElementType> =

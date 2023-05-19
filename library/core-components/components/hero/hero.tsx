@@ -87,7 +87,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
             >
               {/* Eyebrow */}
               <Typography
-                font={radiusTokens.component.typography.hero.eyebrow}
+                font={radiusTokens.component.typography.hero.eyebrow.font}
                 fill={radiusTokens.component.color.hero.eyebrow}
               >
                 {eyebrow}
@@ -95,7 +95,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
               {/* Header */}
               <Typography
                 as="h1"
-                font={radiusTokens.component.typography.hero.header}
+                font={radiusTokens.component.typography.hero.header.font}
                 fill={radiusTokens.component.color.hero.header}
               >
                 {header}

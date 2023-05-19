@@ -28,10 +28,11 @@ export default [
         use: ['sass'],
       }),
       typescript({
+        noEmitOnError: true, // necessary so that Rollup stops the build and shows TS errors
         tsconfig: '../../config/typescript/tsconfig.build.json',
         include: [
-          '*.ts+(|x)',
-          '**/*.ts+(|x)',
+          '../../**/*.ts',
+          '../../**/*.tsx',
           '../../library/foundations/**/*.ts+(|x)',
         ],
       }),

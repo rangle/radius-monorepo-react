@@ -94,7 +94,7 @@ const convertExpressions = (token: TokenOutput): TokenOutput =>
 
 export const renderCSSVariables = (
   { order, layers }: TokenLayers,
-  processValue: GeneratorMappingFunction = (key, value) => value
+  processValue: GeneratorMappingFunction = (_, value) => value
 ) =>
   Buffer.from(`
   @layer ${order.join()};

@@ -50,7 +50,7 @@ export const RadiusLinkButton: RadiusLinkButtonComponent = forwardRef(
         >
           <Typography
             as="span"
-            font={radiusTokens.component.typography.linkButton.label}
+            font={radiusTokens.component.typography.linkButton.label.font}
           >
             {children}
           </Typography>

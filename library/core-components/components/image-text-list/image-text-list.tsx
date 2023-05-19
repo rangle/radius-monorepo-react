@@ -38,13 +38,16 @@ export const RadiusImageTextList = forwardRef<
             {...itemProps}
             variant={variant}
             imageAlignment={idx % 2 ? 'right' : 'left'}
+            key={idx}
           />
         ))}
       {variant === 'small' &&
         // for every 2 items, create a row using RadiusAutoLayout
         items
           .reduce<JSX.Element[][]>((acc, item, idx) => {
-            const newItem = <RadiusImageTextItem {...item} variant={variant} />;
+            const newItem = (
+              <RadiusImageTextItem {...item} variant={variant} key={idx} />
+            );
             if (idx % 2 === 0) {
               acc.push([newItem]);
             } else {
@@ -52,7 +55,7 @@ export const RadiusImageTextList = forwardRef<
             }
             return acc;
           }, [])
-          .map((row) => (
+          .map((row, idx) => (
             <RadiusAutoLayout
               space={
                 radiusTokens.component.spacing.imageTextList.small.gap.column
@@ -65,6 +68,7 @@ export const RadiusImageTextList = forwardRef<
                 radiusTokens.component.spacing.imageTextList.small.padding
                   .horizontal,
               ]}
+              key={idx}
             >
               {row.map((item) => item)}
             </RadiusAutoLayout>
