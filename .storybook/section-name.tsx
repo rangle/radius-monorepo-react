@@ -1,11 +1,9 @@
 import React from 'react';
-import { Story } from '@storybook/react';
-
-import { DecoratorFn } from '@storybook/react';
+import { Decorator } from '@storybook/react';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const styles = {
-  backgroundColor:
-    'var(--color-semantic-theme-color-actions-default-primary-foreground)',
+  backgroundColor: `var(${radiusTokens.semanticTheme.color.actions.default.primaryForeground})`,
 };
 
 const removeClassesAndAddTheme = (mode: string) => {
@@ -17,7 +15,7 @@ const removeClassesAndAddTheme = (mode: string) => {
   root?.classList.add(mode);
 };
 
-export const withSectionNameForTheme: DecoratorFn = (Story, context) => {
+export const withSectionNameForTheme: Decorator = (Story, context) => {
   const mode = context.globals.theme;
   removeClassesAndAddTheme(mode);
   return (

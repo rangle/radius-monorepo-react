@@ -4,6 +4,11 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from './typography';
 import { flattenObject } from '../../utils';
 
+const bySubtoken =
+  <T extends string>(name: string) =>
+  (token: T) =>
+    token.match(`${name}$`);
+
 const meta: Meta<typeof Typography> = {
   component: Typography,
   title: 'Typography',
@@ -32,7 +37,7 @@ const meta: Meta<typeof Typography> = {
         core: radiusTokens.core.typography,
         semantic: radiusTokens.semantic.typography,
         component: radiusTokens.component.typography,
-      }),
+      }).filter(bySubtoken('font')),
     },
     fontFamily: {
       options: flattenObject(radiusTokens.core.fontFamilies),
@@ -58,7 +63,7 @@ const meta: Meta<typeof Typography> = {
     children: 'Hello World!',
     as: 'p',
     align: 'left',
-    font: radiusTokens.core.typography.desktop.body.md,
+    font: radiusTokens.component.typography.inlineText.label.large.font,
     fill: radiusTokens.component.color.button.secondary.default.label,
   },
 };
