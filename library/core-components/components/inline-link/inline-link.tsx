@@ -11,7 +11,12 @@ import { PolymorphicRef } from '../../utils';
 import { Typography } from '../typography/typography';
 
 /**
- * TODO: Add description
+ * A component that renders a link as a text element. It is a wrapper around
+ * the `Typography` component, and can be passed text or any valid ReactNode.
+ *
+ * It is polymorphic and can be passed a custom wrapper component via the `as`
+ * prop, eg. using React Router's `Link` component. By default it renders an `a`
+ * tag.
  *
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/EUSxceIm71tCWSzPE27BwW/Inline-Link?type=design&node-id=2-2)
