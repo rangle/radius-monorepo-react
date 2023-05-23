@@ -19,6 +19,11 @@ const meta: Meta<typeof RadiusInlineLink> = {
         defaultValue: { summary: 'a' },
       },
     },
+    children: {
+      control: {
+        type: 'text',
+      },
+    },
     className: { table: { disable: true } },
     ref: { table: { disable: true } },
   },
@@ -30,10 +35,10 @@ const meta: Meta<typeof RadiusInlineLink> = {
     ),
   ],
   args: {
+    children: 'Inline Link',
     as: 'a',
     href: '#',
-    'aria-label': 'Descriptive text',
-    children: 'Inline Link',
+    disabled: false,
     typography: radiusTokens.component.typography.inlineText.label.large,
   },
 };
@@ -57,9 +62,8 @@ const Cell = ({ children, id }: { children: React.ReactNode; id?: string }) => (
 );
 
 const sizes = {
-  '16px': radiusTokens.core.sizing[16],
-  '24px': radiusTokens.core.sizing[24],
-  '32px': radiusTokens.core.sizing[32],
+  small: radiusTokens.component.typography.inlineText.label.small,
+  large: radiusTokens.component.typography.inlineText.label.large,
 };
 
 export const Variants: Story = {
@@ -85,20 +89,16 @@ export const Variants: Story = {
           <Cell>{key}</Cell>
 
           <Cell>
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
-            <RadiusInlineLink {...args} size={value} />
+            <RadiusInlineLink {...args} typography={value} />
           </Cell>
           <Cell id="hover">
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
-            <RadiusInlineLink {...args} size={value} />
+            <RadiusInlineLink {...args} typography={value} />
           </Cell>
           <Cell id="active">
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
-            <RadiusInlineLink {...args} size={value} />
+            <RadiusInlineLink {...args} typography={value} />
           </Cell>
           <Cell>
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
-            <RadiusInlineLink {...args} size={value} disabled />
+            <RadiusInlineLink {...args} typography={value} disabled />
           </Cell>
         </>
       ))}
