@@ -4,7 +4,6 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusInlineLink } from './inline-link';
-import { flattenObject } from '../../utils';
 import { RadiusInlineLinkExtendedProps } from './inline-link.types';
 
 const meta: Meta<typeof RadiusInlineLink> = {
@@ -19,9 +18,6 @@ const meta: Meta<typeof RadiusInlineLink> = {
       table: {
         defaultValue: { summary: 'a' },
       },
-    },
-    size: {
-      options: flattenObject(radiusTokens.core.sizing),
     },
     className: { table: { disable: true } },
     ref: { table: { disable: true } },
@@ -38,7 +34,7 @@ const meta: Meta<typeof RadiusInlineLink> = {
     href: '#',
     'aria-label': 'Descriptive text',
     children: 'Inline Link',
-    size: radiusTokens.core.sizing[24],
+    typography: radiusTokens.component.typography.inlineText.label.large,
   },
 };
 

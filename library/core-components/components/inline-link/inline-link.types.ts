@@ -4,8 +4,14 @@ import { PolymorphicComponentPropWithRef } from '../../utils';
 export type RadiusInlineLinkExtendedProps = {
   /** The label */
   children: React.ReactNode;
-  /** The size of the icon */
-  size: CSSProp<'sizing', RadiusTokenSubjects, 'component'>;
+  /** The typography of the icon. Expects an object containing tokens
+   * representing the individual typography properties (found in
+   * `library/foundations/generated/design-tokens.constants.ts`)
+   */
+  typography: Record<
+    string,
+    CSSProp<'typography', RadiusTokenSubjects, 'component'>
+  >;
   /** Whether the link is disabled */
   disabled?: boolean;
   /** The class name to apply to the component */

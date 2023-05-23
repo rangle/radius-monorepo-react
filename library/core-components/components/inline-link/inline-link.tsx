@@ -22,7 +22,7 @@ export const RadiusInlineLink: RadiusInlineLinkComponent = forwardRef(
       as,
       children,
       href,
-      size,
+      typography,
       disabled,
       className,
       ...rest
@@ -47,6 +47,7 @@ export const RadiusInlineLink: RadiusInlineLinkComponent = forwardRef(
               ? radiusTokens.component.color.inlineText.disabled
               : radiusTokens.component.color.inlineText.default
           }
+          {...typography}
         >
           {children}
         </Typography>
