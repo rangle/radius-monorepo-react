@@ -4,13 +4,17 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import { RadiusInlineLink } from '..';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 expect.extend(toHaveNoViolations);
 
 describe('<RadiusInlineLink />', () => {
   test('should render', () => {
     const { getByRole } = render(
-      <RadiusInlineLink href="#" size={{ css: '24px' }}>
+      <RadiusInlineLink
+        href="#"
+        typography={radiusTokens.component.typography.inlineText.label.small}
+      >
         test
       </RadiusInlineLink>
     );
@@ -21,8 +25,7 @@ describe('<RadiusInlineLink />', () => {
     const { container } = render(
       <RadiusInlineLink
         href="#"
-        aria-label="Descriptive text"
-        size={{ css: '24px' }}
+        typography={radiusTokens.component.typography.inlineText.label.small}
       >
         test
       </RadiusInlineLink>
