@@ -37,7 +37,7 @@ const meta: Meta<typeof RadiusInlineLink> = {
     as: 'a',
     href: '#',
     'aria-label': 'Descriptive text',
-    // icon: AccountCircle,
+    children: 'Inline Link',
     size: radiusTokens.core.sizing[24],
   },
 };

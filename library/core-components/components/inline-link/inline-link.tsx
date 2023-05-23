@@ -8,6 +8,7 @@ import {
   RadiusInlineLinkProps,
 } from './inline-link.types';
 import { PolymorphicRef } from '../../utils';
+import { Typography } from '../typography/typography';
 
 /**
  * TODO: Add description
@@ -17,11 +18,19 @@ import { PolymorphicRef } from '../../utils';
  */
 export const RadiusInlineLink: RadiusInlineLinkComponent = forwardRef(
   <C extends React.ElementType = 'a'>(
-    { as, href, size, disabled, className, ...rest }: RadiusInlineLinkProps<C>,
+    {
+      as,
+      children,
+      href,
+      size,
+      disabled,
+      className,
+      ...rest
+    }: RadiusInlineLinkProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'a';
-    const { styles } = useStyles({ disabled });
+    const { styles, label } = useStyles({ disabled });
 
     return (
       <Component
@@ -31,7 +40,16 @@ export const RadiusInlineLink: RadiusInlineLinkComponent = forwardRef(
         disabled={disabled}
         {...rest}
       >
-        hi
+        <Typography
+          className={label}
+          fill={
+            disabled
+              ? radiusTokens.component.color.inlineText.disabled
+              : radiusTokens.component.color.inlineText.default
+          }
+        >
+          {children}
+        </Typography>
       </Component>
     );
   }
