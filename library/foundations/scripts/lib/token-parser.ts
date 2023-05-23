@@ -492,6 +492,8 @@ const processReference =
       .replace(baseRef.key, ref.token.value);
   };
 
+let once = false;
+
 const getReferencesFromValue = (
   refs: ReferenceMap,
   value: string,
@@ -506,6 +508,10 @@ const getReferencesFromValue = (
     const ref = refs[key];
     if (!ref) {
       console.warn(`reference: ${key} not found`);
+      if (!once) {
+        console.warn(refs);
+        once = true;
+      }
       return res;
     }
     // optionally, looks recursively for references in the value of the reference

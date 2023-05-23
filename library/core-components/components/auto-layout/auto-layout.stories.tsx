@@ -49,16 +49,16 @@ const meta: Meta<typeof RadiusAutoLayout> = {
     fill: {
       options: [
         '',
-        ...flattenObject(radiusTokens.semantic.color),
-        ...flattenObject(radiusTokens.semanticTheme.color),
+        ...flattenObject(radiusTokens.brand.color),
+        ...flattenObject(radiusTokens.mode.color),
         ...flattenObject(radiusTokens.component.color),
       ],
     },
     stroke: {
       options: [
         '',
-        ...flattenObject(radiusTokens.semantic.color),
-        ...flattenObject(radiusTokens.semanticTheme.color),
+        ...flattenObject(radiusTokens.brand.color),
+        ...flattenObject(radiusTokens.mode.color),
         ...flattenObject(radiusTokens.component.color),
       ],
     },
@@ -111,9 +111,8 @@ export const AutoLayout: Story = {
     height: '200px',
     space: 'auto',
     padding: radiusTokens.core.spacing[4],
-    fill: radiusTokens.semanticTheme.color.actions.default.secondaryBackground,
-    stroke:
-      radiusTokens.semanticTheme.color.actions.default.secondaryForeground,
+    fill: radiusTokens.mode.color.actions.default.secondaryBackground,
+    stroke: radiusTokens.mode.color.actions.default.secondaryForeground,
     strokeWidth: radiusTokens.core.borderWidth[2],
     cornerRadius: '--borderRadius-core-radius-none',
     clippedContent: false,

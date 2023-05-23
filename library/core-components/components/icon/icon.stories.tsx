@@ -30,12 +30,12 @@ const meta: Meta<typeof RadiusIcon> = {
       control: {
         type: 'select',
       },
-      options: Object.values(radiusTokens.semantic.sizing.imagesAndIcons.icons),
+      options: Object.values(radiusTokens.brand.sizing.imagesAndIcons.icons),
     },
   } as ArgTypes,
   args: {
     fill: radiusTokens.component.color.button.secondary.default.label,
-    size: radiusTokens.semantic.sizing.imagesAndIcons.icons.default,
+    size: radiusTokens.brand.sizing.imagesAndIcons.icons.default,
   } as Args,
 };
 

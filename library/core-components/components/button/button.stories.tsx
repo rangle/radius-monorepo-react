@@ -133,7 +133,7 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
               color={
                 radiusTokens.component.color.button.secondary.default.label
               }
-              font={radiusTokens.semanticTheme.typography.actions.label}
+              font={radiusTokens.mode.typography.actions.label}
               align="center"
             >
               {state}
@@ -148,7 +148,7 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
               color={
                 radiusTokens.component.color.button.secondary.default.label
               }
-              font={radiusTokens.semanticTheme.typography.actions.label}
+              font={radiusTokens.mode.typography.actions.label}
             >
               {type}
             </Typography>

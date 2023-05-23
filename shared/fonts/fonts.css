@@ -21,3 +21,11 @@
   font-weight: 500;
   font-style: normal;
 }
+
+/* Podkova Variable Font */
+@font-face {
+  font-family: 'Podkova';
+  src: url('Podkova-VariableFont_wght.ttf') format('woff2-variations');
+  font-weight: 100 900;
+  font-stretch: 50% 200%;
+}

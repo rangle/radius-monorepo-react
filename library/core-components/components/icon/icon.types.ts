@@ -32,7 +32,11 @@ type ExclusiveProps = ComponentProps | PathProps;
 /** Custom props extending the functionality of the base svg component */
 type RadiusIconExtendedProps = {
   /** Icon size. Will automatically set the `width` and `height` of the SVG */
-  size: CSSProp<'sizing', RadiusTokenSubjects, 'semantic' | 'component'>;
+  size: CSSProp<
+    'sizing',
+    RadiusTokenSubjects,
+    'brand' | 'breakpoint' | 'mode' | 'component'
+  >;
   /** Icon fill color. Defaults to `currentColor` so that the icon will inherit
    * the color of the parent element */
   fill?: CSSProp<'color', RadiusTokenSubjects, 'component'>;

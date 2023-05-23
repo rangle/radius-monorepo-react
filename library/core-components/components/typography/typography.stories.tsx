@@ -35,7 +35,7 @@ const meta: Meta<typeof Typography> = {
     font: {
       options: flattenObject({
         core: radiusTokens.core.typography,
-        semantic: radiusTokens.semantic.typography,
+        semantic: radiusTokens.brand.typography,
         component: radiusTokens.component.typography,
       }).filter(bySubtoken('font')),
     },

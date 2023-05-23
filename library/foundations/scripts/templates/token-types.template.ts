@@ -165,9 +165,9 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
       .map(toKebabCase)
       .map(
         (subject) => `
-    export type Radius${toCamelCase(
+    export type ${toCamelCase(
       subject
-    )}Tokens<T extends RadiusTokenTypes=RadiusTokenTypes, U extends RadiusTokenLayers=RadiusTokenLayers> = 
+    )}ComponentTokens<T extends RadiusTokenTypes=RadiusTokenTypes, U extends RadiusTokenLayers=RadiusTokenLayers> = 
       Extract<RadiusTokens, \`--\${T}-\${U}-${subject}-\${string}\`>;`
       )
       .join('\n')};

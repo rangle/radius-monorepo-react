@@ -3,7 +3,7 @@ import { Decorator } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const styles = {
-  backgroundColor: `var(${radiusTokens.semanticTheme.color.actions.default.primaryForeground})`,
+  backgroundColor: `var(${radiusTokens.mode.color.actions.default.primaryForeground})`,
 };
 
 const removeClassesAndAddTheme = (mode: string) => {
