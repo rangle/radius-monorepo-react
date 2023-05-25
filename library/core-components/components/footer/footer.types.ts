@@ -24,7 +24,10 @@ export type RadiusFooterExtendedProps = {
   >;
   connectHeader: string;
   connectLinkIcons: Array<RadiusLinkIconProps<React.ElementType>>;
-  connectButtonProps: RadiusButtonProps<React.ElementType>;
+  connectButtonProps: OmitPolymorphicProp<
+    RadiusButtonProps<React.ElementType>,
+    'variant'
+  >;
 };
 
 export type RadiusFooterProps<C extends React.ElementType> =

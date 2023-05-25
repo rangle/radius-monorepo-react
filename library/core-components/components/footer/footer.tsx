@@ -175,7 +175,6 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
                   />
                 ))}
               </RadiusAutoLayout>
-              {/* // TODO: Omit props that are being provided here */}
               <RadiusButton {...connectButtonProps} variant="secondary" />
             </RadiusAutoLayout>
           </RadiusAutoLayout>
