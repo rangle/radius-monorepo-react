@@ -42,6 +42,7 @@ export const useStyles = ({ variant = 'primary' }: StyleProps) => {
     display: inline-block;
     padding: 0;
     text-decoration: none;
+    white-space: nowrap;
     &:hover {
       color: var(${hover.label});
       background: var(${hover.background});

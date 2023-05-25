@@ -8,8 +8,7 @@ export const useStyles = ({ disabled }: StyleProps) => css`
   cursor: ${disabled ? 'default' : 'pointer'};
   color: ${disabled
     ? `var(${radiusTokens.component.color.linkButton.disabled})`
-    : `var
-      (${radiusTokens.component.color.linkButton.default})`};
+    : `var(${radiusTokens.component.color.linkButton.default})`};
 
   &:hover {
     color: ${!disabled
