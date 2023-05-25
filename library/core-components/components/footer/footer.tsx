@@ -7,6 +7,12 @@ import { RadiusFooterComponent, RadiusFooterProps } from './footer.types';
 import { PolymorphicRef } from '../../utils';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+import { useStyles } from './footer.styles';
+import { RadiusLinkButton } from '../link-button';
+import { Typography } from '../typography';
+import { RadiusLinkIcon } from '../link-icon';
+import { RadiusButton } from '../button';
+import { RadiusInlineLink } from '../inline-link/inline-link';
 
 /**
  * TODO: Add description
@@ -18,26 +24,32 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
   <C extends React.ElementType = 'footer'>(
     {
       as,
-      // logos,
-      // navItems,
-      // linkIcons,
-      // socials,
+      logo,
+      pageLinks,
       className,
+      inquiriesHeader,
+      inquiriesLinks,
+      newsLetterHeader,
+      newsLetterLinks,
+      copyright,
+      privacyPolicy,
+      connectHeader,
+      connectLinkIcons,
+      connectButtonProps,
       ...rest
     }: RadiusFooterProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const Component = as || 'footer';
 
-    // const {
-    //   styles,
-    //   navContainer,
-    //   menu,
-    //   toggleButton,
-    //   secondaryActionsContainer,
-    // } = useStyles({
-    //   isOpen,
-    // });
+    const {
+      firstContainer,
+      // pagesContainer,
+      // inquiriesContainer,
+      secondContainer,
+      thirdContainer,
+      fourthContainer,
+    } = useStyles();
 
     return (
       <Component ref={ref} className={className} {...rest}>
@@ -51,73 +63,120 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
           fill={radiusTokens.component.color.footer.background}
           direction="vertical"
         >
-          <p>logo</p>
-          {/* Menu */}
+          {logo}
+          {/* Grid Wrapper */}
           <RadiusAutoLayout
-            space={radiusTokens.component.spacing.footer.gap.menu}
-            width="fill-parent"
             grid
+            width="fill-parent"
+            space={radiusTokens.component.spacing.footer.gap.rows}
           >
-            {/* Pages */}
-            <RadiusAutoLayout
-              space={radiusTokens.component.spacing.footer.gap.links}
-              direction="vertical"
-              gridSpan={
-                radiusTokens.component.layout.footer.gridSpan.rowContainer
-              }
-            >
-              <p>Design</p>
-              <p>Development</p>
+            {/* First container */}
+            <RadiusAutoLayout className={firstContainer}>
+              {/* Pages */}
+              <RadiusAutoLayout
+                // className={pagesContainer}
+                space={radiusTokens.component.spacing.footer.gap.links}
+                direction="vertical"
+                width="fill-parent"
+              >
+                {pageLinks.map((pageLinkProps) => (
+                  <RadiusLinkButton {...pageLinkProps} />
+                ))}
+              </RadiusAutoLayout>
+              {/* General Inquiries */}
+              <RadiusAutoLayout
+                // className={inquiriesContainer}
+                space={radiusTokens.component.spacing.footer.gap.categories}
+                direction="vertical"
+                gridColSpan={
+                  radiusTokens.component.layout.footer.gridSpan.rowContainer
+                }
+                width="fill-parent"
+              >
+                <Typography
+                  fill={radiusTokens.component.color.navigation.foreground}
+                  {...radiusTokens.component.typography.footer.header}
+                >
+                  {inquiriesHeader}
+                </Typography>
+                {/* Links Container */}
+                <RadiusAutoLayout
+                  space={radiusTokens.component.spacing.footer.gap.links}
+                  direction="vertical"
+                >
+                  {inquiriesLinks.map((inquiriesLinkProps) => (
+                    <RadiusInlineLink
+                      {...inquiriesLinkProps}
+                      typography={
+                        radiusTokens.component.typography.inlineText.label.large
+                      }
+                    />
+                  ))}
+                </RadiusAutoLayout>
+              </RadiusAutoLayout>
             </RadiusAutoLayout>
-            {/* General Inquiries */}
-            <RadiusAutoLayout
-              space={radiusTokens.component.spacing.footer.gap.categories}
-              direction="vertical"
-              gridSpan={
-                radiusTokens.component.layout.footer.gridSpan.rowContainer
-              }
-            >
-              <p>General Inquiries</p>
-              <p>info@rangle.io</p>
-            </RadiusAutoLayout>
+            {/* Third Container */}
             {/* Newsletter */}
             <RadiusAutoLayout
+              className={thirdContainer}
               space={radiusTokens.component.spacing.footer.gap.categories}
               direction="vertical"
-              gridSpan={
-                radiusTokens.component.layout.footer.gridSpan.rowContainer
-              }
             >
-              <p>Our Newsletter</p>
-              <p>Sign up</p>
+              <Typography
+                fill={radiusTokens.component.color.navigation.foreground}
+                {...radiusTokens.component.typography.footer.header}
+              >
+                {newsLetterHeader}
+              </Typography>
+              {newsLetterLinks.map((newsLetterLinkProps) => (
+                <RadiusLinkButton {...newsLetterLinkProps} />
+              ))}
             </RadiusAutoLayout>
-          </RadiusAutoLayout>
-          {/* Legal & Connect */}
-          <RadiusAutoLayout width="fill-parent" grid>
+
+            {/* Second container */}
             {/* Legal */}
             <RadiusAutoLayout
+              className={secondContainer}
               space={radiusTokens.component.spacing.footer.gap.legal}
-              gridSpan={
-                radiusTokens.component.layout.footer.gridSpan.legalContainer
-              }
               direction={radiusTokens.component.direction.footer.legalContainer}
+              height="fill-parent"
+              alignment="center"
             >
-              <p>Copyright</p>
-              <p>Privacy Policy</p>
+              <Typography
+                fill={radiusTokens.component.color.navigation.foreground}
+                {...radiusTokens.component.typography.footer.legal}
+              >
+                {copyright}
+              </Typography>
+              <RadiusInlineLink
+                {...privacyPolicy}
+                typography={
+                  radiusTokens.component.typography.inlineText.label.small
+                }
+              />
             </RadiusAutoLayout>
+
+            {/* Fourth Container */}
             {/* Connect */}
             <RadiusAutoLayout
+              className={fourthContainer}
               space={radiusTokens.component.spacing.footer.gap.connect}
-              gridSpan={
-                radiusTokens.component.layout.footer.gridSpan.connectContainer
-              }
               direction={
                 radiusTokens.component.direction.footer.connectContainer
               }
+              alignment="center"
             >
-              <p>Connect with us</p>
-              <p>icons icons</p>
-              <p>Button</p>
+              <RadiusAutoLayout>
+                {connectLinkIcons.map((connectLinkIconProps) => (
+                  <RadiusLinkIcon
+                    {...connectLinkIconProps}
+                    // TODO: add sizing token when available
+                    size={{ css: '24px' }}
+                  />
+                ))}
+              </RadiusAutoLayout>
+              {/* // TODO: Omit props that are being provided here */}
+              <RadiusButton {...connectButtonProps} variant="secondary" />
             </RadiusAutoLayout>
           </RadiusAutoLayout>
         </RadiusAutoLayout>
