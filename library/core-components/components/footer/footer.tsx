@@ -1,12 +1,9 @@
 import React, { forwardRef } from 'react';
-// import { cx } from '@emotion/css';
-// import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
-// import { useStyles } from './nav.styles';
 import { RadiusFooterComponent, RadiusFooterProps } from './footer.types';
 import { PolymorphicRef } from '../../utils';
 import { RadiusAutoLayout } from '../auto-layout/auto-layout';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { useStyles } from './footer.styles';
 import { RadiusLinkButton } from '../link-button';
 import { Typography } from '../typography';
@@ -15,7 +12,9 @@ import { RadiusButton } from '../button';
 import { RadiusInlineLink } from '../inline-link/inline-link';
 
 /**
- * TODO: Add description
+ * A component that renders a footer with links to various pages and social
+ * media. It is polymorphic and can be passed a custom wrapper component via the
+ * `as` prop, but by default it renders a `footer` tag.
  *
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/6wmTw9t9kiutJssWjO890d/Footer?type=design&node-id=1-2880)
@@ -33,7 +32,6 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
       newsLetterLinks,
       copyright,
       privacyPolicy,
-      connectHeader,
       connectLinkIcons,
       connectButtonProps,
       ...rest
@@ -42,14 +40,8 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
   ) => {
     const Component = as || 'footer';
 
-    const {
-      firstContainer,
-      // pagesContainer,
-      // inquiriesContainer,
-      secondContainer,
-      thirdContainer,
-      fourthContainer,
-    } = useStyles();
+    const { firstContainer, secondContainer, thirdContainer, fourthContainer } =
+      useStyles();
 
     return (
       <Component ref={ref} className={className} {...rest}>

@@ -22,7 +22,6 @@ export type RadiusFooterExtendedProps = {
     RadiusInlineLinkProps<React.ElementType>,
     'typography'
   >;
-  connectHeader: string;
   connectLinkIcons: Array<RadiusLinkIconProps<React.ElementType>>;
   connectButtonProps: OmitPolymorphicProp<
     RadiusButtonProps<React.ElementType>,
