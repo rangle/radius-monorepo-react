@@ -126,7 +126,9 @@ export type RadiusFooterExtendedProps = {
   /**
    * The social link icons to display in the Contact section.
    * Takes an array of objects, containing the props for each link (see the
-   * `RadiusLinkIcon` component for the available props).
+   * `RadiusLinkIcon` component for the available props). Note that the
+   * `size` prop is not required here as it is automatically set within
+   * the footer component.
    *
    * @example
    * ```
@@ -148,7 +150,9 @@ export type RadiusFooterExtendedProps = {
    * ]}
    * ```
    * */
-  connectLinkIcons: Array<RadiusLinkIconProps<React.ElementType>>;
+  connectLinkIcons: Array<
+    OmitPolymorphicProp<RadiusLinkIconProps<React.ElementType>, 'size'>
+  >;
   /**
    * The button to display in the Contact section.
    * Takes an object containing the props for the button (see the

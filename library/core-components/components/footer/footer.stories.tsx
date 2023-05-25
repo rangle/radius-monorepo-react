@@ -63,7 +63,6 @@ const meta: Meta<typeof RadiusFooter> = {
       children: 'Privacy Policy',
       href: '#',
     },
-    connectHeader: 'Connect with us',
     connectLinkIcons: [
       { icon: Twitter, href: '#', 'aria-label': 'Descriptive text' },
       { icon: LinkedIn, href: '#', 'aria-label': 'Descriptive text' },
