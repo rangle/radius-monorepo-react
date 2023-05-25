@@ -5,6 +5,7 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 import { RadiusAutoLayout } from '../../components/auto-layout/auto-layout';
 import { RadiusButton } from '../../components/button/button';
 import { Typography } from '../../components/typography/typography';
+import { useStyles } from './hero.styles';
 
 export type RadiusHeroProps = {
   /** The main header text */
@@ -19,6 +20,8 @@ export type RadiusHeroProps = {
   buttonLabel?: string;
   /** The url for the Call To Action link button. If not provided, the button will not be shown */
   ctaUrl?: string;
+  /** Whether the image is on the left or right */
+  imageAlignment?: 'left' | 'right';
   className?: string;
 };
 
@@ -34,9 +37,20 @@ export type RadiusHeroProps = {
  */
 export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
   (
-    { header, eyebrow, buttonLabel, imageSrc, imageAlt, ctaUrl, className },
+    {
+      header,
+      eyebrow,
+      buttonLabel,
+      imageSrc,
+      imageAlt,
+      ctaUrl,
+      imageAlignment = 'left',
+      className,
+    },
     ref
   ) => {
+    const { contentContainer } = useStyles({ imageAlignment });
+
     return (
       <RadiusAutoLayout
         className={className}
@@ -49,6 +63,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
       >
         {/* Content Container */}
         <RadiusAutoLayout
+          className={contentContainer}
           height="fill-parent"
           width="fill-parent"
           alignment="center"
