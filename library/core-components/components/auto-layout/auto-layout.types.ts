@@ -1,4 +1,7 @@
-import { CSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
+import {
+  CSSProp,
+  RadiusTokenSubjects,
+} from '@rangle/radius-foundations/generated/design-tokens.types';
 import { PolymorphicComponentPropWithRef } from '../../utils';
 
 export const mapAlignments = {
@@ -120,17 +123,17 @@ export type AutoLayoutExtendedProps = {
   /** Whether this AutoLayout should behave as a grid */
   grid?: boolean;
   /** The number of columns this item should take up in a parent's grid */
-  gridColSpan?: CSSProp<'other'>;
+  gridColSpan?: CSSProp<'layout', RadiusTokenSubjects, 'component'>;
   /** The starting column position of this item in a parent's grid */
-  gridColStart?: CSSProp<'other'>;
+  gridColStart?: CSSProp<'layout', RadiusTokenSubjects, 'component'>;
   /** The ending column position of this item in a parent's grid */
-  gridColEnd?: CSSProp<'other'>;
+  gridColEnd?: CSSProp<'layout', RadiusTokenSubjects, 'component'>;
   /** The number of rows this item should take up in a parent's grid */
-  gridRowSpan?: CSSProp<'other'>;
+  gridRowSpan?: CSSProp<'layout', RadiusTokenSubjects, 'component'>;
   /** The starting row position of this item in a parent's grid */
-  gridRowStart?: CSSProp<'other'>;
+  gridRowStart?: CSSProp<'layout', RadiusTokenSubjects, 'component'>;
   /** The ending row position of this item in a parent's grid */
-  gridRowEnd?: CSSProp<'other'>;
+  gridRowEnd?: CSSProp<'layout', RadiusTokenSubjects, 'component'>;
 };
 
 export type AutoLayoutProps<C extends React.ElementType> =
