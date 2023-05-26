@@ -109,17 +109,17 @@ export const AutoLayout: Story = {
         <RadiusAutoLayout
           width={100}
           height={args.direction !== 'vertical' ? 'fill-parent' : '25%'}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
         <RadiusAutoLayout
           width={100}
           height={args.direction !== 'vertical' ? 'fill-parent' : '25%'}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
         <RadiusAutoLayout
           width={100}
           height={args.direction !== 'vertical' ? 'fill-parent' : '25%'}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
       </RadiusAutoLayout>
     </div>
@@ -131,9 +131,8 @@ export const AutoLayout: Story = {
     height: 'fill-parent',
     space: 'auto',
     padding: radiusTokens.core.spacing[4],
-    fill: radiusTokens.semanticTheme.color.actions.default.secondaryBackground,
-    stroke:
-      radiusTokens.semanticTheme.color.actions.default.secondaryForeground,
+    fill: { css: 'white' },
+    stroke: { css: 'black' },
     strokeWidth: radiusTokens.core.borderWidth[2],
     cornerRadius: radiusTokens.core.borderRadius.none,
     clippedContent: false,
@@ -155,20 +154,20 @@ export const Padding: Story = {
         width={100}
         height={25}
         padding={{ css: '50px 0 0 20px' }}
-        fill={radiusTokens.component.color.button.primary.hover.background}
+        fill={{ css: '#D44527' }}
       />
 
       <RadiusAutoLayout
         width={100}
         height={25}
         padding={{ css: '30px 0' }}
-        fill={radiusTokens.component.color.button.primary.hover.background}
+        fill={{ css: '#D44527' }}
       />
       <RadiusAutoLayout
         width={100}
         height={25}
         padding={{ css: '48px' }}
-        fill={radiusTokens.component.color.button.primary.hover.background}
+        fill={{ css: '#D44527' }}
       />
     </RadiusAutoLayout>
   ),
@@ -192,38 +191,38 @@ export const Opacity: Story = {
         height={25}
         // @ts-expect-error - opacity type needs refinement
         opacity={radiusTokens.core.opacity['25percent']}
-        stroke={radiusTokens.component.color.button.primary.default.background}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        stroke={{ css: 'black' }}
+        fill={{ css: 'black' }}
       />
       <RadiusAutoLayout
         width={100}
         height={25}
         // @ts-expect-error - opacity type needs refinement
         opacity={radiusTokens.core.opacity['35percent']}
-        stroke={radiusTokens.component.color.button.primary.default.background}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        stroke={{ css: 'black' }}
+        fill={{ css: 'black' }}
       />
       <RadiusAutoLayout
         width={100}
         height={25}
         // @ts-expect-error - opacity type needs refinement
         opacity={radiusTokens.core.opacity['65percent']}
-        stroke={radiusTokens.component.color.button.primary.default.background}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        stroke={{ css: 'black' }}
+        fill={{ css: 'black' }}
       />
       <RadiusAutoLayout
         width={100}
         height={25}
         // @ts-expect-error - opacity type needs refinement
         opacity={radiusTokens.core.opacity['90percent']}
-        stroke={radiusTokens.component.color.button.primary.default.background}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        stroke={{ css: 'black' }}
+        fill={{ css: 'black' }}
       />
       <RadiusAutoLayout
         width={100}
         height={25}
-        stroke={radiusTokens.component.color.button.primary.default.background}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        stroke={{ css: 'black' }}
+        fill={{ css: 'black' }}
       />
     </RadiusAutoLayout>
   ),
@@ -242,16 +241,8 @@ export const BackgroundColor: Story = {
       width="fill-parent"
       padding={{ css: '12px' }}
     >
-      <RadiusAutoLayout
-        width={100}
-        height={25}
-        fill={radiusTokens.component.color.button.primary.default.background}
-      />
-      <RadiusAutoLayout
-        width={100}
-        height={25}
-        fill={radiusTokens.component.color.button.primary.hover.background}
-      />
+      <RadiusAutoLayout width={100} height={25} fill={{ css: 'black' }} />
+      <RadiusAutoLayout width={100} height={25} fill={{ css: '#D44527' }} />
       <RadiusAutoLayout width={100} height={25} fill={{ css: 'red' }} />
       <RadiusAutoLayout width={100} height={25} fill={{ css: '#0000ff' }} />
       <RadiusAutoLayout
@@ -284,23 +275,23 @@ export const Border: Story = {
       <RadiusAutoLayout
         width={50}
         height={50}
-        stroke={radiusTokens.component.color.button.primary.hover.background}
+        stroke={{ css: '#D44527' }}
         // @ts-expect-error - strokeWidth type needs refinement
         strokeWidth={radiusTokens.core.borderWidth['1']}
       />
       <RadiusAutoLayout
         width={50}
         height={50}
-        stroke={radiusTokens.component.color.button.primary.hover.background}
-        strokeAlign={`outside`}
+        stroke={{ css: '#D44527' }}
+        strokeAlign="outside"
         // @ts-expect-error - strokeWidth type needs refinement
         strokeWidth={radiusTokens.core.borderWidth['2']}
       />
       <RadiusAutoLayout
         width={50}
         height={50}
-        stroke={radiusTokens.component.color.button.primary.hover.background}
-        strokeAlign={'inside'}
+        stroke={{ css: '#D44527' }}
+        strokeAlign="inside"
         strokeWidth={{ css: '20px 0 1px 5px' }}
       />
     </RadiusAutoLayout>
@@ -325,21 +316,21 @@ export const BorderRadius: Story = {
         height={50}
         // @ts-expect-error - cornerRadius type needs refinement
         cornerRadius={radiusTokens.core.borderRadius[4]}
-        stroke={radiusTokens.component.color.button.primary.hover.background}
+        stroke={{ css: '#D44527' }}
       />
       <RadiusAutoLayout
         width={50}
         height={50}
         // @ts-expect-error - cornerRadius type needs refinement
         cornerRadius={radiusTokens.core.borderRadius[16]}
-        stroke={radiusTokens.component.color.button.primary.hover.background}
+        stroke={{ css: '#D44527' }}
       />
       <RadiusAutoLayout
         width={50}
         height={50}
         // @ts-expect-error - cornerRadius type needs refinement
         cornerRadius={radiusTokens.core.borderRadius.max}
-        stroke={radiusTokens.component.color.button.primary.hover.background}
+        stroke={{ css: '#D44527' }}
       />
     </RadiusAutoLayout>
   ),
@@ -356,16 +347,16 @@ export const Absolute: Story = {
       direction={'vertical'}
       width={'fill-parent'}
       strokeAlign={'inside'}
-      stroke={radiusTokens.component.color.button.primary.default.background}
+      stroke={{ css: 'black' }}
       padding={{ css: '20px' }}
       isParent={true}
       height={200}
       style={{ fontFamily: 'Riforma LL' }}
     >
       <RadiusAutoLayout
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
         style={{
-          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+          color: 'white',
         }}
         padding={{ css: '12px' }}
         absolutePosition={true}
@@ -376,9 +367,9 @@ export const Absolute: Story = {
       </RadiusAutoLayout>
       <RadiusAutoLayout
         padding={{ css: '12px' }}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
         style={{
-          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+          color: 'white',
         }}
         horizontalConstraint="right"
         verticalConstraint="bottom"
@@ -404,35 +395,35 @@ export const AsElements: Story = {
       width="fill-parent"
       padding={{ css: '12px' }}
       style={{
-        color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+        color: 'white',
         fontFamily: 'Riforma LL',
       }}
     >
       <RadiusAutoLayout
         as="h1"
         padding={{ css: '20px' }}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
       >
         As h1
       </RadiusAutoLayout>
       <RadiusAutoLayout
         as="main"
         padding={{ css: '20px' }}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
       >
         As main
       </RadiusAutoLayout>
       <RadiusAutoLayout
         as="ul"
         padding={{ css: '20px' }}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
       >
         As ul
       </RadiusAutoLayout>
       <RadiusAutoLayout
         as="p"
         padding={{ css: '20px' }}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
       >
         As paragraph
       </RadiusAutoLayout>
@@ -452,7 +443,7 @@ export const Effects: Story = {
       width="fill-parent"
       padding={{ css: '12px' }}
       style={{
-        color: `var(${radiusTokens.component.color.button.primary.default.background})`,
+        color: `var(${{ css: 'black' }})`,
         fontFamily: 'Riforma LL',
       }}
     >
@@ -479,9 +470,9 @@ export const Effects: Story = {
       <RadiusAutoLayout
         layerBlur={1}
         padding={{ css: '20px' }}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
         style={{
-          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+          color: 'white',
         }}
       >
         layer-blur
@@ -507,9 +498,9 @@ export const Effects: Story = {
         layerBlur={1}
         // @ts-expect-error - dropShadow type needs refinement
         dropShadow={radiusTokens.core.shadow[400]}
-        fill={radiusTokens.component.color.button.primary.default.background}
+        fill={{ css: 'black' }}
         style={{
-          color: `var(${radiusTokens.component.color.button.primary.default.label})`,
+          color: 'white',
         }}
       >
         layer-blur and drop-shadow
@@ -531,7 +522,7 @@ export const Layouts: Story = {
       alignment="center"
       isParent={true}
       style={{
-        color: `var(${radiusTokens.component.color.button.primary.default.background})`,
+        color: `var(${{ css: 'black' }})`,
         fontFamily: 'Riforma LL',
       }}
     >

@@ -56,17 +56,17 @@ const ThreeBoxesTemplate = {
         <RadiusAutoLayout
           width={args.children.width}
           height={args.children.height}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
         <RadiusAutoLayout
           width={args.children.width}
           height={args.children.height}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
         <RadiusAutoLayout
           width={args.children.width}
           height={args.children.height}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
       </RadiusAutoLayout>
     </RadiusAutoLayout>
