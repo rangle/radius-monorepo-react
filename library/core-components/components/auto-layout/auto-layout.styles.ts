@@ -1,3 +1,4 @@
+import { CSSExpression } from '@rangle/radius-foundations';
 import { renderCSSProp, css, PickWithRequired } from '../../utils';
 
 import { RadiusAutoLayout } from './auto-layout';
@@ -47,6 +48,20 @@ export const setPosition = (
   }
 
   return out;
+};
+
+/**
+ * Function that returns the `box-shadow` property given the dropShadow and
+ * innerShadow props.
+ */
+const getShadow = (
+  dropShadow: StyleProps['dropShadow'],
+  innerShadow: StyleProps['innerShadow']
+) => {
+  const shadows: CSSExpression[] = [];
+  if (dropShadow) shadows.push(renderCSSProp(dropShadow));
+  if (innerShadow) shadows.push(`inset ${renderCSSProp(innerShadow)}`);
+  return shadows.length ? shadows.join(', ') : undefined;
 };
 
 /** When no item spacing is specified, figma defaults to 10px */
@@ -185,12 +200,11 @@ export const useStyles = ({
     ${stroke || strokeWidth ? 'border-style: solid;' : ''}
     ${stroke ? `border-color: ${renderCSSProp(stroke)};` : ''}
     ${strokeWidth ? `border-width: ${renderCSSProp(strokeWidth)};` : ''}
-    ${cornerRadius ? `border-radius: ${renderCSSProp(cornerRadius)}` : ''}
+    ${cornerRadius ? `border-radius: ${renderCSSProp(cornerRadius)};` : ''}
     ${x !== undefined || y !== undefined
       ? setPosition(x, y, horizontalConstraint, verticalConstraint)
       : ''}
-    ${dropShadow ? `box-shadow: ${renderCSSProp(dropShadow)};` : ''}
-    ${innerShadow ? `box-shadow: inset ${renderCSSProp(innerShadow)};` : ''}
+    box-shadow: ${getShadow(dropShadow, innerShadow)};
     ${layerBlur ? `filter: blur(${getCssValue(layerBlur)});` : ''}
     ${backgroundBlur
       ? `backdrop-filter: blur(${getCssValue(backgroundBlur)});`

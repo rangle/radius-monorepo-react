@@ -15,7 +15,6 @@ export const mapAlignments = {
 export const mapStrokeAlign = {
   inside: 'border-box',
   outside: 'content-box',
-  // center: 'content-box',
 };
 
 export type BlendMode =
@@ -35,12 +34,6 @@ export type BlendMode =
   | 'saturation'
   | 'color'
   | 'luminosity';
-
-// effects
-// TODO: narrow these types (in generator)
-export type DropShadow = CSSProp;
-export type InnerShadow = CSSProp;
-export type Blur = Size;
 
 export type Size = number | `${number}px` | `${number}%` | `var(${string})`;
 export type AutolayoutSize = Size | 'fill-parent' | 'hug-contents';
@@ -106,19 +99,15 @@ export type AutoLayoutExtendedProps = {
   strokeWidth?: CSSProp; // TODO: narrow this type
   /** Border alignment, inside or outside. We are missing middle alignment */
   strokeAlign?: StrokeAlign;
-  // strokeSide?: StrokeSide;
-  // strokeCap?: StrokeCap;
 
   /** Border radius, can be number or object of topLeft, topRight, bottomRight, bottomLeft */
   cornerRadius?: CSSProp; // TODO: narrow this type
 
   // effects
-  dropShadow?: DropShadow;
-  innerShadow?: InnerShadow;
-  layerBlur?: Blur;
-  backgroundBlur?: Blur;
-
-  // blendMode?: BlendMode; // not needed
+  dropShadow?: CSSProp; // TODO: narrow this type
+  innerShadow?: CSSProp; // TODO: narrow this type
+  layerBlur?: Size;
+  backgroundBlur?: Size;
 
   /** Whether this AutoLayout should behave as a grid */
   grid?: boolean;
