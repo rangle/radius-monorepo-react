@@ -23,8 +23,6 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       patch: process.env.COMPONENT_VERSION?.[2],
     },
     badges: [BADGE.BETA],
-    componentSubtitle:
-      "RadiusAutoLayout duplicates Figma's Auto Layout API. In Figma, Auto Layout is a very powerful feature that allows you to create complex layouts with ease.  We've adapted its API as a Polymorphic component that will work with many of the features in Auto Layout so that decisions made in Figma will be reflected 1:1 in code.",
 
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
