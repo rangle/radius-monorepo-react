@@ -8,7 +8,7 @@ import { RadiusInlineLinkExtendedProps } from './inline-link.types';
 
 const meta: Meta<typeof RadiusInlineLink> = {
   component: RadiusInlineLink,
-  title: 'Inline Link',
+  title: 'Radius Examples / Inline Link',
   parameters: {
     badges: [BADGE.BETA],
   },

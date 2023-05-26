@@ -4,7 +4,7 @@ import { RadiusHero, RadiusHeroProps } from './hero';
 
 const meta: Meta<RadiusHeroProps> = {
   component: RadiusHero,
-  title: 'Hero',
+  title: 'Radius Examples / Hero',
   parameters: {
     badges: [BADGE.BETA],
   },

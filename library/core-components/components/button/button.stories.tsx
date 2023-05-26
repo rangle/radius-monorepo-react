@@ -11,7 +11,7 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
-  title: 'Button',
+  title: 'Radius Examples / Button',
   parameters: {
     design: {
       type: 'figma',

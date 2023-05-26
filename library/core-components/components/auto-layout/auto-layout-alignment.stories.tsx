@@ -3,11 +3,10 @@ import { Meta } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
 import { Stories, Title, Description } from '@storybook/addon-docs';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Auto Layout/Alignment',
+  title: 'Component Development Kit / Auto Layout/Alignment',
   parameters: {
     design: {
       type: 'figma',

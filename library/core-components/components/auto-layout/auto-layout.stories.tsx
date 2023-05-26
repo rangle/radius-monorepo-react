@@ -10,7 +10,7 @@ import { AutoLayoutExtendedProps } from './auto-layout.types';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Auto Layout',
+  title: 'Component Development Kit / Auto Layout',
   parameters: {
     design: {
       type: 'figma',

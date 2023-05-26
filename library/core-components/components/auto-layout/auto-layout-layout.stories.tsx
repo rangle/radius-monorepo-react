@@ -4,11 +4,10 @@ import { Meta } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
 import { Title, Stories, Description } from '@storybook/addon-docs';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Auto Layout/Layout',
+  title: 'Component Development Kit / Auto Layout/Layout',
   parameters: {
     design: {
       type: 'figma',
