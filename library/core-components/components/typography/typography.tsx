@@ -10,6 +10,9 @@ import { useStyles } from './typography.styles';
  * A polymorphic component that represents a text element.
  * Exposes all attributes of the selected tag, plus the specific attributes
  * declared in the Specific Props type above.
+ *
+ * ### Resources
+ * [Figma Design Specs](https://www.figma.com/file/zR8HXS88DxQ4rhgwqIn1lh/Radius-Booster---Foundations?type=design&node-id=213-2449)
  */
 export const Typography: TypographyComponent = forwardRef(
   <C extends React.ElementType = 'p'>(

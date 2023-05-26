@@ -6,6 +6,27 @@ import { PolymorphicRef } from '../../utils/polymorphic.types';
 import { AutoLayoutComponent, AutoLayoutProps } from './auto-layout.types';
 import { useStyles } from './auto-layout.styles';
 
+/**
+ * A component that duplicates Figma's Auto Layout API. In Figma, Auto Layout is
+ * a very powerful feature that allows you to create complex layouts with ease.
+ * We've adapted its API as a Polymorphic component that will work with many of
+ * the features in Auto Layout so that decisions made in Figma will be reflected
+ * 1:1 in code. This has the added benefit of allowing designers to make changes
+ * to the Auto Layout in Figma and have those changes reflected in code without
+ * any additional work.
+ *
+ * Since the Auto Layout component is polymorphic, it can be used as any HTML
+ * tag, as well as any React component, by passing the `as` prop. For example,
+ * if you want to use the Auto Layout component as an `img` tag, you can do so
+ * by passing `as="img"` to the component. The component will now accept all
+ * attributes of the `img` tag, in addition to the Auto Layout specific
+ * attributes. Similarly, if you want to use the Auto Layout component as a
+ * `RadiusButton`, you can do so by passing `as={RadiusButton}` to the
+ * component.
+ *
+ * ### Resources
+ * [Explore Auto Layout properties](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties)
+ * */
 export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
   <C extends React.ElementType = 'div'>(
     {
