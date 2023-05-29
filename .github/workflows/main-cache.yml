@@ -1,0 +1,46 @@
+name: Update Main Cache
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-main-cache:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # For NX caching
+      # For more info see: https://nx.dev/recipes/ci/monorepo-ci-github-actions
+      - uses: nrwl/nx-set-shas@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      # Cache node_modules to speed up future builds
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      # Install dependencies to update the cache
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
