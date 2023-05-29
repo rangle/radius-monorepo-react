@@ -22,6 +22,9 @@ import { withIcon } from './utils';
  * The `fill` prop can be used to set the color of the icon. The default color
  * is `currentColor`, which means that the icon will inherit the color of the
  * parent element.
+ *
+ * ### Resources
+ * [Figma Design Specs](https://www.figma.com/file/QsjLCOnkQR4lgIxlz2a5Va/Icon?type=design&node-id=11-804)
  */
 export const RadiusIcon = forwardRef<SVGSVGElement, RadiusIconProps>(
   ({ component, path, size, fill, className, ...rest }, ref) => {

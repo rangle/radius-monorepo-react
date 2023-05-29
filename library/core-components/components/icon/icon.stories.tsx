@@ -9,7 +9,7 @@ import { flattenObject } from '../../utils/flatten.utils';
 
 const meta: Meta<typeof RadiusIcon> = {
   component: RadiusIcon,
-  title: 'Icon',
+  title: 'Component Development Kit / Icon',
   parameters: {
     badges: [BADGE.BETA],
   },

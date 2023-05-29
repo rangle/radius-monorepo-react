@@ -11,7 +11,7 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
-  title: 'Button',
+  title: 'Radius Examples / Button',
   parameters: {
     design: {
       type: 'figma',
@@ -24,9 +24,6 @@ const meta: Meta<typeof RadiusButton> = {
       patch: process.env.COMPONENT_VERSION?.[2],
     },
     badges: [BADGE.BETA],
-
-    componentSubtitle:
-      'This Polymorphic component will style your component to render as a button.',
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },
   argTypes: {

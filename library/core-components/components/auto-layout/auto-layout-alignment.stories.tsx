@@ -3,11 +3,10 @@ import { Meta } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
 import { Stories, Title, Description } from '@storybook/addon-docs';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Auto Layout/Alignment',
+  title: 'Component Development Kit / Auto Layout/Alignment',
   parameters: {
     design: {
       type: 'figma',
@@ -55,17 +54,17 @@ const ThreeBoxesTemplateAlignmentHor = {
         <RadiusAutoLayout
           width={args.children.width}
           height={20}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
         <RadiusAutoLayout
           width={args.children.width}
           height={40}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
         <RadiusAutoLayout
           width={args.children.width}
           height={60}
-          fill={radiusTokens.component.color.button.primary.hover.background}
+          fill={{ css: '#D44527' }}
         />
       </RadiusAutoLayout>
     </RadiusAutoLayout>
@@ -146,21 +145,9 @@ const ThreeBoxesTemplateAlignmentVert = {
         }
         padding={{ css: '12px' }}
       >
-        <RadiusAutoLayout
-          width="25%"
-          height={10}
-          fill={radiusTokens.component.color.button.primary.hover.background}
-        />
-        <RadiusAutoLayout
-          width="50%"
-          height={10}
-          fill={radiusTokens.component.color.button.primary.hover.background}
-        />
-        <RadiusAutoLayout
-          width="75%"
-          height={10}
-          fill={radiusTokens.component.color.button.primary.hover.background}
-        />
+        <RadiusAutoLayout width="25%" height={10} fill={{ css: '#D44527' }} />
+        <RadiusAutoLayout width="50%" height={10} fill={{ css: '#D44527' }} />
+        <RadiusAutoLayout width="75%" height={10} fill={{ css: '#D44527' }} />
       </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),

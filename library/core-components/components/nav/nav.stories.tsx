@@ -19,7 +19,7 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 
 const meta: Meta<typeof RadiusNav> = {
   component: RadiusNav,
-  title: 'Nav',
+  title: 'Radius Examples / Nav',
   parameters: {
     badges: [BADGE.EXPERIMENTAL],
   },

@@ -11,11 +11,9 @@ const bySubtoken =
 
 const meta: Meta<typeof Typography> = {
   component: Typography,
-  title: 'Typography',
+  title: 'Component Development Kit / Typography',
   parameters: {
     badges: [BADGE.BETA],
-    componentSubtitle:
-      'This Polymorphic component provides an interface to apply styles and semantics to text content.',
   },
   argTypes: {
     children: {

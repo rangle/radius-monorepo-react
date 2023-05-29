@@ -12,15 +12,18 @@ import { Typography } from '../typography/typography';
 import { useStyles } from './button.styles';
 
 // Adding comments before the component will be added to the documentation in storybook.
-/** # RadiusButton Component
+/**
  * A polymorphic component that represents either an html _button_ or _anchor_
  * exposes all attributes of the selected tag, plus the specific attributes
- * declared in the Specific Props type above
+ * declared in the Specific Props type above.
  *
  * Makes use of the react forwardRef function to ensure that the `ref` property is available
  * and points to the html dom element inside.
  *
- * See https://reactjs.org/docs/forwarding-refs.html for more information
+ * See https://reactjs.org/docs/forwarding-refs.html for more information.
+ *
+ * ### Resources
+ * [Figma Design Specs](https://www.figma.com/file/mwknIfsv5oZk5yApkHdja3/Button?type=design&node-id=2-2)
  */
 export const RadiusButton: RadiusButtonComponent = forwardRef(
   <C extends React.ElementType = 'button'>(
