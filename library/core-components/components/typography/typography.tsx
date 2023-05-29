@@ -6,10 +6,10 @@ import { PolymorphicRef } from '../../utils/polymorphic.types';
 import { TypographyProps, TypographyComponent } from './typography.types';
 import { useStyles } from './typography.styles';
 
-/** # Typography Component
- * A polymorphic component that represents a text element.
- * Exposes all attributes of the selected tag, plus the specific attributes
- * declared in the Specific Props type above.
+/**
+ * A polymorphic component that provides an interface to apply styles and
+ * semantics to text content. It exposes all attributes of the selected tag,
+ * plus the Typography component-specific attributes.
  *
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/zR8HXS88DxQ4rhgwqIn1lh/Radius-Booster---Foundations?type=design&node-id=213-2449)
