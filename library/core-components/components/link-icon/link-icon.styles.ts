@@ -1,11 +1,8 @@
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { css } from '../../utils';
-import { RadiusLinkIcon } from '.';
+import { RadiusLinkIconExtendedProps } from './link-icon.types';
 
-export type StyleProps = Pick<
-  React.ComponentProps<typeof RadiusLinkIcon>,
-  'disabled'
->;
+export type StyleProps = Pick<RadiusLinkIconExtendedProps, 'disabled'>;
 
 export const useStyles = ({ disabled }: StyleProps) => ({
   // TODO: add these styles to a global reset style sheet

@@ -1,16 +1,13 @@
 import { css } from '../../utils';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
-import type { RadiusButton } from './button';
+import { RadiusButtonExtendedProps } from './button.types';
 
 /**
  * The props that are used to select the css styles. In this case it is a subset
  * of the props that are passed to the component, but can also contain custom
  * types if needed for the logic of any given component.
  */
-export type StyleProps = Pick<
-  React.ComponentProps<typeof RadiusButton>,
-  'variant'
->;
+export type StyleProps = Pick<RadiusButtonExtendedProps, 'variant'>;
 
 /** returns the className generated for the styles of this component */
 export const useStyles = ({ variant = 'primary' }: StyleProps) => {

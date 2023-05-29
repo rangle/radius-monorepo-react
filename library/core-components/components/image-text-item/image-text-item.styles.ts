@@ -1,12 +1,9 @@
 import { css } from '@emotion/css';
 import { RadiusImageTextItemProps } from './image-text-item.types';
-import { PickWithRequired } from '../../utils';
+import { RequireAndPick } from '../../utils';
 
-type StyleProps = PickWithRequired<
-  RadiusImageTextItemProps,
-  'variant',
-  'imageAlignment'
->;
+type StyleProps = Pick<RadiusImageTextItemProps, 'variant'> &
+  RequireAndPick<RadiusImageTextItemProps, 'imageAlignment'>;
 
 export const useStyles = ({ imageAlignment, variant }: StyleProps) => {
   return {

@@ -1,11 +1,8 @@
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { css } from '../../utils';
-import { RadiusNavItem } from '.';
+import { RadiusNavItemExtendedProps } from './nav-item.types';
 
-export type StyleProps = Pick<
-  React.ComponentProps<typeof RadiusNavItem>,
-  'selected'
->;
+export type StyleProps = Pick<RadiusNavItemExtendedProps, 'selected'>;
 
 export const useStyles = ({ selected }: StyleProps) => ({
   styles: css`

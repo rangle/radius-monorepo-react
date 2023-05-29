@@ -1,8 +1,8 @@
 import { renderCSSProp, css } from '../../utils';
-import { Typography } from './typography';
+import { TypographyExtendedProps } from './typography.types';
 
 export type StyleProps = Pick<
-  React.ComponentProps<typeof Typography>,
+  TypographyExtendedProps,
   | 'align'
   | 'fill'
   | 'font'
