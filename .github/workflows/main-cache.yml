@@ -1,5 +1,13 @@
 name: Update Main Cache
 
+# This workflow is responsible for maintaining an updated cache of node_modules on the 'main' branch.
+# It's triggered on every push to the 'main' branch. It checks out the code, sets up Node.js, and caches
+# the node_modules folder, using a key that is specific to the 'main' branch and the hash of the 'yarn.lock' file.
+# If the 'yarn.lock' file has not changed since the last push to 'main', the existing cache will be reused.
+# If the 'yarn.lock' file has changed, a new cache will be created. This ensures that the cache is always
+# up-to-date with the latest dependencies defined in 'yarn.lock'. This cache can then be used by workflows
+# in pull requests to speed up the build process by reusing the installed dependencies.
+
 on:
   push:
     branches:
