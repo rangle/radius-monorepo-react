@@ -1,9 +1,35 @@
-import React, { ComponentProps } from 'react';
-import { Meta } from '@storybook/react';
+import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
-import { Stories, Title, Description } from '@storybook/addon-docs';
+import { AutoLayoutExtendedProps } from './auto-layout.types';
 
+const alignmentOptions = [
+  'topLeft',
+  'topCenter',
+  'topRight',
+  'left',
+  'center',
+  'right',
+  'bottomLeft',
+  'bottomCenter',
+  'bottomRight',
+] as const;
+
+/**
+ * The RadiusAutoLayout component duplicates the behaviour of Figma AutoLayout's
+ * Alignment property. This deviates from how CSS flexbox works in some cases -
+ * for example when the `direction` is changed, the alignment of the children
+ * remains the same instead of being dependent on the flex-direction. Also, when
+ * the `space` property is set to `auto`, this is equivalent to writing
+ * `justify-content: space-between`, which evenly spaces children regardless of
+ * direction.
+ *
+ * Please see the examples of the different behaviours below.
+ *
+ * ## Resources
+ * [How Figma Alignment Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#alignment)
+ */
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
   title: 'Component Development Kit / Auto Layout / Alignment',
@@ -15,194 +41,180 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       patch: process.env.COMPONENT_VERSION?.[2],
     },
     badges: [BADGE.BETA],
-    docs: {
-      page: () => (
-        <>
-          <Title>Alignment</Title>
-          <Description children="We duplicate the way Figma aligns in Auto Layout components."></Description>
-          <Stories includePrimary={true} />
-        </>
-      ),
+    controls: {
+      // only show controls relevant to this story
+      include: ['alignment', 'direction', 'space'],
     },
+  },
+  argTypes: {
+    alignment: {
+      options: alignmentOptions,
+    },
+    direction: {
+      options: ['horizontal', 'vertical'],
+    },
+    space: {
+      options: {
+        auto: 'auto',
+        fixed: { css: '10px' },
+      },
+      table: { defaultValue: { summary: '10px' } },
+    },
+  },
+  args: {
+    alignment: 'topLeft',
+    direction: 'vertical',
   },
 };
 
 export default meta;
-// type Story = StoryObj<typeof RadiusAutoLayout>;
-// TODO: apply `Story` type to all stories - causes issues due to parent and children args not existing in original component
+type Story = StoryObj<typeof RadiusAutoLayout>;
 
-const ThreeBoxesTemplateAlignmentHor = {
-  render: (args: {
-    parent: ComponentProps<typeof RadiusAutoLayout>;
-    children: ComponentProps<typeof RadiusAutoLayout>;
-  }) => (
-    <RadiusAutoLayout direction="vertical">
+const PADDING = 24;
+const CIRCLE_SIZE = 12;
+
+/** A circle to show the alignment of the child AutoLayouts */
+const Circle = ({
+  top,
+  left,
+  bottom,
+  right,
+}: {
+  top?: number | string;
+  left?: number | string;
+  bottom?: number | string;
+  right?: number | string;
+}) => {
+  return (
+    <div
+      style={{
+        backgroundColor: '#D9D9D9',
+        height: CIRCLE_SIZE,
+        width: CIRCLE_SIZE,
+        borderRadius: '50%',
+        position: 'absolute',
+        top,
+        left,
+        bottom,
+        right,
+      }}
+    ></div>
+  );
+};
+
+/** The positions of each of the circles */
+const circles = [
+  { top: PADDING, left: PADDING },
+  { top: PADDING, left: `calc(50% - ${CIRCLE_SIZE / 2}px)` },
+  { top: PADDING, right: PADDING },
+  { top: `calc(50% - ${CIRCLE_SIZE / 2}px)`, left: PADDING },
+  {
+    top: `calc(50% - ${CIRCLE_SIZE / 2}px)`,
+    left: `calc(50% - ${CIRCLE_SIZE / 2}px)`,
+  },
+  { top: `calc(50% - ${CIRCLE_SIZE / 2}px)`, right: PADDING },
+  { bottom: PADDING, left: PADDING },
+  { bottom: PADDING, left: `calc(50% - ${CIRCLE_SIZE / 2}px)` },
+  { bottom: PADDING, right: PADDING },
+];
+
+const AlignmentDemo = ({
+  alignment,
+  direction,
+  space,
+}: {
+  alignment: AutoLayoutExtendedProps['alignment'];
+  direction: AutoLayoutExtendedProps['direction'];
+  space: AutoLayoutExtendedProps['space'];
+}) => {
+  return (
+    <RadiusAutoLayout
+      width="284px"
+      height="284px"
+      stroke={{ css: '#A6A6A6' }}
+      strokeWidth={{ css: '1px' }}
+      padding={{ css: `${PADDING}px` }}
+      alignment={alignment}
+      direction={direction}
+      space={space}
+      isParent
+    >
       <RadiusAutoLayout
-        direction={args.parent.direction}
-        space={args.parent.space}
-        alignment={args.parent.alignment}
-        width="fill-parent"
-        height={
-          args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
-        }
-        padding={{ css: '12px' }}
-      >
-        <RadiusAutoLayout
-          width={args.children.width}
-          height={20}
-          fill={{ css: '#D44527' }}
-        />
-        <RadiusAutoLayout
-          width={args.children.width}
-          height={40}
-          fill={{ css: '#D44527' }}
-        />
-        <RadiusAutoLayout
-          width={args.children.width}
-          height={60}
-          fill={{ css: '#D44527' }}
-        />
-      </RadiusAutoLayout>
+        width={direction === 'vertical' ? '80px' : '12px'}
+        height={direction === 'vertical' ? '12px' : '80px'}
+        fill={{ css: '#F7856E' }}
+        style={{ zIndex: 1 }}
+      />
+      <RadiusAutoLayout
+        width={direction === 'vertical' ? '113px' : '12px'}
+        height={direction === 'vertical' ? '12px' : '113px'}
+        fill={{ css: '#F7856E' }}
+        style={{ zIndex: 1 }}
+      />
+      <RadiusAutoLayout
+        width={direction === 'vertical' ? '65px' : '12px'}
+        height={direction === 'vertical' ? '12px' : '65px'}
+        fill={{ css: '#F7856E' }}
+        style={{ zIndex: 1 }}
+      />
+      {circles.map((positionProps) => (
+        <Circle {...positionProps} />
+      ))}
     </RadiusAutoLayout>
+  );
+};
+
+export const Alignment: Story = {
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ alignment, direction, space }: AutoLayoutExtendedProps) => (
+    <AlignmentDemo alignment={alignment} direction={direction} space={space} />
   ),
 };
 
-export const AlignmentTop = {
-  ...ThreeBoxesTemplateAlignmentHor,
-  args: {
-    parent: {
-      direction: 'horizontal',
-      space: 'auto',
-      alignment: 'top',
-    },
-    children: {
-      width: 100,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+const GridTemplate = ({ direction, space }: AutoLayoutExtendedProps) => {
+  return (
+    <div
+      style={{
+        width: '100%',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 20,
+      }}
+    >
+      {alignmentOptions.map((alignmentOption) => (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            fontSize: 12,
+            fontFamily: 'Riforma LL',
+            textAlign: 'center',
+          }}
+        >
+          <h3>Alignment {alignmentOption}</h3>
+          <AlignmentDemo
+            alignment={alignmentOption}
+            direction={direction}
+            space={space}
+          />
+        </div>
+      ))}
+    </div>
+  );
 };
 
-export const AlignmentCenter = {
-  ...ThreeBoxesTemplateAlignmentHor,
-  args: {
-    parent: {
-      direction: 'horizontal',
-      space: 'auto',
-      alignment: 'center',
-    },
-    children: {
-      width: 100,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+export const VerticalWithFixedSpacing: Story = {
+  render: () => <GridTemplate direction="vertical" />,
 };
 
-export const AlignmentBottom = {
-  ...ThreeBoxesTemplateAlignmentHor,
-  args: {
-    parent: {
-      direction: 'horizontal',
-      space: 'auto',
-      alignment: 'bottom',
-    },
-    children: {
-      width: 100,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-    sidebar: { disabled: true },
-  },
+export const HorizontalWithFixedSpacing: Story = {
+  render: () => <GridTemplate direction="horizontal" />,
 };
 
-const ThreeBoxesTemplateAlignmentVert = {
-  render: (args: {
-    parent: ComponentProps<typeof RadiusAutoLayout>;
-    children: ComponentProps<typeof RadiusAutoLayout>;
-  }) => (
-    <RadiusAutoLayout direction="vertical">
-      <RadiusAutoLayout
-        direction={args.parent.direction}
-        space={args.parent.space}
-        alignment={args.parent.alignment}
-        width="fill-parent"
-        height={
-          args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
-        }
-        padding={{ css: '12px' }}
-      >
-        <RadiusAutoLayout width="25%" height={10} fill={{ css: '#D44527' }} />
-        <RadiusAutoLayout width="50%" height={10} fill={{ css: '#D44527' }} />
-        <RadiusAutoLayout width="75%" height={10} fill={{ css: '#D44527' }} />
-      </RadiusAutoLayout>
-    </RadiusAutoLayout>
-  ),
+export const VerticalWithAutoSpacing: Story = {
+  render: () => <GridTemplate direction="vertical" space="auto" />,
 };
 
-export const AlignmentLeft = {
-  ...ThreeBoxesTemplateAlignmentVert,
-  args: {
-    parent: {
-      direction: 'vertical',
-      space: 'auto',
-      alignment: 'left',
-    },
-    children: {
-      width: 100,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
-};
-
-export const AlignmentCenterVertically = {
-  ...ThreeBoxesTemplateAlignmentVert,
-  args: {
-    parent: {
-      direction: 'vertical',
-      space: 'auto',
-      alignment: 'center',
-    },
-    children: {
-      width: 100,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
-};
-
-export const AlignmentRight = {
-  ...ThreeBoxesTemplateAlignmentVert,
-  args: {
-    parent: {
-      direction: 'vertical',
-      space: 'auto',
-      alignment: 'right',
-    },
-  },
-  parameters: {
-    name: 'Right',
-    Title: 'Right',
-    namespace: 'Right',
-    controls: {
-      disable: true,
-    },
-    sidebar: { disabled: true },
-  },
+export const HorizontalWithAutoSpacing: Story = {
+  render: () => <GridTemplate direction="horizontal" space="auto" />,
 };

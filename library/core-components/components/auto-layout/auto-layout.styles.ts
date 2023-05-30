@@ -2,7 +2,7 @@ import { CSSExpression } from '@rangle/radius-foundations';
 import { renderCSSProp, css, RequireAndPick } from '../../utils';
 
 import {
-  mapAlignments,
+  flexLayouts,
   mapStrokeAlign,
   AutolayoutSize,
   Size,
@@ -64,6 +64,25 @@ const getShadow = (
   return shadows.length ? shadows.join(', ') : undefined;
 };
 
+/**
+ * Function that returns the `align-items` and `justify-content` properties
+ * given the alignment and direction props. This allows us to map the Figma
+ * alignment prop to the correct flexbox properties.
+ */
+const getAlignment = (
+  alignment: StyleProps['alignment'],
+  direction: StyleProps['direction']
+) => {
+  // TODO: We need a computed flex-direction here in cases where the direction
+  // is provided by token or CSS prop.
+  if (direction !== 'horizontal' && direction !== 'vertical') return '';
+
+  const { alignItems, justifyContent } = flexLayouts[direction][alignment];
+
+  return `align-items: ${alignItems};
+  justify-content: ${justifyContent};`;
+};
+
 /** When no item spacing is specified, figma defaults to 10px */
 const FIGMA_DEFAULT_SPACING = '10px';
 
@@ -73,7 +92,6 @@ const FIGMA_DEFAULT_SPACING = '10px';
  */
 export type StyleProps = Pick<
   AutoLayoutExtendedProps,
-  | 'direction'
   | 'space'
   | 'padding'
   | 'opacity'
@@ -99,6 +117,7 @@ export type StyleProps = Pick<
   RequireAndPick<
     AutoLayoutExtendedProps,
     | 'alignment'
+    | 'direction'
     | 'width'
     | 'height'
     | 'clippedContent'
@@ -148,7 +167,7 @@ export const useStyles = ({
   direction, //flex-direction
   space, // is either auto or number or zero
   clippedContent, //overflow:hidden
-  alignment, //align-items
+  alignment,
   width, //width
   height, //height
   padding, //padding
@@ -185,12 +204,15 @@ export const useStyles = ({
       : renderCSSProp(direction)};
     margin: 0;
     box-sizing: ${mapStrokeAlign[strokeAlign || 'inside']};
-    align-items: ${mapAlignments[alignment]};
+
+    ${getAlignment(alignment, direction)}
+
     width: ${getSize(width)};
     height: ${getSize(height)};
-
     ${isParent ? 'position: relative;' : ''}
     ${absolutePosition ? 'position: absolute;' : ''}
+    // note the justify-content property set by the space property will
+    // override the value set by the getAlignment function above
     ${space === 'auto'
       ? 'justify-content: space-between;'
       : `gap: ${renderCSSProp(space ?? { css: FIGMA_DEFAULT_SPACING })};`};

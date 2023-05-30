@@ -4,13 +4,57 @@ import {
 } from '@rangle/radius-foundations/generated/design-tokens.types';
 import { PolymorphicComponentPropWithRef } from '../../utils';
 
-export const mapAlignments = {
-  top: 'flex-start',
-  center: 'center',
-  bottom: 'flex-end',
-  left: 'flex-start',
-  right: 'flex-end',
+type FlexAlignment = {
+  alignItems: string;
+  justifyContent: string;
 };
+
+type FlexDirectionLayout = {
+  topLeft: FlexAlignment;
+  topCenter: FlexAlignment;
+  topRight: FlexAlignment;
+  left: FlexAlignment;
+  center: FlexAlignment;
+  right: FlexAlignment;
+  bottomLeft: FlexAlignment;
+  bottomCenter: FlexAlignment;
+  bottomRight: FlexAlignment;
+};
+
+/**
+ * A map of alignments to flexbox alignment properties, corresponding to Figma's
+ * AutoLayout alignment options.
+ *
+ * Note: `auto` spacing alignment names are slightly different and may need to
+ * be added at a later date.
+ */
+export const flexLayouts: Record<
+  'horizontal' | 'vertical',
+  FlexDirectionLayout
+> = {
+  horizontal: {
+    topLeft: { alignItems: 'flex-start', justifyContent: 'flex-start' },
+    topCenter: { alignItems: 'flex-start', justifyContent: 'center' },
+    topRight: { alignItems: 'flex-start', justifyContent: 'flex-end' },
+    left: { alignItems: 'center', justifyContent: 'flex-start' },
+    center: { alignItems: 'center', justifyContent: 'center' },
+    right: { alignItems: 'center', justifyContent: 'flex-end' },
+    bottomLeft: { alignItems: 'flex-end', justifyContent: 'flex-start' },
+    bottomCenter: { alignItems: 'flex-end', justifyContent: 'center' },
+    bottomRight: { alignItems: 'flex-end', justifyContent: 'flex-end' },
+  },
+  vertical: {
+    topLeft: { alignItems: 'flex-start', justifyContent: 'flex-start' },
+    topCenter: { alignItems: 'center', justifyContent: 'flex-start' },
+    topRight: { alignItems: 'flex-end', justifyContent: 'flex-start' },
+    left: { alignItems: 'flex-start', justifyContent: 'center' },
+    center: { alignItems: 'center', justifyContent: 'center' },
+    right: { alignItems: 'flex-end', justifyContent: 'center' },
+    bottomLeft: { alignItems: 'flex-start', justifyContent: 'flex-end' },
+    bottomCenter: { alignItems: 'center', justifyContent: 'flex-end' },
+    bottomRight: { alignItems: 'flex-end', justifyContent: 'flex-end' },
+  },
+} as const;
 
 export const mapStrokeAlign = {
   inside: 'border-box',
@@ -77,8 +121,8 @@ export type AutoLayoutExtendedProps = {
   space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
   /** Whether the content should be clipped or not, uses overflow: hidden */
   clippedContent?: boolean;
-  /** The alignment of the layout, uses align-items */
-  alignment?: keyof typeof mapAlignments;
+  /** The alignment of the layout, uses a combination of `align-items` and `justify-content` */
+  alignment?: keyof FlexDirectionLayout;
   /** The width of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%) */
   width?: AutolayoutSize;
   /** The height of the layout, can be number, percentage, hug-contents (auto) or fill-parent (100%) */
