@@ -53,7 +53,7 @@ jobs:
         run: yarn lint:ci
 
       - name: Build Demo App
-        run: npx nx run demo:build
+        run: NX_CLOUD_AUTH_TOKEN=${{ secrets.NX_CLOUD_AUTH_TOKEN }} npx nx run demo:build
 
       - name: Configure AWS credentials for deployment
         uses: aws-actions/configure-aws-credentials@v1
