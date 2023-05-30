@@ -19,7 +19,16 @@ yarn install
 ```
 This command installs all the necessary packages and dependencies required for the project.
 
-### 3. Connect monorepo package dependencies
+### 3. Set up NX Cloud
+Before you can start working with NX Cloud, you need to create an nx-cloud.env file in the root directory. This file should contain the NX Cloud authentication token key. Here's how to set it up:
+
+``` bash
+echo "NX_CLOUD_AUTH_TOKEN=<your-nx-cloud-token>" > nx-cloud.env
+```
+
+Replace <your-nx-cloud-token> with your actual NX Cloud token. This sets up NX Cloud for the project.
+
+### 4. Connect monorepo package dependencies
 After installing the dependencies, you need to connect the monorepo package dependencies using the following command:
 
 ``` bash
@@ -27,7 +36,7 @@ yarn bootstrap
 ```
 This command links the packages within the monorepo, ensuring that they work together seamlessly.
 
-### 4. Run Storybook
+### 5. Run Storybook
 To view and test the components, run the Storybook development server with the following command:
 
 ``` bash
@@ -35,7 +44,7 @@ yarn storybook
 ```
 This command launches the Storybook server, which provides an interactive, visual environment to explore and test the components in isolation. You can access the Storybook by opening a web browser and navigating to http://localhost:6006.
 
-### 5. Run the demo app
+### 6. Run the demo app
 To see the components in action, you can run the demo app by executing the following command:
 
 ``` bash
