@@ -201,50 +201,103 @@ export const Padding: Story = {
 
 export const Opacity: Story = {
   render: () => (
-    <RadiusAutoLayout
-      direction="horizontal"
-      alignment="top"
-      width="fill-parent"
-      padding={{ css: '12px' }}
-    >
+    <RadiusAutoLayout width="fill-parent">
       <RadiusAutoLayout
-        width={100}
-        height={25}
-        // @ts-expect-error - opacity type needs refinement
-        opacity={radiusTokens.core.opacity['25percent']}
-        stroke={{ css: 'black' }}
-        fill={{ css: 'black' }}
-      />
-      <RadiusAutoLayout
-        width={100}
-        height={25}
-        // @ts-expect-error - opacity type needs refinement
-        opacity={radiusTokens.core.opacity['35percent']}
-        stroke={{ css: 'black' }}
-        fill={{ css: 'black' }}
-      />
-      <RadiusAutoLayout
-        width={100}
-        height={25}
-        // @ts-expect-error - opacity type needs refinement
-        opacity={radiusTokens.core.opacity['65percent']}
-        stroke={{ css: 'black' }}
-        fill={{ css: 'black' }}
-      />
-      <RadiusAutoLayout
-        width={100}
-        height={25}
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
         // @ts-expect-error - opacity type needs refinement
         opacity={radiusTokens.core.opacity['90percent']}
-        stroke={{ css: 'black' }}
-        fill={{ css: 'black' }}
-      />
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        fill={{ css: '#262626' }}
+        alignment="center"
+        style={{
+          justifyContent: 'center', // only needed until alignment changes are merged
+        }}
+      >
+        <span
+          style={{
+            color: 'white',
+            fontFamily: 'Riforma LL',
+            fontSize: '20px',
+          }}
+        >
+          90%
+        </span>
+      </RadiusAutoLayout>
       <RadiusAutoLayout
-        width={100}
-        height={25}
-        stroke={{ css: 'black' }}
-        fill={{ css: 'black' }}
-      />
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
+        // @ts-expect-error - opacity type needs refinement
+        opacity={radiusTokens.core.opacity['65percent']}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        fill={{ css: '#262626' }}
+        alignment="center"
+        style={{
+          justifyContent: 'center', // only needed until alignment changes are merged
+        }}
+      >
+        <span
+          style={{
+            color: 'white',
+            fontFamily: 'Riforma LL',
+            fontSize: '20px',
+          }}
+        >
+          65%
+        </span>
+      </RadiusAutoLayout>
+      <RadiusAutoLayout
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
+        // @ts-expect-error - opacity type needs refinement
+        opacity={radiusTokens.core.opacity['35percent']}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        fill={{ css: '#262626' }}
+        alignment="center"
+        style={{
+          justifyContent: 'center', // only needed until alignment changes are merged
+        }}
+      >
+        <span
+          style={{
+            color: 'white',
+            fontFamily: 'Riforma LL',
+            fontSize: '20px',
+          }}
+        >
+          35%
+        </span>
+      </RadiusAutoLayout>
+      <RadiusAutoLayout
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
+        // @ts-expect-error - opacity type needs refinement
+        opacity={radiusTokens.core.opacity['25percent']}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        fill={{ css: '#262626' }}
+        alignment="center"
+        style={{
+          justifyContent: 'center', // only needed until alignment changes are merged
+        }}
+      >
+        <span
+          style={{
+            color: 'white',
+            fontFamily: 'Riforma LL',
+            fontSize: '20px',
+          }}
+        >
+          25%
+        </span>
+      </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),
   parameters: {
