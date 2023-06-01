@@ -355,43 +355,66 @@ export const Fill: Story = {
   },
 };
 
-export const Border: Story = {
-  render: () => (
-    <RadiusAutoLayout
-      direction="horizontal"
-      alignment="top"
-      width="fill-parent"
-      padding={{ css: '12px' }}
-    >
+/**
+ * The `stroke` property controls the color of the border. The `strokeWidth`
+ * property controls the thickness of the border. `strokeWidth` can be a single
+ * value or a list of values. If a list of values is provided, the values are
+ * applied in the following order: top, right, bottom, left.
+ */
+export const StrokeAndStrokeWidth: Story = {
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['stroke', 'strokeWidth'],
+    },
+  },
+  argTypes: {
+    stroke: {
+      options: {
+        black: { css: 'black' },
+        red: { css: 'red' },
+        blue: { css: 'blue' },
+        green: { css: 'green' },
+      },
+    },
+    strokeWidth: {
+      options: {
+        '1px': { css: '1px' },
+        '3px': { css: '3px' },
+        '2px 15px': { css: '2px 15px' },
+        '5px 10px 15px 20px': { css: '5px 10px 15px 20px' },
+      },
+    },
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ stroke, strokeWidth }: AutoLayoutExtendedProps) => (
+    <RadiusAutoLayout>
       <RadiusAutoLayout
-        width={50}
-        height={50}
-        stroke={{ css: '#D44527' }}
-        // @ts-expect-error - strokeWidth type needs refinement
-        strokeWidth={radiusTokens.core.borderWidth['1']}
+        width={200}
+        height={200}
+        stroke={stroke ?? { css: '#006C95' }}
+        strokeWidth={strokeWidth ?? { css: '1px' }}
       />
       <RadiusAutoLayout
-        width={50}
-        height={50}
-        stroke={{ css: '#D44527' }}
-        strokeAlign="outside"
-        // @ts-expect-error - strokeWidth type needs refinement
-        strokeWidth={radiusTokens.core.borderWidth['2']}
+        width={200}
+        height={200}
+        stroke={stroke ?? { css: '#006C95' }}
+        strokeWidth={strokeWidth ?? { css: '3px' }}
       />
       <RadiusAutoLayout
-        width={50}
-        height={50}
-        stroke={{ css: '#D44527' }}
-        strokeAlign="inside"
-        strokeWidth={{ css: '20px 0 1px 5px' }}
+        width={200}
+        height={200}
+        stroke={stroke ?? { css: '#006C95' }}
+        strokeWidth={strokeWidth ?? { css: '5px' }}
+      />
+      <RadiusAutoLayout
+        width={200}
+        height={200}
+        stroke={stroke ?? { css: '#006C95' }}
+        strokeWidth={strokeWidth ?? { css: '7px' }}
       />
     </RadiusAutoLayout>
   ),
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
 };
 
 export const BorderRadius: Story = {
