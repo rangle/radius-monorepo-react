@@ -477,6 +477,85 @@ export const CornerRadius: Story = {
   ),
 };
 
+/**
+ * The `clippedContent` property controls whether any content that extends
+ * beyond the bounds of the Auto Layout component is clipped or not. This is
+ * equivalent to `overflow: hidden` in CSS.
+ */
+export const ClippedContent: Story = {
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['clippedContent'],
+    },
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ clippedContent }: AutoLayoutExtendedProps) => (
+    <RadiusAutoLayout space={{ css: '70px' }}>
+      <RadiusAutoLayout direction="vertical" alignment="center">
+        <span
+          style={{
+            fontFamily: 'Riforma LL',
+          }}
+        >
+          {!(clippedContent ?? true) ? 'Not ' : ''}Clipped
+        </span>
+        <RadiusAutoLayout
+          width={200}
+          height={200}
+          stroke={{ css: '#006C95' }}
+          strokeWidth={{ css: '3px' }}
+          cornerRadius={{ css: '12px' }}
+          style={{ borderStyle: 'dashed' }}
+          isParent
+          clippedContent={clippedContent ?? true}
+        >
+          <RadiusAutoLayout
+            fill={{ css: '#F7856E' }}
+            width={120}
+            height={100}
+            absolutePosition
+            style={{
+              right: -60,
+              top: 44,
+            }}
+          ></RadiusAutoLayout>
+        </RadiusAutoLayout>
+      </RadiusAutoLayout>
+      <RadiusAutoLayout direction="vertical" alignment="center">
+        <span
+          style={{
+            fontFamily: 'Riforma LL',
+          }}
+        >
+          {!(clippedContent ?? false) ? 'Not ' : ''}Clipped
+        </span>
+        <RadiusAutoLayout
+          width={200}
+          height={200}
+          stroke={{ css: '#006C95' }}
+          strokeWidth={{ css: '3px' }}
+          cornerRadius={{ css: '12px' }}
+          style={{ borderStyle: 'dashed' }}
+          isParent
+          clippedContent={clippedContent ?? false}
+        >
+          <RadiusAutoLayout
+            fill={{ css: '#F7856E' }}
+            width={120}
+            height={100}
+            absolutePosition
+            style={{
+              right: -60,
+              top: 44,
+            }}
+          ></RadiusAutoLayout>
+        </RadiusAutoLayout>
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
+  ),
+};
+
 export const Absolute: Story = {
   render: () => (
     <RadiusAutoLayout
