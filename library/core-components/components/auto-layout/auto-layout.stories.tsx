@@ -94,6 +94,17 @@ const meta: Meta<typeof RadiusAutoLayout> = {
     // TODO: add grid tokens when ready
     ref: { table: { disable: true } },
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -141,39 +152,51 @@ export const AutoLayout: Story = {
   },
 };
 
+/**
+ * [How Figma Padding works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#padding)
+ */
 export const Padding: Story = {
-  render: () => (
-    <RadiusAutoLayout
-      direction="horizontal"
-      alignment="top"
-      width="fill-parent"
-    >
-      <RadiusAutoLayout
-        width={100}
-        height={25}
-        padding={{ css: '50px 0 0 20px' }}
-        fill={{ css: '#D44527' }}
-      />
-
-      <RadiusAutoLayout
-        width={100}
-        height={25}
-        padding={{ css: '30px 0' }}
-        fill={{ css: '#D44527' }}
-      />
-      <RadiusAutoLayout
-        width={100}
-        height={25}
-        padding={{ css: '48px' }}
-        fill={{ css: '#D44527' }}
-      />
-    </RadiusAutoLayout>
-  ),
   parameters: {
     controls: {
-      disable: true,
+      // only show controls relevant to this story
+      include: ['padding'],
     },
   },
+  argTypes: {
+    padding: {
+      options: {
+        '0px': '0px',
+        '10px': { css: '10px' },
+        '48px 24px': { css: '48px 24px' },
+        '10px 20px 30px 40px': { css: '10px 20px 30px 40px' },
+      },
+    },
+  },
+  render: (args) => (
+    <RadiusAutoLayout
+      stroke={{ css: '#006C95' }}
+      strokeWidth={{ css: `2px` }}
+      padding={{ css: '48px 24px' }}
+      style={{
+        borderStyle: 'dashed',
+      }}
+      {...args}
+    >
+      <RadiusAutoLayout
+        width={585}
+        space="auto"
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: `2px` }}
+        style={{
+          borderStyle: 'dashed',
+        }}
+      >
+        <RadiusAutoLayout width={40} height={242} fill={{ css: '#F7856E' }} />
+        <RadiusAutoLayout width={40} height={242} fill={{ css: '#F7856E' }} />
+        <RadiusAutoLayout width={40} height={242} fill={{ css: '#F7856E' }} />
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
+  ),
 };
 
 export const Opacity: Story = {
