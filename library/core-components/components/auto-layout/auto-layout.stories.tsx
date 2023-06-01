@@ -307,27 +307,44 @@ export const Opacity: Story = {
   },
 };
 
-export const BackgroundColor: Story = {
+export const Fill: Story = {
   render: () => (
-    <RadiusAutoLayout
-      direction="horizontal"
-      alignment="top"
-      width="fill-parent"
-      padding={{ css: '12px' }}
-    >
-      <RadiusAutoLayout width={100} height={25} fill={{ css: 'black' }} />
-      <RadiusAutoLayout width={100} height={25} fill={{ css: '#D44527' }} />
-      <RadiusAutoLayout width={100} height={25} fill={{ css: 'red' }} />
-      <RadiusAutoLayout width={100} height={25} fill={{ css: '#0000ff' }} />
+    <RadiusAutoLayout width="fill-parent">
       <RadiusAutoLayout
-        width={100}
-        height={25}
-        fill={{ css: 'rgba(255, 150, 150, 20)' }}
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        // @ts-expect-error - core tokens are not allowed
+        fill={radiusTokens.core.color.red[400]}
       />
       <RadiusAutoLayout
-        width={100}
-        height={25}
-        fill={{ css: 'rgba(150, 255, 150, 0.2)' }}
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        // @ts-expect-error - core tokens are not allowed
+        fill={radiusTokens.core.color.orange[50]}
+      />
+      <RadiusAutoLayout
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        // @ts-expect-error - core tokens are not allowed
+        fill={radiusTokens.core.color.blue[50]}
+      />
+      <RadiusAutoLayout
+        width={200}
+        height={200}
+        cornerRadius={{ css: '12px' }}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        // @ts-expect-error - core tokens are not allowed
+        fill={radiusTokens.core.color.green[100]}
       />
     </RadiusAutoLayout>
   ),
