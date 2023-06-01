@@ -15,6 +15,11 @@ export default [
         file: './dist/index.esm.js',
         sourcemap: true,
       },
+      {
+        format: 'cjs',
+        file: './dist/index.js',
+        sourcemap: true,
+      },
     ],
     external: ['react', 'react-dom'],
     plugins: [

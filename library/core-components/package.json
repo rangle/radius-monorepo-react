@@ -4,15 +4,13 @@
   "repository": {
     "url": "ssh://git@github.com:rangle/radius-monorepo-react.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "files": [
     "dist"
   ],
   "version": "0.1.0",
-  "main": "dist/index.esm.js",
-  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "source": "index.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
     "dev": "rm -rf dist && rollup -w --config ../../config/rollup.config.mjs",
@@ -27,7 +25,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@rangle/radius-foundations": "*",
     "@emotion/cache": "^11.10.5",
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
@@ -37,6 +34,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@geometricpanda/storybook-addon-badges": "^2.0.0",
+    "@rangle/radius-foundations": "*",
     "@storybook/react": "^6.5.13",
     "classnames": "^2.3.1"
   },
@@ -55,12 +53,13 @@
     "jest-axe": "^7.0.0",
     "jest-environment-jsdom": "^29.3.1",
     "postcss": "^8.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "resize-observer-polyfill": "^1.5.1",
     "rollup": "^3.3.0",
     "rollup-plugin-postcss": "^4.0.2",
     "ts-jest": "^29.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "typescript": "^5.0.4"
   },
-  "gitHead": "93b4b938eb0af8e973bb402f5546385770713295"
+  "gitHead": "d06d999cbdabb3d3e32798e134871aa9698be5d7"
 }
