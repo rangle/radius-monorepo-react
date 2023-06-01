@@ -417,42 +417,64 @@ export const StrokeAndStrokeWidth: Story = {
   ),
 };
 
-export const BorderRadius: Story = {
-  render: () => (
-    <RadiusAutoLayout
-      direction={'horizontal'}
-      alignment={'top'}
-      width={'fill-parent'}
-      padding={{ css: '12px' }}
-    >
+/**
+ * The `cornerRadius` property controls the radius of the corners. `cornerRadius`
+ * can be a single value or a list of values. If a list of values is provided,
+ * the values are applied in the following order: top-left, top-right,
+ * bottom-right, bottom-left.
+ */
+export const CornerRadius: Story = {
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['cornerRadius'],
+    },
+  },
+  argTypes: {
+    cornerRadius: {
+      options: {
+        '0px': { css: '0px' },
+        '5px': { css: '5px' },
+        '20px': { css: '20px' },
+        '50px': { css: '50px' },
+        '50%': { css: '50%' },
+        '10px 20px 30px 40px': { css: '10px 20px 30px 40px' },
+      },
+    },
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ cornerRadius }: AutoLayoutExtendedProps) => (
+    <RadiusAutoLayout>
       <RadiusAutoLayout
-        width={50}
-        height={50}
-        // @ts-expect-error - cornerRadius type needs refinement
-        cornerRadius={radiusTokens.core.borderRadius[4]}
-        stroke={{ css: '#D44527' }}
+        width={200}
+        height={200}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        cornerRadius={cornerRadius ?? { css: '5px' }}
       />
       <RadiusAutoLayout
-        width={50}
-        height={50}
-        // @ts-expect-error - cornerRadius type needs refinement
-        cornerRadius={radiusTokens.core.borderRadius[16]}
-        stroke={{ css: '#D44527' }}
+        width={200}
+        height={200}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        cornerRadius={cornerRadius ?? { css: '20px' }}
       />
       <RadiusAutoLayout
-        width={50}
-        height={50}
-        // @ts-expect-error - cornerRadius type needs refinement
-        cornerRadius={radiusTokens.core.borderRadius.max}
-        stroke={{ css: '#D44527' }}
+        width={200}
+        height={200}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        cornerRadius={cornerRadius ?? { css: '50px' }}
+      />
+      <RadiusAutoLayout
+        width={200}
+        height={200}
+        stroke={{ css: '#006C95' }}
+        strokeWidth={{ css: '3px' }}
+        cornerRadius={cornerRadius ?? { css: '50%' }}
       />
     </RadiusAutoLayout>
   ),
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
 };
 
 export const Absolute: Story = {
