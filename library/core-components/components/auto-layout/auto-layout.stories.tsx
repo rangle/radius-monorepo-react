@@ -418,6 +418,78 @@ export const StrokeAndStrokeWidth: Story = {
 };
 
 /**
+ * The `strokeAlign` property controls whether the border is inside or outside
+ * the bounding dimensions of an element. It can be set to `inside` or
+ * `outside`, which corresponds to `box-sizing: border-box`, and
+ * `box-sizing: content-box` in CSS, respectively. The default value is `inside`.
+ *
+ * [How Figma Stroke Alignment Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#strokes-in-layout)
+ * */
+export const StrokeAlignment: Story = {
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['strokeAlign'],
+    },
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ strokeAlign }: AutoLayoutExtendedProps) => (
+    <RadiusAutoLayout
+      width="fill-parent"
+      space={{ css: '25px' }}
+      alignment="center"
+    >
+      <RadiusAutoLayout direction="vertical" alignment="center">
+        <span
+          style={{
+            fontFamily: 'Riforma LL',
+            fontWeight: 'bold',
+          }}
+        >
+          Stroke Align{' '}
+          {strokeAlign === 'outside' ? 'Outside' : 'Inside (default)'}
+        </span>
+        <RadiusAutoLayout
+          fill={{ css: '#F7856E' }}
+          height={200}
+          width={200}
+          stroke={{ css: '#000000' }}
+          strokeWidth={{ css: '6px' }}
+          style={{
+            outline: '5px dashed #0081B3',
+            outlineOffset: strokeAlign === 'outside' ? '-11px' : '',
+          }}
+          strokeAlign={strokeAlign ?? 'inside'}
+        />
+      </RadiusAutoLayout>
+      <RadiusAutoLayout direction="vertical" alignment="center">
+        <span
+          style={{
+            fontFamily: 'Riforma LL',
+            fontWeight: 'bold',
+          }}
+        >
+          Stroke Align{' '}
+          {strokeAlign === 'inside' ? 'Inside (default)' : 'Outside'}
+        </span>
+        <RadiusAutoLayout
+          fill={{ css: '#F7856E' }}
+          height={200}
+          width={200}
+          stroke={{ css: '#000000' }}
+          strokeWidth={{ css: '6px' }}
+          style={{
+            outline: '5px dashed #0081B3',
+            outlineOffset: strokeAlign === 'inside' ? '' : '-11px',
+          }}
+          strokeAlign={strokeAlign ?? 'outside'}
+        />
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
+  ),
+};
+
+/**
  * The `cornerRadius` property controls the radius of the corners. `cornerRadius`
  * can be a single value or a list of values. If a list of values is provided,
  * the values are applied in the following order: top-left, top-right,
