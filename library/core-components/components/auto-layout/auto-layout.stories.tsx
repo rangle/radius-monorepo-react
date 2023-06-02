@@ -567,20 +567,37 @@ export const ClippedContent: Story = {
  * relative to the viewport.
  *
  * [How Figma Absolute Positioning Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#h_01G2RPRBBKVKXK0JV59NCSKEE0)
+ *
+ * When an element is absolutely positioned, the `horizontalConstraint` and
+ * `verticalConstraint` properties control how the element is positioned when
+ * the parent is resized. The `horizontalConstraint` property controls the
+ * horizontal position of the element, and the `verticalConstraint` property
+ * controls the vertical position of the element. Note that we are currently
+ * missing some functionality from Figma (`left and right`, `top and bottom`,
+ * `center`, and `scale`)
+ *
+ * [How Figma Constraints Work](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#Constraints_and_resizing)
  */
-export const AbsolutePosition: Story = {
+export const AbsolutePositionAndConstraints: Story = {
   parameters: {
     controls: {
       // only show controls relevant to this story
-      include: ['x', 'y'],
+      include: ['x', 'y', 'horizontalConstraint', 'verticalConstraint'],
     },
   },
   args: {
     x: '157px',
     y: '82px',
+    horizontalConstraint: 'left',
+    verticalConstraint: 'top',
   },
   // @ts-expect-error - bug with `args` type inference due to polymorphism
-  render: ({ x, y }: AutoLayoutExtendedProps) => (
+  render: ({
+    x,
+    y,
+    horizontalConstraint,
+    verticalConstraint,
+  }: AutoLayoutExtendedProps) => (
     <RadiusAutoLayout
       stroke={{ css: '#006C95' }}
       strokeWidth={{ css: '3px' }}
@@ -605,6 +622,8 @@ export const AbsolutePosition: Story = {
         absolutePosition
         x={x}
         y={y}
+        horizontalConstraint={horizontalConstraint}
+        verticalConstraint={verticalConstraint}
       >
         <span
           style={{

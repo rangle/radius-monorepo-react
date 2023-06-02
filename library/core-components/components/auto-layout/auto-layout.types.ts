@@ -46,18 +46,25 @@ export type StrokeCap =
   | 'arrow-lines'
   | 'arrow-equilateral';
 
-export type HorizontalConstraint =
-  | 'left'
-  | 'right'
-  | 'left and right'
-  | 'center'
-  | 'scale';
-export type VerticalConstraint =
-  | 'top'
-  | 'bottom'
-  | 'top and bottom'
-  | 'center'
-  | 'scale';
+/**
+ * The horizontal constraint to use when absolutely positioning an item.
+ * Note that we are currently missing some functionality from Figma (`left and
+ * right`, `center`, and `scale`)
+ * */
+export type HorizontalConstraint = 'left' | 'right';
+// | 'left and right'
+// | 'center'
+// | 'scale';
+
+/**
+ * The vertical constraint to use when absolutely positioning an item.
+ * Note that we are currently missing some functionality from Figma (`top and
+ * bottom`, `center`, and `scale`)
+ * */
+export type VerticalConstraint = 'top' | 'bottom';
+// | 'top and bottom'
+// | 'center'
+// | 'scale';
 
 export type AutoLayoutExtendedProps = {
   /** Used in conjunction with absolutePosition, uses and sets position: 'relative' */
