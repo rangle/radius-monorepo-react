@@ -556,51 +556,68 @@ export const ClippedContent: Story = {
   ),
 };
 
-export const Absolute: Story = {
-  render: () => (
+/**
+ * The `absolutePosition` property controls whether the Auto Layout component
+ * is positioned absolutely or not. This is equivalent to `position: absolute`
+ * in CSS. In this mode, the `x` and `y` properties control the position of the
+ * Auto Layout component, with `x` representing the distance from the left, and
+ * `y` representing the distance from the top. It is important that the parent
+ * has the `isParent` property set to `true` so that the Auto Layout component
+ * can be positioned relative to its parent. Otherwise, it will be positioned
+ * relative to the viewport.
+ *
+ * [How Figma Absolute Positioning Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#h_01G2RPRBBKVKXK0JV59NCSKEE0)
+ */
+export const AbsolutePosition: Story = {
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['x', 'y'],
+    },
+  },
+  args: {
+    x: '157px',
+    y: '82px',
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ x, y }: AutoLayoutExtendedProps) => (
     <RadiusAutoLayout
-      direction={'vertical'}
-      width={'fill-parent'}
-      strokeAlign={'inside'}
-      stroke={{ css: 'black' }}
-      padding={{ css: '20px' }}
-      isParent={true}
-      height={200}
-      style={{ fontFamily: 'Riforma LL' }}
+      stroke={{ css: '#006C95' }}
+      strokeWidth={{ css: '3px' }}
+      cornerRadius={{ css: '12px' }}
+      padding={{ css: '24px' }}
+      space="auto"
+      width={630}
+      isParent
     >
+      <RadiusAutoLayout width={40} height={242} fill={{ css: '#F7856E' }} />
+      <RadiusAutoLayout width={40} height={242} fill={{ css: '#F7856E' }} />
+      <RadiusAutoLayout width={40} height={242} fill={{ css: '#F7856E' }} />
       <RadiusAutoLayout
-        fill={{ css: 'black' }}
+        fill={{ css: '#D44527' }}
+        height={100}
+        width={383}
+        alignment="center"
         style={{
-          color: 'white',
+          justifyContent: 'center', // only needed until alignment changes are merged
         }}
-        padding={{ css: '12px' }}
-        absolutePosition={true}
-        x="0%"
-        y="0%"
+        padding={{ css: '20px' }}
+        absolutePosition
+        x={x}
+        y={y}
       >
-        Top Left
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        padding={{ css: '12px' }}
-        fill={{ css: 'black' }}
-        style={{
-          color: 'white',
-        }}
-        horizontalConstraint="right"
-        verticalConstraint="bottom"
-        absolutePosition={true}
-        x={0}
-        y="0px"
-      >
-        Bottom Right
+        <span
+          style={{
+            color: 'white',
+            fontFamily: 'Riforma LL',
+            fontSize: '16px',
+          }}
+        >
+          Element positioned absolutely
+        </span>
       </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
 };
 
 export const AsElements: Story = {
