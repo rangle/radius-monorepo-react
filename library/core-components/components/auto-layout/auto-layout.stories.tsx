@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { Typography } from '../typography/typography';
 import { RadiusAutoLayout } from './auto-layout';
 import { RadiusButton } from '../button/button';
 import { flattenObject } from '../../utils';
@@ -842,15 +843,34 @@ export const Effects: Story = {
   },
 };
 
-export const Layouts: Story = {
+/**
+ * Most of the props of RadiusAutoLayout support tokens. Tokens are a way to
+ * reference a value from a design system (like Radius). This means that values
+ * defined by designers in Figma can be used directly in code, ensuring that
+ * the design and code are always in sync, eliminating communication errors, and
+ * greatly simplifying the development process.
+ *
+ * Tokens are even able to represent styles across multiple themes and
+ * breakpoints. As you can see in the example below, the layout is fully responsive
+ * across breakpoints, and the colors and typography change based on the theme,
+ * all without any CSS. This is possible because the tokens are defined in a way
+ * that allows them to be responsive and themeable in Figma using Tokens Studio,
+ * and those values are converted directly into CSS variables in the appropriate
+ * contexts/layers.
+ *
+ * Keep an eye out for  our upcoming explainer video on how to create your own
+ * dynamic and responsive components using tokens!
+ */
+export const TokenizedLayout: Story = {
   render: () => (
     <RadiusAutoLayout
       width="fill-parent"
-      space={{ css: '20px' }}
+      space={radiusTokens.component.spacing.hero.gap.image}
+      direction={radiusTokens.component.direction.hero.contentContainer}
+      fill={radiusTokens.component.color.hero.background}
       alignment="center"
-      isParent={true}
+      isParent
       style={{
-        color: `var(${{ css: 'black' }})`,
         fontFamily: 'Riforma LL',
       }}
     >
@@ -862,20 +882,25 @@ export const Layouts: Story = {
           width="fill-parent"
         />
       </RadiusAutoLayout>
-      <RadiusAutoLayout width="fill-parent" direction="vertical">
-        <RadiusAutoLayout
-          as={RadiusButton}
-          variant="primary"
-          absolutePosition={true}
-          x={0}
-          y={0}
-          verticalConstraint="top"
-          horizontalConstraint="right"
+      <RadiusAutoLayout
+        width="fill-parent"
+        direction={radiusTokens.component.direction.hero.textContainer.outer}
+        space={radiusTokens.component.spacing.hero.gap.aboveButton}
+      >
+        <Typography
+          as="h1"
+          font={radiusTokens.component.typography.hero.header.font}
+          fill={radiusTokens.component.color.hero.header}
         >
-          Close Button
-        </RadiusAutoLayout>
-        <RadiusAutoLayout as="h2">Hello world</RadiusAutoLayout>
-        <RadiusAutoLayout as="p">As paragraph</RadiusAutoLayout>
+          Hello World
+        </Typography>
+        <Typography
+          as="p"
+          font={radiusTokens.component.typography.hero.eyebrow.font}
+          fill={radiusTokens.component.color.hero.eyebrow}
+        >
+          I am fully responsive and themeable without any CSS
+        </Typography>
       </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),
