@@ -2,11 +2,9 @@
    TEMPLATE FOR TYPESCRIPT TOKEN TYPES
   Generates a TypeScript file with all the tokens in the theme
 */
-import {
-  TYPOGRAPHY_TOKEN_PROPS,
-  TokenLayers,
-  toKebabCase,
-} from '../lib/token-parser';
+import { TYPOGRAPHY_TOKEN_PROPS } from '../lib/token-parser';
+import { toKebabCase } from '../lib/token-parser.utils';
+import { TokenLayers } from '../lib/token-parser.types';
 
 const EXCLUDE_LAYERS = ['core'];
 const COMPONENT_LAYER_NAME = 'Component';

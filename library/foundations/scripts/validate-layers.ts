@@ -4,12 +4,12 @@ import {
   parseData,
   validateData,
   processLayers,
-  compareTokenLayers,
-  TokenLayers,
   PARAM_SCREEN_MIN_WIDTH,
   PARAM_SECTION_NAME,
   PARAM_SCREEN_MAX_WIDTH,
 } from './lib/token-parser';
+import { TokenLayers } from './lib/token-parser.types';
+import { compareTokenLayers } from './lib/token-layer-snapshot-validator';
 import { isReference } from './lib/token-parser';
 
 // For debugging purposes, you can run this script with:

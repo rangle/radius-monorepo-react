@@ -1,13 +1,11 @@
 import { promises } from 'fs';
+import { parseData, writeToStdout, readStdin } from './lib/token-parser';
+import { createReplaceFunction } from './lib/token-parser.utils';
 import {
-  parseData,
   TokenLayers,
-  writeToStdout,
-  readStdin,
   GeneratorMappingDictionary,
   GeneratorMappingFunction,
-  createReplaceFunction,
-} from './lib/token-parser';
+} from './lib/token-parser.types';
 import {
   renderStorybookStory,
   renderCSSVariables,

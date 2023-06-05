@@ -11,6 +11,36 @@
  * - in the future, can be integrated to the Radius CLI and Supernova scripts
  */
 
+import {
+  renderKey,
+  renderName,
+  processParameters,
+  hasParameters,
+  removeDuplicates,
+} from './token-parser.utils';
+import {
+  isString,
+  TokenOutput,
+  JSONStructure,
+  JSONLeaf,
+  JSONCompositeLeaf,
+  isCompositeLeafBoxShadow,
+  isArray,
+  isCompositeLeafTypography,
+  TokenReference,
+  isCompositeTokenReference,
+  isSingleTokenReference,
+  SingleTokenReference,
+  ReferenceMap,
+  isJSONLeaf,
+  isCompositeLeaf,
+  TokenStructure,
+  isTokenStudioJSON,
+  TokenLayers,
+  TokenLayer,
+  isTokenOutput,
+} from './token-parser.types';
+
 // For debugging purposes, you can run this script with:
 // import data from '../../tokens-typography.json' assert { type: 'json' };
 
@@ -46,328 +76,6 @@ export const TYPOGRAPHY_TOKEN_PROPS = [
   'textCase',
   'textDecoration',
 ] as const;
-
-// ----
-
-/* GENERIC JSON STRUCTURES TO DESCRIBE THE DATA FILE */
-
-/** Leaf node containing a string value */
-export type JSONLeaf = {
-  value: string;
-  type: string;
-  description?: string;
-};
-
-/** Composite node containing a more complex value */
-export type JSONCompositeLeaf = {
-  type: string;
-  value: Record<string, string> | Array<Record<string, string>>;
-  description?: string;
-};
-
-/** Generic node */
-export type JSONStructure = {
-  [key: string]: JSONLeaf | JSONCompositeLeaf | JSONStructure;
-};
-
-/** Root structure of the JSON file */
-export type TokenStructure = Record<string, JSONStructure> & {
-  $themes: unknown[];
-  $metadata: {
-    tokenSetOrder: string[];
-  };
-};
-
-/** Output Token Descriptor */
-export type TokenOutput = {
-  name: string;
-  key: string;
-  type: string;
-  subtoken?: string;
-  description?: string;
-  value: string;
-  rawValue?: string;
-};
-/* REFERENCE TOKEN */
-
-type BasicReference = {
-  key: string;
-  sources: string[];
-  isStatic: boolean;
-};
-
-export type SingleTokenReference = BasicReference & {
-  token: TokenOutput;
-};
-
-export type CompositeTokenReference = BasicReference & {
-  references: Record<string, TokenReference>;
-  isReference: true;
-};
-
-export type TokenReference = SingleTokenReference | CompositeTokenReference;
-
-export const isSingleTokenReference = (
-  u: TokenReference
-): u is SingleTokenReference =>
-  isObject(u) &&
-  (<SingleTokenReference>u).sources !== undefined &&
-  (<SingleTokenReference>u).token !== undefined &&
-  !('isReference' in u);
-
-export const isCompositeTokenReference = (
-  u: TokenReference
-): u is CompositeTokenReference =>
-  isObject(u) &&
-  (<CompositeTokenReference>u).sources !== undefined &&
-  (<CompositeTokenReference>u).references !== undefined &&
-  (<CompositeTokenReference>u).isReference === true;
-
-export type ReferenceMap = Record<string, TokenReference>;
-
-/* SPECIAL TOKEN STRUCTURES TO CREATE SHORTHAND DEFINITIONS *EXPERIMENTAL* */
-
-export type BoxShadowDefinition = {
-  color: string;
-  type: 'dropShadow'; // there should be a 2nd kind
-  x: string;
-  y: string;
-  blur: string;
-  spread: string;
-};
-
-export type CompositeLeafBoxShadow = {
-  type: 'boxShadow';
-  value: Array<BoxShadowDefinition> | BoxShadowDefinition;
-  description?: string;
-};
-
-export const isCompositeLeafBoxShadow = (
-  u: JSONCompositeLeaf
-): u is CompositeLeafBoxShadow =>
-  (<CompositeLeafBoxShadow>u).type === 'boxShadow';
-
-export type CompositeLeafTypography = {
-  type: 'typography';
-  description?: string;
-  value: {
-    fontFamily: string;
-    fontWeight: string;
-    lineHeight: string;
-    fontSize: string;
-    letterSpacing: string;
-    paragraphSpacing: string;
-    textCase: string;
-    textDecoration: string;
-  };
-};
-
-export type TokenLayer = {
-  variables: TokenOutput[];
-  name: string;
-  parameters: Record<string, string | undefined>;
-  dependencies: string[];
-  isStatic: boolean;
-};
-
-export type TokenLayers = {
-  layers: TokenLayer[];
-  order: string[];
-};
-
-export const isCompositeLeafTypography = (
-  u: JSONCompositeLeaf
-): u is CompositeLeafTypography =>
-  (<CompositeLeafTypography>u).type === 'typography' &&
-  typeof (<CompositeLeafTypography>u).value === 'object' &&
-  !!(<CompositeLeafTypography>u).value.fontFamily &&
-  !!(<CompositeLeafTypography>u).value.fontSize &&
-  !!(<CompositeLeafTypography>u).value.fontWeight &&
-  !!(<CompositeLeafTypography>u).value.lineHeight;
-
-/* TYPE GUARDS TO HELP IDENTIFY THE TYPE OF NODES */
-
-export const isString = (u: unknown): u is string => typeof u === 'string';
-
-export const isArray = <T>(u: T | T[]): u is T[] =>
-  typeof u === 'object' && Array.isArray(u);
-
-export const isJSONLeaf = (u: unknown): u is JSONLeaf =>
-  typeof (<JSONLeaf>u).type === 'string' &&
-  typeof (<JSONLeaf>u).value === 'string';
-
-export const isCompositeLeaf = (u: unknown): u is JSONCompositeLeaf =>
-  typeof (<JSONCompositeLeaf>u).type === 'string' &&
-  typeof (<JSONCompositeLeaf>u).value === 'object';
-
-export const isTokenStudioJSON = (u: unknown): u is TokenStructure =>
-  typeof (<TokenStructure>u).$themes === 'object' &&
-  isArray((<TokenStructure>u).$themes) &&
-  typeof (<TokenStructure>u).$metadata === 'object' &&
-  typeof (<TokenStructure>u).$metadata.tokenSetOrder === 'object' &&
-  isArray((<TokenStructure>u).$metadata.tokenSetOrder);
-
-/* GENERATOR MAP TYPES */
-
-export type GeneratorMappingFrom = string | RegExp;
-
-export type GeneratorMappingTo =
-  | string
-  | ((value: string) => string)
-  | ((value: string, match: RegExpMatchArray | null) => string);
-
-export type GeneratorMappingGenericDictionaryItem = readonly [
-  from: GeneratorMappingFrom,
-  to: GeneratorMappingTo
-];
-
-export type GeneratorMappingSpecificDictionaryItem = readonly [
-  tokenPattern: RegExp,
-  item: Array<readonly [from: GeneratorMappingFrom, to: GeneratorMappingTo]>
-];
-
-export type GeneratorMappingDictionaryItem =
-  | GeneratorMappingGenericDictionaryItem
-  | GeneratorMappingSpecificDictionaryItem;
-
-export type GeneratorMappingDictionary = {
-  [template: string]: Array<GeneratorMappingDictionaryItem>;
-};
-
-export type GeneratorMappingFunction = (key: string, value: string) => string;
-
-export const isGeneratorMappingGenericDictionaryItem = (
-  u: unknown
-): u is GeneratorMappingGenericDictionaryItem =>
-  isArray(u) &&
-  u.length === 2 &&
-  (isString(u[0]) || u[0] instanceof RegExp) &&
-  (isString(u[1]) || typeof u[1] === 'function');
-
-export const isGeneratorMappingSpecificDictionaryItem = (
-  u: unknown
-): u is GeneratorMappingSpecificDictionaryItem =>
-  isArray(u) &&
-  u.length === 2 &&
-  u[0] instanceof RegExp &&
-  isArray(u[1]) &&
-  u[1].every(isGeneratorMappingGenericDictionaryItem);
-
-/** createReplaceFunction
- * parse the mapping dictionary and return a function that takes a key and a value and returns the value with the replacements
- * @param mapping Dictionary of mappings to replace values
- * @returns a function that takes a key and a value and returns the value with the replacements
- */
-export const createReplaceFunction = (
-  mapping: GeneratorMappingDictionary[string]
-): GeneratorMappingFunction => {
-  const items = mapping || [];
-  const replacingFunctions = items.flatMap((item) => {
-    if (isGeneratorMappingSpecificDictionaryItem(item)) {
-      const [tokenRegex, specificItems] = item;
-      return specificItems.map(([from, to]) => {
-        const regex = isString(from) ? new RegExp(from) : from;
-
-        return (key: string, value: string) =>
-          tokenRegex.test(key) && regex.test(value)
-            ? value.replace(
-                regex,
-                isString(to) ? to : to(value, value.match(regex))
-              )
-            : value;
-      });
-    } else {
-      const [from, to] = item;
-      const regex = isString(from) ? new RegExp(`^${from}$`) : from;
-
-      return (_: string, value: string) =>
-        regex.test(value)
-          ? value.replace(
-              regex,
-              isString(to) ? to : to(value, value.match(regex))
-            )
-          : value;
-    }
-  });
-
-  return (key: string, value: string) =>
-    replacingFunctions.reduce<string>((acc, fn) => fn(key, acc), value);
-};
-
-/* UTILTY FUNCTIONS */
-
-// convert names to kebab-case in case they come as CamelCase or pascalCase
-export const toKebabCase = (s: string) =>
-  s
-    .replace(/\./g, '-')
-    .replace(/[^A-Za-z0-9_-]/g, ' ')
-    .replace(/([A-Z]+)/g, ' $1')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .toLowerCase()
-    .replace(/\s/g, '-')
-    .replace(/--/g, '-');
-
-// create a formatted key that's more css-friendly
-export const formatKey = (str: string) => toKebabCase(str);
-
-export const renderKey = <T extends Pick<TokenOutput, 'name' | 'type'>>(
-  { name, type }: T,
-  subtoken?: string
-): string =>
-  type !== 'other'
-    ? `--${type}-${formatKey(name.replace(type, ''))}${
-        subtoken ? `-${toKebabCase(subtoken)}` : ''
-      }`
-    : renderOtherKey(name, subtoken);
-
-export const renderOtherKey = (name: string, subtoken?: string): string => {
-  const [layer, type, ...rest] = name.split('.');
-  return `--${type}-${formatKey(`${layer}.${rest.join('.')}`)}${
-    subtoken ? `-${toKebabCase(subtoken)}` : ''
-  }`;
-};
-
-export const renderName = <T extends Pick<TokenOutput, 'name' | 'type'>>(
-  { name }: T,
-  subtoken?: string
-): string => `${name}${subtoken ? `.${subtoken}` : ''}`;
-
-export const isEqual = <T extends Record<string, string | undefined>>(
-  a: T,
-  b: T
-): boolean => {
-  const aProps = Object.getOwnPropertyNames(a);
-  const bProps = Object.getOwnPropertyNames(b);
-  if (aProps.length !== bProps.length) return false;
-  return aProps.every((propName, index) => a[propName] === b[bProps[index]]);
-};
-
-const expressionPattern =
-  /^\d+(\.\d+)?(rem|px)?\s*[+\-*/]\s*\d+(\.\d+)?(rem|px)?(?:\s*[+\-*/]\s*\d+(\.\d+)?(rem|px)?)*$/g;
-export const isExpression = (input: string): boolean => {
-  return !!input.replace(' ', '').match(expressionPattern);
-};
-
-const hasParameters = (parameters: Record<string, string>) =>
-  Object.keys(parameters).filter((key) => key !== 'description').length > 0;
-
-export const removeDuplicates = <T>(arr: T[]): T[] =>
-  arr.filter((value, index, array) => array.indexOf(value) === index);
-
-export const processParameters = (
-  specialNames: string[],
-  dataSet: JSONStructure
-) =>
-  Object.entries(dataSet)
-    .filter(
-      ([name, { value }]) =>
-        specialNames.includes(name) && typeof value === 'string'
-    )
-    .reduce(
-      (res, [name, { value }]) => ({ ...res, [name]: value as string }),
-      {} as Record<string, string>
-    );
 
 /* RENDERING RESULT FUNCTIONS */
 
@@ -437,12 +145,6 @@ export const renderCompositeToken = (
     return [shortHandToken, ...expandedTokens];
   } else throw new Error('Unsupported CompositeLeaf type');
 };
-
-const isObject = (item: unknown): item is Record<string, unknown> =>
-  typeof item === 'object' && item !== null && !Array.isArray(item);
-
-const isTokenOutput = (item: unknown): item is TokenOutput =>
-  isObject(item) && 'key' in item && 'value' in item && 'type' in item;
 
 /* TOKEN REFERENCE MANAGER */
 
@@ -823,67 +525,6 @@ export const processLayers = <T extends TokenStructure>(
     layers,
     order: tokenSetOrder.map(formatLayerName),
   };
-};
-
-// Token Layer Snapshot Validator
-
-export const compareTokenLayers = (
-  snapshot: TokenLayers,
-  update: TokenLayers,
-  showValueDifferences: boolean
-) => {
-  const messages: string[] = [];
-  {
-    const layerOrderMap = new Map(
-      snapshot.order.map((name, index) => [name, index])
-    );
-    const updatedExisingOrder = update.order.filter((l) =>
-      layerOrderMap.has(l)
-    );
-    updatedExisingOrder.forEach((tokenName, index) => {
-      if (tokenName !== snapshot.order[index]) {
-        messages.push(
-          `Different order at index ${index}: ${tokenName} vs ${snapshot.order[index]}`
-        );
-      }
-    });
-  }
-
-  const updateLayersMap = new Map(update.layers.map((l) => [l.name, l]));
-
-  snapshot.layers.forEach((originalLayer) => {
-    const updatedLayer = updateLayersMap.get(originalLayer.name);
-    if (updatedLayer) {
-      if (!isEqual(updatedLayer.parameters, originalLayer.parameters)) {
-        messages.push(`Different parameters in layer ${originalLayer.name}`);
-      }
-      {
-        const variablesMap = new Map(
-          updatedLayer.variables.map((v) => [v.key, v])
-        );
-
-        originalLayer.variables.forEach((originalVariable) => {
-          const updatedVariable = variablesMap.get(originalVariable.key);
-          if (!updatedVariable) {
-            messages.push(
-              `Variable removed in layer ${originalLayer.name}: ${originalVariable.key}`
-            );
-          } else if (showValueDifferences) {
-            if (updatedVariable.value !== originalVariable.value) {
-              messages.push(
-                `Different variable value in layer ${originalLayer.name} for ${updatedVariable.key}
-    Expected: ${originalVariable.value}
-    Found: ${updatedVariable.value}`
-              );
-            }
-          }
-        });
-      }
-    } else {
-      messages.push(`Missing layer ${originalLayer.name}`);
-    }
-  });
-  return messages;
 };
 
 // for debugging purposes
