@@ -154,6 +154,11 @@ export const AutoLayout: Story = {
 };
 
 /**
+ * The `padding` property controls the padding of the Auto Layout component.
+ * `padding` can be a single value or a list of values. If a list of values is
+ * provided, the values are applied in the following order: top, right, bottom,
+ * left.
+ *
  * [How Figma Padding works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#padding)
  */
 export const Padding: Story = {
@@ -200,15 +205,25 @@ export const Padding: Story = {
   ),
 };
 
+/**
+ * The `opacity` property controls the opacity of the Auto Layout component.
+ * */
 export const Opacity: Story = {
-  render: () => (
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['opacity'],
+    },
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ opacity }: AutoLayoutExtendedProps) => (
     <RadiusAutoLayout width="fill-parent">
       <RadiusAutoLayout
         width={200}
         height={200}
         cornerRadius={{ css: '12px' }}
         // @ts-expect-error - opacity type needs refinement
-        opacity={radiusTokens.core.opacity['90percent']}
+        opacity={opacity ?? radiusTokens.core.opacity['90percent']}
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         fill={{ css: '#262626' }}
@@ -232,7 +247,7 @@ export const Opacity: Story = {
         height={200}
         cornerRadius={{ css: '12px' }}
         // @ts-expect-error - opacity type needs refinement
-        opacity={radiusTokens.core.opacity['65percent']}
+        opacity={opacity ?? radiusTokens.core.opacity['65percent']}
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         fill={{ css: '#262626' }}
@@ -256,7 +271,7 @@ export const Opacity: Story = {
         height={200}
         cornerRadius={{ css: '12px' }}
         // @ts-expect-error - opacity type needs refinement
-        opacity={radiusTokens.core.opacity['35percent']}
+        opacity={opacity ?? radiusTokens.core.opacity['35percent']}
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         fill={{ css: '#262626' }}
@@ -280,7 +295,7 @@ export const Opacity: Story = {
         height={200}
         cornerRadius={{ css: '12px' }}
         // @ts-expect-error - opacity type needs refinement
-        opacity={radiusTokens.core.opacity['25percent']}
+        opacity={opacity ?? radiusTokens.core.opacity['25percent']}
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         fill={{ css: '#262626' }}
@@ -301,15 +316,31 @@ export const Opacity: Story = {
       </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
 };
 
+/**
+ * The `fill` property controls the background color of the Auto Layout
+ * component.
+ * */
 export const Fill: Story = {
-  render: () => (
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['fill'],
+    },
+  },
+  argTypes: {
+    fill: {
+      options: {
+        red: { css: 'red' },
+        blue: { css: 'blue' },
+        green: { css: 'green' },
+        orange: { css: 'orange' },
+      },
+    },
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: ({ fill }: AutoLayoutExtendedProps) => (
     <RadiusAutoLayout width="fill-parent">
       <RadiusAutoLayout
         width={200}
@@ -318,7 +349,7 @@ export const Fill: Story = {
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         // @ts-expect-error - core tokens are not allowed
-        fill={radiusTokens.core.color.red[400]}
+        fill={fill ?? radiusTokens.core.color.red[400]}
       />
       <RadiusAutoLayout
         width={200}
@@ -327,7 +358,7 @@ export const Fill: Story = {
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         // @ts-expect-error - core tokens are not allowed
-        fill={radiusTokens.core.color.orange[50]}
+        fill={fill ?? radiusTokens.core.color.orange[50]}
       />
       <RadiusAutoLayout
         width={200}
@@ -336,7 +367,7 @@ export const Fill: Story = {
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         // @ts-expect-error - core tokens are not allowed
-        fill={radiusTokens.core.color.blue[50]}
+        fill={fill ?? radiusTokens.core.color.blue[50]}
       />
       <RadiusAutoLayout
         width={200}
@@ -345,15 +376,10 @@ export const Fill: Story = {
         stroke={{ css: '#006C95' }}
         strokeWidth={{ css: '3px' }}
         // @ts-expect-error - core tokens are not allowed
-        fill={radiusTokens.core.color.green[100]}
+        fill={fill ?? radiusTokens.core.color.green[100]}
       />
     </RadiusAutoLayout>
   ),
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
 };
 
 /**
