@@ -6,12 +6,13 @@ import {
   PARAM_SECTION_NAME,
   PARAM_SCREEN_MIN_WIDTH,
   PARAM_SCREEN_MAX_WIDTH,
-  TokenOutput,
-  isExpression,
-  TokenLayers,
-  toKebabCase,
-  GeneratorMappingFunction,
 } from '../lib/token-parser';
+import { isExpression, toKebabCase } from '../lib/token-parser.utils';
+import {
+  TokenOutput,
+  TokenLayers,
+  GeneratorMappingFunction,
+} from '../lib/token-parser.types';
 
 // Wraps special layers based on detecting specific parameters.
 // It is possible to create more sophisticated parameters for layers in the future
