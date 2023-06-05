@@ -711,54 +711,59 @@ export const AbsolutePositionAndConstraints: Story = {
   ),
 };
 
-export const AsElements: Story = {
-  render: () => (
+/**
+ * RadiusAutoLayout is polymorphic, which means that it can render as any HTML
+ * element or React component. The `as` property controls what is rendered. By
+ * default, it renders a `div` element.
+ *
+ * The component will extend the props of the element or component that it is
+ * rendering (along with the default props of `RadiusAutoLayout`). For example,
+ * if you set `as="h1"`, the component will accept all the props of the `h1`
+ * element. If you set `as={RadiusButton}`, the component will accept all the
+ * props of the `RadiusButton` component.
+ */
+export const Polymorphism: Story = {
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: (props: AutoLayoutExtendedProps) => (
     <RadiusAutoLayout
-      direction="horizontal"
+      direction="vertical"
       width="fill-parent"
-      padding={{ css: '12px' }}
       style={{
-        color: 'white',
         fontFamily: 'Riforma LL',
       }}
     >
-      <RadiusAutoLayout
-        as="h1"
-        padding={{ css: '20px' }}
-        fill={{ css: 'black' }}
-      >
-        As h1
+      <RadiusAutoLayout as="h1" {...props}>
+        Heading
+      </RadiusAutoLayout>
+      <RadiusAutoLayout as="a" href="#" {...props}>
+        Link
       </RadiusAutoLayout>
       <RadiusAutoLayout
-        as="main"
-        padding={{ css: '20px' }}
-        fill={{ css: 'black' }}
-      >
-        As main
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        as="ul"
-        padding={{ css: '20px' }}
-        fill={{ css: 'black' }}
-      >
-        As ul
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        as="p"
-        padding={{ css: '20px' }}
-        fill={{ css: 'black' }}
-      >
-        As paragraph
+        as="img"
+        src="https://via.placeholder.com/1500"
+        height="200px"
+        {...props}
+      />
+      <RadiusAutoLayout as={RadiusButton} variant="primary" {...props}>
+        RadiusButton
       </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
 };
 
+/**
+ * Figma has four types of effects: Drop Shadow, Inner Shadow, Layer Blur,
+ * and Background Blur.
+ *
+ * Drop Shadow (`dropShadow`) and Inner Shadow (`innerShadow`) represent the
+ * shadow on the inside and outside of an element, respectively, and use the
+ * `box-shadow` CSS property. Layer Blur (`layerBlur`) represents the blur
+ * applied to the entire element, using the `filter` CSS property. Background
+ * Blur (`backgroundBlur`) represents the blur applied to the background of the
+ * element, using the `backdrop-filter` CSS property.
+ *
+ * [How Figma Effects Work](https://help.figma.com/hc/en-us/articles/360041488473-Apply-shadow-or-blur-effects)
+ */
 export const Effects: Story = {
   render: () => (
     <RadiusAutoLayout
