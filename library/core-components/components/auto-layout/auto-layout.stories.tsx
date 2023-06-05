@@ -713,6 +713,104 @@ export const AbsolutePositionAndConstraints: Story = {
 };
 
 /**
+ * Figma has four types of effects: Drop Shadow, Inner Shadow, Layer Blur,
+ * and Background Blur.
+ *
+ * Drop Shadow (`dropShadow`) and Inner Shadow (`innerShadow`) represent the
+ * shadow on the inside and outside of an element, respectively, and use the
+ * `box-shadow` CSS property. Layer Blur (`layerBlur`) represents the blur
+ * applied to the entire element, using the `filter` CSS property. Background
+ * Blur (`backgroundBlur`) represents the blur applied to the background of the
+ * element, using the `backdrop-filter` CSS property.
+ *
+ * [How Figma Effects Work](https://help.figma.com/hc/en-us/articles/360041488473-Apply-shadow-or-blur-effects)
+ */
+export const Effects: Story = {
+  parameters: {
+    controls: {
+      // only show controls relevant to this story
+      include: ['dropShadow', 'innerShadow', 'layerBlur', 'backgroundBlur'],
+    },
+  },
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: (props: AutoLayoutExtendedProps) => (
+    <RadiusAutoLayout
+      direction="horizontal"
+      width="fill-parent"
+      padding={{ css: '12px' }}
+      style={{
+        color: `var(${{ css: 'black' }})`,
+        fontFamily: 'Riforma LL',
+      }}
+    >
+      <RadiusAutoLayout
+        // @ts-expect-error - dropShadow type needs refinement
+        dropShadow={radiusTokens.core.shadow[400]}
+        padding={{ css: '20px' }}
+        stroke={{ css: '#0005' }}
+        // @ts-expect-error - strokeWidth type needs refinement
+        strokeWidth={radiusTokens.core.borderWidth['1']}
+        {...props}
+      >
+        drop-shadow
+      </RadiusAutoLayout>
+      <RadiusAutoLayout
+        // @ts-expect-error - innerShadow type needs refinement
+        innerShadow={radiusTokens.core.shadow[400]}
+        padding={{ css: '20px' }}
+        stroke={{ css: '#0005' }}
+        // @ts-expect-error - strokeWidth type needs refinement
+        strokeWidth={radiusTokens.core.borderWidth['1']}
+        {...props}
+      >
+        inner-shadow
+      </RadiusAutoLayout>
+      <RadiusAutoLayout
+        layerBlur={1}
+        padding={{ css: '20px' }}
+        fill={{ css: 'black' }}
+        style={{
+          color: 'white',
+        }}
+        {...props}
+      >
+        layer-blur
+      </RadiusAutoLayout>
+      <RadiusAutoLayout
+        style={{
+          backgroundImage:
+            'linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%)',
+          backgroundSize: '20px 20px',
+          backgroundPosition: ' 0 0, 0 10px, 10px -10px, -10px 0px',
+        }}
+      >
+        <RadiusAutoLayout
+          style={{ fontWeight: 'bold', fontFamily: 'Riforma LL' }}
+          padding={{ css: '20px' }}
+          backgroundBlur={3}
+          {...props}
+        >
+          background-blur
+        </RadiusAutoLayout>
+      </RadiusAutoLayout>
+      <RadiusAutoLayout
+        padding={{ css: '20px' }}
+        layerBlur={1}
+        // @ts-expect-error - dropShadow type needs refinement
+        dropShadow={radiusTokens.core.shadow[400]}
+        fill={{ css: 'black' }}
+        style={{
+          color: 'white',
+        }}
+        {...props}
+      >
+        layer-blur and drop-shadow
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
+  ),
+};
+
+/**
  * RadiusAutoLayout is polymorphic, which means that it can render as any HTML
  * element or React component. The `as` property controls what is rendered. By
  * default, it renders a `div` element.
@@ -722,6 +820,8 @@ export const AbsolutePositionAndConstraints: Story = {
  * if you set `as="h1"`, the component will accept all the props of the `h1`
  * element. If you set `as={RadiusButton}`, the component will accept all the
  * props of the `RadiusButton` component.
+ *
+ * Below are a few examples of RadiusAutoLayout being used as other elements.
  */
 export const Polymorphism: Story = {
   // @ts-expect-error - bug with `args` type inference due to polymorphism
@@ -747,92 +847,6 @@ export const Polymorphism: Story = {
       />
       <RadiusAutoLayout as={RadiusButton} variant="primary" {...props}>
         RadiusButton
-      </RadiusAutoLayout>
-    </RadiusAutoLayout>
-  ),
-};
-
-/**
- * Figma has four types of effects: Drop Shadow, Inner Shadow, Layer Blur,
- * and Background Blur.
- *
- * Drop Shadow (`dropShadow`) and Inner Shadow (`innerShadow`) represent the
- * shadow on the inside and outside of an element, respectively, and use the
- * `box-shadow` CSS property. Layer Blur (`layerBlur`) represents the blur
- * applied to the entire element, using the `filter` CSS property. Background
- * Blur (`backgroundBlur`) represents the blur applied to the background of the
- * element, using the `backdrop-filter` CSS property.
- *
- * [How Figma Effects Work](https://help.figma.com/hc/en-us/articles/360041488473-Apply-shadow-or-blur-effects)
- */
-export const Effects: Story = {
-  render: () => (
-    <RadiusAutoLayout
-      direction="horizontal"
-      width="fill-parent"
-      padding={{ css: '12px' }}
-      style={{
-        color: `var(${{ css: 'black' }})`,
-        fontFamily: 'Riforma LL',
-      }}
-    >
-      <RadiusAutoLayout
-        // @ts-expect-error - dropShadow type needs refinement
-        dropShadow={radiusTokens.core.shadow[400]}
-        padding={{ css: '20px' }}
-        stroke={{ css: '#0005' }}
-        // @ts-expect-error - strokeWidth type needs refinement
-        strokeWidth={radiusTokens.core.borderWidth['1']}
-      >
-        drop-shadow
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        // @ts-expect-error - innerShadow type needs refinement
-        innerShadow={radiusTokens.core.shadow[400]}
-        padding={{ css: '20px' }}
-        stroke={{ css: '#0005' }}
-        // @ts-expect-error - strokeWidth type needs refinement
-        strokeWidth={radiusTokens.core.borderWidth['1']}
-      >
-        inner-shadow
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        layerBlur={1}
-        padding={{ css: '20px' }}
-        fill={{ css: 'black' }}
-        style={{
-          color: 'white',
-        }}
-      >
-        layer-blur
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        style={{
-          backgroundImage:
-            'linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%)',
-          backgroundSize: '20px 20px',
-          backgroundPosition: ' 0 0, 0 10px, 10px -10px, -10px 0px',
-        }}
-      >
-        <RadiusAutoLayout
-          style={{ fontWeight: 'bold', fontFamily: 'Riforma LL' }}
-          padding={{ css: '20px' }}
-          backgroundBlur={3}
-        >
-          background-blur
-        </RadiusAutoLayout>
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        padding={{ css: '20px' }}
-        layerBlur={1}
-        // @ts-expect-error - dropShadow type needs refinement
-        dropShadow={radiusTokens.core.shadow[400]}
-        fill={{ css: 'black' }}
-        style={{
-          color: 'white',
-        }}
-      >
-        layer-blur and drop-shadow
       </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),
