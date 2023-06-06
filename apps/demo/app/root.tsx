@@ -36,22 +36,24 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+        <Global
+          styles={css`
+            body,
+            main {
+              margin: 0;
+              background: var(--color-component-layout-background);
+            }
+          `}
+        />
       </head>
-      <Global
-        styles={css`
-          body,
-          main {
-            margin: 0;
-            background: var(--color-component-layout-background);
-          }
-        `}
-      />
-      <main className="light-mode" data-radius-watch>
-        <Outlet />
-      </main>
-      <ScrollRestoration />
-      <Scripts />
-      <LiveReload />
+      <body>
+        <main className="light-mode" data-radius-watch>
+          <Outlet />
+        </main>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
     </html>
   );
 }
