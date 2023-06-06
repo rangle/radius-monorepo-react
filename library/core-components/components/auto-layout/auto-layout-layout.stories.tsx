@@ -1,18 +1,25 @@
-import React, { ComponentProps } from 'react';
-import { Meta } from '@storybook/react';
+import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
-import { Title, Stories, Description } from '@storybook/addon-docs';
+import { AutoLayoutExtendedProps } from './auto-layout.types';
 
+/**
+ * RadiusAutoLayout duplicates the behaviour of Figma Auto Layout's
+ * Direction and Spacing properties.
+ *
+ * ## Resources
+ * [How Figma Direction Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#direction)
+ *
+ * [How Figma Spacing Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#spacing-between)
+ *
+ * [RadiusAutoLayout Figma Specs](https://www.figma.com/file/ODAUZaQxH8oH2GI0A9MAVb/Radius-Booster---Auto-Layout?type=design&node-id=1312-1092&t=Fh2ap7gIybG92aBU-0)
+ */
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Component Development Kit / Auto Layout/Layout',
+  title: 'Component Development Kit / Auto Layout / Layout',
   parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/????',
-    },
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {
       major: process.env.COMPONENT_VERSION?.[0],
@@ -20,177 +27,149 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       patch: process.env.COMPONENT_VERSION?.[2],
     },
     badges: [BADGE.BETA],
-    docs: {
-      page: () => (
-        <>
-          <Title>Layout</Title>
-          <Description children="We duplicate the way Figma arranges Auto Layout components."></Description>
-          <Stories includePrimary={true} />
-        </>
-      ),
+    controls: {
+      // only show controls relevant to this story
+      include: ['direction', 'space', 'width', 'height'],
     },
+  },
+  argTypes: {
+    direction: {
+      options: ['horizontal', 'vertical'],
+    },
+    space: {
+      options: {
+        auto: 'auto',
+        '0px': { css: '0px' },
+        '10px': { css: '10px' },
+        '80px': { css: '80px' },
+      },
+      table: { defaultValue: { summary: '10px' } },
+    },
+    width: {
+      options: {
+        fixed: '40px',
+        'fill-parent': 'fill-parent',
+      },
+      description:
+        'The width of the children. Usually controls the parent, this is just for this example.',
+      table: {
+        defaultValue: { summary: null },
+      },
+      if: { arg: 'direction', eq: 'horizontal' },
+    },
+    height: {
+      options: {
+        fixed: '40px',
+        'fill-parent': 'fill-parent',
+      },
+      description:
+        'The height of the children. Usually controls the parent, this is just for this example.',
+      table: {
+        defaultValue: { summary: null },
+      },
+      if: { arg: 'direction', eq: 'vertical' },
+    },
+  },
+  args: {
+    direction: 'horizontal',
+    space: 'auto',
   },
 };
 
 export default meta;
-// type Story = StoryObj<typeof RadiusAutoLayout>;
-// TODO: apply `Story` type to all stories - causes issues due to parent and children args not existing in original component
+type Story = StoryObj<typeof RadiusAutoLayout>;
 
-const ThreeBoxesTemplate = {
-  render: (args: {
-    parent: ComponentProps<typeof RadiusAutoLayout>;
-    children: ComponentProps<typeof RadiusAutoLayout>;
-  }) => (
-    <RadiusAutoLayout direction="vertical">
+const PADDING = 24;
+const BORDER_WIDTH = 1;
+const CONTAINER_WIDTH = 629;
+const CONTAINER_HEIGHT = 388;
+
+const LayoutDemo = ({
+  direction,
+  space,
+  childWidth,
+  childHeight,
+}: {
+  direction?: AutoLayoutExtendedProps['direction'];
+  space?: AutoLayoutExtendedProps['space'];
+  childWidth?: AutoLayoutExtendedProps['width'];
+  childHeight?: AutoLayoutExtendedProps['height'];
+}) => {
+  return (
+    <RadiusAutoLayout
+      style={{
+        maxWidth: CONTAINER_WIDTH,
+      }}
+      stroke={{ css: '#A6A6A6' }}
+      strokeWidth={{ css: `${BORDER_WIDTH}px` }}
+      height={direction === 'vertical' ? CONTAINER_HEIGHT : undefined}
+      padding={{ css: `${PADDING}px` }}
+      alignment="center"
+      isParent
+      direction={direction}
+      space={space}
+    >
       <RadiusAutoLayout
-        direction={args.parent.direction}
-        space={args.parent.space}
-        alignment={args.parent.alignment}
-        width="fill-parent"
-        height={
-          args.parent.direction === 'horizontal' ? 'fill-parent' : '100px'
-        }
-        padding={{ css: '12px' }}
-      >
-        <RadiusAutoLayout
-          width={args.children.width}
-          height={args.children.height}
-          fill={{ css: '#D44527' }}
-        />
-        <RadiusAutoLayout
-          width={args.children.width}
-          height={args.children.height}
-          fill={{ css: '#D44527' }}
-        />
-        <RadiusAutoLayout
-          width={args.children.width}
-          height={args.children.height}
-          fill={{ css: '#D44527' }}
-        />
-      </RadiusAutoLayout>
+        width={direction === 'horizontal' ? childWidth ?? 40 : 'fill-parent'}
+        height={direction === 'horizontal' ? 242 : childHeight ?? 40}
+        fill={{ css: '#F7856E' }}
+        style={{ zIndex: 1 }}
+      />
+      <RadiusAutoLayout
+        width={direction === 'horizontal' ? childWidth ?? 40 : 'fill-parent'}
+        height={direction === 'horizontal' ? 242 : childHeight ?? 40}
+        fill={{ css: '#F7856E' }}
+        style={{ zIndex: 1 }}
+      />
+      <RadiusAutoLayout
+        width={direction === 'horizontal' ? childWidth ?? 40 : 'fill-parent'}
+        height={direction === 'horizontal' ? 242 : childHeight ?? 40}
+        fill={{ css: '#F7856E' }}
+        style={{ zIndex: 1 }}
+      />
     </RadiusAutoLayout>
+  );
+};
+
+export const HorizontalFixedWidthChildrenWithAutoSpacing = {
+  render: ({ direction, space, height, width }: AutoLayoutExtendedProps) => (
+    <LayoutDemo
+      direction={direction}
+      space={space}
+      childWidth={width}
+      childHeight={height}
+    />
   ),
 };
 
-export const FixedWidthHorizontal = {
-  ...ThreeBoxesTemplate,
-  args: {
-    parent: {
-      direction: 'horizontal',
-      space: 'auto',
-      alignment: 'top',
-    },
-    children: {
-      width: 100,
-      height: 25,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-    table: {
-      disable: true,
-    },
-  },
+export const HorizontalFixedWidthChildrenWithDefinedSpacing: Story = {
+  render: () => <LayoutDemo direction="horizontal" space={{ css: '80px' }} />,
 };
 
-export const FixedWidthHorizontalDefinedSpacing = {
-  ...ThreeBoxesTemplate,
-  args: {
-    parent: {
-      direction: 'horizontal',
-      space: '--spacing-core-space-3x',
-      alignment: 'top',
-    },
-    children: {
-      width: 100,
-      height: 25,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+export const HorizontalFillWidthChildrenWithDefinedSpacing: Story = {
+  render: () => (
+    <LayoutDemo
+      direction="horizontal"
+      space={{ css: '80px' }}
+      childWidth="fill-parent"
+    />
+  ),
 };
 
-export const FillWidthHorizontal = {
-  ...ThreeBoxesTemplate,
-  args: {
-    parent: {
-      direction: 'horizontal',
-      space: '--spacing-core-space-base',
-      alignment: 'top',
-    },
-    children: {
-      width: 'fill-parent',
-      height: 25,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+export const VerticalFixedHeightChildrenWithAutoSpacing: Story = {
+  render: () => <LayoutDemo direction="vertical" space="auto" />,
 };
 
-export const FixedHeightVertical = {
-  ...ThreeBoxesTemplate,
-  args: {
-    parent: {
-      direction: 'vertical',
-      space: 'auto',
-      alignment: 'left',
-    },
-    children: {
-      width: '100%',
-      height: 10,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+export const VerticalFixedHeightChildrenWithDefinedSpacing: Story = {
+  render: () => <LayoutDemo direction="vertical" space={{ css: '50px' }} />,
 };
 
-export const FixedHeightVerticalDefinedSpacing = {
-  ...ThreeBoxesTemplate,
-  args: {
-    parent: {
-      direction: 'vertical',
-      space: '--spacing-core-space-5x',
-      alignment: 'left',
-    },
-    children: {
-      width: '100%',
-      height: 10,
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
-};
-
-export const FillHeightVertical = {
-  ...ThreeBoxesTemplate,
-  args: {
-    parent: {
-      direction: 'vertical',
-      space: '--spacing-core-space-base',
-      alignment: 'left',
-    },
-    children: {
-      width: '100%',
-      height: 'fill-parent',
-    },
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+export const VerticalFillHeightChildrenWithDefinedSpacing: Story = {
+  render: () => (
+    <LayoutDemo
+      direction="vertical"
+      space={{ css: '50px' }}
+      childHeight="fill-parent"
+    />
+  ),
 };

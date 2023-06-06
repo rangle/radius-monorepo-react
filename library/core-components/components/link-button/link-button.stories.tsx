@@ -9,7 +9,7 @@ const meta: Meta<typeof RadiusLinkButton> = {
   component: RadiusLinkButton,
   title: 'Radius Examples / Link Button',
   parameters: {
-    badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
   },
   argTypes: {
     as: {

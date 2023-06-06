@@ -7,7 +7,7 @@ const meta: Meta<typeof RadiusNavItem> = {
   component: RadiusNavItem,
   title: 'Radius Examples / Nav Item',
   parameters: {
-    badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
   },
   argTypes: {
     as: {

@@ -13,10 +13,6 @@ const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
   title: 'Radius Examples / Button',
   parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/????',
-    },
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {
       major: process.env.COMPONENT_VERSION?.[0],

@@ -25,7 +25,6 @@ module.exports = {
     '@storybook/addon-interactions',
     'storybook-addon-pseudo-states',
     '@geometricpanda/storybook-addon-badges',
-    '@storybook/addon-mdx-gfm',
   ],
   framework: {
     name: '@storybook/react-webpack5',
