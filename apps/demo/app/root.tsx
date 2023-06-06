@@ -14,7 +14,7 @@ import { css, Global } from '@emotion/react';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'New Remix App',
+  title: 'Radius Demo Application',
   viewport: 'width=device-width,initial-scale=1',
 });
 
