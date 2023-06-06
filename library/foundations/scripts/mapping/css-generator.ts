@@ -1,5 +1,6 @@
 // Generator Mappings for CSS
-import type { GeneratorMappingDictionary } from '../lib/token-parser';
+
+import type { GeneratorMappingDictionary } from '../lib/token-parser.types';
 
 export default {
   css: [

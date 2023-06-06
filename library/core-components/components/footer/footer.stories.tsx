@@ -16,7 +16,7 @@ const meta: Meta<typeof RadiusFooter> = {
   component: RadiusFooter,
   title: 'Radius Examples / Footer',
   parameters: {
-    badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
   },
   argTypes: {
     as: {

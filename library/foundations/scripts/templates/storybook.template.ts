@@ -1,4 +1,8 @@
-import { TokenLayer, TokenLayers, TokenOutput } from '../lib/token-parser';
+import {
+  TokenLayer,
+  TokenLayers,
+  TokenOutput,
+} from '../lib/token-parser.types';
 
 // for debug purposes
 // import * as data from '../../generated/token-layers-1.0.1.json';

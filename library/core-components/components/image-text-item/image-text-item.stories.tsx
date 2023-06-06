@@ -8,7 +8,7 @@ const meta: Meta<RadiusImageTextItemProps> = {
   component: RadiusImageTextItem,
   title: 'Radius Examples / ImageTextItem',
   parameters: {
-    badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.BETA],
   },
   argTypes: {
     className: {

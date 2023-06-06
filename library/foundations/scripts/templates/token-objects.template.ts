@@ -2,7 +2,7 @@
    TEMPLATE FOR TYPESCRIPT TOKEN OBJECT
   Generates a TypeScript file with all the tokens in the theme
 */
-import type { TokenLayers } from '../lib/token-parser';
+import type { TokenLayers } from '../lib/token-parser.types';
 
 // for debug purposes
 // import * as sourceLayers from '../../generated/token-layers-2.1.0.json';
