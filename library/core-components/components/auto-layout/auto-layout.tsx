@@ -26,6 +26,8 @@ import { useStyles } from './auto-layout.styles';
  *
  * ### Resources
  * [Explore Auto Layout properties](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties)
+ *
+ * [RadiusAutoLayout Figma Specs](https://www.figma.com/file/ODAUZaQxH8oH2GI0A9MAVb/Radius-Booster---Auto-Layout?type=design&node-id=1302-3734)
  * */
 export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
   <C extends React.ElementType = 'div'>(
