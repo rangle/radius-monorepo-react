@@ -8,7 +8,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
-import fonts from '../../../shared/fonts/fonts.css';
 import styles from '@rangle/radius-foundations/styles.css';
 import { useMutationObserver } from './utils/demo.utils';
 import { css, Global } from '@emotion/react';

@@ -13,8 +13,8 @@ import {
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNav } from './nav';
 
-import RangleLogoLight from '../../../../radius/assets/rangle-logo-light.svg';
-import RadiusLogoLight from '../../../../radius/assets/radius-logo-light.svg';
+import SecondaryLogo from '@rangle/radius-foundations/generated/brands/radius/assets/secondary-logo-light.svg';
+import PrimaryLogoLight from '@rangle/radius-foundations/generated/brands/radius/assets/primary-logo-light.svg';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusNav> = {
@@ -43,7 +43,7 @@ const meta: Meta<typeof RadiusNav> = {
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a href="#">
           <img
-            src={RangleLogoLight}
+            src={SecondaryLogo}
             alt="Rangle.io logo"
             style={{
               height: `var(${radiusTokens.component.sizing.navigation.secondaryLogo})`,
@@ -53,7 +53,7 @@ const meta: Meta<typeof RadiusNav> = {
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a href="#">
           <img
-            src={RadiusLogoLight}
+            src={PrimaryLogoLight}
             alt="Radius logo"
             style={{
               height: `var(${radiusTokens.component.sizing.navigation.primaryLogo})`,

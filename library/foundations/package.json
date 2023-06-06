@@ -23,7 +23,8 @@
     "tokens:types": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts types > generated/design-tokens.types.ts && prettier --config ../../.prettierrc --write generated/design-tokens.types.ts",
     "tokens:constants": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts constants > generated/design-tokens.constants.ts && prettier --config ../../.prettierrc --write generated/design-tokens.constants.ts",
     "build-icons": "rm -rf generated/icons && svgr --icon --typescript --filename-case kebab --out-dir generated/icons --svgo-config ./svgo.config.js src/assets/icons/svg",
-    "build": "yarn tokens:update && yarn build-icons"
+    "build-brands": "rm -rf generated/brands && cp -Rf ../../radius/brands generated",
+    "build": "yarn build-brands && yarn tokens:update && yarn build-icons"
   },
   "jest": {
     "transform": {
