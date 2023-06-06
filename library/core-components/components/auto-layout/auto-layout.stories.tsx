@@ -34,7 +34,7 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       table: { defaultValue: { summary: 'div' } },
     },
     width: {
-      options: ['200px', '50%', 'fill-parent', 'hug-contents'],
+      options: ['629px', '200px', '50%', 'fill-parent', 'hug-contents'],
     },
     height: {
       options: ['150px', '50%', 'fill-parent', 'hug-contents'],
@@ -52,6 +52,7 @@ const meta: Meta<typeof RadiusAutoLayout> = {
     fill: {
       options: [
         '',
+        ...flattenObject(radiusTokens.core.color),
         ...flattenObject(radiusTokens.semantic.color),
         ...flattenObject(radiusTokens.semanticTheme.color),
         ...flattenObject(radiusTokens.component.color),
@@ -60,6 +61,7 @@ const meta: Meta<typeof RadiusAutoLayout> = {
     stroke: {
       options: [
         '',
+        ...flattenObject(radiusTokens.core.color),
         ...flattenObject(radiusTokens.semantic.color),
         ...flattenObject(radiusTokens.semanticTheme.color),
         ...flattenObject(radiusTokens.component.color),
@@ -112,40 +114,62 @@ export default meta;
 type Story = StoryObj<typeof RadiusAutoLayout>;
 
 export const AutoLayout: Story = {
+  parameters: {
+    controls: {
+      // exclude grid controls until we've aligned on the direction we want to go with it
+      exclude: [
+        'grid',
+        'gridColSpan',
+        'gridColStart',
+        'gridColEnd',
+        'gridRowSpan',
+        'gridRowStart',
+        'gridRowEnd',
+      ],
+    },
+  },
   // @ts-expect-error - bug with `args` type inference due to polymorphism
   render: (args: AutoLayoutExtendedProps) => (
-    <div style={{ display: 'flex', height: 200 }}>
-      <RadiusAutoLayout {...args}>
+    <RadiusAutoLayout
+      height={args.direction === 'vertical' ? 388 : undefined}
+      width="fill-parent"
+    >
+      <RadiusAutoLayout alignment="center" isParent {...args}>
         <RadiusAutoLayout
-          width={100}
-          height={args.direction !== 'vertical' ? 'fill-parent' : '25%'}
-          fill={{ css: '#D44527' }}
+          width={args.direction === 'horizontal' ? 40 : 'fill-parent'}
+          height={args.direction === 'horizontal' ? 242 : 40}
+          fill={{ css: '#F7856E' }}
+          style={{ zIndex: 1 }}
         />
         <RadiusAutoLayout
-          width={100}
-          height={args.direction !== 'vertical' ? 'fill-parent' : '25%'}
-          fill={{ css: '#D44527' }}
+          width={args.direction === 'horizontal' ? 40 : 'fill-parent'}
+          height={args.direction === 'horizontal' ? 242 : 40}
+          fill={{ css: '#F7856E' }}
+          style={{ zIndex: 1 }}
         />
         <RadiusAutoLayout
-          width={100}
-          height={args.direction !== 'vertical' ? 'fill-parent' : '25%'}
-          fill={{ css: '#D44527' }}
+          width={args.direction === 'horizontal' ? 40 : 'fill-parent'}
+          height={args.direction === 'horizontal' ? 242 : 40}
+          fill={{ css: '#F7856E' }}
+          style={{ zIndex: 1 }}
         />
       </RadiusAutoLayout>
-    </div>
+    </RadiusAutoLayout>
   ),
   args: {
     as: 'div',
-    alignment: 'top',
-    width: 'fill-parent',
+    width: '629px',
     height: 'fill-parent',
     space: 'auto',
-    padding: radiusTokens.core.spacing[4],
-    fill: { css: 'white' },
-    stroke: { css: 'black' },
-    strokeWidth: radiusTokens.core.borderWidth[2],
+    padding: radiusTokens.core.spacing[24],
+    direction: 'horizontal',
+    fill: radiusTokens.core.color.neutral[50],
+    stroke: radiusTokens.core.color.neutral[600],
+    strokeWidth: radiusTokens.core.borderWidth[1],
+    strokeAlign: 'inside',
     cornerRadius: radiusTokens.core.borderRadius.none,
     clippedContent: false,
+    alignment: 'top',
     isParent: false,
     absolutePosition: false,
     horizontalConstraint: 'left',
