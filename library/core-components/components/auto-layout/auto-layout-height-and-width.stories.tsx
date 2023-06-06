@@ -19,6 +19,8 @@ import { AutoLayoutExtendedProps } from './auto-layout.types';
  *
  * ## Resources
  * [How Figma Resizing Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#resizing)
+ *
+ * [RadiusAutoLayout Figma Specs](https://www.figma.com/file/ODAUZaQxH8oH2GI0A9MAVb/Radius-Booster---Auto-Layout?type=design&node-id=1312-1170&t=Fh2ap7gIybG92aBU-0)
  */
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
