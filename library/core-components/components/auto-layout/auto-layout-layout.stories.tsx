@@ -95,7 +95,9 @@ const LayoutDemo = ({
 }) => {
   return (
     <RadiusAutoLayout
-      width={CONTAINER_WIDTH}
+      style={{
+        maxWidth: CONTAINER_WIDTH,
+      }}
       stroke={{ css: '#A6A6A6' }}
       strokeWidth={{ css: `${BORDER_WIDTH}px` }}
       height={direction === 'vertical' ? CONTAINER_HEIGHT : undefined}
