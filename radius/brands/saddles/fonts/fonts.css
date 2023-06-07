@@ -1,0 +1,26 @@
+/* Regular variant of EB Garamond */
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('./eb-garamond/EBGaramond-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap; /* Optional: improves rendering while the font is loading */
+}
+
+/* Italic variant of EB Garamond */
+@font-face {
+  font-family: 'EB Garamond Italic';
+  src: url('./eb-garamond/EBGaramond-Italic-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap; /* Optional: improves rendering while the font is loading */
+}
+
+/* Dancing Script */
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('./dancing-script/DancingScript-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 100 900;
+  font-display: swap; /* Optional: improves rendering while the font is loading */
+}

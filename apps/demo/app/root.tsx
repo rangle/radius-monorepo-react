@@ -1,4 +1,5 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
+import React from 'react';
+import type { MetaFunction } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -7,6 +8,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import styles from '@rangle/radius-foundations/styles.css';
+import { useMutationObserver } from './utils/demo.utils';
+import { css, Global } from '@emotion/react';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -14,31 +18,38 @@ export const meta: MetaFunction = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-import styles from '../../../library/foundations/styles.css';
-import font from '../../../shared/fonts/fonts.css';
-
-export const links: LinksFunction = () => {
+export function links() {
   return [
     {
       rel: 'stylesheet',
       href: styles,
     },
-    {
-      rel: 'stylesheet',
-      href: font,
-    },
   ];
-};
+}
 
 export default function App() {
+  useMutationObserver(() => {
+    console.log('mutation observer');
+  });
   return (
     <html lang="en">
       <head>
         <Meta />
         <Links />
+        <Global
+          styles={css`
+            body,
+            main {
+              margin: 0;
+              background: var(--color-component-layout-background);
+            }
+          `}
+        />
       </head>
-      <body className="light-mode">
-        <Outlet />
+      <body>
+        <main className="light-mode" data-radius-watch>
+          <Outlet />
+        </main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
