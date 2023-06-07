@@ -13,7 +13,6 @@ import { compareTokenLayers } from './lib/token-layer-snapshot-validator';
 import { isReference } from './lib/token-parser';
 
 // For debugging purposes, you can run this script with:
-// import * as data from '../tokens.json';
 // const snapshotFileName = `${__dirname}/../generated/token-layers.json`;
 
 const [, , snapshotFileName] = process.argv;
@@ -48,7 +47,7 @@ export const loadPreviousLayersFile = (fileName: string) => {
   */
 
 // Promise.resolve(data)
-//  .then((data) => Buffer.from(JSON.stringify(data)))
+//   .then((data) => Buffer.from(JSON.stringify(data)))
 readStdin()
   .then(parseData)
   .then(validateData)
@@ -134,15 +133,28 @@ const validateLayerList = (layerList: TokenLayers): LayerError[] => {
 
   // filters mutually exclusive layers that don't have the same tokens
   const dynamicLayers = layerList.layers.filter((l) => !l.isStatic);
-  const screenSizeLayerErrors = validateLayerVariables(
-    dynamicLayers,
-    [PARAM_SCREEN_MIN_WIDTH, PARAM_SCREEN_MAX_WIDTH],
-    'Contexts that are selected by viewport size should have the same tokens'
+
+  const semanticLayerGroups = dynamicLayers.reduce((acc, layer) => {
+    const parent = layer.name.split('--')[0];
+    return { ...acc, [parent]: [...(acc[parent] || []), layer] };
+  }, {} as Record<string, typeof dynamicLayers>);
+
+  const groupKeys = Object.keys(semanticLayerGroups);
+
+  const screenSizeLayerErrors = groupKeys.flatMap((key) =>
+    validateLayerVariables(
+      semanticLayerGroups[key],
+      [PARAM_SCREEN_MIN_WIDTH, PARAM_SCREEN_MAX_WIDTH],
+      'Contexts that are selected by viewport size should have the same tokens'
+    )
   );
-  const sectionLayerErrors = validateLayerVariables(
-    dynamicLayers,
-    [PARAM_SECTION_NAME],
-    'Contexts that are mutually exclusive should have the same tokens'
+
+  const sectionLayerErrors = groupKeys.flatMap((key) =>
+    validateLayerVariables(
+      semanticLayerGroups[key],
+      [PARAM_SECTION_NAME],
+      'Contexts that are mutually exclusive should have the same tokens'
+    )
   );
 
   // filters layers that have unresolved references
@@ -166,7 +178,7 @@ const validateLayerList = (layerList: TokenLayers): LayerError[] => {
 };
 
 /**
- * Validates that the layers have the same variables
+ * Validates that the mutually exclusive layers have the same variables
  */
 const validateLayerVariables = (
   allLayers: TokenLayers['layers'],

@@ -66,13 +66,7 @@ const SPECIAL_LAYER_VARIABLES = [
 export const FLAG_EXPAND_TYPOGRAPHY_TOKENS = true;
 export const TYPOGRAPHY_TOKEN_PROPS = [
   'font',
-  'fontFamily',
-  'fontWeight',
-  'lineHeight',
-  'fontSize',
   'letterSpacing',
-  'paragraphSpacing',
-  'paragraphIndent',
   'textCase',
   'textDecoration',
 ] as const;

@@ -5,6 +5,7 @@ import type { GeneratorMappingDictionary } from '../lib/token-parser.types';
 export default {
   css: [
     ['color', 'color'],
+    [/--asset/, [[/(http.*)/g, `'$&'`]]],
     [
       /--typography/,
       [
