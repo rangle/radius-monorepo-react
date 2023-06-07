@@ -9,7 +9,8 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import styles from '@rangle/radius-foundations/styles.css';
-import fonts from '../../../radius/brands/radius/fonts/fonts.css';
+import fontsRadius from '@rangle/radius-foundations/generated/brands/radius/fonts/fonts.css';
+import fontsSaddles from '@rangle/radius-foundations/generated/brands/saddles/fonts/fonts.css';
 import { useMutationObserver } from './utils/demo.utils';
 import { css, Global } from '@emotion/react';
 
@@ -27,7 +28,11 @@ export function links() {
     },
     {
       rel: 'stylesheet',
-      href: fonts,
+      href: fontsRadius,
+    },
+    {
+      rel: 'stylesheet',
+      href: fontsSaddles,
     },
   ];
 }
