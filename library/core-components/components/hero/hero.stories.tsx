@@ -7,6 +7,7 @@ const meta: Meta<RadiusHeroProps> = {
   title: 'Radius Examples / Hero',
   parameters: {
     badges: [BADGE.BETA],
+    layout: 'fullscreen',
   },
   argTypes: {
     className: { table: { disable: true } },

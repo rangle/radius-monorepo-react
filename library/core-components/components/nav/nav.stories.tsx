@@ -22,6 +22,7 @@ const meta: Meta<typeof RadiusNav> = {
   title: 'Radius Examples / Nav',
   parameters: {
     badges: [BADGE.BETA],
+    layout: 'fullscreen',
   },
   argTypes: {
     as: {
