@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import styles from '@rangle/radius-foundations/styles.css';
+import fonts from '../../../radius/brands/radius/fonts/fonts.css';
 import { useMutationObserver } from './utils/demo.utils';
 import { css, Global } from '@emotion/react';
 
@@ -23,6 +24,10 @@ export function links() {
     {
       rel: 'stylesheet',
       href: styles,
+    },
+    {
+      rel: 'stylesheet',
+      href: fonts,
     },
   ];
 }
