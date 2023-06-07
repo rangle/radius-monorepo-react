@@ -27,6 +27,8 @@ export type RadiusImageTextItemProps = {
   alt: string;
   /** Optional className to add to the container */
   className?: string;
+  // ['data-radius-watch-token-changes']?: boolean;
+  // ['data-radius-token']?: string;
 } & (LargeRadiusImageTextItemProps | SmallRadiusImageTextItemProps);
 
 export type ExcludeSmallVariant<T> = T extends { variant: 'small' } ? never : T;

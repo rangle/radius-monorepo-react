@@ -1,34 +1,39 @@
-// ignore all type errors
-// @ts-nocheck - This needs to be rebuilt
-
-import React from 'react';
+import React, { ComponentType, SVGProps } from 'react';
+import Github from '../../../../library/foundations/generated/icons/github';
+import Figma from '../../../../library/foundations/generated/icons/figma';
+import EventNote from '../../../../library/foundations/generated/icons/event-note';
+// import Github from '@rangle/radius-foundations/generated/icons/github.tsx';
+// import Figma from '@rangle/radius-foundations/generated/icons/figma';
+// import EventNote from '@rangle/radius-foundations/generated/icons/event-note';
 import {
   RadiusNav,
   RadiusHero,
   RadiusImageTextList,
 } from '@rangle/radius-react-core-components';
-import { Github } from '../../../../library/foundations/generated/icons';
 import { Typography } from '@rangle/radius-react-core-components';
 import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
+import { RadiusLinkIcon } from '@rangle/radius-react-core-components/components/link-icon';
+// import PrimaryLogoLight from '@rangle/radius-foundations/generated/brands/radius/assets/primary-logo-light.svg';
 export default function Index() {
   return (
     <>
       <RadiusNav
         linkIcons={[
           {
-            'aria-label': 'Descriptive text',
-            href: '#',
-            icon: () => {},
+            'aria-label': 'See source on Github',
+            href: 'https://github.com/rangle/radius-monorepo-react',
+            // I think they are currently using different instances of react types
+            icon: Github as ComponentType<SVGProps<SVGSVGElement>>,
           },
           {
-            'aria-label': 'Descriptive text',
-            href: '#',
-            icon: () => {},
+            'aria-label': 'See designs on Figma',
+            href: 'https://www.figma.com/file/zpDGiKGaY35SEnfKB2uzeZ/Radius-Demo-Site?type=design&t=GqzqcLwssKZzV8o7-0',
+            icon: Figma as ComponentType<SVGProps<SVGSVGElement>>,
           },
           {
-            'aria-label': 'Descriptive text',
+            'aria-label': 'Book a demo',
             href: '#',
-            icon: () => {},
+            icon: EventNote as ComponentType<SVGProps<SVGSVGElement>>,
           },
         ]}
         logos={
@@ -67,7 +72,7 @@ export default function Index() {
           {
             'aria-label': 'Descriptive text',
             href: '#',
-            icon: Github,
+            icon: Github as ComponentType<SVGProps<SVGSVGElement>>,
           },
         ]}
         data-radius-watch-token-changes
@@ -80,10 +85,11 @@ export default function Index() {
         data-radius-token="--asset-component-image-hero-header"
       >
         <RadiusHero
-          title="header"
+          header="Header"
           eyebrow="Eyebrow"
           buttonLabel="Action"
           imageSrc="https://i.ibb.co/NjX1C6b/roger-van-de-kimmenade-93-Cz5t2-WP5-I-unsplash.jpg"
+          imageAlt="Saddles Logo"
           ctaUrl="/posts"
         />
       </span>
@@ -95,9 +101,9 @@ export default function Index() {
             header: 'Header',
             headingLevel: 'h2',
             src: 'https://i.ibb.co/MS0V7Zk/elisa-pitkanen-Z9-FZ6hko-k-unsplash.jpg',
-            ['data-radius-watch-token-changes']: true,
-            ['data-radius-token']:
-              '--asset-component-image-large-image-text-item-image01',
+            // ['data-radius-watch-token-changes']: true,
+            // ['data-radius-token']:
+            //   '--asset-component-image-large-image-text-item-image01',
           },
           {
             alt: 'Descriptive text',
