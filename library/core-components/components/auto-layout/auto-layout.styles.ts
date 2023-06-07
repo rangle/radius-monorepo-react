@@ -125,6 +125,7 @@ export const mediaQueries = {
 
 const gridStyles = `
   display: grid;
+  grid-auto-rows: min-content;
   grid-template-columns: repeat(${gridColumns.desktop}, 1fr);
   // TODO: this gap should probably be generated/tokenized
   column-gap: 24px;
