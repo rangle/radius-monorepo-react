@@ -17,6 +17,7 @@ const meta: Meta<typeof RadiusFooter> = {
   title: 'Radius Examples / Footer',
   parameters: {
     badges: [BADGE.BETA],
+    layout: 'fullscreen',
   },
   argTypes: {
     as: {
