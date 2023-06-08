@@ -5,7 +5,6 @@ import {
   RadiusImageTextList,
   RadiusFooter,
 } from '@rangle/radius-react-core-components';
-
 import {
   Github,
   Figma,
