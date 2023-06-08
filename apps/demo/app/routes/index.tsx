@@ -23,12 +23,12 @@ export default function Index() {
   const [mode, setMode] = useState<'light-mode' | 'dark-mode'>('light-mode');
 
   const toggleMode = () => {
-    setMode(mode === 'light-mode' ? 'dark-mode' : 'light-mode');
     const modeElement = document.querySelector(`.${mode}`);
     modeElement?.classList.remove(mode);
     modeElement?.classList.add(
       mode === 'light-mode' ? 'dark-mode' : 'light-mode'
     );
+    setMode(mode === 'light-mode' ? 'dark-mode' : 'light-mode');
   };
 
   return (
