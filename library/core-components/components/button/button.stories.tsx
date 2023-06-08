@@ -5,9 +5,7 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusButton } from './button';
 import { RadiusButtonVariant } from './button.types';
 import { css } from '@emotion/css';
-import { Typography } from '../typography/typography';
 import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
@@ -122,29 +120,30 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
         <th></th>
         {states.map((state) => (
           <th>
-            <Typography
-              color={
-                radiusTokens.component.color.button.secondary.default.label
-              }
-              font={radiusTokens.semanticTheme.typography.actions.label}
-              align="center"
+            <span
+              style={{
+                fontFamily: 'Riforma LL',
+                fontSize: '20px',
+                fontWeight: 'bold',
+              }}
             >
               {state}
-            </Typography>
+            </span>
           </th>
         ))}
       </tr>
       {types.map((type) => (
         <tr>
           <td>
-            <Typography
-              color={
-                radiusTokens.component.color.button.secondary.default.label
-              }
-              font={radiusTokens.semanticTheme.typography.actions.label}
+            <span
+              style={{
+                fontFamily: 'Riforma LL',
+                fontSize: '20px',
+                fontWeight: 'bold',
+              }}
             >
               {type}
-            </Typography>
+            </span>
           </td>
           {states.map((state) => renderButtonVariationCell(type, state))}
         </tr>
