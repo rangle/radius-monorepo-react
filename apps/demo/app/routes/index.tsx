@@ -13,8 +13,10 @@ import {
   Instagram,
   Youtube,
 } from '../../../../library/foundations/generated/icons';
-import { Typography } from '@rangle/radius-react-core-components';
-import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
+import {
+  RadiusAutoLayout,
+  RadiusButton,
+} from '@rangle/radius-react-core-components';
 export default function Index() {
   return (
     <RadiusAutoLayout
@@ -119,6 +121,11 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/MS0V7Zk/elisa-pitkanen-Z9-FZ6hko-k-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
               ['data-radius-watch-token-changes']: true,
               ['data-radius-token']:
                 '--asset-component-image-large-image-text-item-image01',
@@ -129,6 +136,11 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/z77WsVJ/taylor-a7i-PP9-Ia-S8-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
             },
             {
               alt: 'Descriptive text',
@@ -136,6 +148,11 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/H7KyxSJ/tengis-galamez-u-JYpt-Y1z-OYY-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
             },
             {
               alt: 'Descriptive text',
@@ -143,6 +160,11 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/9yk9QRh/philippe-oursel-3v7qofrk-MXk-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
             },
           ]}
           variant="large"
