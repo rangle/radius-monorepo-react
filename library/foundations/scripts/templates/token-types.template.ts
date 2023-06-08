@@ -6,45 +6,122 @@ import { TYPOGRAPHY_TOKEN_PROPS } from '../lib/token-parser';
 import { toKebabCase } from '../lib/token-parser.utils';
 import { TokenLayers } from '../lib/token-parser.types';
 
-const EXCLUDE_LAYERS = ['core'];
-const COMPONENT_LAYER_NAME = 'Component';
+const DS_NAME = 'Radius';
 
-// convert kebab case to CamelCase. convers a special case when there's two dashes
-const toCamelCase = (str: string) =>
+const EXCLUDE_LAYERS = ['core'];
+
+type NameIndexGroups = { [key: string]: number[] };
+type TokenGroup = { [key: string]: string[] };
+type TokenSpecificGroup = { key: string; values: string[] };
+
+const SUBTOKEN_NAMES = TYPOGRAPHY_TOKEN_PROPS;
+
+const at = <T>(arr: Array<T> | ReadonlyArray<T>, index: number) =>
+  index < 0 ? arr[arr.length + index] : arr[index];
+
+const toPascalCase = (str: string) =>
   str
     .replace(/--/g, '-')
     .replace(/-([a-zA-Z])/g, (_, letter) => letter.toUpperCase())
     .replace(/^([a-zA-Z])/g, (_, letter) => letter.toUpperCase());
 
-// groups an array of dash-separated strings into an object with the first part of the string as the key
-// and the value is an array of all the strings that start with the key
-const groupByKeyPrefix = (index: number, arr: string[]) =>
-  arr.reduce((acc, curr) => {
-    const prefix = curr.split('-')[index];
-    if (!acc[prefix]) {
-      acc[prefix] = [];
-    }
-    return { ...acc, [prefix]: [...acc[prefix], curr] };
-  }, {} as Record<string, string[]>);
-
-const groupIndexByNamePrefix = (index: number, arr: string[]) =>
-  arr.reduce((acc, curr, idx) => {
-    const prefix = toCamelCase(curr.split('.')[index]);
-    if (!acc[prefix]) {
-      acc[prefix] = [];
-    }
-    return { ...acc, [prefix]: [...acc[prefix], idx] };
-  }, {} as Record<string, number[]>);
-
-const fromIndexGroupToKeyGroup =
-  <R extends Record<string, string[]>>(names: string[]) =>
-  (acc: R, [subject, indexes]: [string, number[]]) => ({
-    ...acc,
-    [subject]: indexes.map((idx) => names[idx]),
-  });
-
 type NU<T> = T extends undefined ? never : T;
 const isNotUndefined = <T>(u: T): u is NU<T> => u !== undefined;
+
+/// takes a list of dot-separated tokens and group them based on the first three segments
+// e.g. groupByThreeSegments(['a.b.c.0', 'a.b.d.1', 'a.c.d.2', 'a.c.d.x']) => { 'a.b.c': [0], 'a.b.d': [1], 'a.c.d': [2, 3] }
+const groupByThreeSegments = (names: string[]): NameIndexGroups => {
+  return names.reduce<NameIndexGroups>((acc, name, index) => {
+    const segments = name.split('.');
+    const key = segments.slice(0, 3).join('.');
+    const previous = acc[key] || [];
+    return {
+      ...acc,
+      [key]: [...previous, index],
+    };
+  }, {});
+};
+
+/// takes a list of dot-separated tokens and group them based on selected prefixe segments
+// e.g. groupByKeyPrefix([2, 0])(['a.b.c', 'a.b.d', 'a.c.d']) => { 'a.b': ['a.b.c', 'a.b.d'], 'a.c': ['a.c.d'] }
+const groupByKeyPrefix =
+  (segmentIndexes: number[]) =>
+  (names: string[]): TokenGroup => {
+    return names.reduce<TokenGroup>((acc, name) => {
+      const segments = name.split('.');
+      const key = segmentIndexes.map((n) => at(segments, n)).join('.');
+      const previous = acc[key] || [];
+      return {
+        ...acc,
+        [key]: [...previous, name],
+      };
+    }, {});
+  };
+
+const getTokenSpecificGroupNames = (groupName: string) =>
+  DS_NAME + toPascalCase(groupName.replace(/\./g, '-')) + 'Tokens';
+
+const assembleTokenGroup = (
+  name: string,
+  group: TokenGroup,
+  render = getTokenSpecificGroupNames
+) => {
+  const pascalCaseName = toPascalCase(name);
+  const keys = Object.keys(group);
+  return {
+    filterKeys: {
+      name: `${DS_NAME}Token${pascalCaseName}s`,
+      values: keys.map((key) => `'${toKebabCase(key)}'`),
+    },
+    groupMap: {
+      name: `${DS_NAME}Token${pascalCaseName}Map`,
+      values: keys.reduce((result, name) => {
+        const key = toKebabCase(name);
+        const previous = result[key] || [];
+        return {
+          ...result,
+          [key]: [...previous, ...group[name].map(render)],
+        };
+      }, {} as { [key: string]: string[] }),
+    },
+    tokenBy: {
+      name: `TokensBy${pascalCaseName}`,
+    },
+  };
+};
+
+type AssembledTokenGroup = ReturnType<typeof assembleTokenGroup>;
+
+const renderTokenSpecificGroup = (group: TokenSpecificGroup) => {
+  const tokenSpecificGroupName = getTokenSpecificGroupNames(group.key);
+  const tokenKeyPrefix = toKebabCase(group.key);
+  return `
+export interface ${DS_NAME}TokenIndex { 
+  ['${tokenKeyPrefix}']: ${group.values.map((key) => `'${key}'`).join(' | ')};
+};
+export type ${tokenSpecificGroupName} = ${DS_NAME}TokenIndex['${tokenKeyPrefix}'];
+`;
+};
+
+const renderTokenGroup = (assembledTokenGroup: AssembledTokenGroup) => {
+  const keyListName = assembledTokenGroup.filterKeys.name;
+  const groupMapName = assembledTokenGroup.groupMap.name;
+  const tokenByName = assembledTokenGroup.tokenBy.name;
+  return `
+export type ${keyListName} = ${assembledTokenGroup.filterKeys.values.join(
+    ' | '
+  )};
+export type ${groupMapName} = {
+${Object.keys(assembledTokenGroup.groupMap.values)
+  .map(
+    (key) =>
+      `  ['${key}']: ${assembledTokenGroup.groupMap.values[key].join('|')};`
+  )
+  .join('\n')}
+};
+export type ${tokenByName}<L extends ${keyListName}> = ${groupMapName}[L];
+`;
+};
 
 export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
   const layerVariables = order
@@ -55,7 +132,7 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
     .map((layer) => {
       const { name, variables } = layer;
       return {
-        name: toCamelCase(name),
+        name: toPascalCase(name),
         keys: variables.map((variable) => variable.key),
         names: variables.map((variable) => variable.name),
       };
@@ -64,149 +141,98 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
   const allKeys = layerVariables.flatMap(({ keys }) => keys);
   const allNames = layerVariables.flatMap(({ names }) => names);
 
-  const indexToKeys = (indexGroup: Record<string, number[]>) =>
-    Object.entries(indexGroup).reduce(
-      fromIndexGroupToKeyGroup(allKeys),
-      {} as Record<string, string[]>
-    );
+  const nameKeyMap = allNames.reduce((acc, name, index) => {
+    return {
+      ...acc,
+      [name]: allKeys[index],
+    };
+  }, {} as { [key: string]: string });
 
-  const allKeysByType = groupByKeyPrefix(2, allKeys);
-  const allIndexesByLayer = groupIndexByNamePrefix(0, allNames);
-  const allKeysByLayer = indexToKeys(allIndexesByLayer);
-  const componentIndexes = allIndexesByLayer[COMPONENT_LAYER_NAME];
-  const componentNames = componentIndexes.map((idx) => allNames[idx]);
-  const componentIndexesBySubject = componentIndexes
-    ? groupIndexByNamePrefix(2, componentNames)
-    : {};
-  const componentKeysBySubject = indexToKeys(componentIndexesBySubject);
+  const keysBySpecificSegment = groupByThreeSegments(allNames);
 
-  const typeNames = Object.keys(allKeysByType);
-  const layerNames = Object.keys(allKeysByLayer);
-  const subjectNames = Object.keys(componentKeysBySubject);
+  const groupByType = groupByKeyPrefix([1]); // layer.{type}.subject.rest
+  const groupByLayer = groupByKeyPrefix([0]); // {layer}.type.subject.rest
+  const groupBySubject = groupByKeyPrefix([2]); // layer.type.{subject}.rest
+
+  // -- not used for now, but could be useful in the future
+  // const groupByTypeAndSubject = groupByKeyPrefix([0, 2]);
+  // const groupByLayerSubjectAndType = groupByKeyPrefix([0, 2, 1]);
+
+  const groupBySubtoken = groupByKeyPrefix([-1]); // layer.type.subject.rest.{subtoken}
+
+  const allTokenGroupsAndKeys = Object.entries(keysBySpecificSegment).map(
+    ([key, indexes]): TokenSpecificGroup => ({
+      key,
+      values: indexes.map((i: number) => allKeys[i]),
+    })
+  );
+
+  const allSpecificSegmentNames = Object.keys(keysBySpecificSegment);
+
+  const allTokensByType = groupByType(allSpecificSegmentNames);
+  const allTokensByLayer = groupByLayer(allSpecificSegmentNames);
+  const allTokensBySegment = groupBySubject(allSpecificSegmentNames);
+
+  // list of all tokens that are either a subtoken type or a subtoken themselves
+  const allTokensBySubtoken = groupBySubtoken(
+    allNames.filter((name) => SUBTOKEN_NAMES.find((t) => name.match(`.${t}$`)))
+  );
 
   return Buffer.from(`
-  // Layer Types
-    ${layerVariables
-      .map(
-        ({ name, keys }) => `
-    export type ${name}LayerTokens =
-      ${keys.map((key) => `'${key}'`).join(' | ')};
-    `
-      )
-      .join('\n')}
 
-  // All Tokens
-    export type RadiusTokens = ${layerVariables
-      .map(({ name }) => `${name}LayerTokens`)
-      .join(' | ')};
+export interface ${DS_NAME}TokenIndex {}
+// Tokens By Layer, Type and Subject
+${allTokenGroupsAndKeys.map(renderTokenSpecificGroup).join('\n')}
+// Token groups By Segment
+${renderTokenGroup(assembleTokenGroup('subject', allTokensBySegment))}
+// Token groups by Layer
+${renderTokenGroup(assembleTokenGroup('layer', allTokensByLayer))}
+// Token groups by Type
+${renderTokenGroup(assembleTokenGroup('type', allTokensByType))}
+// Subtoken groups
+${renderTokenGroup(
+  assembleTokenGroup(
+    'subtoken',
+    allTokensBySubtoken,
+    (s) => `'${nameKeyMap[s]}'`
+  )
+)}
 
-  // Token Types
+// Utilities
 
-  export type RadiusTokenTypes = ${typeNames
-    .map((type) => `'${type}'`)
-    .join(' | ')};
+export type CSSExpression =
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | CSSExpression[]
+  | { [key: string]: CSSExpression };
 
-  export type RadiusSubTokenTypes = ${TYPOGRAPHY_TOKEN_PROPS.map(toKebabCase)
-    .map((type) => `'${type}'`)
-    .join(' | ')};
-  
+/**
+ * Describes a token that matches the given type T and subject S. If no
+ * subject is provided, all subjects are returned, and if no type is provided,
+ * all types are returned.
+ *
+ * There can be multiple subjects for a given type, so for example you may
+ * have \`--color-text-primary\` and \`--color-background-primary\`, or
+ * \`--typography-heading-sm\` and \`--typography-body-sm\`.
+ *
+ * @example
+ * CSSProp<'color', 'text'> // returns \`--color-text-\${string}\`
+ * CSSProp<'typography'>; // returns \`--typography-\${string}\`
+ */
+export type CSSTokensByTypeAndSubject<
+     T extends ${DS_NAME}TokenTypes | ${DS_NAME}TokenSubtokens = ${DS_NAME}TokenTypes,
+     S extends ${DS_NAME}TokenSubjects = ${DS_NAME}TokenSubjects,
+     L extends ${DS_NAME}TokenLayers = ${DS_NAME}TokenLayers
+   > = T extends ${DS_NAME}TokenSubtokens
+     ? Extract<TokensBySubtoken<T>, \`--\${string}-\${L}-\${S}-\${string}\`>
+     : T extends ${DS_NAME}TokenTypes
+     ? TokensBySubject<S> & TokensByType<T> & TokensByLayer<L>
+     : never;
 
-  // Tokens By Type (--color, --typography, etc.)
-    ${typeNames
-      .map(
-        (type) => `
-    export type Radius${toCamelCase(
-      type
-    )}Tokens = Extract<RadiusTokens, \`--${type}-\${string}\`>;`
-      )
-      .join('\n')};
-
-    // Typography SubTokens By Type (--typography-..-font-size, --typography-..-font-weight, etc.)
-    ${TYPOGRAPHY_TOKEN_PROPS.map(toKebabCase)
-      .map(
-        (type) => `
-    export type Radius${toCamelCase(
-      type
-    )}SubTokens = Extract<RadiusTokens, \`--typography-\${string}-${type}\`>;`
-      )
-      .join('\n')};
-
-  // Token Layers
-
-  export type RadiusTokenLayers = ${layerNames
-    .map(toKebabCase)
-    .map((layer) => `'${layer}'`)
-    .join(' | ')};
-
-  // Tokens By Layer (--color-core, --typography-mode, etc.)
-
-    ${layerNames
-      .map(toKebabCase)
-      .map(
-        (layer) => `
-    export type Radius${toCamelCase(
-      layer
-    )}Tokens<T extends RadiusTokenTypes=RadiusTokenTypes> = 
-      Extract<RadiusTokens, \`--\${T}-${layer}-\${string}\`>;`
-      )
-      .join('\n')};
-
-  // Token Subjects
-
-  export type RadiusTokenSubjects = ${subjectNames
-    .map((subject) => `'${toKebabCase(subject)}'`)
-    .join(' | ')};
-
-  // Tokens By Subject (--color-core-button, --typography-component-button, etc.)
-
-    ${subjectNames
-      .map(toKebabCase)
-      .map(
-        (subject) => `
-    export type Radius${toCamelCase(
-      subject
-    )}Tokens<T extends RadiusTokenTypes=RadiusTokenTypes, U extends RadiusTokenLayers=RadiusTokenLayers> = 
-      Extract<RadiusTokens, \`--\${T}-\${U}-${subject}-\${string}\`>;`
-      )
-      .join('\n')};
-
-
-  // for Typography, Create an umbrella type that includes subtokens
-  export type TokenAndSubtokenTypes = RadiusTokenTypes | RadiusSubTokenTypes;
-
-  // Utilities
-
-  export type CSSExpression =
-    | string
-    | number
-    | boolean
-    | null
-    | undefined
-    | CSSExpression[]
-    | { [key: string]: CSSExpression };
-
-
-  /**
-   * Describes a token that matches the given type T and subject S. If no
-   * subject is provided, all subjects are returned, and if no type is provided,
-   * all types are returned.
-   *
-   * There can be multiple subjects for a given type, so for example you may
-   * have \`--color-text-primary\` and \`--color-background-primary\`, or
-   * \`--typography-heading-sm\` and \`--typography-body-sm\`.
-   *
-   * @example
-   * CSSProp<'color', 'text'> // returns \`--color-text-\${string}\`
-   * CSSProp<'typography'>; // returns \`--typography-\${string}\`
-   */
-  export type CSSTokensByTypeAndSubject<
-    T extends TokenAndSubtokenTypes = TokenAndSubtokenTypes,
-    S extends RadiusTokenSubjects = RadiusTokenSubjects,
-    L extends RadiusTokenLayers = RadiusTokenLayers
-  > = Extract<RadiusTokens, \`--\${T}-\${L}-\${S}-\${string}\` | \`--typography-\${L}-\${S}-\${string}-\${T}\`>;
-
-
-  /** 
+/** 
    * Describes a single token as described by
    * {@link CSSTokensByTypeAndSubject}, an array of
    * {@link CSSTokensByTypeAndSubject}, or a custom CSS expression provided
@@ -214,27 +240,26 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
    * 
    * @example
    * // Single token
-   * <RadiusAutoLayout padding="--spacing-component-spacing-button-padding">
+   * <${DS_NAME}AutoLayout padding="--spacing-component-spacing-button-padding">
    * // Multiple tokens (will be resolved in order in CSS)
-   * <RadiusAutoLayout padding={[
+   * <${DS_NAME}AutoLayout padding={[
         '--spacing-component-spacing-button-padding-vertical',
         '--spacing-component-spacing-button-padding-horizontal',
       ]}
       >
    * // Custom CSS expression
-   * <RadiusAutoLayout padding={{ css: '10px 20px' }}>
+   * <${DS_NAME}AutoLayout padding={{ css: '10px 20px' }}>
    */
-  export type CSSProp<
-    T extends TokenAndSubtokenTypes = TokenAndSubtokenTypes,
-    S extends RadiusTokenSubjects = RadiusTokenSubjects,
-    L extends RadiusTokenLayers = RadiusTokenLayers
-  > =
-    | CSSTokensByTypeAndSubject<T, S, L>
-    | Array<CSSTokensByTypeAndSubject<T, S, L> | 0>
-    | { css: CSSExpression };
+export type CSSProp<
+  T extends ${DS_NAME}TokenTypes | ${DS_NAME}TokenSubtokens = ${DS_NAME}TokenTypes,
+  S extends ${DS_NAME}TokenSubjects = ${DS_NAME}TokenSubjects,
+  L extends ${DS_NAME}TokenLayers = ${DS_NAME}TokenLayers
+> =
+  | CSSTokensByTypeAndSubject<T, S, L>
+  | Array<CSSTokensByTypeAndSubject<T, S, L> | 0>
+  | { css: CSSExpression };
 
-
-  /** Utility type that returns the provided token type(s) wrapped with the \`var()\` function. */
-  export type Var<T> = T extends string ? \`var(\${T})\` : T;
+/** Utility type that returns the provided token type(s) wrapped with the \`var()\` function. */
+export type Var<T> = T extends string ? \`var(\${T})\` : T;
   `);
 };

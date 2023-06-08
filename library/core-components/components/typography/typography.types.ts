@@ -25,14 +25,6 @@ export type TypographyExtendedProps = {
   align?: Alignment;
   /** Font (css shorthand property - see https://developer.mozilla.org/en-US/docs/Web/CSS/font) */
   font?: CSSProp<'font'>;
-  /** Font Family - will override `font-family` style of the `font` prop */
-  fontFamily?: CSSProp<'font-family'>;
-  /** Line Height - will override `line-height` style of the `font` prop */
-  lineHeight?: CSSProp<'line-height'>;
-  /** Font Weight - will override `font-weight` style of the `font` prop */
-  fontWeight?: CSSProp<'font-weight'>;
-  /** Font Size - will override `font-size` style of the `font` prop */
-  fontSize?: CSSProp<'font-size'>;
   /** Letter Spacing - affect `letter-spacing` style in addition to `font` prop */
   letterSpacing?: CSSProp<'letter-spacing'>;
   /** Text Decoration - affect `text-decoration` style in addition to `font` prop */
