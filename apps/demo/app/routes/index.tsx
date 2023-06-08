@@ -16,9 +16,7 @@ import {
   Instagram,
   Youtube,
 } from '../../../../library/foundations/generated/icons';
-import { Typography } from '@rangle/radius-react-core-components';
 import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
-import { RadiusLinkIcon } from '@rangle/radius-react-core-components/components/link-icon';
 
 /** Temp helper to fix icon type collision due to the way they are exported */
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -124,9 +122,10 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/MS0V7Zk/elisa-pitkanen-Z9-FZ6hko-k-unsplash.jpg',
-              // ['data-radius-watch-token-changes']: true,
-              // ['data-radius-token']:
-              //   '--asset-component-image-large-image-text-item-image01',
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-token']:
+                '--asset-component-image-large-image-text-item-image01',
             },
             {
               alt: 'Descriptive text',
