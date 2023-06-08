@@ -6,3 +6,6 @@ export * from './components/image-text-item';
 export * from './components/image-text-list';
 export * from './components/nav';
 export * from './components/link-button';
+export * from './components/link-icon';
+export * from './components/inline-link';
+export * from './components/footer';
