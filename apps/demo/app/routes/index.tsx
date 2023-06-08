@@ -105,7 +105,12 @@ export default function Index() {
           />
         </span>
       </RadiusAutoLayout>
-      <RadiusAutoLayout as="main" direction="vertical">
+      <RadiusAutoLayout
+        as="main"
+        direction="vertical"
+        padding={[0, '--spacing-component-hero-padding-horizontal']}
+        width="fill-parent"
+      >
         <RadiusImageTextList
           items={[
             {
@@ -141,6 +146,9 @@ export default function Index() {
             },
           ]}
           variant="large"
+          style={{
+            width: '100%',
+          }}
         />
         <RadiusImageTextList
           items={[
