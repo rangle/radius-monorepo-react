@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   RadiusNav,
   RadiusHero,
@@ -12,12 +12,25 @@ import {
   LinkedIn,
   Instagram,
   Youtube,
+  LightMode,
+  DarkMode,
 } from '../../../../library/foundations/generated/icons';
 import {
   RadiusAutoLayout,
   RadiusButton,
 } from '@rangle/radius-react-core-components';
 export default function Index() {
+  const [mode, setMode] = useState<'light-mode' | 'dark-mode'>('light-mode');
+
+  const toggleMode = () => {
+    setMode(mode === 'light-mode' ? 'dark-mode' : 'light-mode');
+    const modeElement = document.querySelector(`.${mode}`);
+    modeElement?.classList.remove(mode);
+    modeElement?.classList.add(
+      mode === 'light-mode' ? 'dark-mode' : 'light-mode'
+    );
+  };
+
   return (
     <RadiusAutoLayout
       direction="vertical"
@@ -45,6 +58,12 @@ export default function Index() {
               'aria-label': 'Descriptive text',
               href: '#',
               icon: () => {},
+            },
+            {
+              'aria-label': 'Light/Dark Mode Toggle',
+              as: 'button',
+              onClick: toggleMode,
+              icon: mode === 'light-mode' ? LightMode : DarkMode,
             },
           ]}
           logos={
