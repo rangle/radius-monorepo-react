@@ -27,6 +27,8 @@ export type RadiusImageTextItemProps = {
   alt: string;
   /** Optional className to add to the container */
   className?: string;
+  /** Optional children to render after other content */
+  children?: React.ReactNode;
 } & (LargeRadiusImageTextItemProps | SmallRadiusImageTextItemProps);
 
 export type ExcludeSmallVariant<T> = T extends { variant: 'small' } ? never : T;

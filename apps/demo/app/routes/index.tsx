@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   RadiusNav,
   RadiusHero,
@@ -14,13 +14,30 @@ import {
   LinkedIn,
   Instagram,
   Youtube,
+  LightMode,
+  DarkMode,
 } from '../../../../library/foundations/generated/icons';
-import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
+import {
+  RadiusAutoLayout,
+  RadiusButton,
+} from '@rangle/radius-react-core-components';
 
 /** Temp helper to fix icon type collision due to the way they are exported */
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 // import PrimaryLogoLight from '@rangle/radius-foundations/generated/brands/radius/assets/primary-logo-light.svg';
+
 export default function Index() {
+  const [mode, setMode] = useState<'light-mode' | 'dark-mode'>('light-mode');
+
+  const toggleMode = () => {
+    const modeElement = document.querySelector(`.${mode}`);
+    modeElement?.classList.remove(mode);
+    modeElement?.classList.add(
+      mode === 'light-mode' ? 'dark-mode' : 'light-mode'
+    );
+    setMode(mode === 'light-mode' ? 'dark-mode' : 'light-mode');
+  };
+
   return (
     <RadiusAutoLayout
       direction="vertical"
@@ -49,6 +66,12 @@ export default function Index() {
               'aria-label': 'Book a demo',
               href: '#',
               icon: EventNote as IconType,
+            },
+            {
+              'aria-label': 'Light/Dark Mode Toggle',
+              as: 'button',
+              onClick: toggleMode,
+              icon: mode === 'light-mode' ? LightMode : DarkMode,
             },
           ]}
           logos={
@@ -112,7 +135,12 @@ export default function Index() {
           />
         </span>
       </RadiusAutoLayout>
-      <RadiusAutoLayout as="main" direction="vertical">
+      <RadiusAutoLayout
+        as="main"
+        direction="vertical"
+        padding={[0, '--spacing-component-hero-padding-horizontal']}
+        width="fill-parent"
+      >
         <RadiusImageTextList
           items={[
             {
@@ -121,6 +149,11 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/MS0V7Zk/elisa-pitkanen-Z9-FZ6hko-k-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
               // @ts-expect-error needed for brand-switching demo
               ['data-radius-watch-token-changes']: true,
               ['data-radius-token']:
@@ -132,6 +165,11 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/z77WsVJ/taylor-a7i-PP9-Ia-S8-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
             },
             {
               alt: 'Descriptive text',
@@ -139,6 +177,11 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/H7KyxSJ/tengis-galamez-u-JYpt-Y1z-OYY-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
             },
             {
               alt: 'Descriptive text',
@@ -146,9 +189,17 @@ export default function Index() {
               header: 'Header',
               headingLevel: 'h2',
               src: 'https://i.ibb.co/9yk9QRh/philippe-oursel-3v7qofrk-MXk-unsplash.jpg',
+              children: (
+                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                  Shop Now
+                </RadiusButton>
+              ),
             },
           ]}
           variant="large"
+          style={{
+            width: '100%',
+          }}
         />
         <RadiusImageTextList
           items={[

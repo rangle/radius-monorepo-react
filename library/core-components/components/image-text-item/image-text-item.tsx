@@ -33,6 +33,7 @@ export const RadiusImageTextItem = forwardRef<
       src,
       alt,
       className,
+      children,
       ...rest
     },
     ref
@@ -104,6 +105,8 @@ export const RadiusImageTextItem = forwardRef<
           >
             {body}
           </Typography>
+          {/* Optional additional content */}
+          {children}
         </RadiusAutoLayout>
       </RadiusAutoLayout>
     );
