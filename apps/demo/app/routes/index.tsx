@@ -7,6 +7,8 @@ import {
 } from '@rangle/radius-react-core-components';
 import {
   Github,
+  Figma,
+  EventNote,
   ArrowRight,
   Twitter,
   LinkedIn,
@@ -19,6 +21,11 @@ import {
   RadiusAutoLayout,
   RadiusButton,
 } from '@rangle/radius-react-core-components';
+
+/** Temp helper to fix icon type collision due to the way they are exported */
+type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
+// import PrimaryLogoLight from '@rangle/radius-foundations/generated/brands/radius/assets/primary-logo-light.svg';
+
 export default function Index() {
   const [mode, setMode] = useState<'light-mode' | 'dark-mode'>('light-mode');
 
@@ -45,19 +52,20 @@ export default function Index() {
         <RadiusNav
           linkIcons={[
             {
-              'aria-label': 'Descriptive text',
-              href: '#',
-              icon: () => {},
+              'aria-label': 'See source on Github',
+              href: 'https://github.com/rangle/radius-monorepo-react',
+              // I think they are currently using different instances of react types
+              icon: Github as IconType,
             },
             {
-              'aria-label': 'Descriptive text',
-              href: '#',
-              icon: () => {},
+              'aria-label': 'See designs on Figma',
+              href: 'https://www.figma.com/file/zpDGiKGaY35SEnfKB2uzeZ/Radius-Demo-Site?type=design&t=GqzqcLwssKZzV8o7-0',
+              icon: Figma as IconType,
             },
             {
-              'aria-label': 'Descriptive text',
+              'aria-label': 'Book a demo',
               href: '#',
-              icon: () => {},
+              icon: EventNote as IconType,
             },
             {
               'aria-label': 'Light/Dark Mode Toggle',
@@ -102,7 +110,7 @@ export default function Index() {
             {
               'aria-label': 'Descriptive text',
               href: '#',
-              icon: Github,
+              icon: Github as IconType,
             },
           ]}
           data-radius-watch-token-changes
@@ -118,10 +126,11 @@ export default function Index() {
           }}
         >
           <RadiusHero
-            header="header"
+            header="Header"
             eyebrow="Eyebrow"
             buttonLabel="Action"
             imageSrc="https://i.ibb.co/NjX1C6b/roger-van-de-kimmenade-93-Cz5t2-WP5-I-unsplash.jpg"
+            imageAlt="Image Alt"
             ctaUrl="/posts"
           />
         </span>
@@ -145,6 +154,7 @@ export default function Index() {
                   Shop Now
                 </RadiusButton>
               ),
+              // @ts-expect-error needed for brand-switching demo
               ['data-radius-watch-token-changes']: true,
               ['data-radius-token']:
                 '--asset-component-image-large-image-text-item-image01',
@@ -241,10 +251,26 @@ export default function Index() {
           </a>
         }
         pageLinks={[
-          { children: 'Design', href: '#', iconRight: ArrowRight },
-          { children: 'Development', href: '#', iconRight: ArrowRight },
-          { children: 'Resources', href: '#', iconRight: ArrowRight },
-          { children: 'Components', href: '#', iconRight: ArrowRight },
+          {
+            children: 'Design',
+            href: '#',
+            iconRight: ArrowRight as IconType,
+          },
+          {
+            children: 'Development',
+            href: '#',
+            iconRight: ArrowRight as IconType,
+          },
+          {
+            children: 'Resources',
+            href: '#',
+            iconRight: ArrowRight as IconType,
+          },
+          {
+            children: 'Components',
+            href: '#',
+            iconRight: ArrowRight as IconType,
+          },
         ]}
         inquiriesHeader="General Inquiries"
         inquiriesLinks={[
@@ -259,7 +285,7 @@ export default function Index() {
         ]}
         newsLetterHeader="Our newsletter"
         newsLetterLinks={[
-          { children: 'Sign up', href: '#', iconRight: ArrowRight },
+          { children: 'Sign up', href: '#', iconRight: ArrowRight as IconType },
         ]}
         copyright="© Rangle.io, 2023.  All rights reserved."
         privacyPolicy={{
@@ -267,14 +293,30 @@ export default function Index() {
           href: '#',
         }}
         connectLinkIcons={[
-          { icon: Twitter, href: '#', 'aria-label': 'Descriptive text' },
-          { icon: LinkedIn, href: '#', 'aria-label': 'Descriptive text' },
-          { icon: Instagram, href: '#', 'aria-label': 'Descriptive text' },
-          { icon: Youtube, href: '#', 'aria-label': 'Descriptive text' },
+          {
+            icon: Twitter as IconType,
+            href: '#',
+            'aria-label': 'Descriptive text',
+          },
+          {
+            icon: LinkedIn as IconType,
+            href: '#',
+            'aria-label': 'Descriptive text',
+          },
+          {
+            icon: Instagram as IconType,
+            href: '#',
+            'aria-label': 'Descriptive text',
+          },
+          {
+            icon: Youtube as IconType,
+            href: '#',
+            'aria-label': 'Descriptive text',
+          },
         ]}
         connectButtonProps={{
           children: 'Get in touch',
-          rightIcon: ArrowRight,
+          rightIcon: ArrowRight as IconType,
           as: 'a',
           href: '#',
         }}
