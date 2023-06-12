@@ -71,7 +71,7 @@ export default function Index() {
               'aria-label': 'Light/Dark Mode Toggle',
               as: 'button',
               onClick: toggleMode,
-              icon: mode === 'light-mode' ? LightMode : DarkMode,
+              icon: (mode === 'light-mode' ? LightMode : DarkMode) as IconType,
             },
           ]}
           logos={
@@ -150,7 +150,10 @@ export default function Index() {
               headingLevel: 'h2',
               src: 'https://i.ibb.co/MS0V7Zk/elisa-pitkanen-Z9-FZ6hko-k-unsplash.jpg',
               children: (
-                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                <RadiusButton
+                  rightIcon={ArrowRight as IconType}
+                  variant="secondary"
+                >
                   Shop Now
                 </RadiusButton>
               ),
@@ -166,7 +169,10 @@ export default function Index() {
               headingLevel: 'h2',
               src: 'https://i.ibb.co/z77WsVJ/taylor-a7i-PP9-Ia-S8-unsplash.jpg',
               children: (
-                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                <RadiusButton
+                  rightIcon={ArrowRight as IconType}
+                  variant="secondary"
+                >
                   Shop Now
                 </RadiusButton>
               ),
@@ -178,7 +184,10 @@ export default function Index() {
               headingLevel: 'h2',
               src: 'https://i.ibb.co/H7KyxSJ/tengis-galamez-u-JYpt-Y1z-OYY-unsplash.jpg',
               children: (
-                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                <RadiusButton
+                  rightIcon={ArrowRight as IconType}
+                  variant="secondary"
+                >
                   Shop Now
                 </RadiusButton>
               ),
@@ -190,7 +199,10 @@ export default function Index() {
               headingLevel: 'h2',
               src: 'https://i.ibb.co/9yk9QRh/philippe-oursel-3v7qofrk-MXk-unsplash.jpg',
               children: (
-                <RadiusButton rightIcon={ArrowRight} variant="secondary">
+                <RadiusButton
+                  rightIcon={ArrowRight as IconType}
+                  variant="secondary"
+                >
                   Shop Now
                 </RadiusButton>
               ),
