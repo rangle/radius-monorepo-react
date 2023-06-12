@@ -9,8 +9,6 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import styles from '@rangle/radius-foundations/styles.css';
-import fontsRadius from '@rangle/radius-foundations/generated/brands/radius/fonts/fonts.css';
-import fontsSaddles from '@rangle/radius-foundations/generated/brands/saddles/fonts/fonts.css';
 import { useMutationObserver } from './utils/demo.utils';
 import { css, Global } from '@emotion/react';
 
@@ -25,14 +23,6 @@ export function links() {
     {
       rel: 'stylesheet',
       href: styles,
-    },
-    {
-      rel: 'stylesheet',
-      href: fontsRadius,
-    },
-    {
-      rel: 'stylesheet',
-      href: fontsSaddles,
     },
   ];
 }
@@ -57,9 +47,9 @@ export default function App() {
         />
       </head>
       <body>
-        <div className="light-mode" data-radius-watch>
+        <main className="saddles light-mode" data-radius-watch>
           <Outlet />
-        </div>
+        </main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

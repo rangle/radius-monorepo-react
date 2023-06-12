@@ -1,2 +1,4 @@
 @import './reset.css';
 @import './generated/theme.css';
+@import './generated/brands/radius/fonts/fonts.css';
+@import './generated/brands/saddles/fonts/fonts.css';
