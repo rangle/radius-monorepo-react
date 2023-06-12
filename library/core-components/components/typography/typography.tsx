@@ -23,6 +23,15 @@ export const Typography: TypographyComponent = forwardRef(
       font,
       letterSpacing,
       textDecoration,
+      // not yet used text properties
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      textCase,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      paragraphIndent,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      paragraphSpacing,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      lineHeight,
       children,
       className,
       ...rest
