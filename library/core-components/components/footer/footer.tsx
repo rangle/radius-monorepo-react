@@ -71,8 +71,8 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
                 direction="vertical"
                 width="fill-parent"
               >
-                {pageLinks.map((pageLinkProps) => (
-                  <RadiusLinkButton {...pageLinkProps} />
+                {pageLinks.map((pageLinkProps, i) => (
+                  <RadiusLinkButton key={i} {...pageLinkProps} />
                 ))}
               </RadiusAutoLayout>
               {/* General Inquiries */}
@@ -96,9 +96,10 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
                   space={radiusTokens.component.spacing.footer.gap.links}
                   direction="vertical"
                 >
-                  {inquiriesLinks.map((inquiriesLinkProps) => (
+                  {inquiriesLinks.map((inquiriesLinkProps, i) => (
                     <RadiusInlineLink
                       {...inquiriesLinkProps}
+                      key={i}
                       typography={
                         radiusTokens.component.typography.inlineText.label.large
                       }
@@ -120,8 +121,8 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
               >
                 {newsLetterHeader}
               </Typography>
-              {newsLetterLinks.map((newsLetterLinkProps) => (
-                <RadiusLinkButton {...newsLetterLinkProps} />
+              {newsLetterLinks.map((newsLetterLinkProps, i) => (
+                <RadiusLinkButton key={i} {...newsLetterLinkProps} />
               ))}
             </RadiusAutoLayout>
 
@@ -159,9 +160,10 @@ export const RadiusFooter: RadiusFooterComponent = forwardRef(
               alignment="center"
             >
               <RadiusAutoLayout>
-                {connectLinkIcons.map((connectLinkIconProps) => (
+                {connectLinkIcons.map((connectLinkIconProps, i) => (
                   <RadiusLinkIcon
                     {...connectLinkIconProps}
+                    key={i}
                     // TODO: add sizing token when available
                     size={{ css: '24px' }}
                   />
