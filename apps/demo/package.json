@@ -5,10 +5,11 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "npx remix build",
-    "dev": "npx remix dev",
+    "load-assets": "pwd && cp -r ../../node_modules/@rangle/radius-foundations/generated/brand public",
+    "build": "npm run load-assets && npx remix build",
+    "dev": "npm run load-assets && npx remix dev",
     "postinstall": "npx remix setup node",
-    "start": "npx remix-serve build"
+    "start": "npm run load-assets && npx remix-serve build"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -29,7 +30,7 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "sideEffects": false
 }

@@ -61,22 +61,39 @@ export const useMutationObserver = (callback: VoidCallback = voidCallback) => {
             (changeCount + 1).toString()
           );
           // selector for the element to replace
-          const selector =
+          const targetSelector =
             element.getAttribute('data-radius-target-selector') || 'img';
           // attribute to replace
-          const attribute =
+          const targetAttribute =
             element.getAttribute('data-radius-target-attribute') || 'src';
-          // token to replace with
-          const token = '--asset-component-navigation-primary-logo';
-
+          // string with tokens to replace with their values
+          const replaceValue =
+            element.getAttribute('data-radius-replace-value') || '';
           // get the element
-          const elementsToReplace = element.querySelector(selector);
-          if (!elementsToReplace) return;
+          const targetElementsToReplace = element.querySelector(targetSelector);
+          if (!targetElementsToReplace) return;
+
           // obtain the current computed value of the css variable for the element
-          const computedValue =
-            getComputedStyle(element).getPropertyValue(token);
-          console.log('computedValue:', computedValue);
-          elementsToReplace.setAttribute(attribute, computedValue);
+          // -- this is a preliminary solution. if the resolved values for *this* element are not correct, we will need to obtain them for every target element
+          const references = [...(replaceValue?.match(/\{--[\w]*\}/g) ?? [])];
+          const computedValues = references.reduce((acc, token) => {
+            return {
+              ...acc,
+              [token]: getComputedStyle(element).getPropertyValue(
+                token.replace(/\{|\}/g, '')
+              ),
+            };
+          }, {} as Record<string, string>);
+
+          const newValue = replaceValue.replace(
+            /\{(--[\w]*)\}/g,
+            (_match, token) => computedValues[`{${token}}`] || ''
+          );
+
+          // replace the tokens with their values
+          console.log('computedValue:', computedValues);
+          console.log('replace:', replaceValue, newValue);
+          targetElementsToReplace.setAttribute(targetAttribute, newValue);
         });
         console.log('CHANGED', elementsToChange.length, 'elements');
       })

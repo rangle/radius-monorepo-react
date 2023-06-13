@@ -58,6 +58,11 @@ const expressionPattern =
 export const isExpression = (input: string): boolean => {
   return !!input.replace(' ', '').match(expressionPattern);
 };
+
+export const variableReferenceRegex = /\{(--[\w-]+)\}/;
+export const isVariableReference = (value: string) =>
+  variableReferenceRegex.test(value);
+
 export const hasParameters = (parameters: Record<string, string>) =>
   Object.keys(parameters).filter((key) => key !== 'description').length > 0;
 
