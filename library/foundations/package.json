@@ -1,6 +1,6 @@
 {
   "name": "@rangle/radius-foundations",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "main": "generated/design-tokens.constants.ts",
   "description": "Foundation scripts and variables for Design Systems",
   "files": [

@@ -14,6 +14,29 @@ import {
   GeneratorMappingFunction,
 } from '../lib/token-parser.types';
 
+/** Wraps the template for either `:root` or the different `dependencies` */
+const forEachDependency = (
+  dependencies: string[] | ':root' = ':root',
+  template: string,
+  indentLevel = 1
+) => {
+  const indentSpacing = new Array(indentLevel).fill('  ').join('');
+  if (Array.isArray(dependencies) && dependencies.length > 0) {
+    return `
+/* consolidated layer */
+/* this layer will be effective in the relevant sections where it sources its variables from */
+${dependencies.map((name) => `.${toKebabCase(name)}`).join(', ')} {
+  ${template}
+}
+`.replace(/\n/g, `\n${indentSpacing}`);
+  }
+  return `
+  :root {
+    ${template}
+  }
+`.replace(/\n/g, `\n${indentSpacing}`);
+};
+
 // Wraps special layers based on detecting specific parameters.
 // It is possible to create more sophisticated parameters for layers in the future
 const layerWrapper = (
@@ -24,57 +47,41 @@ const layerWrapper = (
   const sectionName = params[PARAM_SECTION_NAME];
   if (sectionName)
     return `
-    /* ${sectionName} */
-    /* this layer requires a class to be added to a section or the body */
-    .${toKebabCase(sectionName)} {
-      ${template}
-    }
-      `;
-  if (dependencies.length)
-    return `
-      /* consolidated layer */
-      /* this layer will be effective in the relevant sections where it sources its variables from */
-      ${dependencies.map((name) => `.${toKebabCase(name)}`).join(', ')} {
-        ${template}
-      }
-        `;
+  /* ${sectionName} */
+  /* this layer requires a class to be added to a section or the body */
+  .${toKebabCase(sectionName)} {
+    ${template}
+  }
+`;
 
   if (params[PARAM_SCREEN_MIN_WIDTH] && params[PARAM_SCREEN_MAX_WIDTH])
     return `
-    /* this layer automatically activates when the screen is between two specific sizes */
-    @media screen and (min-width: ${params[PARAM_SCREEN_MIN_WIDTH]}) and (max-width: ${params[PARAM_SCREEN_MAX_WIDTH]}) {
-      :root {
-      ${template}
-      }
-    }
-      `;
+  /* this layer automatically activates when the screen is between two specific sizes */
+  @media screen and (min-width: ${
+    params[PARAM_SCREEN_MIN_WIDTH]
+  }) and (max-width: ${params[PARAM_SCREEN_MAX_WIDTH]}) {
+    ${forEachDependency(dependencies, template, 2)}
+  }
+`;
 
   if (params[PARAM_SCREEN_MIN_WIDTH])
     return `
-    /* this layer automatically activates when the screen is bigger than a specific size */
-    @media screen and (min-width: ${params[PARAM_SCREEN_MIN_WIDTH]}) {
-      :root {
-      ${template}
-      }
-    }
-      `;
+  /* this layer automatically activates when the screen is bigger than a specific size */
+  @media screen and (min-width: ${params[PARAM_SCREEN_MIN_WIDTH]}) {
+    ${forEachDependency(dependencies, template, 2)}
+  }
+`;
 
   if (params[PARAM_SCREEN_MAX_WIDTH])
     return `
-    /* this layer automatically activates when the screen is smaller than a specific size */
-    @media screen and (max-width: ${params[PARAM_SCREEN_MAX_WIDTH]}) {
-      :root {
-        ${template}
-      }
-    }
-    `;
+  /* this layer automatically activates when the screen is smaller than a specific size */
+  @media screen and (max-width: ${params[PARAM_SCREEN_MAX_WIDTH]}) {
+    ${forEachDependency(dependencies, template, 2)}
+  }
+`;
 
   // if it's not a special case, returns only the template
-  return `
-  :root {
-  ${template}
-  }
-  `;
+  return forEachDependency(dependencies, template);
 };
 
 const variableReferenceRegex = /\{(--[\w-]+)\}/g;
@@ -98,27 +105,23 @@ export const renderCSSVariables = (
   processValue: GeneratorMappingFunction = (_, value) => value
 ) =>
   Buffer.from(`
-  @layer ${order.join()};
-  
-  ${layers
-    .map(
-      ({ name, variables, parameters, dependencies }) => `
-  
-  @layer ${name} {
-    ${layerWrapper(
-      parameters,
-      dependencies,
-      `
-        ${variables
-          .map(convertVariableReferences)
-          .map(convertExpressions)
-          .map(
-            ({ key, value }) => `
-          ${key}: ${processValue(key, value)};`
-          )
-          .join('')}`
-    )}
-  }`
-    )
-    .join('')}
+@layer ${order.join()};
+
+${layers
+  .map(
+    ({ name, variables, parameters, dependencies }) => `
+
+@layer ${name} {
+  ${layerWrapper(
+    parameters,
+    dependencies,
+    variables
+      .map(convertVariableReferences)
+      .map(convertExpressions)
+      .map(({ key, value }) => `${key}: ${processValue(key, value)};`)
+      .join('\n    ')
+  )}
+}`
+  )
+  .join('')}
   `);

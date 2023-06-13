@@ -944,7 +944,7 @@ export const TokenizedLayout: Story = {
       </RadiusAutoLayout>
       <RadiusAutoLayout
         width="fill-parent"
-        direction={radiusTokens.component.direction.hero.textContainer.outer}
+        direction={radiusTokens.component.direction.hero.textContainer}
         space={radiusTokens.component.spacing.hero.gap.aboveButton}
       >
         <Typography
