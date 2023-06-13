@@ -16,10 +16,10 @@ const removeClassesAndAddTheme = (mode: string) => {
 };
 
 export const withSectionNameForTheme: Decorator = (Story, context) => {
-  const mode = context.globals.theme;
-  removeClassesAndAddTheme(mode);
+  const { theme, brand } = context.globals;
+  removeClassesAndAddTheme(theme);
   return (
-    <section className={mode} style={{ ...styles }}>
+    <section className={`${theme} ${brand}`} style={{ ...styles }}>
       <Story />
     </section>
   );
