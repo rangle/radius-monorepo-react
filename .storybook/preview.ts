@@ -22,6 +22,7 @@ export const globalTypes: Preview['globalTypes'] = {
   brand: {
     name: 'Brand',
     description: 'Global brand for components',
+    defaultValue: 'photostop',
     toolbar: {
       // Array of plain string values or MenuItem shape (see below)
       items: [
