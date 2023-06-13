@@ -47,9 +47,9 @@ export default function App() {
         />
       </head>
       <body>
-        <div className="saddles light-mode" data-radius-watch>
+        <main className="saddles light-mode" data-radius-watch>
           <Outlet />
-        </div>
+        </main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
