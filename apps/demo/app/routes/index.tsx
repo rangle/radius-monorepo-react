@@ -17,6 +17,7 @@ import {
   LightMode,
   DarkMode,
 } from '../../../../library/foundations/generated/icons';
+import { radiusTokens } from '../../../../library/foundations/generated/design-tokens.constants';
 import {
   RadiusAutoLayout,
   RadiusButton,
@@ -41,7 +42,8 @@ export default function Index() {
   return (
     <RadiusAutoLayout
       direction="vertical"
-      space={{ css: '40px' }}
+      space={radiusTokens.component.spacing.layouts.gap.vertical}
+      fill={radiusTokens.component.color.layout.background}
       width="fill-parent"
     >
       <RadiusAutoLayout
@@ -138,7 +140,8 @@ export default function Index() {
       <RadiusAutoLayout
         as="main"
         direction="vertical"
-        padding={[0, '--spacing-component-hero-padding-horizontal']}
+        padding={[0, radiusTokens.component.spacing.hero.padding.horizontal]}
+        space={radiusTokens.component.spacing.layouts.gap.vertical}
         width="fill-parent"
       >
         <RadiusImageTextList
