@@ -1,4 +1,3 @@
-import React from 'react';
 import type { MetaFunction } from '@remix-run/node';
 import {
   Links,
@@ -10,7 +9,6 @@ import {
 } from '@remix-run/react';
 import styles from '@rangle/radius-foundations/styles.css';
 import { useMutationObserver } from './utils/demo.utils';
-import { css, Global } from '@emotion/react';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -36,20 +34,11 @@ export default function App() {
       <head>
         <Meta />
         <Links />
-        <Global
-          styles={css`
-            body,
-            main {
-              margin: 0;
-              background: var(--color-component-layout-background);
-            }
-          `}
-        />
       </head>
       <body>
-        <main className="saddles light-mode" data-radius-watch>
+        <div className="saddles light-mode" data-radius-watch>
           <Outlet />
-        </main>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
