@@ -17,6 +17,7 @@ import {
   LightMode,
   DarkMode,
 } from '../../../../library/foundations/generated/icons';
+import { radiusTokens } from '../../../../library/foundations/generated/design-tokens.constants';
 import {
   RadiusAutoLayout,
   RadiusButton,
@@ -40,7 +41,8 @@ export default function Index() {
   return (
     <RadiusAutoLayout
       direction="vertical"
-      space={{ css: '40px' }}
+      space={radiusTokens.component.spacing.layouts.gap.vertical}
+      fill={radiusTokens.component.color.layout.background}
       width="fill-parent"
     >
       <RadiusAutoLayout
@@ -52,25 +54,29 @@ export default function Index() {
           linkIcons={[
             {
               'aria-label': 'See source on Github',
+              title: 'See source on Github',
               href: 'https://github.com/rangle/radius-monorepo-react',
               // I think they are currently using different instances of react types
               icon: Github as IconType,
             },
             {
               'aria-label': 'See designs on Figma',
+              title: 'See designs on Figma',
               href: 'https://www.figma.com/file/zpDGiKGaY35SEnfKB2uzeZ/Radius-Demo-Site?type=design&t=GqzqcLwssKZzV8o7-0',
               icon: Figma as IconType,
             },
             {
-              'aria-label': 'Book a demo',
-              href: '#',
-              icon: EventNote as IconType,
-            },
-            {
-              'aria-label': 'Light/Dark Mode Toggle',
+              'aria-label':
+                mode
+                  ? 'Switch to dark mode'
+                  : 'Switch to light mode',
+              title:
+                mode
+                  ? 'Switch to dark mode'
+                  : 'Switch to light mode',
               as: 'button',
               onClick: toggleMode,
-              icon: (mode ? LightMode : DarkMode) as IconType,
+              icon: (mode ? DarkMode : LightMode) as IconType,
             },
           ]}
           logos={
@@ -105,10 +111,6 @@ export default function Index() {
             {
               href: '#',
               label: 'Menu Item 3',
-            },
-            {
-              href: '#',
-              label: 'Menu Item 4',
             },
           ]}
           socials={[
@@ -150,7 +152,8 @@ export default function Index() {
       <RadiusAutoLayout
         as="main"
         direction="vertical"
-        padding={[0, '--spacing-component-hero-padding-horizontal']}
+        padding={[0, radiusTokens.component.spacing.hero.padding.horizontal]}
+        space={radiusTokens.component.spacing.layouts.gap.vertical}
         width="fill-parent"
       >
         <RadiusImageTextList
