@@ -49,7 +49,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
     },
     ref
   ) => {
-    const { contentContainer } = useStyles({
+    const { contentContainer, imageContainer } = useStyles({
       imageAlignment,
     });
 
@@ -75,9 +75,12 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
         >
           {/* Image Container */}
           <RadiusAutoLayout
+            className={imageContainer}
             width="fill-parent"
             height="fill-parent"
             fill={radiusTokens.component.color.hero.image}
+            cornerRadius={radiusTokens.component.borderRadius.hero.image}
+            clippedContent
           >
             {/* Image */}
             {image}

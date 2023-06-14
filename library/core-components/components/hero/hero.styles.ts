@@ -10,4 +10,15 @@ export const useStyles = ({ imageAlignment }: StyleProps) => ({
       flex-direction: ${imageAlignment === 'left' ? 'row' : 'row-reverse'};
     }
   `,
+  imageContainer: css`
+    ${mediaQueries.desktop} {
+      aspect-ratio: 0.866;
+    }
+    ${mediaQueries.tablet} {
+      aspect-ratio: 1.72;
+    }
+    ${mediaQueries.mobile} {
+      aspect-ratio: 1;
+    }
+  `,
 });

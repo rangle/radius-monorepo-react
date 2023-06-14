@@ -144,6 +144,9 @@ export default function Index() {
                   height="fill-parent"
                   src="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
                   alt="Image Description"
+                  className={css`
+                    object-fit: cover;
+                  `}
                 />
               }
               ctaUrl="/posts"
