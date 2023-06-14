@@ -1,6 +1,6 @@
-/// <reference lib="dom" />
 import { promises } from 'fs';
 import sharp from 'sharp';
+import axios from 'axios';
 import { parseData } from './lib/token-parser';
 import { TokenLayer, TokenLayers } from './lib/token-parser.types';
 import { isVariableReference } from './lib/token-parser.utils';
@@ -29,13 +29,15 @@ export const loadLayersFile = (fileName: string): Promise<TokenLayers> => {
     });
 };
 
-const findAssetSizeAndDimensions = (url: string) => {
+const findAssetSizeAndDimensions = async (url: string) => {
   console.info('fetching', url);
-  return fetch(url)
-    .then((res) => res.arrayBuffer())
-    .then((buffer) => {
+  return axios
+    .get(url, { responseType: 'arraybuffer' })
+    .then((response) => {
       console.info('downloaded. converting to webp');
-      return sharp(buffer).webp().toBuffer({ resolveWithObject: true });
+      return sharp(Buffer.from(response.data))
+        .webp()
+        .toBuffer({ resolveWithObject: true });
     })
     .then(({ data, info }) => {
       return { data, info };
