@@ -66,14 +66,10 @@ export default function Index() {
               icon: Figma as IconType,
             },
             {
-              'aria-label':
-                mode
-                  ? 'Switch to dark mode'
-                  : 'Switch to light mode',
-              title:
-                mode
-                  ? 'Switch to dark mode'
-                  : 'Switch to light mode',
+              'aria-label': mode
+                ? 'Switch to dark mode'
+                : 'Switch to light mode',
+              title: mode ? 'Switch to dark mode' : 'Switch to light mode',
               as: 'button',
               onClick: toggleMode,
               icon: (mode ? DarkMode : LightMode) as IconType,
@@ -140,8 +136,15 @@ export default function Index() {
               header="Header"
               eyebrow="Eyebrow"
               buttonLabel="Action"
-              imageSrc="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
-              imageAlt="Image Alt"
+              image={
+                <RadiusAutoLayout
+                  as="img"
+                  width="fill-parent"
+                  height="fill-parent"
+                  src="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
+                  alt="Image Description"
+                />
+              }
               ctaUrl="/posts"
               imageAlignment="right"
               className="demo-hero"
