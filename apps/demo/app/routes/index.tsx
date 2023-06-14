@@ -22,6 +22,7 @@ import {
   RadiusAutoLayout,
   RadiusButton,
 } from '@rangle/radius-react-core-components';
+import { css } from '@emotion/css';
 
 /** Temp helper to fix icon type collision due to the way they are exported */
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -147,7 +148,9 @@ export default function Index() {
               }
               ctaUrl="/posts"
               imageAlignment="right"
-              className="demo-hero"
+              className={`demo-hero ${css`
+                background: url(/brand/saddles/assets/semantic.image.hero.backgroundImage.webp);
+              `}`}
             />
           </span>
         </span>

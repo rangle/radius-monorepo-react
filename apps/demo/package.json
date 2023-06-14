@@ -16,6 +16,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
+    "@emotion/css": "^11.10.5",
     "@rangle/radius-foundations": "*",
     "@rangle/radius-react-core-components": "*",
     "@remix-run/react": "^1.6.8",
