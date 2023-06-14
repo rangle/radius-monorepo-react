@@ -7,7 +7,12 @@ import {
   PARAM_SCREEN_MIN_WIDTH,
   PARAM_SCREEN_MAX_WIDTH,
 } from '../lib/token-parser';
-import { isExpression, toKebabCase } from '../lib/token-parser.utils';
+import {
+  isExpression,
+  isVariableReference,
+  toKebabCase,
+  variableReferenceRegex,
+} from '../lib/token-parser.utils';
 import {
   TokenOutput,
   TokenLayers,
@@ -45,11 +50,17 @@ const layerWrapper = (
   template: string
 ) => {
   const sectionName = params[PARAM_SECTION_NAME];
+  const layerName = params.name ?? 'global';
+  // get the prefixes of the layer name without the last part
+  const layerNamePrefix = toKebabCase(
+    layerName.split('--').slice(0, -1).join(' ')
+  );
   if (sectionName)
     return `
   /* ${sectionName} */
   /* this layer requires a class to be added to a section or the body */
   .${toKebabCase(sectionName)} {
+    --${layerNamePrefix}: ${toKebabCase(sectionName)};
     ${template}
   }
 `;
@@ -84,9 +95,6 @@ const layerWrapper = (
   return forEachDependency(dependencies, template);
 };
 
-const variableReferenceRegex = /\{(--[\w-]+)\}/g;
-const isVariableReference = (value: string) =>
-  variableReferenceRegex.test(value);
 const convertVariableReferences = (token: TokenOutput): TokenOutput =>
   isVariableReference(token.value)
     ? {
@@ -113,7 +121,7 @@ ${layers
 
 @layer ${name} {
   ${layerWrapper(
-    parameters,
+    { ...parameters, name },
     dependencies,
     variables
       .map(convertVariableReferences)

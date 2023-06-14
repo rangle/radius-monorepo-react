@@ -13,8 +13,8 @@ import {
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusNav } from './nav';
 
-import SecondaryLogo from '@rangle/radius-foundations/generated/brands/radius/assets/secondary-logo-light.svg';
-import PrimaryLogoLight from '@rangle/radius-foundations/generated/brands/radius/assets/primary-logo-light.svg';
+import SecondaryLogo from '@rangle/radius-foundations/generated/brand/radius/assets/secondary-logo-light.svg';
+import PrimaryLogoLight from '@rangle/radius-foundations/generated/brand/radius/assets/primary-logo-light.svg';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 
 const meta: Meta<typeof RadiusNav> = {

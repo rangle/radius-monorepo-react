@@ -9,7 +9,7 @@ import {
   Youtube,
 } from '@rangle/radius-foundations/generated/icons';
 
-import RangleLogoLight from '@rangle/radius-foundations/generated/brands/radius/assets/secondary-logo-light.svg';
+import RangleLogoLight from '@rangle/radius-foundations/generated/brand/radius/assets/secondary-logo-light.svg';
 import { RadiusFooter } from './footer';
 
 const meta: Meta<typeof RadiusFooter> = {

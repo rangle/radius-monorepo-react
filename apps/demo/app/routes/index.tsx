@@ -25,18 +25,17 @@ import {
 
 /** Temp helper to fix icon type collision due to the way they are exported */
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
-// import PrimaryLogoLight from '@rangle/radius-foundations/generated/brands/radius/assets/primary-logo-light.svg';
+
+const modes = ['dark-mode', 'light-mode'];
 
 export default function Index() {
-  const [mode, setMode] = useState<'light-mode' | 'dark-mode'>('light-mode');
+  const [mode, setMode] = useState(1);
 
   const toggleMode = () => {
-    const modeElement = document.querySelector(`.${mode}`);
-    modeElement?.classList.remove(mode);
-    modeElement?.classList.add(
-      mode === 'light-mode' ? 'dark-mode' : 'light-mode'
-    );
-    setMode(mode === 'light-mode' ? 'dark-mode' : 'light-mode');
+    const modeElement = document.querySelector(`.${modes[mode]}`);
+    modeElement?.classList.remove(modes[mode]);
+    modeElement?.classList.add(modes[mode ^ 1]);
+    setMode(mode ^ 1);
   };
 
   return (
@@ -68,24 +67,30 @@ export default function Index() {
             },
             {
               'aria-label':
-                mode === 'light-mode'
+                mode
                   ? 'Switch to dark mode'
                   : 'Switch to light mode',
               title:
-                mode === 'light-mode'
+                mode
                   ? 'Switch to dark mode'
                   : 'Switch to light mode',
               as: 'button',
               onClick: toggleMode,
-              icon: (mode === 'light-mode' ? DarkMode : LightMode) as IconType,
+              icon: (mode ? DarkMode : LightMode) as IconType,
             },
           ]}
           logos={
             <>
-              <a href="#">
+              <a
+                href="#"
+                data-radius-watch-token-changes
+                data-radius-target-selector="img"
+                data-radius-target-attribute="src"
+                data-radius-replace-value="/brand/{--brand}/assets/primary-logo-{--mode}.svg"
+              >
                 <img
                   alt="Saddles logo"
-                  src="https://i.ibb.co/HCx9ZH8/saddleslightprimarynew.png"
+                  src="/brand/saddles/assets/primary-logo-light-mode.svg"
                   style={{
                     height: 'var(--sizing-component-navigation-primary-logo)',
                   }}
@@ -115,26 +120,33 @@ export default function Index() {
               icon: Github as IconType,
             },
           ]}
-          data-radius-watch-token-changes
-          data-radius-target-selector="img"
-          data-radius-target-attribute="src"
-          data-radius-token="--asset-component-image-navigation-logo"
         />
         <span
           data-radius-watch-token-changes
-          data-radius-token="--asset-component-image-hero-header"
+          data-radius-target-selector="img"
+          data-radius-target-attribute="src"
+          data-radius-replace-value="/brand/{--brand}/assets/semantic.image.hero.headerImage.webp"
           style={{
             width: '100%',
           }}
         >
-          <RadiusHero
-            header="Header"
-            eyebrow="Eyebrow"
-            buttonLabel="Action"
-            imageSrc="https://i.ibb.co/NjX1C6b/roger-van-de-kimmenade-93-Cz5t2-WP5-I-unsplash.jpg"
-            imageAlt="Image Alt"
-            ctaUrl="/posts"
-          />
+          <span
+            data-radius-watch-token-changes
+            data-radius-target-selector="div.demo-hero"
+            data-radius-target-attribute="style"
+            data-radius-replace-value="background: url(/brand/{--brand}/assets/semantic.image.hero.backgroundImage.webp)"
+          >
+            <RadiusHero
+              header="Header"
+              eyebrow="Eyebrow"
+              buttonLabel="Action"
+              imageSrc="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
+              imageAlt="Image Alt"
+              ctaUrl="/posts"
+              imageAlignment="right"
+              className="demo-hero"
+            />
+          </span>
         </span>
       </RadiusAutoLayout>
       <RadiusAutoLayout
@@ -151,7 +163,7 @@ export default function Index() {
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
               header: 'Header',
               headingLevel: 'h2',
-              src: 'https://i.ibb.co/MS0V7Zk/elisa-pitkanen-Z9-FZ6hko-k-unsplash.jpg',
+              src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image01.webp',
               children: (
                 <RadiusButton
                   rightIcon={ArrowRight as IconType}
@@ -162,15 +174,15 @@ export default function Index() {
               ),
               // @ts-expect-error needed for brand-switching demo
               ['data-radius-watch-token-changes']: true,
-              ['data-radius-token']:
-                '--asset-component-image-large-image-text-item-image01',
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image01.webp',
             },
             {
               alt: 'Descriptive text',
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
               header: 'Header',
               headingLevel: 'h2',
-              src: 'https://i.ibb.co/z77WsVJ/taylor-a7i-PP9-Ia-S8-unsplash.jpg',
+              src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image02.webp',
               children: (
                 <RadiusButton
                   rightIcon={ArrowRight as IconType}
@@ -179,13 +191,17 @@ export default function Index() {
                   Shop Now
                 </RadiusButton>
               ),
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image02.webp',
             },
             {
               alt: 'Descriptive text',
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
               header: 'Header',
               headingLevel: 'h2',
-              src: 'https://i.ibb.co/H7KyxSJ/tengis-galamez-u-JYpt-Y1z-OYY-unsplash.jpg',
+              src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image03.webp',
               children: (
                 <RadiusButton
                   rightIcon={ArrowRight as IconType}
@@ -194,13 +210,17 @@ export default function Index() {
                   Shop Now
                 </RadiusButton>
               ),
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image03.webp',
             },
             {
               alt: 'Descriptive text',
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
               header: 'Header',
               headingLevel: 'h2',
-              src: 'https://i.ibb.co/9yk9QRh/philippe-oursel-3v7qofrk-MXk-unsplash.jpg',
+              src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image04.webp',
               children: (
                 <RadiusButton
                   rightIcon={ArrowRight as IconType}
@@ -209,6 +229,10 @@ export default function Index() {
                   Shop Now
                 </RadiusButton>
               ),
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image04.webp',
             },
           ]}
           variant="large"
@@ -221,32 +245,38 @@ export default function Index() {
             {
               alt: 'Descriptive text',
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              src: 'https://i.ibb.co/qNqwthW/saddle1.jpg',
+              src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image01.webp',
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image01.webp',
             },
             {
               alt: 'Descriptive text',
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              src: 'https://i.ibb.co/qNqwthW/saddle2.jpg',
+              src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image02.webp',
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image02.webp',
             },
             {
               alt: 'Descriptive text',
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              src: 'https://i.ibb.co/qNqwthW/saddle3.jpg',
+              src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image03.webp',
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image03.webp',
             },
             {
               alt: 'Descriptive text',
               body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              src: 'https://i.ibb.co/qNqwthW/saddle4.jpg',
-            },
-            {
-              alt: 'Descriptive text',
-              body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              src: 'https://i.ibb.co/qNqwthW/saddle5.jpg',
-            },
-            {
-              alt: 'Descriptive text',
-              body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              src: 'https://i.ibb.co/qNqwthW/saddle6.jpg',
+              src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image04.webp',
+              // @ts-expect-error needed for brand-switching demo
+              ['data-radius-watch-token-changes']: true,
+              ['data-radius-replace-value']:
+                '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image04.webp',
             },
           ]}
           variant="small"
@@ -255,12 +285,18 @@ export default function Index() {
 
       <RadiusFooter
         logo={
-          <a href="#">
+          <a
+            href="#"
+            data-radius-watch-token-changes
+            data-radius-target-selector="img"
+            data-radius-target-attribute="src"
+            data-radius-replace-value="/brand/{--brand}/assets/secondary-logo-{--mode}.svg"
+          >
             <img
               alt="Saddles logo"
-              src="https://i.ibb.co/s9bD4G0/darkmodesaddlessecondary.png"
+              src="/brand/saddles/assets/secondary-logo-light-mode.svg"
               style={{
-                height: 'var(--sizing-component-navigation-primary-logo)',
+                height: 'var(--sizing-component-navigation-secondary-logo)',
               }}
             />
           </a>
