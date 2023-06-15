@@ -85,11 +85,12 @@ export default function Index() {
                 data-radius-target-attribute="src"
                 data-radius-replace-value="/brand/{--brand}/assets/primary-logo-{--mode}.svg"
               >
-                <img
-                  alt="Saddles logo"
+                <RadiusAutoLayout
+                  as="img"
+                  alt="Company logo"
                   src="/brand/saddles/assets/primary-logo-light-mode.svg"
                   style={{
-                    height: 'var(--sizing-component-navigation-primary-logo)',
+                    height: `var(${radiusTokens.component.sizing.navigation.primaryLogo})`,
                   }}
                 />
               </a>
