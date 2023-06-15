@@ -121,43 +121,41 @@ export default function Index() {
       />
       <span
         data-radius-watch-token-changes
-        data-radius-target-selector="img"
-        data-radius-target-attribute="src"
-        data-radius-replace-value="/brand/{--brand}/assets/semantic.image.hero.headerImage.webp"
-        style={{
-          width: '100%',
-        }}
+        data-radius-target-selector="div.demo-hero"
+        data-radius-target-attribute="style"
+        data-radius-replace-value="background: url(/brand/{--brand}/assets/semantic.image.hero.backgroundImage.webp)"
+        className={css`
+          width: 100%;
+        `}
       >
-        <span
+        <RadiusHero
+          header="Header"
+          eyebrow="Eyebrow"
+          buttonLabel="Action"
+          image={
+            <RadiusAutoLayout
+              as="img"
+              width="fill-parent"
+              height="fill-parent"
+              src="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
+              alt="Image Description"
+              className={css`
+                object-fit: cover;
+              `}
+            />
+          }
+          ctaUrl="/posts"
+          imageAlignment="right"
           data-radius-watch-token-changes
-          data-radius-target-selector="div.demo-hero"
-          data-radius-target-attribute="style"
-          data-radius-replace-value="background: url(/brand/{--brand}/assets/semantic.image.hero.backgroundImage.webp)"
-        >
-          <RadiusHero
-            header="Header"
-            eyebrow="Eyebrow"
-            buttonLabel="Action"
-            image={
-              <RadiusAutoLayout
-                as="img"
-                width="fill-parent"
-                height="fill-parent"
-                src="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
-                alt="Image Description"
-                className={css`
-                  object-fit: cover;
-                `}
-              />
-            }
-            ctaUrl="/posts"
-            imageAlignment="right"
-            className={`demo-hero ${css`
-              background: url(/brand/saddles/assets/semantic.image.hero.backgroundImage.webp);
-            `}`}
-          />
-        </span>
+          data-radius-target-selector="img"
+          data-radius-target-attribute="src"
+          data-radius-replace-value="/brand/{--brand}/assets/semantic.image.hero.headerImage.webp"
+          className={`demo-hero ${css`
+            background: url(/brand/saddles/assets/semantic.image.hero.backgroundImage.webp);
+          `}`}
+        />
       </span>
+
       <RadiusAutoLayout
         as="main"
         direction="vertical"
