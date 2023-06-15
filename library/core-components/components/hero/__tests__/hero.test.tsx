@@ -14,8 +14,7 @@ describe('<RadiusHero />', () => {
         header="Header"
         eyebrow="Eyebrow"
         buttonLabel="Action"
-        imageSrc="https://via.placeholder.com/1500"
-        imageAlt="Image Description"
+        image={<img src="https://via.placeholder.com/1500" alt="Description" />}
         ctaUrl="#"
       />
     );
@@ -28,8 +27,7 @@ describe('<RadiusHero />', () => {
         header="Header"
         eyebrow="Eyebrow"
         buttonLabel="Action"
-        imageSrc="https://via.placeholder.com/1500"
-        imageAlt="Image Description"
+        image={<img src="https://via.placeholder.com/1500" alt="Description" />}
         ctaUrl="#"
       />
     );
@@ -41,8 +39,7 @@ describe('<RadiusHero />', () => {
       <RadiusHero
         header="Header"
         eyebrow="Eyebrow"
-        imageSrc="https://via.placeholder.com/1500"
-        imageAlt="Image Description"
+        image={<img src="https://via.placeholder.com/1500" alt="Description" />}
         ctaUrl="#"
       />
     );
@@ -54,8 +51,7 @@ describe('<RadiusHero />', () => {
       <RadiusHero
         header="Header"
         eyebrow="Eyebrow"
-        imageSrc="https://via.placeholder.com/1500"
-        imageAlt="Image Description"
+        image={<img src="https://via.placeholder.com/1500" alt="Description" />}
         buttonLabel="Action"
       />
     );

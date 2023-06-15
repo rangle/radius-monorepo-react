@@ -1,6 +1,8 @@
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusHero, RadiusHeroProps } from './hero';
+import { RadiusAutoLayout } from '../auto-layout/auto-layout';
 
 const meta: Meta<RadiusHeroProps> = {
   component: RadiusHero,
@@ -15,8 +17,18 @@ const meta: Meta<RadiusHeroProps> = {
   args: {
     header: 'Header',
     eyebrow: 'Eyebrow',
-    imageSrc: 'https://via.placeholder.com/1500',
-    imageAlt: 'Image Description',
+    image: (
+      <RadiusAutoLayout
+        as="img"
+        width="fill-parent"
+        height="fill-parent"
+        src="https://via.placeholder.com/1500"
+        alt="Image Description"
+        style={{
+          objectFit: 'cover',
+        }}
+      />
+    ),
     buttonLabel: 'Action',
     ctaUrl: '#',
   },

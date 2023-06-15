@@ -22,6 +22,7 @@ import {
   RadiusAutoLayout,
   RadiusButton,
 } from '@rangle/radius-react-core-components';
+import { css } from '@emotion/css';
 
 /** Temp helper to fix icon type collision due to the way they are exported */
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -45,110 +46,116 @@ export default function Index() {
       fill={radiusTokens.component.color.layout.background}
       width="fill-parent"
     >
-      <RadiusAutoLayout
-        direction="vertical"
-        space={{ css: '0' }}
-        width="fill-parent"
+      <RadiusNav
+        linkIcons={[
+          {
+            'aria-label': 'See source on Github',
+            title: 'See source on Github',
+            href: 'https://github.com/rangle/radius-monorepo-react',
+            // I think they are currently using different instances of react types
+            icon: Github as IconType,
+          },
+          {
+            'aria-label': 'See designs on Figma',
+            title: 'See designs on Figma',
+            href: 'https://www.figma.com/file/zpDGiKGaY35SEnfKB2uzeZ/Radius-Demo-Site?type=design&t=GqzqcLwssKZzV8o7-0',
+            icon: Figma as IconType,
+          },
+          {
+            'aria-label': mode ? 'Switch to dark mode' : 'Switch to light mode',
+            title: mode ? 'Switch to dark mode' : 'Switch to light mode',
+            as: 'button',
+            onClick: toggleMode,
+            icon: (mode ? DarkMode : LightMode) as IconType,
+          },
+        ]}
+        logos={
+          <>
+            <a
+              href="#"
+              data-radius-watch-token-changes
+              data-radius-target-selector="img"
+              data-radius-target-attribute="src"
+              data-radius-replace-value="/brand/{--brand}/assets/primary-logo-{--mode}.svg"
+            >
+              <RadiusAutoLayout
+                as="img"
+                alt="Company logo"
+                src="/brand/saddles/assets/primary-logo-light-mode.svg"
+                style={{
+                  height: `var(${radiusTokens.component.sizing.navigation.primaryLogo})`,
+                }}
+              />
+            </a>
+          </>
+        }
+        navItems={[
+          {
+            href: '#',
+            label: 'Menu Item 1',
+            selected: true,
+          },
+          {
+            href: '#',
+            label: 'Menu Item 2',
+          },
+          {
+            href: '#',
+            label: 'Menu Item 3',
+          },
+        ]}
+        socials={[
+          {
+            'aria-label': 'Descriptive text',
+            href: '#',
+            icon: Github as IconType,
+          },
+        ]}
+        className={css`
+          position: sticky;
+          top: 0;
+          margin-bottom: calc(
+            var(${radiusTokens.component.spacing.layouts.gap.vertical}) * -1
+          );
+        `}
+      />
+      <span
+        data-radius-watch-token-changes
+        data-radius-target-selector="div.demo-hero"
+        data-radius-target-attribute="style"
+        data-radius-replace-value="background: url(/brand/{--brand}/assets/semantic.image.hero.backgroundImage.webp)"
+        className={css`
+          width: 100%;
+        `}
       >
-        <RadiusNav
-          linkIcons={[
-            {
-              'aria-label': 'See source on Github',
-              title: 'See source on Github',
-              href: 'https://github.com/rangle/radius-monorepo-react',
-              // I think they are currently using different instances of react types
-              icon: Github as IconType,
-            },
-            {
-              'aria-label': 'See designs on Figma',
-              title: 'See designs on Figma',
-              href: 'https://www.figma.com/file/zpDGiKGaY35SEnfKB2uzeZ/Radius-Demo-Site?type=design&t=GqzqcLwssKZzV8o7-0',
-              icon: Figma as IconType,
-            },
-            {
-              'aria-label':
-                mode
-                  ? 'Switch to dark mode'
-                  : 'Switch to light mode',
-              title:
-                mode
-                  ? 'Switch to dark mode'
-                  : 'Switch to light mode',
-              as: 'button',
-              onClick: toggleMode,
-              icon: (mode ? DarkMode : LightMode) as IconType,
-            },
-          ]}
-          logos={
-            <>
-              <a
-                href="#"
-                data-radius-watch-token-changes
-                data-radius-target-selector="img"
-                data-radius-target-attribute="src"
-                data-radius-replace-value="/brand/{--brand}/assets/primary-logo-{--mode}.svg"
-              >
-                <img
-                  alt="Saddles logo"
-                  src="/brand/saddles/assets/primary-logo-light-mode.svg"
-                  style={{
-                    height: 'var(--sizing-component-navigation-primary-logo)',
-                  }}
-                />
-              </a>
-            </>
+        <RadiusHero
+          header="Header"
+          eyebrow="Eyebrow"
+          buttonLabel="Action"
+          image={
+            <RadiusAutoLayout
+              as="img"
+              width="fill-parent"
+              height="fill-parent"
+              src="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
+              alt="Image Description"
+              className={css`
+                object-fit: cover;
+              `}
+            />
           }
-          navItems={[
-            {
-              href: '#',
-              label: 'Menu Item 1',
-              selected: true,
-            },
-            {
-              href: '#',
-              label: 'Menu Item 2',
-            },
-            {
-              href: '#',
-              label: 'Menu Item 3',
-            },
-          ]}
-          socials={[
-            {
-              'aria-label': 'Descriptive text',
-              href: '#',
-              icon: Github as IconType,
-            },
-          ]}
-        />
-        <span
+          ctaUrl="/posts"
+          imageAlignment="right"
           data-radius-watch-token-changes
           data-radius-target-selector="img"
           data-radius-target-attribute="src"
           data-radius-replace-value="/brand/{--brand}/assets/semantic.image.hero.headerImage.webp"
-          style={{
-            width: '100%',
-          }}
-        >
-          <span
-            data-radius-watch-token-changes
-            data-radius-target-selector="div.demo-hero"
-            data-radius-target-attribute="style"
-            data-radius-replace-value="background: url(/brand/{--brand}/assets/semantic.image.hero.backgroundImage.webp)"
-          >
-            <RadiusHero
-              header="Header"
-              eyebrow="Eyebrow"
-              buttonLabel="Action"
-              imageSrc="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
-              imageAlt="Image Alt"
-              ctaUrl="/posts"
-              imageAlignment="right"
-              className="demo-hero"
-            />
-          </span>
-        </span>
-      </RadiusAutoLayout>
+          className={`demo-hero ${css`
+            background: url(/brand/saddles/assets/semantic.image.hero.backgroundImage.webp);
+          `}`}
+        />
+      </span>
+
       <RadiusAutoLayout
         as="main"
         direction="vertical"
@@ -214,25 +221,6 @@ export default function Index() {
               ['data-radius-watch-token-changes']: true,
               ['data-radius-replace-value']:
                 '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image03.webp',
-            },
-            {
-              alt: 'Descriptive text',
-              body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              header: 'Header',
-              headingLevel: 'h2',
-              src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image04.webp',
-              children: (
-                <RadiusButton
-                  rightIcon={ArrowRight as IconType}
-                  variant="secondary"
-                >
-                  Shop Now
-                </RadiusButton>
-              ),
-              // @ts-expect-error needed for brand-switching demo
-              ['data-radius-watch-token-changes']: true,
-              ['data-radius-replace-value']:
-                '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image04.webp',
             },
           ]}
           variant="large"

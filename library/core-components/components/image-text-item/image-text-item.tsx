@@ -38,7 +38,7 @@ export const RadiusImageTextItem = forwardRef<
     },
     ref
   ) => {
-    const { styles, imageContainer, textContainer } = useStyles({
+    const { styles, imageContainer, image, textContainer } = useStyles({
       imageAlignment,
       variant,
     });
@@ -66,8 +66,19 @@ export const RadiusImageTextItem = forwardRef<
           className={imageContainer}
           width="fill-parent"
           height="fill-parent"
+          cornerRadius={
+            radiusTokens.component.borderRadius.largeImageTextItem.image
+          }
+          clippedContent
         >
-          <RadiusAutoLayout as="img" src={src} alt={alt} width="fill-parent" />
+          <RadiusAutoLayout
+            as="img"
+            src={src}
+            alt={alt}
+            width="fill-parent"
+            height="fill-parent"
+            className={image}
+          />
         </RadiusAutoLayout>
         {/* Text Container */}
         <RadiusAutoLayout

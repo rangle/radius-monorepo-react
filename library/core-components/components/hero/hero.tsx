@@ -12,10 +12,8 @@ export type RadiusHeroProps = {
   header: string;
   /** The eyebrow text */
   eyebrow: string;
-  /** The image source */
-  imageSrc: string;
-  /** The image alt text */
-  imageAlt: string;
+  /** The image to display in the hero */
+  image: React.ReactNode;
   /** The button label text. If not provided, the button will not be shown */
   buttonLabel?: string;
   /** The url for the Call To Action link button. If not provided, the button will not be shown */
@@ -23,7 +21,9 @@ export type RadiusHeroProps = {
   /** Whether the image is on the left or right */
   imageAlignment?: 'left' | 'right';
   className?: string;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
+// note - this intersection causes storybook to not infer the props/descriptions
+// correctly, we might need to add them manually to the storybook meta
 
 /**
  * The Hero component is used to display a large image with a header, eyebrow,
@@ -41,15 +41,17 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
       header,
       eyebrow,
       buttonLabel,
-      imageSrc,
-      imageAlt,
+      image,
       ctaUrl,
       imageAlignment = 'left',
       className,
+      ...rest
     },
     ref
   ) => {
-    const { contentContainer } = useStyles({ imageAlignment });
+    const { contentContainer, imageContainer } = useStyles({
+      imageAlignment,
+    });
 
     return (
       <RadiusAutoLayout
@@ -60,6 +62,7 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
           radiusTokens.component.spacing.hero.padding.horizontal,
         ]}
         fill={radiusTokens.component.color.hero.background}
+        {...rest}
       >
         {/* Content Container */}
         <RadiusAutoLayout
@@ -72,17 +75,15 @@ export const RadiusHero = forwardRef<HTMLDivElement, RadiusHeroProps>(
         >
           {/* Image Container */}
           <RadiusAutoLayout
+            className={imageContainer}
             width="fill-parent"
             height="fill-parent"
             fill={radiusTokens.component.color.hero.image}
+            cornerRadius={radiusTokens.component.borderRadius.hero.image}
+            clippedContent
           >
             {/* Image */}
-            <RadiusAutoLayout
-              as="img"
-              src={imageSrc}
-              alt={imageAlt}
-              width="fill-parent"
-            />
+            {image}
           </RadiusAutoLayout>
           {/* Outer Text Container */}
           <RadiusAutoLayout
