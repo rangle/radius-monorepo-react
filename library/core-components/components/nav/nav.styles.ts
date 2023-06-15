@@ -1,14 +1,19 @@
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { css } from '../../utils';
+import { RadiusNavExtendedProps } from './nav.types';
 
 type StyleProps = {
   /** Whether the nav is open */
   isOpen: boolean;
-};
+} & Pick<RadiusNavExtendedProps, 'hasShadow'>;
 
-export const useStyles = ({ isOpen }: StyleProps) => ({
+export const useStyles = ({ isOpen, hasShadow }: StyleProps) => ({
   // TODO: figure out how to use polymorphic Component in AutoLayout `as` prop so we can apply layout styles directly instead of nesting them (currently throws an undecipherable type error)
   styles: css`
     width: 100%;
+    box-shadow: ${hasShadow
+      ? `var(${radiusTokens.component.shadow.navigation.scroll});`
+      : ''};
   `,
 
   navContainer: css`
