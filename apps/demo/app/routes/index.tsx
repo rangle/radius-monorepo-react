@@ -106,9 +106,24 @@ export default function Index() {
         ]}
         socials={[
           {
-            'aria-label': 'Descriptive text',
+            icon: Twitter as IconType,
             href: '#',
-            icon: Github as IconType,
+            'aria-label': 'Descriptive text',
+          },
+          {
+            icon: LinkedIn as IconType,
+            href: '#',
+            'aria-label': 'Descriptive text',
+          },
+          {
+            icon: Instagram as IconType,
+            href: '#',
+            'aria-label': 'Descriptive text',
+          },
+          {
+            icon: Youtube as IconType,
+            href: '#',
+            'aria-label': 'Descriptive text',
           },
         ]}
         className={css`
