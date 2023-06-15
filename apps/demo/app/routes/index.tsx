@@ -222,25 +222,6 @@ export default function Index() {
               ['data-radius-replace-value']:
                 '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image03.webp',
             },
-            {
-              alt: 'Descriptive text',
-              body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-              header: 'Header',
-              headingLevel: 'h2',
-              src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image04.webp',
-              children: (
-                <RadiusButton
-                  rightIcon={ArrowRight as IconType}
-                  variant="secondary"
-                >
-                  Shop Now
-                </RadiusButton>
-              ),
-              // @ts-expect-error needed for brand-switching demo
-              ['data-radius-watch-token-changes']: true,
-              ['data-radius-replace-value']:
-                '/brand/{--brand}/assets/semantic.image.largeImageTextItem.image04.webp',
-            },
           ]}
           variant="large"
           style={{
