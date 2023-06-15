@@ -94,3 +94,9 @@ export default meta;
 type Story = StoryObj<typeof RadiusNav>;
 
 export const Default: Story = {};
+
+export const WithShadow: Story = {
+  args: {
+    hasShadow: true,
+  },
+};

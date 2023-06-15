@@ -100,6 +100,8 @@ export type RadiusNavExtendedProps = {
   socials: Array<
     OmitPolymorphicProp<RadiusLinkIconProps<React.ElementType>, 'size'>
   >;
+  /** Whether to display a shadow */
+  hasShadow?: boolean;
   className?: string;
 };
 

@@ -32,6 +32,7 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
       navItems,
       linkIcons,
       socials,
+      hasShadow,
       className,
       ...rest
     }: RadiusNavProps<C>,
@@ -49,6 +50,7 @@ export const RadiusNav: RadiusNavComponent = forwardRef(
       secondaryActionsContainer,
     } = useStyles({
       isOpen,
+      hasShadow,
     });
 
     return (

@@ -23,6 +23,7 @@ import {
   RadiusButton,
 } from '@rangle/radius-react-core-components';
 import { css } from '@emotion/css';
+import { useIsScrolled } from '../../hooks/use-is-scrolled';
 
 /** Temp helper to fix icon type collision due to the way they are exported */
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -31,6 +32,7 @@ const modes = ['dark-mode', 'light-mode'];
 
 export default function Index() {
   const [mode, setMode] = useState(1);
+  const isScrolled = useIsScrolled();
 
   const toggleMode = () => {
     const modeElement = document.querySelector(`.${modes[mode]}`);
@@ -133,6 +135,7 @@ export default function Index() {
             var(${radiusTokens.component.spacing.layouts.gap.vertical}) * -1
           );
         `}
+        hasShadow={isScrolled}
       />
       <span
         data-radius-watch-token-changes
