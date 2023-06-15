@@ -24,6 +24,9 @@ const meta: Meta<RadiusHeroProps> = {
         height="fill-parent"
         src="https://via.placeholder.com/1500"
         alt="Image Description"
+        style={{
+          objectFit: 'cover',
+        }}
       />
     ),
     buttonLabel: 'Action',
