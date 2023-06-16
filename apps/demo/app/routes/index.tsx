@@ -53,7 +53,18 @@ export default function Index() {
       {/* Nav Wrapper */}
       <RadiusAutoLayout
         width="fill-parent"
+        height="hug-contents"
         fill={radiusTokens.component.color.navigation.background}
+        className={css`
+          position: sticky;
+          top: 0;
+          margin-bottom: calc(
+            var(${radiusTokens.component.spacing.layouts.gap.vertical}) * -1
+          ) !important;
+          box-shadow: ${isScrolled
+            ? `var(${radiusTokens.component.shadow.navigation.scroll});`
+            : ''};
+        `}
       >
         <RadiusNav
           linkIcons={[
@@ -138,15 +149,11 @@ export default function Index() {
             },
           ]}
           className={css`
-            position: sticky;
-            top: 0;
             margin: 0 auto;
-            margin-bottom: calc(
-              var(${radiusTokens.component.spacing.layouts.gap.vertical}) * -1
-            );
             max-width: ${pageMaxWidth}px;
           `}
-          hasShadow={isScrolled}
+          // TODO: shadow is now a page-level concern since we are adding wrappers
+          // hasShadow={isScrolled}
         />
       </RadiusAutoLayout>
       {/* Hero and main content wrapper */}
