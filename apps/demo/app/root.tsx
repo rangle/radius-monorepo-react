@@ -22,6 +22,13 @@ export function links() {
       rel: 'stylesheet',
       href: styles,
     },
+    {
+      // favicon
+      rel: 'icon',
+      href: 'https://res.cloudinary.com/rangle/image/upload/v1674695824/rangle.io/Meta/rxtiy88j4bvmne1kxlrb.ico',
+      type: 'image/x-icon',
+      preload: 'true',
+    },
   ];
 }
 
