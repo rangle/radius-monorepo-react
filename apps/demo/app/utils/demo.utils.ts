@@ -3,7 +3,15 @@ import { useEffect } from 'react';
 type VoidCallback = () => void;
 const voidCallback = () => {};
 
-export const useMutationObserver = (callback: VoidCallback = voidCallback) => {
+/**
+ * Special computed token, that currently doesn't come from Figma and is filled
+ * with `brand` or the event's path
+ */
+const brandOrEventToken = '{--brandOrEvent}';
+/** Event tokens to look for to identify if an event is active */
+const events = ['--halloweenevent'];
+
+export const useMutationObserver = () => {
   useEffect(() => {
     // Define the function that will handle the mutations
     const handleMutations =
@@ -76,10 +84,20 @@ export const useMutationObserver = (callback: VoidCallback = voidCallback) => {
           // obtain the current computed value of the css variable for the element
           // -- this is a preliminary solution. if the resolved values for *this* element are not correct, we will need to obtain them for every target element
           const references = [...(replaceValue?.match(/\{--[\w]*\}/g) ?? [])];
+
+          /** Cached computed styles to avoid recomputation */
+          const computedStyle = getComputedStyle(element);
           const computedValues = references.reduce((acc, token) => {
+            const event = events.find((e) => computedStyle.getPropertyValue(e));
+            if (token === brandOrEventToken) {
+              return {
+                ...acc,
+                [brandOrEventToken]: event ? event.replace(/^--/, '') : 'brand',
+              };
+            }
             return {
               ...acc,
-              [token]: getComputedStyle(element).getPropertyValue(
+              [token]: computedStyle.getPropertyValue(
                 token.replace(/\{|\}/g, '')
               ),
             };
@@ -87,9 +105,13 @@ export const useMutationObserver = (callback: VoidCallback = voidCallback) => {
 
           const newValue = replaceValue.replace(
             /\{(--[\w]*)\}/g,
-            (_match, token) => computedValues[`{${token}}`] || ''
+            (_match, token) => {
+              console.log('>>>>', token);
+              return computedValues[`{${token}}`] || '';
+            }
           );
 
+          console.log('references:', references);
           // replace the tokens with their values
           console.log('computedValue:', computedValues);
           console.log('replace:', replaceValue, newValue);

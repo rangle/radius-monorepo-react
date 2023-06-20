@@ -169,7 +169,7 @@ export default function Index() {
           data-radius-watch-token-changes
           data-radius-target-selector="div.demo-hero"
           data-radius-target-attribute="style"
-          data-radius-replace-value="background: url(/brand/{--brand}/assets/semantic.image.hero.backgroundImage.webp)"
+          data-radius-replace-value="background: url(/{--brandOrEvent}/{--brand}/assets/semantic.image.hero.backgroundImage.webp)"
           className={css`
             width: 100%;
           `}
@@ -195,7 +195,7 @@ export default function Index() {
             data-radius-watch-token-changes
             data-radius-target-selector="img"
             data-radius-target-attribute="src"
-            data-radius-replace-value="/brand/{--brand}/assets/semantic.image.hero.headerImage.webp"
+            data-radius-replace-value="/{--brandOrEvent}/{--brand}/assets/semantic.image.hero.headerImage.webp"
             className={`demo-hero ${css`
               background: url(/brand/saddles/assets/semantic.image.hero.backgroundImage.webp);
             `}`}
@@ -282,7 +282,7 @@ export default function Index() {
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
-                  '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image01.webp',
+                  '/{--brandOrEvent}/{--brand}/assets/semantic.image.smallImageTextItem.image01.webp',
               },
               {
                 alt: 'Descriptive text',
@@ -291,7 +291,7 @@ export default function Index() {
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
-                  '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image02.webp',
+                  '/{--brandOrEvent}/{--brand}/assets/semantic.image.smallImageTextItem.image02.webp',
               },
               {
                 alt: 'Descriptive text',
@@ -300,7 +300,7 @@ export default function Index() {
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
-                  '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image03.webp',
+                  '/{--brandOrEvent}/{--brand}/assets/semantic.image.smallImageTextItem.image03.webp',
               },
               {
                 alt: 'Descriptive text',
@@ -309,7 +309,7 @@ export default function Index() {
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
-                  '/brand/{--brand}/assets/semantic.image.smallImageTextItem.image04.webp',
+                  '/{--brandOrEvent}/{--brand}/assets/semantic.image.smallImageTextItem.image04.webp',
               },
             ]}
             variant="small"
@@ -329,7 +329,7 @@ export default function Index() {
               data-radius-watch-token-changes
               data-radius-target-selector="img"
               data-radius-target-attribute="src"
-              data-radius-replace-value="/brand/{--brand}/assets/secondary-logo-{--mode}.svg"
+              data-radius-replace-value="/{--brandOrEvent}/{--brand}/assets/secondary-logo-{--mode}.svg"
             >
               <img
                 alt="Saddles logo"
