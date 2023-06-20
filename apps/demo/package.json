@@ -5,7 +5,7 @@
   "description": "",
   "license": "",
   "scripts": {
-    "load-assets": "pwd && cp -r ../../node_modules/@rangle/radius-foundations/generated/brand public",
+    "load-assets": "pwd && cp -r ../../node_modules/@rangle/radius-foundations/generated/{brand,halloweenevent} public",
     "build": "npm run load-assets && npx remix build",
     "dev": "npm run load-assets && npx remix dev",
     "postinstall": "npx remix setup node",

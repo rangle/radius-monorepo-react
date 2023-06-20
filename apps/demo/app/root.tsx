@@ -33,9 +33,7 @@ export function links() {
 }
 
 export default function App() {
-  useMutationObserver(() => {
-    console.log('mutation observer');
-  });
+  useMutationObserver();
   return (
     <html lang="en">
       <head>
