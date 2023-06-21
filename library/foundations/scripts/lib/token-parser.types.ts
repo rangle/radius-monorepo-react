@@ -20,9 +20,18 @@ export type JSONStructure = {
   [key: string]: JSONLeaf | JSONCompositeLeaf | JSONStructure;
 };
 
+/** Theme structure (requires Pro) */
+export type Theme = {
+  id: string;
+  name: string;
+  $figmaStyleReferences: Record<string, unknown>;
+  selectedTokenSets: Record<string, 'enabled' | 'source'>;
+  group: string;
+};
+
 /** Root structure of the JSON file */
 export type TokenStructure = Record<string, JSONStructure> & {
-  $themes: unknown[];
+  $themes: Theme[];
   $metadata: {
     tokenSetOrder: string[];
   };
@@ -118,6 +127,7 @@ export type TokenLayer = {
   name: string;
   parameters: Record<string, string | undefined>;
   dependencies: string[];
+  isDefault?: boolean;
   isStatic: boolean;
 };
 

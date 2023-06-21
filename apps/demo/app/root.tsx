@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import styles from '@rangle/radius-foundations/styles.css';
 import { useMutationObserver } from './utils/demo.utils';
 
@@ -32,8 +33,22 @@ export function links() {
   ];
 }
 
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 export default function App() {
   useMutationObserver();
+  const mainWrapper = useRef<HTMLDivElement>(null);
+  useIsomorphicLayoutEffect(() => {
+    if (mainWrapper.current) {
+      const defaultLayers = getComputedStyle(mainWrapper.current)
+        .getPropertyValue('--defaultLayers')
+        .split(',')
+        .map((s) => s.trim());
+      mainWrapper.current.classList.add(...defaultLayers);
+    }
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -41,7 +56,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div className="saddles light-mode" data-radius-watch>
+        <div data-radius-watch ref={mainWrapper}>
           <Outlet />
         </div>
         <ScrollRestoration />

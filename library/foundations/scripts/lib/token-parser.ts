@@ -39,6 +39,7 @@ import {
   TokenLayers,
   TokenLayer,
   isTokenOutput,
+  Theme,
 } from './token-parser.types';
 
 // For debugging purposes, you can run this script with:
@@ -70,6 +71,8 @@ export const TYPOGRAPHY_TOKEN_PROPS = [
   'textCase',
   'textDecoration',
 ] as const;
+
+export const DEFAULT_THEME_NAME = 'Default';
 
 /* RENDERING RESULT FUNCTIONS */
 
@@ -473,6 +476,15 @@ export const removeParameters = (parameters: Record<string, string>) => {
   return (token: TokenOutput): boolean => !parameters[token.name];
 };
 
+/** Returns a list of the default layers based on the "Defaults" theme - if set */
+const getDefaultLayers = (themes: Theme[]) => {
+  const defaultTheme = themes.find((t) => t.name === DEFAULT_THEME_NAME);
+  if (!defaultTheme) {
+    return undefined;
+  }
+  return Object.keys(defaultTheme.selectedTokenSets);
+};
+
 // process each layer, extracting its tokens and parameters
 export const processLayers = <T extends TokenStructure>(
   input: T
@@ -481,11 +493,12 @@ export const processLayers = <T extends TokenStructure>(
 
   const {
     $metadata: { tokenSetOrder },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     $themes,
     ...tokenData
   } = input;
   const references: ReferenceMap = {};
+  const defaultLayers = getDefaultLayers($themes);
+
   const layers: TokenLayer[] = Object.keys(tokenData)
     .map((key) => {
       const layer = tokenData[key];
@@ -500,7 +513,13 @@ export const processLayers = <T extends TokenStructure>(
         isStatic,
         parameters[PARAM_SECTION_NAME]
       ).filter(removeParameters(parameters));
-      return { name, variables, parameters, isStatic };
+      return {
+        name,
+        variables,
+        parameters,
+        isDefault: defaultLayers?.length ? defaultLayers.includes(key) : false,
+        isStatic,
+      };
     })
     .map((layer): TokenLayer => {
       const { variables, parameters, ...rest } = layer;
