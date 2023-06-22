@@ -16,8 +16,9 @@ import {
   Youtube,
   LightMode,
   DarkMode,
-} from '../../../../library/foundations/generated/icons';
-import { radiusTokens } from '../../../../library/foundations/generated/design-tokens.constants';
+} from '@rangle/radius-foundations/generated/icons';
+import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+import { imageBasePath } from '@rangle/radius-foundations/generated/default-class-names.constants';
 import {
   RadiusAutoLayout,
   RadiusButton,
@@ -183,7 +184,7 @@ export default function Index() {
                 as="img"
                 width="fill-parent"
                 height="fill-parent"
-                src="/brand/saddles/assets/semantic.image.hero.headerImage.webp"
+                src={`/${imageBasePath}/assets/semantic.image.hero.headerImage.webp`}
                 alt="Image Description"
                 className={css`
                   object-fit: cover;
@@ -197,7 +198,7 @@ export default function Index() {
             data-radius-target-attribute="src"
             data-radius-replace-value="/{--brandOrEvent}/{--brand}/assets/semantic.image.hero.headerImage.webp"
             className={`demo-hero ${css`
-              background: url(/brand/saddles/assets/semantic.image.hero.backgroundImage.webp);
+              background: url(/${imageBasePath}/assets/semantic.image.hero.backgroundImage.webp);
             `}`}
           />
         </span>
@@ -278,7 +279,7 @@ export default function Index() {
               {
                 alt: 'Descriptive text',
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-                src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image01.webp',
+                src: `/${imageBasePath}/assets/semantic.image.smallImageTextItem.image01.webp`,
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
@@ -287,7 +288,7 @@ export default function Index() {
               {
                 alt: 'Descriptive text',
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-                src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image02.webp',
+                src: `/${imageBasePath}/assets/semantic.image.smallImageTextItem.image02.webp`,
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
@@ -296,7 +297,7 @@ export default function Index() {
               {
                 alt: 'Descriptive text',
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-                src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image03.webp',
+                src: `/${imageBasePath}/assets/semantic.image.smallImageTextItem.image03.webp`,
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
@@ -305,7 +306,7 @@ export default function Index() {
               {
                 alt: 'Descriptive text',
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-                src: '/brand/saddles/assets/semantic.image.smallImageTextItem.image04.webp',
+                src: `/${imageBasePath}/assets/semantic.image.smallImageTextItem.image04.webp`,
                 // @ts-expect-error needed for brand-switching demo
                 ['data-radius-watch-token-changes']: true,
                 ['data-radius-replace-value']:
@@ -329,7 +330,7 @@ export default function Index() {
               data-radius-watch-token-changes
               data-radius-target-selector="img"
               data-radius-target-attribute="src"
-              data-radius-replace-value="/{--brandOrEvent}/{--brand}/assets/secondary-logo-{--mode}.svg"
+              data-radius-replace-value="/brand/{--brand}/assets/secondary-logo-{--mode}.svg"
             >
               <img
                 alt="Saddles logo"

@@ -105,10 +105,7 @@ export const useMutationObserver = () => {
 
           const newValue = replaceValue.replace(
             /\{(--[\w]*)\}/g,
-            (_match, token) => {
-              console.log('>>>>', token);
-              return computedValues[`{${token}}`] || '';
-            }
+            (_match, token) => computedValues[`{${token}}`] || ''
           );
 
           console.log('references:', references);
