@@ -9,6 +9,7 @@ import {
 } from '@remix-run/react';
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import styles from '@rangle/radius-foundations/styles.css';
+import { defaultClassNames } from '@rangle/radius-foundations/generated/default-class-names.constants';
 import { useMutationObserver } from './utils/demo.utils';
 
 export const meta: MetaFunction = () => ({
@@ -38,16 +39,6 @@ const useIsomorphicLayoutEffect =
 
 export default function App() {
   useMutationObserver();
-  const mainWrapper = useRef<HTMLDivElement>(null);
-  useIsomorphicLayoutEffect(() => {
-    if (mainWrapper.current) {
-      const defaultLayers = getComputedStyle(mainWrapper.current)
-        .getPropertyValue('--defaultLayers')
-        .split(',')
-        .map((s) => s.trim());
-      mainWrapper.current.classList.add(...defaultLayers);
-    }
-  }, []);
 
   return (
     <html lang="en">
@@ -56,7 +47,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div data-radius-watch ref={mainWrapper}>
+        <div className={defaultClassNames.join(' ')} data-radius-watch>
           <Outlet />
         </div>
         <ScrollRestoration />

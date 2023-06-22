@@ -11,6 +11,7 @@ import {
   renderCSSVariables,
   renderTokenTypes,
   renderTokenObjects,
+  renderDefaultThemeClassNames,
 } from './templates';
 
 type RenderFunction = (
@@ -69,6 +70,8 @@ const templates: RenderTemplateMap = {
   constants: renderTokenObjects,
   // render storybook theme
   storybook: renderStorybookStory,
+  // render default theme class names
+  defaultClassNames: renderDefaultThemeClassNames,
   // default template for the test runner
   runner: renderCSSVariables,
 };

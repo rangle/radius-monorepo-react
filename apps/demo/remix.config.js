@@ -8,4 +8,5 @@ module.exports = {
   // serverBuildPath: "build/index.js",
   // publicPath: "/build/",
   watchPaths: ['../../library'],
+  serverDependenciesToBundle: [/.*@rangle\/radius-.+/],
 };

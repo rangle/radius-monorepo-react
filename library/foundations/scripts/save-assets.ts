@@ -33,11 +33,19 @@ const findAssetSizeAndDimensions = async (url: string) => {
   console.info('fetching', url);
   return axios
     .get(url, { responseType: 'arraybuffer' })
+    .catch((e) => {
+      console.warn(`Error downloading ${url}`);
+      throw e;
+    })
     .then((response) => {
       console.info('downloaded. converting to webp');
       return sharp(Buffer.from(response.data))
         .webp()
-        .toBuffer({ resolveWithObject: true });
+        .toBuffer({ resolveWithObject: true })
+        .catch((e) => {
+          console.warn(`Error parsing ${url}`);
+          throw e;
+        });
     })
     .then(({ data, info }) => {
       return { data, info };
