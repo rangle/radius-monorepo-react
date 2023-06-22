@@ -13,6 +13,7 @@ const isSwitchable = ({
 }: Pick<TokenLayer, 'name' | 'isStatic'>) =>
   !isStatic && !name.startsWith('breakpoint-');
 
+/** Return the event or brand specific path */
 const getDefaultAssetPaths = (defaultLayers: TokenLayer[]) => {
   const segements = defaultLayers
     .map(({ name }) => name.split('--'))
@@ -26,7 +27,6 @@ const getDefaultAssetPaths = (defaultLayers: TokenLayer[]) => {
 
 const getDefaultClassNames = (defaultLayers: TokenLayer[]) => {
   return defaultLayers.flatMap(({ name, isStatic, isDefault, parameters }) => {
-    console.warn(name);
     if (!isSwitchable({ name, isStatic })) {
       return [];
     }
@@ -35,15 +35,28 @@ const getDefaultClassNames = (defaultLayers: TokenLayer[]) => {
   });
 };
 
-export const renderDefaultThemeClassNames = ({ layers }: TokenLayers) => {
+export const renderDefaultThemeSettings = ({ layers }: TokenLayers) => {
   const defaultLayers = layers.filter((l) => l.isDefault && isSwitchable(l));
+  const brand = defaultLayers
+    .find(({ name }) => name.startsWith('brand--'))
+    ?.name.replace('brand--', '');
   return Buffer.from(`
+// Variables for the default theme the page should use
+
 /** Default class-names to be applied to the body when the page loads */
 export const defaultClassNames = [${getDefaultClassNames(defaultLayers)
     .map((l) => `"${l}",`)
     .join('')}];
 
-/** Initial base Path for images */
+/** 
+ * Initial base Path for images
+ * 
+ * \`imageBasePath\` is event-specific, so it won't work for images
+ * that are not event-specific - use \`brand\` for those
+ */
 export const imageBasePath = "${getDefaultAssetPaths(defaultLayers)}";
+
+/** Default brand of the initially rendered theme  */
+export const defaultBrand = ${brand ? `"${brand}"` : 'undefined'};
 `);
 };
