@@ -17,6 +17,7 @@ import {
   TokenOutput,
   TokenLayers,
   GeneratorMappingFunction,
+  TokenLayer,
 } from '../lib/token-parser.types';
 
 /** Wraps the template for either `:root` or the different `dependencies` */
@@ -108,12 +109,33 @@ const convertExpressions = (token: TokenOutput): TokenOutput =>
     ? { ...token, value: `Calc(${token.value})` }
     : token;
 
+const getDefaultLayerCssClasses = (layers: TokenLayer[]) => {
+  return layers.flatMap(({ name, isDefault, parameters }) => {
+    console.warn(name);
+    if (
+      ['core', 'components--components'].includes(name) ||
+      name.startsWith('breakpoint-')
+    ) {
+      return [];
+    }
+    const sectionName = parameters[PARAM_SECTION_NAME] ?? name;
+    return isDefault && sectionName ? toKebabCase(sectionName) : [];
+  });
+};
+
 export const renderCSSVariables = (
   { order, layers }: TokenLayers,
   processValue: GeneratorMappingFunction = (_, value) => value
 ) =>
   Buffer.from(`
-@layer ${order.join()};
+@layer ${order.join()},defaultLayers;
+
+@layer defaultLayers {
+  /* Generated to allow the site to have defaults derived by Designer decisions */
+  :root {
+    --defaultLayers: ${getDefaultLayerCssClasses(layers)};
+  }
+}
 
 ${layers
   .map(

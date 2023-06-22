@@ -2,6 +2,7 @@
   "layers": [
     {
       "name": "core",
+      "isDefault": true,
       "isStatic": true,
       "variables": [
         {
@@ -7966,6 +7967,7 @@
     },
     {
       "name": "brand--photostop",
+      "isDefault": false,
       "isStatic": false,
       "variables": [
         {
@@ -12255,6 +12257,7 @@
     },
     {
       "name": "brand--saddles",
+      "isDefault": true,
       "isStatic": false,
       "variables": [
         {
@@ -16543,6 +16546,7 @@
     },
     {
       "name": "halloweenevent--saddles",
+      "isDefault": false,
       "isStatic": false,
       "variables": [
         {
@@ -16853,6 +16857,7 @@
     },
     {
       "name": "mode--light",
+      "isDefault": true,
       "isStatic": false,
       "variables": [
         {
@@ -17147,6 +17152,7 @@
     },
     {
       "name": "mode--dark",
+      "isDefault": false,
       "isStatic": false,
       "variables": [
         {
@@ -17441,6 +17447,7 @@
     },
     {
       "name": "breakpoint--desktop",
+      "isDefault": true,
       "isStatic": false,
       "variables": [
         {
@@ -18614,6 +18621,7 @@
     },
     {
       "name": "breakpoint--tablet",
+      "isDefault": false,
       "isStatic": false,
       "variables": [
         {
@@ -19788,6 +19796,7 @@
     },
     {
       "name": "breakpoint--mobile",
+      "isDefault": false,
       "isStatic": false,
       "variables": [
         {
@@ -20961,6 +20970,7 @@
     },
     {
       "name": "components--components",
+      "isDefault": true,
       "isStatic": true,
       "variables": [
         {
