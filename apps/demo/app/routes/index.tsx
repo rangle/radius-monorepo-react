@@ -16,9 +16,12 @@ import {
   Youtube,
   LightMode,
   DarkMode,
-} from '@rangle/radius-foundations/generated/icons';
+} from '@rangle/radius-foundations/generated/icons/index';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
-import { imageBasePath } from '@rangle/radius-foundations/generated/default-class-names.constants';
+import {
+  imageBasePath,
+  defaultBrand,
+} from '@rangle/radius-foundations/generated/default-theme-settings.constants';
 import {
   RadiusAutoLayout,
   RadiusButton,
@@ -103,8 +106,8 @@ export default function Index() {
               >
                 <RadiusAutoLayout
                   as="img"
-                  alt="Company logo"
-                  src="/brand/saddles/assets/primary-logo-light-mode.svg"
+                  alt={`${defaultBrand} logo`}
+                  src={`/brand/${defaultBrand}/assets/primary-logo-light-mode.svg`}
                   style={{
                     height: `var(${radiusTokens.component.sizing.navigation.primaryLogo})`,
                   }}
@@ -216,7 +219,7 @@ export default function Index() {
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
                 header: 'Header',
                 headingLevel: 'h2',
-                src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image01.webp',
+                src: `/brand/${defaultBrand}/assets/semantic.image.largeImageTextItem.image01.webp`,
                 children: (
                   <RadiusButton
                     rightIcon={ArrowRight as IconType}
@@ -235,7 +238,7 @@ export default function Index() {
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
                 header: 'Header',
                 headingLevel: 'h2',
-                src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image02.webp',
+                src: `/brand/${defaultBrand}/assets/semantic.image.largeImageTextItem.image02.webp`,
                 children: (
                   <RadiusButton
                     rightIcon={ArrowRight as IconType}
@@ -254,7 +257,7 @@ export default function Index() {
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
                 header: 'Header',
                 headingLevel: 'h2',
-                src: '/brand/saddles/assets/semantic.image.largeImageTextItem.image03.webp',
+                src: `/brand/${defaultBrand}/assets/semantic.image.largeImageTextItem.image03.webp`,
                 children: (
                   <RadiusButton
                     rightIcon={ArrowRight as IconType}
@@ -333,8 +336,8 @@ export default function Index() {
               data-radius-replace-value="/brand/{--brand}/assets/secondary-logo-{--mode}.svg"
             >
               <img
-                alt="Saddles logo"
-                src="/brand/saddles/assets/secondary-logo-light-mode.svg"
+                alt={`${defaultBrand} logo`}
+                src={`/brand/${defaultBrand}/assets/secondary-logo-light-mode.svg`}
                 style={{
                   height: 'var(--sizing-component-navigation-secondary-logo)',
                 }}

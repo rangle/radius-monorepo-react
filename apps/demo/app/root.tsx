@@ -9,7 +9,7 @@ import {
 } from '@remix-run/react';
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import styles from '@rangle/radius-foundations/styles.css';
-import { defaultClassNames } from '@rangle/radius-foundations/generated/default-class-names.constants';
+import { defaultClassNames } from '@rangle/radius-foundations/generated/default-theme-settings.constants';
 import { useMutationObserver } from './utils/demo.utils';
 
 export const meta: MetaFunction = () => ({
@@ -24,18 +24,8 @@ export function links() {
       rel: 'stylesheet',
       href: styles,
     },
-    {
-      // favicon
-      rel: 'icon',
-      href: 'https://res.cloudinary.com/rangle/image/upload/v1674695824/rangle.io/Meta/rxtiy88j4bvmne1kxlrb.ico',
-      type: 'image/x-icon',
-      preload: 'true',
-    },
   ];
 }
-
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export default function App() {
   useMutationObserver();

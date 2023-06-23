@@ -44,7 +44,7 @@ export const useMutationObserver = () => {
         attributeOldValue: true,
         attributeFilter: ['class'],
       });
-      console.log('OBSERVING', element);
+      // console.log('OBSERVING', element);
     };
 
     // Find elements that should be observed
@@ -108,13 +108,13 @@ export const useMutationObserver = () => {
             (_match, token) => computedValues[`{${token}}`] || ''
           );
 
-          console.log('references:', references);
+          // console.log('references:', references);
           // replace the tokens with their values
-          console.log('computedValue:', computedValues);
-          console.log('replace:', replaceValue, newValue);
+          // console.log('computedValue:', computedValues);
+          // console.log('replace:', replaceValue, newValue);
           targetElementsToReplace.setAttribute(targetAttribute, newValue);
         });
-        console.log('CHANGED', elementsToChange.length, 'elements');
+        // console.log('CHANGED', elementsToChange.length, 'elements');
       })
     );
 

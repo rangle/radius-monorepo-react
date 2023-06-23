@@ -15,7 +15,7 @@
   "scripts": {
     "test": "jest",
     "tokens:ci": "RADIUS_LAYERS_SUFFIX=-${npm_package_version} yarn tokens:validate",
-    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:validate && yarn tokens:parse && yarn tokens:generate && yarn tokens:docs && yarn tokens:default-class-names && yarn tokens:constants && yarn tokens:types",
+    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:validate && yarn tokens:parse && yarn tokens:generate && yarn tokens:docs && yarn tokens:default-theme-settings && yarn tokens:constants && yarn tokens:types",
     "tokens:parse": "mkdir -p generated && cat ./tokens.json | ts-node scripts/to-layers.ts > generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:validate": "cat ./tokens.json | ts-node scripts/validate-layers.ts generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:assets": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && node --require ts-node/register scripts/save-assets.ts generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
@@ -23,7 +23,7 @@
     "tokens:docs": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts storybook > generated/04-token-documentation.mdx && prettier --version && prettier --config ../../.prettierrc --parser mdx --write generated/04-token-documentation.mdx",
     "tokens:types": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts types > generated/design-tokens.types.ts && prettier --config ../../.prettierrc --write generated/design-tokens.types.ts",
     "tokens:constants": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts constants > generated/design-tokens.constants.ts && prettier --config ../../.prettierrc --write generated/design-tokens.constants.ts",
-    "tokens:default-class-names": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts defaultClassNames > generated/default-class-names.constants.ts && prettier --config ../../.prettierrc --write generated/default-class-names.constants.ts",
+    "tokens:default-theme-settings": "cat generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node scripts/generate-theme.ts defaultThemeSettings > generated/default-theme-settings.constants.ts && prettier --config ../../.prettierrc --write generated/default-theme-settings.constants.ts",
     "build-icons": "rm -rf generated/icons && svgr --icon --typescript --filename-case kebab --out-dir generated/icons --svgo-config ./svgo.config.js src/assets/icons/svg",
     "build-brands": "rm -rf generated/brand && mkdir -p generated/brand && cp -Rf ../../radius/brands/* generated/brand",
     "build": "yarn build-brands && yarn tokens:update && yarn build-icons && yarn tokens:assets"
