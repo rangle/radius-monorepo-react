@@ -16546,7 +16546,7 @@
     },
     {
       "name": "halloweenevent--saddles",
-      "isDefault": false,
+      "isDefault": true,
       "isStatic": false,
       "variables": [
         {
