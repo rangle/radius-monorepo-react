@@ -18,5 +18,12 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "exclude": ["**/node_modules", "dist", "build", "docs", "app"]
+  "exclude": [
+    "**/node_modules",
+    "dist",
+    "build",
+    "docs",
+    "app",
+    "storybook-static"
+  ]
 }
