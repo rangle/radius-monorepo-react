@@ -16,6 +16,6 @@ module.exports = {
     ],
   },
   testPathIgnorePatterns: ['.d.ts'],
-  modulePathIgnorePatterns: ['dist'],
+  modulePathIgnorePatterns: ['dist', '<rootDir>/storybook-static'],
   rootDir: '../',
 };
