@@ -1,0 +1,78 @@
+# updats the baseline
+# Workflow name
+name: main-chromatic
+
+# Event for the workflow
+on:
+  push:
+    branches:
+      - main
+
+# List of jobs
+jobs:
+  chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    # Job steps
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # For NX caching
+      # For more info see: https://nx.dev/recipes/ci/monorepo-ci-github-actions
+      - uses: nrwl/nx-set-shas@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      # Cache node_modules to speed up future builds
+      # For more info see: https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache.name }}-${{ github.head_ref }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache.name }}-${{ github.head_ref }}-
+            ${{ runner.os }}-build-${{ env.cache.name }}-main-
+            ${{ runner.os }}-build-${{ env.cache.name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+        # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock changes)
+      - name: Install Dependencies
+        if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
+        run: yarn install --frozen-lockfile
+
+      - name: Validate tokens
+        id: validate-tokens
+        working-directory: library/foundations
+        run: |
+          # Parse and Validate Design Tokens
+          yarn tokens:ci
+
+      - name: Build projects 🏗
+        run: NX_CLOUD_AUTH_TOKEN=${{ secrets.NX_CLOUD_AUTH_TOKEN }} npx nx affected --parallel=2 --target=build
+
+      # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          buildScriptName: main-chromatic
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # onlyChanged: true
+          # traceChanged: true
+        id: chromatic
