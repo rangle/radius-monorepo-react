@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { cx } from '@emotion/css';
 
-import { PolymorphicRef } from '../../utils/polymorphic.types';
+import { PolymorphicRef } from '../../../../shared/utils';
 
 import { TypographyProps, TypographyComponent } from './typography.types';
 import { useStyles } from './typography.styles';

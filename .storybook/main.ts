@@ -10,6 +10,7 @@ module.exports = {
     },
     // TODO: group stories by CDK/examples here after they have been moved to separate packages
     '../library/core-components/**/*.stories.tsx',
+    '../library/radius-examples/**/*.stories.tsx',
   ],
   // Add assets, these files will be added to the root of the build (/fonts.css)
   staticDirs: [

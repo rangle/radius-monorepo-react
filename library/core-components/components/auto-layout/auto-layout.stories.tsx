@@ -6,7 +6,7 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from '../typography/typography';
 import { RadiusAutoLayout } from './auto-layout';
 import { RadiusButton } from '../button/button';
-import { flattenObject } from '../../utils';
+import { flattenObject } from '../../../../shared/utils';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
