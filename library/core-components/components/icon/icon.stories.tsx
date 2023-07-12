@@ -5,7 +5,7 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusIcon } from '.';
 import * as icons from '@rangle/radius-foundations/generated/icons';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
-import { flattenObject } from '../../utils/flatten.utils';
+import { flattenObject } from '@rangle/radius-shared/utils';
 
 const meta: Meta<typeof RadiusIcon> = {
   component: RadiusIcon,

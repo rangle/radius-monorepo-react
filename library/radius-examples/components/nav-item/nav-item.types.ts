@@ -1,4 +1,4 @@
-import { PolymorphicComponentPropWithRef } from '../../../../shared/utils';
+import { PolymorphicComponentPropWithRef } from '@rangle/radius-shared/utils';
 
 export type RadiusNavItemExtendedProps = {
   /** The content to display in the nav item */

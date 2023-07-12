@@ -1,7 +1,7 @@
 import { css } from '@emotion/css';
 import { RadiusImageTextItemProps } from './image-text-item.types';
-import { RequireAndPick } from '../../../../shared/utils';
-import { mediaQueries } from '../../../../shared/constants';
+import { RequireAndPick } from '@rangle/radius-shared/utils';
+import { mediaQueries } from '@rangle/radius-shared/constants';
 
 type StyleProps = Pick<RadiusImageTextItemProps, 'variant'> &
   RequireAndPick<RadiusImageTextItemProps, 'imageAlignment'>;

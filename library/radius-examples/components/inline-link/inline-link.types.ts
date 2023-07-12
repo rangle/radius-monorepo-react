@@ -1,5 +1,5 @@
 import { CSSProp, RadiusTokenSubjects } from '@rangle/radius-foundations';
-import { PolymorphicComponentPropWithRef } from '../../../../shared/utils';
+import { PolymorphicComponentPropWithRef } from '@rangle/radius-shared/utils';
 
 export type RadiusInlineLinkExtendedProps = {
   /** The label */

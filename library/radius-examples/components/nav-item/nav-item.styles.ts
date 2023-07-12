@@ -1,5 +1,5 @@
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
-import { css } from '../../../../shared/utils';
+import { css } from '@rangle/radius-shared/utils';
 import { RadiusNavItemExtendedProps } from './nav-item.types';
 
 export type StyleProps = Pick<RadiusNavItemExtendedProps, 'selected'>;

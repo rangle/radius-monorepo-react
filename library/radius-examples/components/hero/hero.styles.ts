@@ -1,5 +1,5 @@
-import { css } from '../../../../shared/utils';
-import { mediaQueries } from '../../../../shared/constants';
+import { css } from '@rangle/radius-shared/utils';
+import { mediaQueries } from '@rangle/radius-shared/constants';
 import { RadiusHeroProps } from './hero';
 
 export type StyleProps = Pick<RadiusHeroProps, 'imageAlignment'>;

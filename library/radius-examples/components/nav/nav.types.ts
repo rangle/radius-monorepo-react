@@ -1,7 +1,7 @@
 import {
   OmitPolymorphicProp,
   PolymorphicComponentPropWithRef,
-} from '../../../../shared/utils';
+} from '@rangle/radius-shared/utils';
 import { RadiusLinkIconProps } from '../link-icon/link-icon.types';
 import { RadiusNavItemProps } from '../nav-item/nav-item.types';
 

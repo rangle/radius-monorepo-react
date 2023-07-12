@@ -6,7 +6,7 @@ import {
 } from '@rangle/radius-react-core-components';
 
 import { RadiusFooterComponent, RadiusFooterProps } from './footer.types';
-import { PolymorphicRef } from '../../../../shared/utils';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 import { useStyles } from './footer.styles';
 import { RadiusLinkButton } from '../link-button';
 import { RadiusLinkIcon } from '../link-icon';

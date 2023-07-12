@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@rangle/radius-react-core-components';
 
-import { PolymorphicRef } from '../../../../shared/utils';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 
 import { RadiusButtonProps, RadiusButtonComponent } from './button.types';
 import { useStyles } from './button.styles';

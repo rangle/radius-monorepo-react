@@ -1,4 +1,4 @@
-import { renderCSSProp, css } from '../../../../shared/utils';
+import { renderCSSProp, css } from '@rangle/radius-shared/utils';
 import { TypographyExtendedProps } from './typography.types';
 
 export type StyleProps = Pick<

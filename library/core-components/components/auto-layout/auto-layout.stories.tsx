@@ -5,8 +5,8 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from '../typography/typography';
 import { RadiusAutoLayout } from './auto-layout';
-import { RadiusButton } from '../button/button';
-import { flattenObject } from '../../../../shared/utils';
+// import { RadiusButton } from '../button/button';
+import { flattenObject } from '@rangle/radius-shared/utils';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
@@ -856,6 +856,10 @@ export const Effects: Story = {
   ),
 };
 
+const Button = () => {
+  return <p>temp</p>;
+};
+
 /**
  * RadiusAutoLayout is polymorphic, which means that it can render as any HTML
  * element or React component. The `as` property controls what is rendered. By
@@ -869,39 +873,39 @@ export const Effects: Story = {
  *
  * Below are a few examples of RadiusAutoLayout being used as other elements.
  */
-export const Polymorphism: Story = {
-  // @ts-expect-error - bug with `args` type inference due to polymorphism
-  render: (props: AutoLayoutExtendedProps) => (
-    <RadiusAutoLayout
-      direction="vertical"
-      width="fill-parent"
-      style={{
-        fontFamily: 'Riforma LL',
-      }}
-    >
-      <RadiusAutoLayout as="h1" {...props}>
-        Heading
-      </RadiusAutoLayout>
-      <RadiusAutoLayout as="a" href="#" {...props}>
-        Link
-      </RadiusAutoLayout>
-      <RadiusAutoLayout
-        as="img"
-        src="https://via.placeholder.com/1500"
-        height="200px"
-        {...props}
-      />
-      <RadiusAutoLayout as={RadiusButton} variant="primary" {...props}>
-        RadiusButton
-      </RadiusAutoLayout>
-    </RadiusAutoLayout>
-  ),
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
-};
+// export const Polymorphism: Story = {
+//   // @ts-expect-error - bug with `args` type inference due to polymorphism
+//   render: (props: AutoLayoutExtendedProps) => (
+//     <RadiusAutoLayout
+//       direction="vertical"
+//       width="fill-parent"
+//       style={{
+//         fontFamily: 'Riforma LL',
+//       }}
+//     >
+//       <RadiusAutoLayout as="h1" {...props}>
+//         Heading
+//       </RadiusAutoLayout>
+//       <RadiusAutoLayout as="a" href="#" {...props}>
+//         Link
+//       </RadiusAutoLayout>
+//       <RadiusAutoLayout
+//         as="img"
+//         src="https://via.placeholder.com/1500"
+//         height="200px"
+//         {...props}
+//       />
+//       <RadiusAutoLayout as={Button} variant="primary" {...props}>
+//         RadiusButton
+//       </RadiusAutoLayout>
+//     </RadiusAutoLayout>
+//   ),
+//   parameters: {
+//     controls: {
+//       disable: true,
+//     },
+//   },
+// };
 
 /**
  * Most of the props of RadiusAutoLayout support tokens. Tokens are a way to

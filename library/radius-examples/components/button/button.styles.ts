@@ -1,5 +1,5 @@
-// import { css } from '../../../../shared/utils';
-import { css } from '../../../../shared/utils';
+// import { css } from  '@rangle/radius-shared/utils';
+import { css } from '@rangle/radius-shared/utils';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { RadiusButtonExtendedProps } from './button.types';
 

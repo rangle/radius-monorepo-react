@@ -1,5 +1,5 @@
 import { CSSProp } from '@rangle/radius-foundations/generated/design-tokens.types';
-import { PolymorphicComponentPropWithRef } from '../../../../shared/utils';
+import { PolymorphicComponentPropWithRef } from '@rangle/radius-shared/utils';
 
 export type Alignment = 'left' | 'center' | 'right';
 

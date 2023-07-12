@@ -1,7 +1,7 @@
 import {
   OmitPolymorphicProp,
   PolymorphicComponentPropWithRef,
-} from '../../../../shared/utils';
+} from '@rangle/radius-shared/utils';
 import { RadiusButtonProps } from '../button/button.types';
 import { RadiusInlineLinkProps } from '../inline-link/inline-link.types';
 import { RadiusLinkButtonProps } from '../link-button/link-button.types';

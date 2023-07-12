@@ -8,7 +8,7 @@ import {
   RadiusInlineLinkComponent,
   RadiusInlineLinkProps,
 } from './inline-link.types';
-import { PolymorphicRef } from '../../../../shared/utils';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 
 /**
  * A component that renders a link as a text element. It is a wrapper around

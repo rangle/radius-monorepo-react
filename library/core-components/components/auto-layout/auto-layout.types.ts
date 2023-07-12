@@ -2,7 +2,7 @@ import {
   CSSProp,
   RadiusTokenSubjects,
 } from '@rangle/radius-foundations/generated/design-tokens.types';
-import { PolymorphicComponentPropWithRef } from '../../../../shared/utils';
+import { PolymorphicComponentPropWithRef } from '@rangle/radius-shared/utils';
 
 export const mapAlignments = {
   top: 'flex-start',

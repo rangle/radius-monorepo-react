@@ -1,5 +1,9 @@
 import { CSSExpression } from '@rangle/radius-foundations';
-import { renderCSSProp, css, RequireAndPick } from '../../../../shared/utils';
+import {
+  renderCSSProp,
+  css,
+  RequireAndPick,
+} from '@rangle/radius-shared/utils';
 
 import {
   mapAlignments,
@@ -10,7 +14,7 @@ import {
   VerticalConstraint,
 } from './auto-layout.types';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
-import { mediaQueries } from '../../../../shared/constants';
+import { mediaQueries } from '@rangle/radius-shared/constants';
 
 export const getSize = (size?: AutolayoutSize) => {
   if (size === 'fill-parent') return '100%';

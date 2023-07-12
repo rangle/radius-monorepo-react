@@ -8,7 +8,7 @@ import {
   RadiusLinkIconComponent,
   RadiusLinkIconProps,
 } from './link-icon.types';
-import { PolymorphicRef } from '../../../../shared/utils';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 
 /**
  * A component that renders an icon as a link or button. It is a wrapper around

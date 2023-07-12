@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusHero, RadiusHeroProps } from './hero';
-import { RadiusAutoLayout } from '../auto-layout/auto-layout';
+import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 
 const meta: Meta<RadiusHeroProps> = {
   component: RadiusHero,

@@ -1,4 +1,4 @@
-import { PolymorphicComponentPropWithRef } from '../../../../shared/utils/polymorphic.types';
+import { PolymorphicComponentPropWithRef } from '@rangle/radius-shared/utils';
 
 export type RadiusButtonVariant = 'primary' | 'secondary';
 

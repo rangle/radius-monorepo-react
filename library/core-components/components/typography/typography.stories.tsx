@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from './typography';
-import { flattenObject } from '../../../../shared/utils';
+import { flattenObject } from '@rangle/radius-shared/utils';
 
 const bySubtoken =
   <T extends string>(name: string) =>

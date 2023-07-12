@@ -10,7 +10,7 @@ import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 
 import { useStyles } from './nav.styles';
 import { RadiusNavComponent, RadiusNavProps } from './nav.types';
-import { PolymorphicRef } from '../../../../shared/utils';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 import { RadiusLinkIcon } from '../link-icon';
 import { RadiusButton } from '../button/button';
 import { RadiusNavItem } from '../nav-item';

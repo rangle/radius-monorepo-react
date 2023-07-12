@@ -12,7 +12,7 @@ import {
   RadiusLinkButtonComponent,
   RadiusLinkButtonProps,
 } from './link-button.types';
-import { PolymorphicRef } from '../../../../shared/utils';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 
 /**
  * A component that renders a link button. It is polymorphic and can be passed a

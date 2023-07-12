@@ -8,7 +8,7 @@ import {
 import { useStyles } from './nav-item.styles';
 import { cx } from '@emotion/css';
 import { RadiusNavItemComponent, RadiusNavItemProps } from './nav-item.types';
-import { PolymorphicRef } from '../../../../shared/utils';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 
 /**
  * A navigation item component to be used with the `RadiusNav` component. It

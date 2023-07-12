@@ -5,7 +5,7 @@ import { AccountCircle } from '@rangle/radius-foundations/generated/icons';
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusLinkIcon } from './link-icon';
-import { flattenObject } from '../../../../shared/utils';
+import { flattenObject } from '@rangle/radius-shared/utils';
 import { RadiusLinkIconExtendedProps } from './link-icon.types';
 
 const meta: Meta<typeof RadiusLinkIcon> = {

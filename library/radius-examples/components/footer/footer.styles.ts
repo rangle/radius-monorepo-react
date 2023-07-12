@@ -1,6 +1,6 @@
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
-import { css } from '../../../../shared/utils';
-import { mediaQueries } from '../../../../shared/constants';
+import { css } from '@rangle/radius-shared/utils';
+import { mediaQueries } from '@rangle/radius-shared/constants';
 
 export const useStyles = () => ({
   firstContainer: css`

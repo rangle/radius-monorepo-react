@@ -35,6 +35,8 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@geometricpanda/storybook-addon-badges": "^2.0.0",
     "@rangle/radius-foundations": "*",
+    "@rangle/radius-react-core-components": "*",
+    "@rangle/radius-shared": "*",
     "@storybook/react": "^6.5.13",
     "classnames": "^2.3.1"
   },
