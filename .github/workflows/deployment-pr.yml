@@ -31,13 +31,12 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock', '**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
-        # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock changes)
+        # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock or any package.json changes)
       - name: Install Dependencies
         if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
         run: yarn install --frozen-lockfile
@@ -48,7 +47,6 @@ jobs:
         run: |
           # Parse and Validate Design Tokens
           yarn tokens:ci
-
       - name: Lint
         run: yarn lint:ci
 
