@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 import {
   RadiusNav,
   RadiusHero,
   RadiusImageTextList,
   RadiusFooter,
-} from '@rangle/radius-react-core-components';
+  RadiusButton,
+} from '@rangle/radius-react-examples';
 import {
   Github,
   Figma,
-  EventNote,
   ArrowRight,
   Twitter,
   LinkedIn,
@@ -22,10 +23,6 @@ import {
   imageBasePath,
   defaultBrand,
 } from '@rangle/radius-foundations/generated/default-theme-settings.constants';
-import {
-  RadiusAutoLayout,
-  RadiusButton,
-} from '@rangle/radius-react-core-components';
 import { css } from '@emotion/css';
 import { useIsScrolled } from '../../hooks/use-is-scrolled';
 
