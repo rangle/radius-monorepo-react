@@ -42,5 +42,7 @@ ignore:
   - apps
   - library/foundations/node_modules
   - library/core-components/node_modules
+  - library/radius-examples/node_modules
   - library/foundations/dist
   - library/core-components/dist
+  - library/radius-examples/dist
