@@ -856,8 +856,21 @@ export const Effects: Story = {
   ),
 };
 
-const Button = () => {
-  return <p>temp</p>;
+const ExampleButton = ({ variant, children }) => {
+  return (
+    <button
+      type="button"
+      style={{
+        cursor: 'pointer',
+        padding: '12px 24px',
+        color: variant === 'primary' ? '#FFFFFF' : '#262626',
+        border: '1px solid #262626',
+        background: variant === 'primary' ? '#262626' : '#FFFFFF',
+      }}
+    >
+      {children}
+    </button>
+  );
 };
 
 /**
@@ -868,44 +881,44 @@ const Button = () => {
  * The component will extend the props of the element or component that it is
  * rendering (along with the default props of `RadiusAutoLayout`). For example,
  * if you set `as="h1"`, the component will accept all the props of the `h1`
- * element. If you set `as={RadiusButton}`, the component will accept all the
- * props of the `RadiusButton` component.
+ * element. If you set `as={ExampleButton}`, the component will accept all the
+ * props of the `ExampleButton` component.
  *
  * Below are a few examples of RadiusAutoLayout being used as other elements.
  */
-// export const Polymorphism: Story = {
-//   // @ts-expect-error - bug with `args` type inference due to polymorphism
-//   render: (props: AutoLayoutExtendedProps) => (
-//     <RadiusAutoLayout
-//       direction="vertical"
-//       width="fill-parent"
-//       style={{
-//         fontFamily: 'Riforma LL',
-//       }}
-//     >
-//       <RadiusAutoLayout as="h1" {...props}>
-//         Heading
-//       </RadiusAutoLayout>
-//       <RadiusAutoLayout as="a" href="#" {...props}>
-//         Link
-//       </RadiusAutoLayout>
-//       <RadiusAutoLayout
-//         as="img"
-//         src="https://via.placeholder.com/1500"
-//         height="200px"
-//         {...props}
-//       />
-//       <RadiusAutoLayout as={Button} variant="primary" {...props}>
-//         RadiusButton
-//       </RadiusAutoLayout>
-//     </RadiusAutoLayout>
-//   ),
-//   parameters: {
-//     controls: {
-//       disable: true,
-//     },
-//   },
-// };
+export const Polymorphism: Story = {
+  // @ts-expect-error - bug with `args` type inference due to polymorphism
+  render: (props: AutoLayoutExtendedProps) => (
+    <RadiusAutoLayout
+      direction="vertical"
+      width="fill-parent"
+      style={{
+        fontFamily: 'Riforma LL',
+      }}
+    >
+      <RadiusAutoLayout as="h1" {...props}>
+        Heading
+      </RadiusAutoLayout>
+      <RadiusAutoLayout as="a" href="#" {...props}>
+        Link
+      </RadiusAutoLayout>
+      <RadiusAutoLayout
+        as="img"
+        src="https://via.placeholder.com/1500"
+        height="200px"
+        {...props}
+      />
+      <RadiusAutoLayout as={ExampleButton} variant="primary" {...props}>
+        Example Button
+      </RadiusAutoLayout>
+    </RadiusAutoLayout>
+  ),
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+};
 
 /**
  * Most of the props of RadiusAutoLayout support tokens. Tokens are a way to
