@@ -10,7 +10,7 @@ import { RadiusLinkIconExtendedProps } from './link-icon.types';
 
 const meta: Meta<typeof RadiusLinkIcon> = {
   component: RadiusLinkIcon,
-  title: 'Radius Examples / Link Icon',
+  title: 'Link Icon',
   parameters: {
     badges: [BADGE.BETA],
   },

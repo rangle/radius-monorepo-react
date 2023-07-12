@@ -5,7 +5,7 @@ import { RadiusNavItem } from './nav-item';
 
 const meta: Meta<typeof RadiusNavItem> = {
   component: RadiusNavItem,
-  title: 'Radius Examples / Nav Item',
+  title: 'Nav Item',
   parameters: {
     badges: [BADGE.BETA],
   },

@@ -9,7 +9,7 @@ import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
 
 const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
-  title: 'Radius Examples / Button',
+  title: 'Button',
   parameters: {
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {

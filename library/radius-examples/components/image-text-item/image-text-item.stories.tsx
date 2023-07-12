@@ -6,7 +6,7 @@ import { RadiusImageTextItemProps } from './image-text-item.types';
 
 const meta: Meta<RadiusImageTextItemProps> = {
   component: RadiusImageTextItem,
-  title: 'Radius Examples / ImageTextItem',
+  title: 'ImageTextItem',
   parameters: {
     badges: [BADGE.BETA],
   },

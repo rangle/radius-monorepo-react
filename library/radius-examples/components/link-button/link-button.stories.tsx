@@ -7,7 +7,7 @@ import { ArrowRight } from '@rangle/radius-foundations/generated/icons';
 
 const meta: Meta<typeof RadiusLinkButton> = {
   component: RadiusLinkButton,
-  title: 'Radius Examples / Link Button',
+  title: 'Link Button',
   parameters: {
     badges: [BADGE.BETA],
   },

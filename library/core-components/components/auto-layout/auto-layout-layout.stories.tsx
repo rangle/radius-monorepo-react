@@ -18,7 +18,7 @@ import { AutoLayoutExtendedProps } from './auto-layout.types';
  */
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Component Development Kit / Auto Layout / Layout',
+  title: 'Auto Layout / Layout',
   parameters: {
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {

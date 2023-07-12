@@ -14,7 +14,7 @@ import { RadiusFooter } from './footer';
 
 const meta: Meta<typeof RadiusFooter> = {
   component: RadiusFooter,
-  title: 'Radius Examples / Footer',
+  title: 'Footer',
   parameters: {
     badges: [BADGE.BETA],
     layout: 'fullscreen',

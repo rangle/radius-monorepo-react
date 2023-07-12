@@ -1,16 +1,23 @@
 import { Config } from '@storybook/addons';
 const versions = process.env.VERSION?.split('.') || ['0', '0', '0'];
 module.exports = {
-  // the location of where storybook should look for it's stories
+  // the location of where storybook should look for its stories
   stories: [
     {
       directory: '../library',
       titlePrefix: 'About',
       files: '**/*.mdx',
     },
-    // TODO: group stories by CDK/examples here after they have been moved to separate packages
-    '../library/core-components/**/*.stories.tsx',
-    '../library/radius-examples/**/*.stories.tsx',
+    {
+      directory: '../library/core-components',
+      titlePrefix: 'Component Development Kit',
+      files: '**/*.stories.tsx',
+    },
+    {
+      directory: '../library/radius-examples',
+      titlePrefix: 'Radius Examples',
+      files: '**/*.stories.tsx',
+    },
   ],
   // Add assets, these files will be added to the root of the build (/fonts.css)
   staticDirs: [

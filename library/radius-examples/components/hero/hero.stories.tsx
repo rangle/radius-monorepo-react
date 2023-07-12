@@ -6,7 +6,7 @@ import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 
 const meta: Meta<RadiusHeroProps> = {
   component: RadiusHero,
-  title: 'Radius Examples / Hero',
+  title: 'Hero',
   parameters: {
     badges: [BADGE.BETA],
     layout: 'fullscreen',

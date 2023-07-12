@@ -6,7 +6,7 @@ import { RadiusImageTextListProps } from './image-text-list.types';
 
 const meta: Meta<RadiusImageTextListProps> = {
   component: RadiusImageTextList,
-  title: 'Radius Examples / ImageTextList',
+  title: 'ImageTextList',
   parameters: {
     badges: [BADGE.BETA],
     controls: {
