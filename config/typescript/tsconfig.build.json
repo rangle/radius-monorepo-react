@@ -10,13 +10,14 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": [
-    "../../library/**/*.ts", 
+    "../../library/**/*.ts",
     "../../library/**/*.tsx",
     "../../global.d.ts"
   ],
   "exclude": [
     "../../**/*.stories.tsx",
     "../../**/__tests__/",
-    "../../**/node_modules"
+    "../../**/node_modules",
+    "../../library/foundations/scripts/lib/token-diff-helper.ts"
   ]
 }
