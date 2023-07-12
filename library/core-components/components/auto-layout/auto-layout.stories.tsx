@@ -5,7 +5,6 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from '../typography/typography';
 import { RadiusAutoLayout } from './auto-layout';
-// import { RadiusButton } from '../button/button';
 import { flattenObject } from '@rangle/radius-shared/utils';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
 
