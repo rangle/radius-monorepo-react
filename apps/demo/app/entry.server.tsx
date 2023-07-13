@@ -6,7 +6,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import { CacheProvider } from '@emotion/react';
 import { renderStylesToString } from '@emotion/server';
 
-// import { createEmotionCache, ServerStyleContext } from './styles.emotion';
+import { createEmotionCache, ServerStyleContext } from './styles.emotion';
 import createCache from '@emotion/cache';
 
 export default function handleRequest(
@@ -15,8 +15,7 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  const cacheKey = 'remix-app';
-  const cache = createCache({ key: cacheKey });
+  const cache = createEmotionCache();
   createEmotionServer(cache);
 
   const html = renderToString(
