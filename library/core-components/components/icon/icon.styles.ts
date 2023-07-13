@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { renderCSSProp } from '../../utils/design-tokens.utils';
+import { renderCSSProp } from '@rangle/radius-shared/utils';
 import { RadiusIconProps } from './icon.types';
 
 type IconProps = Pick<RadiusIconProps, 'fill' | 'size'>;

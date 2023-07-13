@@ -5,13 +5,12 @@ import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from '../typography/typography';
 import { RadiusAutoLayout } from './auto-layout';
-import { RadiusButton } from '../button/button';
-import { flattenObject } from '../../utils';
+import { flattenObject } from '@rangle/radius-shared/utils';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Component Development Kit / Auto Layout',
+  title: 'Auto Layout',
   parameters: {
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {
@@ -856,6 +855,23 @@ export const Effects: Story = {
   ),
 };
 
+const ExampleButton = ({ variant, children }) => {
+  return (
+    <button
+      type="button"
+      style={{
+        cursor: 'pointer',
+        padding: '12px 24px',
+        color: variant === 'primary' ? '#FFFFFF' : '#262626',
+        border: '1px solid #262626',
+        background: variant === 'primary' ? '#262626' : '#FFFFFF',
+      }}
+    >
+      {children}
+    </button>
+  );
+};
+
 /**
  * RadiusAutoLayout is polymorphic, which means that it can render as any HTML
  * element or React component. The `as` property controls what is rendered. By
@@ -864,8 +880,8 @@ export const Effects: Story = {
  * The component will extend the props of the element or component that it is
  * rendering (along with the default props of `RadiusAutoLayout`). For example,
  * if you set `as="h1"`, the component will accept all the props of the `h1`
- * element. If you set `as={RadiusButton}`, the component will accept all the
- * props of the `RadiusButton` component.
+ * element. If you set `as={ExampleButton}`, the component will accept all the
+ * props of the `ExampleButton` component.
  *
  * Below are a few examples of RadiusAutoLayout being used as other elements.
  */
@@ -891,8 +907,8 @@ export const Polymorphism: Story = {
         height="200px"
         {...props}
       />
-      <RadiusAutoLayout as={RadiusButton} variant="primary" {...props}>
-        RadiusButton
+      <RadiusAutoLayout as={ExampleButton} variant="primary" {...props}>
+        Example Button
       </RadiusAutoLayout>
     </RadiusAutoLayout>
   ),

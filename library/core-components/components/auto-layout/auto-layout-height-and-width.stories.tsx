@@ -24,7 +24,7 @@ import { AutoLayoutExtendedProps } from './auto-layout.types';
  */
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Component Development Kit / Auto Layout / Width and Height',
+  title: 'Auto Layout / Width and Height',
   parameters: {
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {

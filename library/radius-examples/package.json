@@ -1,0 +1,50 @@
+{
+  "name": "@rangle/radius-react-examples",
+  "license": "MIT",
+  "repository": {
+    "url": "ssh://git@github.com:rangle/radius-monorepo-react.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "source": "index.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "dev": "rm -rf dist && rollup -w --config ../../config/rollup.config.mjs",
+    "build": "rm -rf dist && rollup --config ../../config/rollup.config.mjs",
+    "test": "jest -c ../../config/jest.config.js --testPathPattern=library/radius-examples",
+    "test-watch": "jest -c ../../config/jest.config.js --watch",
+    "clean": "rm -rf dist & rm -rf node_modules",
+    "clean:dist": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@emotion/css": "^11.10.5"
+  },
+  "dependencies": {
+    "@rangle/radius-foundations": "*",
+    "@rangle/radius-react-core-components": "*",
+    "@rangle/radius-shared": "*"
+  },
+  "devDependencies": {
+    "@types/jest-axe": "^3.5.5",
+    "autoprefixer": "^10.4.13",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.3.1",
+    "jest-axe": "^7.0.0",
+    "jest-environment-jsdom": "^29.3.1",
+    "postcss": "^8.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "rollup": "^3.3.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "ts-jest": "^29.0.3",
+    "typescript": "^5.0.4"
+  },
+  "gitHead": "d06d999cbdabb3d3e32798e134871aa9698be5d7"
+}

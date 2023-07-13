@@ -6,7 +6,7 @@ import { Stories, Title, Description } from '@storybook/addon-docs';
 
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
-  title: 'Component Development Kit / Auto Layout / Alignment',
+  title: 'Auto Layout / Alignment',
   parameters: {
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {

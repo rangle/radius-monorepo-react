@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from './typography';
-import { flattenObject } from '../../utils';
+import { flattenObject } from '@rangle/radius-shared/utils';
 
 const bySubtoken =
   <T extends string>(name: string) =>
@@ -11,7 +11,7 @@ const bySubtoken =
 
 const meta: Meta<typeof Typography> = {
   component: Typography,
-  title: 'Component Development Kit / Typography',
+  title: 'Typography',
   parameters: {
     badges: [BADGE.BETA],
   },

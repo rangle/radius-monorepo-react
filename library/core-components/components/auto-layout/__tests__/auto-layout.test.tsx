@@ -5,11 +5,10 @@ import '@testing-library/jest-dom';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { RadiusAutoLayout } from '..';
-import { RadiusButton } from '../../button';
 
 expect.extend(toHaveNoViolations);
 
-describe('<RadiusButton />', () => {
+describe('<RadiusAutoLayout />', () => {
   test('should render and should render if there is a child', () => {
     const rendered = render(
       <RadiusAutoLayout className="parentAutoLayout">
@@ -32,9 +31,9 @@ describe('<RadiusButton />', () => {
   });
 
   test('should accept any type of component to be polymorphic', () => {
-    const { getByRole } = render(
-      <RadiusAutoLayout as={RadiusButton} className="myAutoLayout" />
-    );
+    const ExampleButton = () => <button>Example Button</button>;
+
+    const { getByRole } = render(<RadiusAutoLayout as={ExampleButton} />);
     expect(getByRole('button')).toBeInTheDocument();
   });
 

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { cx } from '@emotion/css';
 
-import { PolymorphicRef } from '../../utils/polymorphic.types';
+import { PolymorphicRef } from '@rangle/radius-shared/utils';
 
 import { AutoLayoutComponent, AutoLayoutProps } from './auto-layout.types';
 import { useStyles } from './auto-layout.styles';
