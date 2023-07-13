@@ -56,6 +56,14 @@ module.exports = {
       extends: ['plugin:@typescript-eslint/recommended', 'prettier'],
       rules: {
         semi: 'off',
+        '@typescript-eslint/no-unused-vars': [
+          'warn', // or "error"
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+            caughtErrorsIgnorePattern: '^_',
+          },
+        ],
       },
     },
     // disable some rules for type definition files
