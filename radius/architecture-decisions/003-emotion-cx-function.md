@@ -8,7 +8,7 @@ Active
 
 ## Context
 
-When applying custom classes to a component which already had a class applied (eg. AutoLayout), the new classes wouldn't necessarily generate in the correct order and wouldn't override the default classes as intended.
+When applying custom classes to a component which already has a class applied (eg. AutoLayout), the new classes wouldn't necessarily generate in the correct order and wouldn't override the default classes as intended.
 
 ## Decision
 

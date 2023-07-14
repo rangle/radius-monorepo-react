@@ -152,7 +152,6 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
   <tr>
     <th>Token</th>
     <th>Value</th>
-    <th>Example</th>
   </tr>
 </thead>
 <tbody>${typography
@@ -160,12 +159,7 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
       ({ key, value }) => `
       <tr>
         <td>${key}</td>
-        <td>font: ${escapeJSXValue(value)}</td>
-        <td>
-          <span style={{ font: '${escapeJSXValue(value)}' }}>
-            The quick brown fox jumps over the lazy dog
-          </span>
-        </td>
+        <td>${escapeJSXValue(value)}</td>
       </tr>`
     )
     .join('')}
@@ -203,11 +197,17 @@ const renderLayerVariables = ({ name, variables }: TokenLayer) => {
     })
     .join('');
 
-  // TODO: fix broken `components--components` typography variables (as well as any other values starting with `{--` as excluded above), they are not being generated correctly and are breaking the entire story. As a workaround, they are being temporarily excluded from generation.
-  return `
+  // TODO: values starting with `--` are not being generated correctly and are therefore not being displayed correctly.
+  // As a workaround, layers containing these variables have been temporarily excluded from generation.
+  return name === 'components--components' ||
+    name === 'mode--light' ||
+    name === 'mode--dark' ||
+    name.startsWith('breakpoint')
+    ? ''
+    : `
   # ${name}
     ${colorVariables}
-    ${name !== 'components--components' ? typographyVariables : ''}
+    ${name !== 'halloweenevent--saddles' ? typographyVariables : ''}
     ${restVariables}
     `;
 };

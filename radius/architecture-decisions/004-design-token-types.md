@@ -8,25 +8,25 @@ Active
 
 ## Context
 
-We use our own import tool to generate styles and documentation directly from the Token Studio exported file. However, when building components, we need a way to ensure developers will prefer using the values of these tokens to hardcoded CSS values whenever possible. Also, since designers will be pushing new versions of the token file to Github, we need a convenient way to identify whether components will break due to changes in the token structure.
+We use our own import tool to generate styles and documentation directly from the Token Studio exported file. However, when building components, we need a way to ensure developers will prefer using the values of these tokens to hardcoded CSS values whenever possible. Also, since designers will be pushing new versions of the token file to GitHub, we need a convenient way to identify whether components will break due to changes in the token structure.
 
 ## Decision
 
 ### Summary
 
-Whenever tokens change, our importer will generate _typescript types_ representing all tokens in the Design System. Developers will use these types to select values for their components -- essentially avoiding any need for them to know the exact value of each token. Also, a file with constants will be generated to allow them to select these tokens by using the same structure the Designers use in Figma. The constant file exported, however, will contain only the names of CSS Variables, not their values.
+Whenever tokens change, our importer will generate _typescript types_ representing all tokens in the Design System. Developers will use these types to select values for their components -- essentially avoiding any need for them to know the exact value of each token. Also, a file with constants will be generated to allow them to select these tokens by using the same structure the designers use in Figma. The constant file exported, however, will contain only the names of CSS Variables, not their values.
 
 ### Details
 
-The [/library/foundations] package is responsible for transforming the tokens pushed from [Token Studio for Figma] into the file `tokens.json`. Currently the importer only supports tokens exported as a single file.
+The [/library/foundations] package is responsible for transforming the tokens pushed from [Token Studio for Figma] into the file `tokens.json`. Currently, the importer only supports tokens exported as a single file.
 
-The importer will then generate a versioned file in [/library/foundations/generated] containing detailed data about all tokens and their layers, and expandin Typography tokens in case they are not already expanded by Token Studio.
+The importer will then generate a versioned file in [/library/foundations/generated] containing detailed data about all tokens and their layers, and expanding Typography tokens in case they are not already expanded by Token Studio.
 
 From this file, a simple template [/library/foundations/scripts/templates/token-types.template.ts] is used to generate types that will be used by the components.
 
-This template generates three kinds of Typescript Types: _token lists_, _token filters_ and _token utilities_.
+This template generates three kinds of Typescript types: _token lists_, _token filters_ and _token utilities_.
 
-**Token lists** are discriminated unions of all tokens from a specific layer. In this particular implementation, all tokens are supposed to be used as CSS Variables, so the lists will contain only the variable names.
+**Token lists** are discriminated unions of all tokens from a specific layer. In this particular implementation, all tokens are supposed to be used as CSS variables, so the lists will contain only the variable names.
 
 Ex.:
 
@@ -84,12 +84,12 @@ The other alternative -- exporting a file with tokens and values as a theme obje
 
 ## Consequences
 
-Token types not only help streamline the developer experience by providing autocomplete and instant validation that matches the right token types to the right places, they also provide an important connection between the contract established by Design and the code. Breaking changes can be detected easily and changes can even be made automatically throughout the codebase.
+Token types not only help streamline the developer experience by providing autocomplete and instant validation that matches the right token types to the right places, they also provide an important connection between the contract established by design and the code. Breaking changes can be detected easily and changes can even be made automatically throughout the codebase.
 
-Another important consequence of the approach is that the Design now controls more of the appearance of the Design System, without the need to involve developers. This means they can be free to experiment using their tools, and see the consequences of this experimentation live if pipelines are configured to support this.
+Another important consequence of the approach is that designers now control more of the appearance of the Design System, without the need to involve developers. This means they can be free to experiment using their tools, and see the consequences of this experimentation live if pipelines are configured to support this.
 
 We also expect a slightly better performance as a consequence of this approach, as it requires less component rendering to make changes. The effect might be negligible in most cases, but can be helpful in complex scenarios.
 
 ## Considerations
 
-We are currently using token types containing the token variable _names_ and not their values. We belive this is beneficial to the overall architecture, but we can envision scenarios where this would not be possible. It is important that we keep evaluating these opportunities so we can allow values to be available in a reasonable way in the future, but we want to avoid doing this until we find a scenario that can only be resoved by adding this dependency to the components.
+We are currently using token types containing the token variable _names_ and not their values. We believe this is beneficial to the overall architecture, but we can envision scenarios where this would not be possible. It is important that we keep evaluating these opportunities so that we can allow values to be available in a reasonable way in the future, but we want to avoid doing this until we find a scenario that can only be resolved by adding this dependency to the components.
