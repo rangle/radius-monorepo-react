@@ -1,9 +1,2 @@
-**/dist/
-**/build/
-config/jest/
-**/node_modules/
-storybook-static/
-**/tmp
-**/generated/
-apps/demo
-coverage
+node_modules
+libs/foundations/src/generated/design-tokens.types.ts

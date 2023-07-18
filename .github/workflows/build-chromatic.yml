@@ -59,19 +59,18 @@ jobs:
 
       - name: Validate tokens
         id: validate-tokens
-        working-directory: library/foundations
         run: |
           # Parse and Validate Design Tokens
           yarn tokens:ci
 
+      - name: Build projects 🏗
+        run: npx nx run demo:build --skip-nx-cache
+
       - name: Lint
         run: yarn lint:ci
 
-      - name: Build projects 🏗
-        run: NX_CLOUD_AUTH_TOKEN=${{ secrets.NX_CLOUD_AUTH_TOKEN }} npx nx affected --parallel=2 --target=build
-
       - name: Test
-        run: NX_CLOUD_AUTH_TOKEN=${{ secrets.NX_CLOUD_AUTH_TOKEN }} npx nx affected  --parallel=2 --target=test --coverage
+        run: npx nx affected  --parallel=2 --target=test --coverage --skip-nx-cache
 
       - name: Coverage Report
         uses: vebr/jest-lcov-reporter@v0.2.1

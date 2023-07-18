@@ -1,53 +1,120 @@
 {
-  "$schema": "node_modules/nx/schemas/nx-schema.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx-cloud",
       "options": {
         "cacheableOperations": [
           "build",
+          "lint",
           "test",
-          "dev"
+          "dev",
+          "e2e",
+          "build-storybook",
+          "build-generated"
         ]
       }
     }
   },
-  "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*"
-    ],
-    "prod": [
-      "!{projectRoot}/**/*.spec.tsx"
-    ]
-  },
   "targetDefaults": {
+    "dev": {
+      "dependsOn": [
+        {
+          "projects": [
+            "foundations"
+          ],
+          "target": "build"
+        }
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    },
     "build": {
       "dependsOn": [
         "^build"
-      ]
+      ],
+      "inputs": ["production", "^production"]
     },
     "test": {
-      "dependsOn": [
-        "^test",
-        "build"
-      ],
       "inputs": [
         "default",
-        "^default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/jest.preset.js"
       ]
     },
-    "dev": {
+    "e2e": {
+      "inputs": ["default", "^production"]
+    },
+    "lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore"
+      ]
+    },
+    "storybook": {
       "dependsOn": [
-        "^build"
+        {
+          "projects": [
+            "foundations"
+          ],
+          "target": "build-generated"
+        }
+      ],
+      "inputs": [
+        "default",
+        "{projectRoot}/.storybook/**/*",
+        "{projectRoot}/tsconfig.storybook.json"
+      ]
+    },
+    "build-storybook": {
+      "dependsOn": [
+        {
+          "projects": [
+            "foundations"
+          ],
+          "target": "build-generated"
+        }
+      ],
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/.storybook/**/*",
+        "{projectRoot}/tsconfig.storybook.json"
+      ]
+    },
+    "build-generated": {
+      "inputs": [
+        "default",
+        "{projectRoot}/scripts/**/*"
       ]
     }
   },
-  "defaultBase": "main",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "production": [
+      "default",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/tsconfig.storybook.json"
+    ],
+    "sharedGlobals": []
+  },
   "generators": {
-    "@nrwl/react": {
+    "@nx/react": {
       "application": {
         "babel": true
+      },
+      "library": {
+        "unitTestRunner": "jest"
       }
     }
   }

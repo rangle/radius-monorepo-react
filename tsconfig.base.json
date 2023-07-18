@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@radius-monorepo-react/storybook-host": [
+        "libs/storybook-host/src/index.ts"
+      ],
+      "@rangle/radius-foundations": ["libs/foundations/src/index.ts"],
+      "@rangle/radius-foundations/styles": ["libs/foundations/src/styles.css"],
+      "@rangle/radius-react-core-components": [
+        "libs/core-components/src/index.ts"
+      ],
+      "@rangle/radius-react-examples": ["libs/radius-examples/src/index.ts"],
+      "@rangle/radius-shared": ["libs/shared/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
