@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import { cx } from '@emotion/css';
 import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+import { srcToSrcSet } from '@rangle/radius-foundations/src/helpers/src-to-src-set';
 import {
   RadiusAutoLayout,
   Typography,
@@ -75,7 +76,7 @@ export const RadiusImageTextItem = forwardRef<
         >
           <RadiusAutoLayout
             as="img"
-            src={src}
+            {...srcToSrcSet(src)}
             alt={alt}
             width="fill-parent"
             height="fill-parent"

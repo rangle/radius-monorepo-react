@@ -6,7 +6,8 @@
   "files": [
     "docs/",
     "generated/*",
-    "src/"
+    "src/",
+    "./generator-config.ts"
   ],
   "types": "generated/design-tokens.types.ts",
   "repository": {
