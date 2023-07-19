@@ -42,7 +42,7 @@ const findAssetSizeAndDimensions = async (url: string) => {
       return sharp(Buffer.from(response.data))
         .resize({
           // max width for now
-          width: 800,
+          width: 1200,
           height: 800,
           fit: 'inside',
           withoutEnlargement: true,
