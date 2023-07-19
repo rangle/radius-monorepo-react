@@ -40,6 +40,13 @@ const findAssetSizeAndDimensions = async (url: string) => {
     .then((response) => {
       console.info('downloaded. converting to webp');
       return sharp(Buffer.from(response.data))
+        .resize({
+          // max width for now
+          width: 800,
+          height: 800,
+          fit: 'inside',
+          withoutEnlargement: true,
+        })
         .webp()
         .toBuffer({ resolveWithObject: true })
         .catch((e) => {
