@@ -64,6 +64,12 @@ const filterUnique =
     return acc;
   };
 
+// Promise to delay items in batches, e.g. to avoid upstream rate-limiting
+const batchDelay = (requestIndex: number, batchSize = 20) =>
+  new Promise<void>((resolve) => {
+    setTimeout(() => resolve(), Math.floor(requestIndex / batchSize) * 20);
+  });
+
 loadLayersFile(snapshotFileName)
   .then(({ layers, order }) => {
     return order
@@ -85,11 +91,13 @@ loadLayersFile(snapshotFileName)
   .then((assets) =>
     // for every asset, download it and convert it to webp
     Promise.all(
-      assets.map(({ value, ...rest }) =>
-        findAssetSizeAndDimensions(value).then((metadata) => ({
-          ...rest,
-          ...metadata,
-        }))
+      assets.map(({ value, ...rest }, i) =>
+        batchDelay(i)
+          .then(() => findAssetSizeAndDimensions(value))
+          .then((metadata) => ({
+            ...rest,
+            ...metadata,
+          }))
       )
     )
   )
