@@ -4,6 +4,7 @@ import axios from 'axios';
 import { parseData } from './lib/token-parser';
 import { TokenLayer, TokenLayers } from './lib/token-parser.types';
 import { isVariableReference } from './lib/token-parser.utils';
+import { config } from '../generator-config';
 
 const MEDIA_FILES_PATH = './generated';
 
@@ -37,18 +38,37 @@ const findAssetSizeAndDimensions = async (url: string) => {
       console.warn(`Error downloading ${url}`);
       throw e;
     })
-    .then((response) => {
+    .then(async (response) => {
       console.info('downloaded. converting to webp');
-      return sharp(Buffer.from(response.data))
-        .webp()
-        .toBuffer({ resolveWithObject: true })
-        .catch((e) => {
-          console.warn(`Error parsing ${url}`);
-          throw e;
-        });
-    })
-    .then(({ data, info }) => {
-      return { data, info };
+      const image = sharp(Buffer.from(response.data));
+
+      return Promise.all(
+        [...config.imageSizes, 'full' as const].map((width) =>
+          image
+            .resize(
+              width === 'full' // full res version
+                ? undefined
+                : {
+                    // resize to max-size, this might sometimes create duplicates,
+                    // if the source image is small, but this makes the
+                    width: width,
+                    height: width,
+                    fit: 'inside',
+                    withoutEnlargement: true,
+                  }
+            )
+            .webp()
+            .toBuffer({ resolveWithObject: true })
+            .then((v) => ({
+              ...v,
+              width,
+            }))
+            .catch((e) => {
+              console.warn(`Error parsing ${url}`);
+              throw e;
+            })
+        )
+      );
     });
 };
 
@@ -63,6 +83,12 @@ const filterUnique =
     }
     return acc;
   };
+
+// Promise to delay items in batches, e.g. to avoid upstream rate-limiting
+const batchDelay = (requestIndex: number, batchSize = 20) =>
+  new Promise<void>((resolve) => {
+    setTimeout(() => resolve(), Math.floor(requestIndex / batchSize) * 20);
+  });
 
 loadLayersFile(snapshotFileName)
   .then(({ layers, order }) => {
@@ -85,13 +111,17 @@ loadLayersFile(snapshotFileName)
   .then((assets) =>
     // for every asset, download it and convert it to webp
     Promise.all(
-      assets.map(({ value, ...rest }) =>
-        findAssetSizeAndDimensions(value).then((metadata) => ({
-          ...rest,
-          ...metadata,
-        }))
+      assets.flatMap(({ value, ...rest }, i) =>
+        batchDelay(i)
+          .then(() => findAssetSizeAndDimensions(value))
+          .then((variations) =>
+            variations.map((variation) => ({
+              ...rest,
+              ...variation,
+            }))
+          )
       )
-    )
+    ).then((v) => v.flat())
   )
   .then((downloadedAssets) => {
     // find all the directories we need to create
@@ -133,13 +163,16 @@ const saveFiles = <
     data: Buffer;
     name: string;
     path: string;
+    width?: number | string;
   }
 >(
   downloadedAssets: T[]
 ): Promise<void[]> =>
   Promise.all(
-    downloadedAssets.map(({ name, data, path }) => {
-      const fileName = `${assetSavePath(path)}/${name}.webp`;
+    downloadedAssets.map(({ name, data, path, width }) => {
+      const fileName = `${assetSavePath(path)}/${name}${
+        width && width !== 'full' ? `_w${width}` : ''
+      }.webp`;
       console.info(`SAVING ${fileName}`);
       return promises.writeFile(fileName, data);
     })
