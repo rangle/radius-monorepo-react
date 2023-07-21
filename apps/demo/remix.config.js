@@ -7,6 +7,7 @@ module.exports = {
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "build/index.js",
   // publicPath: "/build/",
-  watchPaths: ['../../library'],
+  // watchPaths: ['../../library'],
+  watchPaths: () => require('@nx/remix').createWatchPaths(__dirname),
   serverDependenciesToBundle: [/.*@rangle\/radius-.+/],
 };

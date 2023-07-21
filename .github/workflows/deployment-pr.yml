@@ -43,15 +43,15 @@ jobs:
 
       - name: Validate tokens
         id: validate-tokens
-        working-directory: library/foundations
         run: |
           # Parse and Validate Design Tokens
           yarn tokens:ci
-      - name: Lint
-        run: yarn lint:ci
 
       - name: Build Demo App
-        run: NX_CLOUD_AUTH_TOKEN=${{ secrets.NX_CLOUD_AUTH_TOKEN }} npx nx run demo:build
+        run: npx nx run demo:build --skip-nx-cache
+
+      - name: Lint
+        run: yarn lint:ci
 
       - name: Configure AWS credentials for deployment
         uses: aws-actions/configure-aws-credentials@v2

@@ -46,8 +46,8 @@ apps/**/build
 apps/**/.cache
 
 # Generated files (should be built on server)
-library/foundations/generated/*
-!library/foundations/generated/token-layers-*.json
+libs/foundations/src/generated/*
+!libs/foundations/src/generated/token-layers-*.json
 apps/demo/public/brand/*
 
 # Environment Variables

@@ -1,38 +1,33 @@
 {
-  "name": "@rangle/radius-react-core-demo",
-  "version": "0.1.0",
   "private": true,
+  "name": "demo",
   "description": "",
   "license": "",
   "scripts": {
-    "load-assets": "pwd && cp -r ../../node_modules/@rangle/radius-foundations/generated/brand public && cp -r ../../node_modules/@rangle/radius-foundations/generated/halloweenevent public",
+    "load-assets": "pwd && cp -r ../../libs/foundations/src/generated/brand public && cp -r ../../libs/foundations/src/generated/halloweenevent public",
     "build": "npm run load-assets && npx remix build",
     "dev": "npm run load-assets && npx remix dev",
     "postinstall": "npx remix setup node",
     "start": "npm run load-assets && npx remix-serve build"
   },
   "dependencies": {
-    "@emotion/cache": "^11.10.5",
-    "@emotion/react": "^11.10.5",
-    "@emotion/server": "^11.10.0",
-    "@emotion/styled": "^11.10.5",
-    "@emotion/css": "^11.10.5",
-    "@rangle/radius-foundations": "*",
-    "@rangle/radius-react-core-components": "*",
-    "@rangle/radius-react-examples": "*",
-    "@remix-run/react": "^1.6.8",
-    "@remix-run/serve": "^1.6.8",
+    "@remix-run/node": "^1.16.1",
+    "@remix-run/react": "^1.16.1",
+    "@remix-run/serve": "^1.16.1",
+    "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.6.8",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "typescript": "^5.0.4"
+    "@remix-run/dev": "^1.16.1",
+    "@remix-run/eslint-config": "^1.16.1",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "eslint": "^8.27.0",
+    "typescript": "^4.8.4"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=14"
   },
   "sideEffects": false
 }

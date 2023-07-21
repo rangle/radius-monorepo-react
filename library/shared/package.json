@@ -1,9 +1,0 @@
-{
-  "name": "@rangle/radius-shared",
-  "version": "0.0.1",
-  "type": "commonjs",
-  "files": [
-    "constants/",
-    "utils/*"
-  ]
-}

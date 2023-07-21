@@ -17,12 +17,12 @@ import {
   Youtube,
   LightMode,
   DarkMode,
-} from '@rangle/radius-foundations/generated/icons/index';
-import { radiusTokens } from '@rangle/radius-foundations/generated/design-tokens.constants';
+} from '@rangle/radius-foundations';
+import { radiusTokens } from '@rangle/radius-foundations';
 import {
   imageBasePath,
   defaultBrand,
-} from '@rangle/radius-foundations/generated/default-theme-settings.constants';
+} from '@rangle/radius-foundations';
 import { css } from '@emotion/css';
 import { useIsScrolled } from '../../hooks/use-is-scrolled';
 

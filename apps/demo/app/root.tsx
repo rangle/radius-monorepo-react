@@ -8,8 +8,8 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import styles from '@rangle/radius-foundations/styles.css';
-import { defaultClassNames } from '@rangle/radius-foundations/generated/default-theme-settings.constants';
+import styles from '@rangle/radius-foundations/styles';
+import { defaultClassNames } from '@rangle/radius-foundations';
 import { useMutationObserver } from './utils/demo.utils';
 
 export const meta: MetaFunction = () => ({

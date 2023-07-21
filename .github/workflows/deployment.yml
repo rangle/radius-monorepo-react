@@ -40,7 +40,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build Demo App
-        run: npx nx run demo:build
+        run: npx nx run demo:build --skip-nx-cache
 
       ## Run lint, test, and build for all affected projects
       - run: NX_CLOUD_AUTH_TOKEN=${{ secrets.NX_CLOUD_AUTH_TOKEN }} npx nx affected --target=lint --parallel=3
