@@ -1,7 +1,4 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import {Config} from '@storybook/addons';
-
-const versions = process.env.VERSION?.split('.') || ['0', '0', '0'];
 
 const config: StorybookConfig = {
   // the location of where storybook should look for its stories
@@ -40,12 +37,6 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  // We add versions globally from the build env
-  // Access the variable with process.env.COMPONENT_VERSION
-  env: (config: Config) => ({
-    ...config,
-    COMPONENT_VERSION: versions,
-  }),
   docs: {
     autodocs: true,
   },

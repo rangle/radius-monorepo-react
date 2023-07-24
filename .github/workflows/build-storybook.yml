@@ -38,7 +38,7 @@ jobs:
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main
         with:
-          path: lib/core-components
+          path: libs/foundations
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
