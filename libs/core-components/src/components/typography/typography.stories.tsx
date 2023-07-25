@@ -1,8 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { radiusTokens } from '@rangle/radius-foundations';
+import { radiusTokens, version } from '@rangle/radius-foundations';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from './typography';
 import { flattenObject } from '@rangle/radius-shared';
+
+const [major, minor, patch] = version ? version.split('.') : ['0', '0', '0'];
 
 const bySubtoken =
   <T extends string>(name: string) =>
@@ -13,6 +15,12 @@ const meta: Meta<typeof Typography> = {
   component: Typography,
   title: 'Typography',
   parameters: {
+    // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
+    version: {
+      major,
+      minor,
+      patch,
+    },
     badges: [BADGE.BETA],
   },
   argTypes: {

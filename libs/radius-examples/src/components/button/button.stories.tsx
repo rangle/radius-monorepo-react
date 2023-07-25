@@ -11,12 +11,6 @@ const meta: Meta<typeof RadiusButton> = {
   component: RadiusButton,
   title: 'Button',
   parameters: {
-    // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
-    version: {
-      major: process.env.COMPONENT_VERSION?.[0],
-      minor: process.env.COMPONENT_VERSION?.[1],
-      patch: process.env.COMPONENT_VERSION?.[2],
-    },
     badges: [BADGE.BETA],
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
   },

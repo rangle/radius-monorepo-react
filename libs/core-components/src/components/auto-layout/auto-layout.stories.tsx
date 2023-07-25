@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { radiusTokens } from '@rangle/radius-foundations';
+import { radiusTokens, version } from '@rangle/radius-foundations';
 
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Typography } from '../typography/typography';
@@ -8,15 +8,17 @@ import { RadiusAutoLayout } from './auto-layout';
 import { flattenObject } from '@rangle/radius-shared';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
 
+const [major, minor, patch] = version ? version.split('.') : ['0', '0', '0'];
+
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
   title: 'Auto Layout',
   parameters: {
     // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
     version: {
-      major: process.env.COMPONENT_VERSION?.[0],
-      minor: process.env.COMPONENT_VERSION?.[1],
-      patch: process.env.COMPONENT_VERSION?.[2],
+      major,
+      minor,
+      patch,
     },
     badges: [BADGE.BETA],
 
