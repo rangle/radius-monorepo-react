@@ -96,10 +96,10 @@ const renderTokenSpecificGroup = (group: TokenSpecificGroup) => {
   const tokenSpecificGroupName = getTokenSpecificGroupNames(group.key);
   const tokenKeyPrefix = toKebabCase(group.key);
   return `
-export interface ${DS_NAME}TokenIndex { 
+export interface ${tokenSpecificGroupName}Index { 
   ['${tokenKeyPrefix}']: ${group.values.map((key) => `'${key}'`).join(' | ')};
 };
-export type ${tokenSpecificGroupName} = ${DS_NAME}TokenIndex['${tokenKeyPrefix}'];
+export type ${tokenSpecificGroupName} = ${tokenSpecificGroupName}Index['${tokenKeyPrefix}'];
 `;
 };
 
@@ -180,7 +180,6 @@ export const renderTokenTypes = ({ order, layers }: TokenLayers) => {
 
   return Buffer.from(`
 
-export interface ${DS_NAME}TokenIndex {}
 // Tokens By Layer, Type and Subject
 ${allTokenGroupsAndKeys.map(renderTokenSpecificGroup).join('\n')}
 // Token groups By Segment
