@@ -7,7 +7,6 @@ import {
   GeneratorMappingFunction,
 } from './lib/token-parser.types';
 import {
-  renderStorybookStory,
   renderCSSVariables,
   renderTokenTypes,
   renderTokenObjects,
@@ -68,8 +67,6 @@ const templates: RenderTemplateMap = {
   types: renderTokenTypes,
   // render token constants
   constants: renderTokenObjects,
-  // render storybook theme
-  storybook: renderStorybookStory,
   // render settings for the default theme
   defaultThemeSettings: renderDefaultThemeSettings,
   // default template for the test runner
