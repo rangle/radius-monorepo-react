@@ -14,6 +14,8 @@
     "test:watch": "yarn run test --watch",
     "build:ci": "nx build demo && nx run-many --target=test",
     "lint:ci": "nx run-many --target=lint",
+    "format-check:staged": "nx format:check uncommitted",
+    "format:staged": "nx format:write uncommitted",
     "tokens:ci": "nx run foundations:tokens:ci",
     "graph": "nx graph"
   },
