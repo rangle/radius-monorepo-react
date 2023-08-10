@@ -44,7 +44,12 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       options: ['', ...flattenObject(radiusTokens.core.spacing)],
     },
     direction: {
+      control: 'select',
       options: ['horizontal', 'vertical'],
+    },
+    wrap: {
+      control: 'select',
+      options: ['nowrap', 'wrap', 'wrap-reverse'],
     },
     fill: {
       options: [
@@ -86,9 +91,11 @@ const meta: Meta<typeof RadiusAutoLayout> = {
       options: ['', ...flattenObject(radiusTokens.core.shadow)],
     },
     layerBlur: {
+      control: 'select',
       options: [0, 1, 2, 3],
     },
     backgroundBlur: {
+      control: 'select',
       options: [0, 1, 2, 3],
     },
     // TODO: add grid tokens when ready
@@ -160,6 +167,7 @@ export const AutoLayout: Story = {
     space: 'auto',
     padding: radiusTokens.core.spacing[24],
     direction: 'horizontal',
+    wrap: 'nowrap',
     fill: radiusTokens.core.color.neutral[50],
     stroke: radiusTokens.core.color.neutral[600],
     strokeWidth: radiusTokens.core.borderWidth[1],
@@ -171,7 +179,7 @@ export const AutoLayout: Story = {
     absolutePosition: false,
     horizontalConstraint: 'left',
     verticalConstraint: 'top',
-  },
+  }
 };
 
 /**

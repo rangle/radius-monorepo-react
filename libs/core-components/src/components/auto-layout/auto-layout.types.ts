@@ -73,6 +73,8 @@ export type AutoLayoutExtendedProps = {
   absolutePosition?: boolean;
   /** The direction of the layout, uses flex row or column */
   direction?: CSSProp<'direction'> | 'horizontal' | 'vertical';
+  /** Whether the component should be wrapped.  The default is nowrap. */
+  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
   /** The space between the children, can be number (gap) or auto (justify-content: space-between;) */
   space?: CSSProp<'spacing'> | 'auto'; // auto = justify-content: space-between;
   /** Whether the content should be clipped or not, uses overflow: hidden */
