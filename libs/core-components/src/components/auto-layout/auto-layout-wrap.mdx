@@ -1,0 +1,26 @@
+import { Controls, Canvas, Meta } from '@storybook/blocks';
+import * as WrapStories from './auto-layout-wrap.stories';
+
+<Meta of={WrapStories} />
+
+# Auto Layout / Wrap
+
+RadiusAutoLayout duplicates the behaviour of Figma Auto Layout's wrap properties.
+
+## Resources
+
+[How Figma Layout Flow Works](https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties#direction)
+
+[RadiusAutoLayout Figma Specs](https://www.figma.com/file/ODAUZaQxH8oH2GI0A9MAVb/Radius-Booster---Auto-Layout?type=design&node-id=1312-1170&t=Fh2ap7gIybG92aBU-0)
+
+### Auto Layout Wrap Horizontal
+
+<Canvas of={WrapStories.AutoLayoutWrapHorizontal} />
+
+### Auto Layout Wrap Vertical
+
+<Canvas of={WrapStories.AutoLayoutWrapVertical} />
+
+### Auto Layout No Wrap
+
+<Canvas of={WrapStories.NoWrap} />

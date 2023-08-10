@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { RadiusAutoLayout } from './auto-layout';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
-import { version } from '@rangle/radius-foundations';
 
 /**
  * RadiusAutoLayout duplicates the behaviour of Figma Auto Layout's
