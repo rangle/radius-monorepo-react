@@ -37,6 +37,7 @@ export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
       isParent = false,
       absolutePosition = false,
       direction,
+      wrap='nowrap',
       space,
       clippedContent = false,
       alignment = 'top',
@@ -71,6 +72,7 @@ export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
     const Component = as || 'div';
     const styles = useStyles({
       direction,
+      wrap,
       space,
       clippedContent,
       alignment,
