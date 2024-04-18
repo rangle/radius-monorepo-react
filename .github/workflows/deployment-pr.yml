@@ -39,7 +39,7 @@ jobs:
         # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock or any package.json changes)
       - name: Install Dependencies
         if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Validate tokens
         id: validate-tokens
