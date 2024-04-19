@@ -17,6 +17,15 @@ git clone https://github.com/rangle/radius-monorepo-react
 
 ### 2. Install dependencies
 
+If you use nvm for version control, following these steps to set up using yarn 1 to install dependencies for this project:
+
+```bash
+nvm use 18
+corepack enable
+yarn set version 1.22.22
+yarn -v
+```
+
 Navigate to the cloned repository's root directory and install the required dependencies by running:
 
 ``` bash
@@ -25,7 +34,7 @@ yarn install
 
 This command installs all the necessary packages and dependencies required for the project.
 
-### 3. Set up NX Cloud
+### 3. Set up NX Cloud (Optional)
 
 Before you can start working with NX Cloud, you need to create an nx-cloud.env file in the root directory. This file
 should contain the NX Cloud authentication token key. Here's how to set it up:
