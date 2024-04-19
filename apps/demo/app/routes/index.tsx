@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 import {
   RadiusNav,
@@ -16,7 +16,8 @@ import {
   Instagram,
   Youtube,
   LightMode,
-  DarkMode,
+  ArrowLeft,
+  DarkMode
 } from '@rangle/radius-foundations';
 import { radiusTokens } from '@rangle/radius-foundations';
 import {
@@ -30,18 +31,34 @@ import { useIsScrolled } from '../../hooks/use-is-scrolled';
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 const modes = ['dark-mode', 'light-mode'];
+const themes = ['photostop', 'saddles'];
 /** This should be integrated into a Page layout component, currently a WIP in design */
 const pageMaxWidth = 1280;
 
 export default function Index() {
   const [mode, setMode] = useState(1);
+  const [theme, setTheme] = useState(1);
   const isScrolled = useIsScrolled();
+
+  useLayoutEffect(() => {
+    const element = document.querySelector(`.saddles-halloween`);
+    if (element) {
+      element.classList.remove('saddles-halloween');
+    }
+  }, []); 
 
   const toggleMode = () => {
     const modeElement = document.querySelector(`.${modes[mode]}`);
     modeElement?.classList.remove(modes[mode]);
     modeElement?.classList.add(modes[mode ^ 1]);
     setMode(mode ^ 1);
+  };
+
+  const toggleTheme = () => {
+    const themeElement = document.querySelector(`.${themes[theme]}`);
+    themeElement?.classList.remove(themes[theme]);
+    themeElement?.classList.add(themes[theme ^ 1]);
+    setTheme(theme ^ 1);
   };
 
   return (
@@ -90,6 +107,15 @@ export default function Index() {
               as: 'button',
               onClick: toggleMode,
               icon: (mode ? DarkMode : LightMode) as IconType,
+            },
+            {
+              'aria-label': theme
+                ? 'Switch to New Theme'
+                : 'Switch to Default Theme',
+              title: theme ? 'Switch to New Theme' : 'Switch to Default Theme',
+              as: 'button',
+              onClick: toggleTheme,
+              icon: (theme ? ArrowLeft : ArrowRight) as IconType,
             },
           ]}
           logos={
