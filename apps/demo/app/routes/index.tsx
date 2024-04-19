@@ -19,10 +19,7 @@ import {
   DarkMode,
 } from '@rangle/radius-foundations';
 import { radiusTokens } from '@rangle/radius-foundations';
-import {
-  imageBasePath,
-  defaultBrand,
-} from '@rangle/radius-foundations';
+import { imageBasePath, defaultBrand } from '@rangle/radius-foundations';
 import { css } from '@emotion/css';
 import { useIsScrolled } from '../../hooks/use-is-scrolled';
 
@@ -176,7 +173,7 @@ export default function Index() {
           `}
         >
           <RadiusHero
-            header="Header"
+            header="Test 123"
             eyebrow="Eyebrow"
             buttonLabel="Action"
             image={
