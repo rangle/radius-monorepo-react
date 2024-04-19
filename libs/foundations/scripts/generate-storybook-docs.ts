@@ -307,7 +307,7 @@ readTokenData(tokenFileName).then(tokenFile => {
     let fileCount = 4;
     writeLayerDefinitions(`${STORYBOOK_DOCS_PATH}/${fileIndex(fileCount++)}-token-layer-definitions.mdx`, 'Layer Definition', order, layers, layerMap);
 
-    [ "core", "brand--photostop", "brand--saddles", "halloweenevent--saddles"].map((layerName) => {
+    [ "core", "brand--photostop", "brand--saddles"].map((layerName) => {
         const { name, variables }: TokenLayer = layerMap[layerName];
         const basetokenDefinitions = renderLayerVariables(name, variables);
         const valueMap = variables.reduce((map, obj) => {

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 import {
   RadiusNav,
@@ -39,13 +39,6 @@ export default function Index() {
   const [mode, setMode] = useState(1);
   const [theme, setTheme] = useState(1);
   const isScrolled = useIsScrolled();
-
-  useLayoutEffect(() => {
-    const element = document.querySelector(`.saddles-halloween`);
-    if (element) {
-      element.classList.remove('saddles-halloween');
-    }
-  }, []); 
 
   const toggleMode = () => {
     const modeElement = document.querySelector(`.${modes[mode]}`);
