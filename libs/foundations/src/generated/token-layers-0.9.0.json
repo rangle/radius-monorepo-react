@@ -16498,37 +16498,37 @@
         {
           "key": "--asset-semantic-image-small-image-text-item-image01",
           "name": "semantic.image.smallImageTextItem.image01",
-          "value": "https://i.ibb.co/ThGbQG5/Boot.png",
+          "value": "https://images.unsplash.com/photo-1536294738309-2fc595e788fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
           "type": "asset"
         },
         {
           "key": "--asset-semantic-image-small-image-text-item-image02",
           "name": "semantic.image.smallImageTextItem.image02",
-          "value": "https://i.ibb.co/k5CRRtg/Horseshoe.png",
+          "value": "https://i.ibb.co/WGh01mR/image5.png",
           "type": "asset"
         },
         {
           "key": "--asset-semantic-image-small-image-text-item-image03",
           "name": "semantic.image.smallImageTextItem.image03",
-          "value": "https://i.ibb.co/k04bmXx/Saddle.png",
+          "value": "https://i.ibb.co/GTFhH1C/image6.png",
           "type": "asset"
         },
         {
           "key": "--asset-semantic-image-small-image-text-item-image04",
           "name": "semantic.image.smallImageTextItem.image04",
-          "value": "https://i.ibb.co/Ry0dZJq/Hat.png",
+          "value": "https://images.unsplash.com/photo-1527463164459-0c966ed3d3d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
           "type": "asset"
         },
         {
           "key": "--asset-semantic-image-small-image-text-item-image05",
           "name": "semantic.image.smallImageTextItem.image05",
-          "value": "https://i.ibb.co/34SYJbb/saddle5.jpg",
+          "value": "https://i.ibb.co/KVtLh8X/nordwood-themes-EZSm8x-Rjn-X0-unsplash.jpg",
           "type": "asset"
         },
         {
           "key": "--asset-semantic-image-small-image-text-item-image06",
           "name": "semantic.image.smallImageTextItem.image06",
-          "value": "https://i.ibb.co/4tCMcDS/saddle6.jpg",
+          "value": "https://images.unsplash.com/photo-1491947153227-33d59da6c448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
           "type": "asset"
         },
         {
@@ -16541,317 +16541,6 @@
       ],
       "parameters": {
         "section-name": "saddles"
-      },
-      "dependencies": []
-    },
-    {
-      "name": "halloweenevent--saddles",
-      "isDefault": true,
-      "isStatic": false,
-      "variables": [
-        {
-          "key": "--asset-semantic-image-hero-header-image",
-          "name": "semantic.image.hero.headerImage",
-          "value": "https://i.ibb.co/Jy2R8Q2/header-Image-halloween-1.png",
-          "type": "asset"
-        },
-        {
-          "key": "--asset-semantic-image-hero-background-image",
-          "name": "semantic.image.hero.backgroundImage",
-          "value": "https://i.ibb.co/WGdDFQH/bg.png",
-          "type": "asset"
-        },
-        {
-          "key": "--asset-semantic-image-small-image-text-item-image01",
-          "name": "semantic.image.smallImageTextItem.image01",
-          "value": "https://i.ibb.co/kJrbd7y/Boot-halloween.png",
-          "type": "asset"
-        },
-        {
-          "key": "--asset-semantic-image-small-image-text-item-image02",
-          "name": "semantic.image.smallImageTextItem.image02",
-          "value": "https://i.ibb.co/3cN9v8m/Horseshoe-halloween.png",
-          "type": "asset"
-        },
-        {
-          "key": "--asset-semantic-image-small-image-text-item-image03",
-          "name": "semantic.image.smallImageTextItem.image03",
-          "value": "https://i.ibb.co/XZyh7q1/Saddle-halloween.png",
-          "type": "asset"
-        },
-        {
-          "key": "--asset-semantic-image-small-image-text-item-image04",
-          "name": "semantic.image.smallImageTextItem.image04",
-          "value": "https://i.ibb.co/0ZMZvDX/Hat-halloween.png",
-          "type": "asset"
-        },
-        {
-          "key": "--asset-semantic-image-small-image-text-item-image05",
-          "name": "semantic.image.smallImageTextItem.image05",
-          "value": "https://i.ibb.co/kJrbd7y/Boot-halloween.png",
-          "type": "asset"
-        },
-        {
-          "key": "--asset-semantic-image-small-image-text-item-image06",
-          "name": "semantic.image.smallImageTextItem.image06",
-          "value": "https://i.ibb.co/3cN9v8m/Horseshoe-halloween.png",
-          "type": "asset"
-        },
-        {
-          "key": "--color-semantic-light-actions-default-foreground-on-no-background",
-          "name": "semantic.color.light.actions.default.foregroundOnNoBackground",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{core.color.neutral.900}"
-        },
-        {
-          "key": "--color-semantic-light-actions-default-primary-foreground",
-          "name": "semantic.color.light.actions.default.primaryForeground",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{core.color.neutral.50}"
-        },
-        {
-          "key": "--color-semantic-light-actions-default-primary-background",
-          "name": "semantic.color.light.actions.default.primaryBackground",
-          "value": "#804200",
-          "type": "color",
-          "rawValue": "{core.color.orange.900}"
-        },
-        {
-          "key": "--color-semantic-light-actions-default-secondary-foreground",
-          "name": "semantic.color.light.actions.default.secondaryForeground",
-          "value": "#804200",
-          "type": "color",
-          "rawValue": "{core.color.orange.900}"
-        },
-        {
-          "key": "--color-semantic-light-actions-default-secondary-background",
-          "name": "semantic.color.light.actions.default.secondaryBackground",
-          "value": "rgba(0,0,0,0)",
-          "type": "color",
-          "rawValue": "{core.color.none}"
-        },
-        {
-          "key": "--color-semantic-light-actions-default-border",
-          "name": "semantic.color.light.actions.default.border",
-          "value": "#804200",
-          "type": "color",
-          "rawValue": "{core.color.orange.900}"
-        },
-        {
-          "key": "--color-semantic-light-containment-image",
-          "name": "semantic.color.light.containment.image",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{core.color.neutral.500}"
-        },
-        {
-          "key": "--color-semantic-light-containment-background",
-          "name": "semantic.color.light.containment.background",
-          "value": "#804200",
-          "type": "color",
-          "rawValue": "{core.color.orange.900}"
-        },
-        {
-          "key": "--color-semantic-light-containment-header",
-          "name": "semantic.color.light.containment.header",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-light-containment-eyebrow",
-          "name": "semantic.color.light.containment.eyebrow",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{core.color.neutral.50}"
-        },
-        {
-          "key": "--color-semantic-light-lists-image",
-          "name": "semantic.color.light.lists.image",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{core.color.neutral.500}"
-        },
-        {
-          "key": "--color-semantic-light-lists-header",
-          "name": "semantic.color.light.lists.header",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-light-lists-body",
-          "name": "semantic.color.light.lists.body",
-          "value": "#656565",
-          "type": "color",
-          "rawValue": "{core.color.neutral.700}"
-        },
-        {
-          "key": "--color-semantic-light-layouts-background",
-          "name": "semantic.color.light.layouts.background",
-          "value": "#F1F3F4",
-          "type": "color",
-          "rawValue": "{core.color.neutral.200}"
-        },
-        {
-          "key": "--color-semantic-light-navigation-selected-primary-foreground",
-          "name": "semantic.color.light.navigation.selected.primaryForeground",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{core.color.neutral.900}"
-        },
-        {
-          "key": "--color-semantic-light-navigation-selected-primary-accent",
-          "name": "semantic.color.light.navigation.selected.primaryAccent",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{core.color.neutral.900}"
-        },
-        {
-          "key": "--color-semantic-light-navigation-primary-background",
-          "name": "semantic.color.light.navigation.primaryBackground",
-          "value": "#F1F3F4",
-          "type": "color",
-          "rawValue": "{core.color.neutral.200}"
-        },
-        {
-          "key": "--color-semantic-light-navigation-secondary-background",
-          "name": "semantic.color.light.navigation.secondaryBackground",
-          "value": "#FFCBC0",
-          "type": "color",
-          "rawValue": "{core.color.red.100}"
-        },
-        {
-          "key": "--color-semantic-dark-actions-default-foreground-on-no-background",
-          "name": "semantic.color.dark.actions.default.foregroundOnNoBackground",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{core.color.neutral.50}"
-        },
-        {
-          "key": "--color-semantic-dark-actions-default-primary-foreground",
-          "name": "semantic.color.dark.actions.default.primaryForeground",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{core.color.neutral.50}"
-        },
-        {
-          "key": "--color-semantic-dark-actions-default-primary-background",
-          "name": "semantic.color.dark.actions.default.primaryBackground",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-dark-actions-default-secondary-foreground",
-          "name": "semantic.color.dark.actions.default.secondaryForeground",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-dark-actions-default-secondary-background",
-          "name": "semantic.color.dark.actions.default.secondaryBackground",
-          "value": "rgba(0,0,0,0)",
-          "type": "color",
-          "rawValue": "{core.color.none}"
-        },
-        {
-          "key": "--color-semantic-dark-actions-default-border",
-          "name": "semantic.color.dark.actions.default.border",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-dark-containment-image",
-          "name": "semantic.color.dark.containment.image",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{core.color.neutral.500}"
-        },
-        {
-          "key": "--color-semantic-dark-containment-background",
-          "name": "semantic.color.dark.containment.background",
-          "value": "#804200",
-          "type": "color",
-          "rawValue": "{core.color.orange.900}"
-        },
-        {
-          "key": "--color-semantic-dark-containment-header",
-          "name": "semantic.color.dark.containment.header",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-dark-containment-eyebrow",
-          "name": "semantic.color.dark.containment.eyebrow",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{core.color.neutral.50}"
-        },
-        {
-          "key": "--color-semantic-dark-lists-image",
-          "name": "semantic.color.dark.lists.image",
-          "value": "#CCCCCC",
-          "type": "color",
-          "rawValue": "{core.color.neutral.500}"
-        },
-        {
-          "key": "--color-semantic-dark-lists-header",
-          "name": "semantic.color.dark.lists.header",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-dark-lists-body",
-          "name": "semantic.color.dark.lists.body",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{core.color.neutral.50}"
-        },
-        {
-          "key": "--color-semantic-dark-navigation-selected-primary-foreground",
-          "name": "semantic.color.dark.navigation.selected.primaryForeground",
-          "value": "#FFFFFF",
-          "type": "color",
-          "rawValue": "{core.color.neutral.50}"
-        },
-        {
-          "key": "--color-semantic-dark-navigation-selected-primary-accent",
-          "name": "semantic.color.dark.navigation.selected.primaryAccent",
-          "value": "#FF9E1C",
-          "type": "color",
-          "rawValue": "{core.color.orange.400}"
-        },
-        {
-          "key": "--color-semantic-dark-navigation-primary-background",
-          "name": "semantic.color.dark.navigation.primaryBackground",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{core.color.neutral.900}"
-        },
-        {
-          "key": "--color-semantic-dark-navigation-secondary-background",
-          "name": "semantic.color.dark.navigation.secondaryBackground",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{core.color.neutral.900}"
-        },
-        {
-          "key": "--color-semantic-dark-layouts-background",
-          "name": "semantic.color.dark.layouts.background",
-          "value": "#262626",
-          "type": "color",
-          "rawValue": "{core.color.neutral.900}"
-        }
-      ],
-      "parameters": {
-        "section-name": "Saddles Halloween"
       },
       "dependencies": []
     },
@@ -17144,7 +16833,7 @@
       "parameters": {
         "section-name": "Light Mode"
       },
-      "dependencies": ["photostop", "saddles", "Saddles Halloween"]
+      "dependencies": ["photostop", "saddles"]
     },
     {
       "name": "mode--dark",
@@ -17435,7 +17124,7 @@
       "parameters": {
         "section-name": "Dark Mode"
       },
-      "dependencies": ["photostop", "saddles", "Saddles Halloween"]
+      "dependencies": ["photostop", "saddles"]
     },
     {
       "name": "breakpoint--desktop",
@@ -22938,7 +22627,6 @@
     "core",
     "brand--photostop",
     "brand--saddles",
-    "halloweenevent--saddles",
     "mode--light",
     "mode--dark",
     "breakpoint--desktop",

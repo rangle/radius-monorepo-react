@@ -17,13 +17,10 @@ import {
   Youtube,
   LightMode,
   ArrowLeft,
-  DarkMode
+  DarkMode,
 } from '@rangle/radius-foundations';
 import { radiusTokens } from '@rangle/radius-foundations';
-import {
-  imageBasePath,
-  defaultBrand,
-} from '@rangle/radius-foundations';
+import { imageBasePath, defaultBrand } from '@rangle/radius-foundations';
 import { css } from '@emotion/css';
 import { useIsScrolled } from '../../hooks/use-is-scrolled';
 
