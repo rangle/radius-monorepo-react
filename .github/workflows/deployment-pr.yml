@@ -62,7 +62,7 @@ jobs:
 
       ## Deploy remix demo app with SST
       - name: Deploy Demo App to AWS
-        run: yarn sst deploy --stage radius-pr
+        run: yarn sst deploy --stage radius-demo-pr
 
       # Find existing Demo App comment
       - name: Find Existing Comment
