@@ -25,7 +25,8 @@
     "tokens:default-theme-settings": "cat src/generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node --project tsconfig.generate.json scripts/generate-theme.ts defaultThemeSettings > src/generated/default-theme-settings.constants.ts && prettier --config ../../.prettierrc --write src/generated/default-theme-settings.constants.ts",
     "build-icons": "rm -rf src/generated/icons && svgr --icon --typescript --filename-case kebab --out-dir src/generated/icons --svgo-config ./svgo.config.js src/assets/icons/svg",
     "build-brands": "rm -rf src/generated/brand && mkdir -p src/generated/brand && cp -Rf ../../radius/brands/* src/generated/brand",
-    "build-generated": "yarn build-brands  && yarn tokens:update && yarn build-icons && yarn tokens:assets"
+    "build-generated": "yarn build-brands  && yarn tokens:update && yarn build-icons && yarn tokens:assets",
+    "clean": "rimraf \"src/generated/!(token-layers-*.json)\""
   },
   "jest": {
     "transform": {
@@ -34,5 +35,8 @@
   },
   "author": "jason.santos@rangle.io",
   "license": "MIT",
-  "gitHead": "d06d999cbdabb3d3e32798e134871aa9698be5d7"
+  "gitHead": "d06d999cbdabb3d3e32798e134871aa9698be5d7",
+  "devDependencies": {
+    "rimraf": "^5.0.5"
+  }
 }

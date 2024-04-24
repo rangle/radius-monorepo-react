@@ -10,7 +10,7 @@ The GitHub action deployment pipeline is triggered by merging to the main branch
 
 1. Lint and test monorepo packages that have changed using the Nx `affected` command
 2. Build the demo app (this step also builds the core-component and foundations packages as a prerequisite)
-3. Configure AWS credentials for the deployment using GitHub actions. The credentials are stored in  [GitHub secrets](https://github.com/rangle/radius-monorepo-react/settings/secrets/actions).
+3. Configure AWS credentials for the deployment using GitHub actions. The credentials are stored in [GitHub secrets](https://github.com/rangle/radius-monorepo-react/settings/secrets/actions).
 4. Deploy the demo app to AWS using the `sst deploy` command. The `--stage` flag is used to specify the environment.
 
 ## Deploying from local machine
@@ -29,3 +29,9 @@ The demo app is deployed to two environments:
 
 - `radius-pr`: https://d11mwnosflssyy.cloudfront.net/. The demo app is deployed for PR preview.
 - `prod`: https://d7mzfbcjb41ud.cloudfront.net. The demo app is deployed when code is merged to the main branch. This is the environment used for the demo.
+
+To add a new environment, change the stage name when deploying
+
+```bash
+yarn sst deploy --stage new-environment
+```

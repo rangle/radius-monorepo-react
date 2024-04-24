@@ -74,7 +74,7 @@
     "nx-cloud": "latest",
     "prettier": "^2.6.2",
     "sharp": "^0.32.3",
-    "sst": "^2.22.3",
+    "sst": "^2.41.4",
     "storybook-addon-pseudo-states": "^2.1.0",
     "storybook-version": "^0.1.1",
     "ts-jest": "^29.1.0",
