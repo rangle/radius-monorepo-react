@@ -10,19 +10,17 @@ import {
 import {
   Github,
   Figma,
-  ArrowRight,
+  ThemeBrush,
   Twitter,
   LinkedIn,
   Instagram,
   Youtube,
   LightMode,
   DarkMode,
+  ArrowRight,
 } from '@rangle/radius-foundations';
 import { radiusTokens } from '@rangle/radius-foundations';
-import {
-  imageBasePath,
-  defaultBrand,
-} from '@rangle/radius-foundations';
+import { imageBasePath, defaultBrand } from '@rangle/radius-foundations';
 import { css } from '@emotion/css';
 import { useIsScrolled } from '../../hooks/use-is-scrolled';
 
@@ -30,11 +28,13 @@ import { useIsScrolled } from '../../hooks/use-is-scrolled';
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 const modes = ['dark-mode', 'light-mode'];
+const themes = ['wellness', 'healthcare'];
 /** This should be integrated into a Page layout component, currently a WIP in design */
 const pageMaxWidth = 1280;
 
 export default function Index() {
   const [mode, setMode] = useState(1);
+  const [theme, setTheme] = useState(1);
   const isScrolled = useIsScrolled();
 
   const toggleMode = () => {
@@ -42,6 +42,13 @@ export default function Index() {
     modeElement?.classList.remove(modes[mode]);
     modeElement?.classList.add(modes[mode ^ 1]);
     setMode(mode ^ 1);
+  };
+
+  const toggleTheme = () => {
+    const themeElement = document.querySelector(`.${themes[theme]}`);
+    themeElement?.classList.remove(themes[theme]);
+    themeElement?.classList.add(themes[theme ^ 1]);
+    setTheme(theme ^ 1);
   };
 
   return (
@@ -90,6 +97,13 @@ export default function Index() {
               as: 'button',
               onClick: toggleMode,
               icon: (mode ? DarkMode : LightMode) as IconType,
+            },
+            {
+              'aria-label': `Switch to ${themes[theme ^ 1]} theme`,
+              title: `Switch to ${themes[theme ^ 1]} theme`,
+              as: 'button',
+              onClick: toggleTheme,
+              icon: ThemeBrush,
             },
           ]}
           logos={
@@ -382,7 +396,7 @@ export default function Index() {
               iconRight: ArrowRight as IconType,
             },
           ]}
-          copyright="© Rangle.io, 2023.  All rights reserved."
+          copyright="© Rangle.io, 2024.  All rights reserved."
           privacyPolicy={{
             children: 'Privacy Policy',
             href: '#',
