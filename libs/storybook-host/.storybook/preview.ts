@@ -4,45 +4,45 @@ import { withSectionNameForTheme } from './section-name';
 
 const customViewports = {
   iphoneMini: {
-    name: "iPhone Mini",
+    name: 'iPhone Mini',
     styles: {
-      width: "360px",
-      height: "780px",
+      width: '360px',
+      height: '780px',
     },
   },
   ipadMini: {
-    name: "iPad Mini",
+    name: 'iPad Mini',
     styles: {
-      width: "768px",
-      height: "1024px",
+      width: '768px',
+      height: '1024px',
     },
   },
   googleP2XL: {
-    name: "Google Pixel 2 XL",
+    name: 'Google Pixel 2 XL',
     styles: {
-      width: "411px",
-      height: "823px",
+      width: '411px',
+      height: '823px',
     },
   },
   iphone12: {
-    name: "iPhone 12",
+    name: 'iPhone 12',
     styles: {
-      width: "390px",
-      height: "844px",
+      width: '390px',
+      height: '844px',
     },
   },
   iphone12ProMax: {
-    name: "iPhone 12 Pro Max",
+    name: 'iPhone 12 Pro Max',
     styles: {
-      width: "428px",
-      height: "926px",
+      width: '428px',
+      height: '926px',
     },
   },
   galaxyS9: {
-    name: "Samsung Galaxy S9",
+    name: 'Samsung Galaxy S9',
     styles: {
-      width: "360px",
-      height: "740px",
+      width: '360px',
+      height: '740px',
     },
   },
 };
@@ -73,6 +73,8 @@ export const globalTypes: Preview['globalTypes'] = {
       items: [
         { title: 'Photostop', value: 'photostop', icon: 'camera' },
         { title: 'Saddles', value: 'saddles', icon: 'photo' },
+        { title: 'Healthcare', value: 'healthcare' },
+        { title: 'Wellness', value: 'wellness' },
       ],
       // Property that specifies if the name of the item will be displayed
       name: true,
@@ -83,7 +85,7 @@ export const globalTypes: Preview['globalTypes'] = {
 };
 
 export const parameters: Preview['parameters'] = {
-  viewport: {viewports: customViewports},
+  viewport: { viewports: customViewports },
   backgrounds: { disable: true },
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {

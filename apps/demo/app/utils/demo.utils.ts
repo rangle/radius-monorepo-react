@@ -9,7 +9,7 @@ const voidCallback = () => {};
  */
 const brandOrEventToken = '{--brandOrEvent}';
 /** Event tokens to look for to identify if an event is active */
-const events = ['--halloweenevent'];
+const events: any = [];
 
 export const useMutationObserver = () => {
   useEffect(() => {
@@ -88,7 +88,9 @@ export const useMutationObserver = () => {
           /** Cached computed styles to avoid recomputation */
           const computedStyle = getComputedStyle(element);
           const computedValues = references.reduce((acc, token) => {
-            const event = events.find((e) => computedStyle.getPropertyValue(e));
+            const event = events.find((e: any) =>
+              computedStyle.getPropertyValue(e)
+            );
             if (token === brandOrEventToken) {
               return {
                 ...acc,
