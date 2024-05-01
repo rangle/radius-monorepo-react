@@ -52,3 +52,5 @@ apps/demo/public/brand/*
 
 # Environment Variables
 *.env
+
+.nx/cache

@@ -11,7 +11,7 @@ Follow the steps below to set up the Radius Booster Design System Kit on your lo
 
 Start by cloning the repository to your local machine using the following command:
 
-``` bash
+```bash
 git clone https://github.com/rangle/radius-monorepo-react
 ```
 
@@ -19,8 +19,8 @@ git clone https://github.com/rangle/radius-monorepo-react
 
 Navigate to the cloned repository's root directory and install the required dependencies by running:
 
-``` bash
-yarn install
+```bash
+npm install
 ```
 
 This command installs all the necessary packages and dependencies required for the project.
@@ -30,7 +30,7 @@ This command installs all the necessary packages and dependencies required for t
 Before you can start working with NX Cloud, you need to create an nx-cloud.env file in the root directory. This file
 should contain the NX Cloud authentication token key. Here's how to set it up:
 
-``` bash
+```bash
 echo "NX_CLOUD_AUTH_TOKEN=<your-nx-cloud-token>" > nx-cloud.env
 ```
 
@@ -40,8 +40,8 @@ Replace <your-nx-cloud-token> with your actual NX Cloud token. This sets up NX C
 
 To view and test the components, run the Storybook development server with the following command:
 
-``` bash
-yarn storybook
+```bash
+npm run storybook
 ```
 
 This command launches the Storybook server, which provides an interactive, visual environment to explore and test the
@@ -51,8 +51,8 @@ components in isolation. You can access Storybook by opening a web browser and n
 
 To see the components in action, you can run the demo app by executing the following command:
 
-``` bash
-yarn demo
+```bash
+npm run demo
 ```
 
 This command starts the demo app, which showcases the various components and their usage within a real-world application

@@ -7,7 +7,7 @@ import {
 
 import { useStyles } from './nav-item.styles';
 import { cx } from '@emotion/css';
-import { RadiusNavItemComponent, RadiusNavItemProps } from './nav-item.types';
+import { RadiusNavItemProps } from './nav-item.types';
 import { PolymorphicRef } from '@rangle/radius-shared';
 
 /**
@@ -19,7 +19,7 @@ import { PolymorphicRef } from '@rangle/radius-shared';
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/cr1TnhNnQE1q93AXS7pAoo/Navigation?type=design&node-id=1-2880&t=lEv9YPz7daN5CFPv-0)
  */
-export const RadiusNavItem: RadiusNavItemComponent = forwardRef(
+export const RadiusNavItem = forwardRef(
   <C extends React.ElementType = 'a'>(
     { as, label, selected, className, ...rest }: RadiusNavItemProps<C>,
     ref: PolymorphicRef<C>

@@ -1,15 +1,11 @@
 import React, { forwardRef, useState } from 'react';
 import { cx } from '@emotion/css';
 import { radiusTokens } from '@rangle/radius-foundations';
-import {
-  Close,
-  Menu,
-  ArrowRight,
-} from '@rangle/radius-foundations';
+import { Close, Menu, ArrowRight } from '@rangle/radius-foundations';
 import { RadiusAutoLayout } from '@rangle/radius-react-core-components';
 
 import { useStyles } from './nav.styles';
-import { RadiusNavComponent, RadiusNavProps } from './nav.types';
+import { RadiusNavProps } from './nav.types';
 import { PolymorphicRef } from '@rangle/radius-shared';
 import { RadiusLinkIcon } from '../link-icon';
 import { RadiusButton } from '../button/button';
@@ -24,7 +20,7 @@ import { RadiusNavItem } from '../nav-item';
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/cr1TnhNnQE1q93AXS7pAoo/Navigation?type=design&node-id=1-2880)
  */
-export const RadiusNav: RadiusNavComponent = forwardRef(
+export const RadiusNav = forwardRef(
   <C extends React.ElementType = 'nav'>(
     {
       as,

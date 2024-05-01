@@ -4,10 +4,7 @@ import { radiusTokens } from '@rangle/radius-foundations';
 import { RadiusIcon } from '@rangle/radius-react-core-components';
 
 import { useStyles } from './link-icon.styles';
-import {
-  RadiusLinkIconComponent,
-  RadiusLinkIconProps,
-} from './link-icon.types';
+import { RadiusLinkIconProps } from './link-icon.types';
 import { PolymorphicRef } from '@rangle/radius-shared';
 
 /**
@@ -20,7 +17,7 @@ import { PolymorphicRef } from '@rangle/radius-shared';
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/f8ht6hWwgGcBAjRvhPAiOZ/Link-Icon?type=design&node-id=2-2&t=FZCihaVJwuEpv1c6-0)
  */
-export const RadiusLinkIcon: RadiusLinkIconComponent = forwardRef(
+export const RadiusLinkIcon = forwardRef(
   <C extends React.ElementType = 'a'>(
     {
       as,

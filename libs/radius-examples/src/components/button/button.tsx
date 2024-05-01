@@ -9,7 +9,7 @@ import {
 
 import { PolymorphicRef } from '@rangle/radius-shared';
 
-import { RadiusButtonProps, RadiusButtonComponent } from './button.types';
+import { RadiusButtonProps } from './button.types';
 import { useStyles } from './button.styles';
 
 // Adding comments before the component will be added to the documentation in storybook.
@@ -26,7 +26,7 @@ import { useStyles } from './button.styles';
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/mwknIfsv5oZk5yApkHdja3/Button?type=design&node-id=2-2)
  */
-export const RadiusButton: RadiusButtonComponent = forwardRef(
+export const RadiusButton = forwardRef(
   <C extends React.ElementType = 'button'>(
     {
       as,

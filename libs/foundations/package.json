@@ -1,20 +1,10 @@
 {
   "name": "@rangle/radius-foundations",
   "version": "0.9.0",
-  "main": "generated/design-tokens.constants.ts",
-  "description": "Foundation scripts and variables for Design Systems",
-  "files": [
-    "docs/",
-    "src/*"
-  ],
-  "types": "generated/design-tokens.types.ts",
-  "repository": {
-    "url": "ssh://git@github.com:rangle/radius-monorepo-react.git"
-  },
   "scripts": {
     "test": "jest",
-    "tokens:ci": "RADIUS_LAYERS_SUFFIX=-${npm_package_version} yarn tokens:validate",
-    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && yarn tokens:validate && yarn tokens:parse && yarn tokens:generate && yarn tokens:docs && yarn tokens:default-theme-settings && yarn tokens:constants && yarn tokens:types",
+    "tokens:ci": "RADIUS_LAYERS_SUFFIX=-${npm_package_version} npm run tokens:validate",
+    "tokens:update": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && npm run tokens:validate && npm run tokens:parse && npm run tokens:generate && npm run tokens:docs && npm run tokens:default-theme-settings && npm run tokens:constants && npm run tokens:types",
     "tokens:parse": "mkdir -p src/generated && cat ./tokens.json | ts-node --project tsconfig.generate.json scripts/to-layers.ts > src/generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:validate": "cat ./tokens.json | ts-node --project tsconfig.generate.json scripts/validate-layers.ts src/generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
     "tokens:assets": "export RADIUS_LAYERS_SUFFIX=-${npm_package_version} && TS_NODE_PROJECT=tsconfig.generate.json node --require ts-node/register scripts/save-assets.ts src/generated/token-layers${RADIUS_LAYERS_SUFFIX}.json",
@@ -25,7 +15,7 @@
     "tokens:default-theme-settings": "cat src/generated/token-layers${RADIUS_LAYERS_SUFFIX}.json | ts-node --project tsconfig.generate.json scripts/generate-theme.ts defaultThemeSettings > src/generated/default-theme-settings.constants.ts && prettier --config ../../.prettierrc --write src/generated/default-theme-settings.constants.ts",
     "build-icons": "rm -rf src/generated/icons && svgr --icon --typescript --filename-case kebab --out-dir src/generated/icons --svgo-config ./svgo.config.js src/assets/icons/svg",
     "build-brands": "rm -rf src/generated/brand && mkdir -p src/generated/brand && cp -Rf ../../radius/brands/* src/generated/brand",
-    "build-generated": "yarn build-brands  && yarn tokens:update && yarn build-icons && yarn tokens:assets",
+    "build-generated": "npm run build-brands  && npm run tokens:update && npm run build-icons && npm run tokens:assets",
     "clean": "rimraf \"src/generated/!(token-layers-*.json)\""
   },
   "jest": {
@@ -35,8 +25,5 @@
   },
   "author": "jason.santos@rangle.io",
   "license": "MIT",
-  "gitHead": "d06d999cbdabb3d3e32798e134871aa9698be5d7",
-  "devDependencies": {
-    "rimraf": "^5.0.5"
-  }
+  "gitHead": "d06d999cbdabb3d3e32798e134871aa9698be5d7"
 }

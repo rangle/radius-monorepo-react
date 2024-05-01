@@ -4,3 +4,5 @@ nx.json
 **/*.hbs
 /dist
 /coverage
+
+/.nx/cache

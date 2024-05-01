@@ -28,7 +28,7 @@ import { PolymorphicRef } from '@rangle/radius-shared';
  *
  * [RadiusAutoLayout Figma Specs](https://www.figma.com/file/ODAUZaQxH8oH2GI0A9MAVb/Radius-Booster---Auto-Layout?type=design&node-id=1302-3734)
  * */
-export const RadiusAutoLayout: AutoLayoutComponent = forwardRef(
+export const RadiusAutoLayout = forwardRef(
   <C extends React.ElementType = 'div'>(
     {
       as,

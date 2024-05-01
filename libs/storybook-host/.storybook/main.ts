@@ -26,7 +26,6 @@ const config: StorybookConfig = {
   ],
   addons: [
     '@nx/react/plugins/storybook',
-    'storybook-version',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',

@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
 
       # Cache node_modules to speed up future builds
       # For more info see: https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
@@ -42,7 +42,7 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache.name }}-${{ github.head_ref }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache.name }}-${{ github.head_ref }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache.name }}-${{ github.head_ref }}-
             ${{ runner.os }}-build-${{ env.cache.name }}-main-
@@ -50,16 +50,16 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-        # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock changes)
+        # Only install dependencies if cached dependencies aren't found (applies when content of package-lock.json changes)
       - name: Install Dependencies
         if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Validate tokens
         id: validate-tokens
         run: |
           # Parse and Validate Design Tokens
-          yarn tokens:ci
+          npm run tokens:ci
 
       - name: Build projects 🏗
         run: npx nx run demo:build --skip-nx-cache

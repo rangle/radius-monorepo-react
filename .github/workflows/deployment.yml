@@ -23,7 +23,7 @@ jobs:
           path: |
             ~/.npm
             ~/.cache
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
@@ -34,10 +34,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build Demo App
         run: npx nx run demo:build --skip-nx-cache
@@ -55,4 +55,4 @@ jobs:
 
       ## Deploy remix demo app with SST
       - name: Deploy Demo App to AWS
-        run: yarn sst deploy --stage prod
+        run: npx sst deploy --stage prod
