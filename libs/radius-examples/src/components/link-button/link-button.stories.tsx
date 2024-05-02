@@ -50,10 +50,10 @@ export const LinkButtonStates: Story = {
       <div>
         <RadiusLinkButton {...args}>Normal</RadiusLinkButton>
       </div>
-      <div id="hover">
+      <div className="pseudo-hover-all">
         <RadiusLinkButton {...args}>Hover</RadiusLinkButton>
       </div>
-      <div id="active">
+      <div className="pseudo-active-all">
         <RadiusLinkButton {...args}>Active</RadiusLinkButton>
       </div>
       <div>
@@ -63,10 +63,4 @@ export const LinkButtonStates: Story = {
       </div>
     </div>
   ),
-  parameters: {
-    pseudo: {
-      hover: ['#hover', '#hover-active'],
-      active: ['#active', '#hover-active'],
-    },
-  },
 };
