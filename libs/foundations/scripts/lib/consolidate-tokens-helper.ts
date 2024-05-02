@@ -3,7 +3,7 @@
 // Currently it can't do everything and requires manual work for complicated issues.
 //
 // To Run (from monorepo root):
-// yarn ts-node -P ./config/typescript/tsconfig.json -O '{"module": "commonjs"}' ./library/foundations/scripts/lib/consolidate-tokens-helper.ts
+// npm ts-node -P ./config/typescript/tsconfig.json -O '{"module": "commonjs"}' ./library/foundations/scripts/lib/consolidate-tokens-helper.ts
 
 import { writeFileSync } from 'fs';
 import path from 'path';

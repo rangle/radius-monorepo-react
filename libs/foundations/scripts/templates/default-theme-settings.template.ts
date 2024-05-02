@@ -17,7 +17,7 @@ const isSwitchable = ({
 const getDefaultAssetPaths = (defaultLayers: TokenLayer[]) => {
   const segements = defaultLayers
     .map(({ name }) => name.split('--'))
-    .filter(([_, value]) => value !== undefined);
+    .filter(([, value]) => value !== undefined);
   const event = segements.find(([group]) => group.endsWith('event'));
   if (event) {
     return event.join('/');

@@ -1,21 +1,16 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
+  "plugins": [
+    {
+      "plugin": "@nx/remix/plugin",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "dev",
-          "e2e",
-          "build-storybook",
-          "build-generated"
-        ]
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "typecheckTargetName": "typecheck"
       }
     }
-  },
+  ],
   "targetDefaults": {
     "dev": {
       "dependsOn": [
@@ -29,31 +24,18 @@
       "inputs": [
         "production",
         "^production"
-      ]
+      ],
+      "cache": true
     },
     "build": {
       "dependsOn": [
         "^build"
       ],
-      "inputs": ["production", "^production"]
-    },
-    "test": {
       "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js",
-        "{workspaceRoot}/jest.preset.js"
-      ]
-    },
-    "e2e": {
-      "inputs": ["default", "^production"]
-    },
-    "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore"
-      ]
+        "production",
+        "^production"
+      ],
+      "cache": true
     },
     "storybook": {
       "dependsOn": [
@@ -84,17 +66,48 @@
         "^production",
         "{projectRoot}/.storybook/**/*",
         "{projectRoot}/tsconfig.storybook.json"
-      ]
+      ],
+      "cache": true
     },
     "build-generated": {
       "inputs": [
         "default",
         "{projectRoot}/scripts/**/*"
-      ]
+      ],
+      "cache": true
+    },
+    "@nx/jest:jest": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/jest.preset.js"
+      ],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "@nx/eslint:lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore"
+      ],
+      "cache": true
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -117,5 +130,6 @@
         "unitTestRunner": "jest"
       }
     }
-  }
+  },
+  "useInferencePlugins": false
 }

@@ -4,10 +4,7 @@ import { radiusTokens } from '@rangle/radius-foundations';
 import { Typography } from '@rangle/radius-react-core-components';
 
 import { useStyles } from './inline-link.styles';
-import {
-  RadiusInlineLinkComponent,
-  RadiusInlineLinkProps,
-} from './inline-link.types';
+import { RadiusInlineLinkProps } from './inline-link.types';
 import { PolymorphicRef } from '@rangle/radius-shared';
 
 /**
@@ -21,7 +18,7 @@ import { PolymorphicRef } from '@rangle/radius-shared';
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/EUSxceIm71tCWSzPE27BwW/Inline-Link?type=design&node-id=2-2)
  */
-export const RadiusInlineLink: RadiusInlineLinkComponent = forwardRef(
+export const RadiusInlineLink = forwardRef(
   <C extends React.ElementType = 'a'>(
     {
       as,

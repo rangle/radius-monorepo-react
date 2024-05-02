@@ -2,9 +2,9 @@
 // Helper script to log all  differences between two `tokens.json` outputs from TokenStudio
 //
 // To Run (from monorepo root):
-// yarn ts-node -P ./config/typescript/tsconfig.json -O '{"module": "commonjs"}' ./library/foundations/scripts/lib/token-diff-helper.ts --base=../../tokens.json --target=../../my-new-tokens.json
+// npm ts-node -P ./config/typescript/tsconfig.json -O '{"module": "commonjs"}' ./library/foundations/scripts/lib/token-diff-helper.ts --base=../../tokens.json --target=../../my-new-tokens.json
 
-const exampleSyntax = `yarn ts-node -P ./config/typescript/tsconfig.json -O '{"module": "commonjs"}' ./library/foundations/scripts/lib/token-diff-helper.ts --base=../../tokens.json --target=../../my-new-tokens.json`;
+const exampleSyntax = `npm ts-node -P ./config/typescript/tsconfig.json -O '{"module": "commonjs"}' ./library/foundations/scripts/lib/token-diff-helper.ts --base=../../tokens.json --target=../../my-new-tokens.json`;
 
 type Config = {
   /** Path to the base (e.g. `main`) `token.json` */

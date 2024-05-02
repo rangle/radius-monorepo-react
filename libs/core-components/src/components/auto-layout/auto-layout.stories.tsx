@@ -8,18 +8,10 @@ import { RadiusAutoLayout } from './auto-layout';
 import { flattenObject } from '@rangle/radius-shared';
 import { AutoLayoutExtendedProps } from './auto-layout.types';
 
-const [major, minor, patch] = version ? version.split('.') : ['0', '0', '0'];
-
 const meta: Meta<typeof RadiusAutoLayout> = {
   component: RadiusAutoLayout,
   title: 'Auto Layout',
   parameters: {
-    // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
-    version: {
-      major,
-      minor,
-      patch,
-    },
     badges: [BADGE.BETA],
 
     // More on Storybook parameters at: https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters

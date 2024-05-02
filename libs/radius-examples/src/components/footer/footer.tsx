@@ -5,7 +5,7 @@ import {
   Typography,
 } from '@rangle/radius-react-core-components';
 
-import { RadiusFooterComponent, RadiusFooterProps } from './footer.types';
+import { RadiusFooterProps } from './footer.types';
 import { PolymorphicRef } from '@rangle/radius-shared';
 import { useStyles } from './footer.styles';
 import { RadiusLinkButton } from '../link-button';
@@ -21,7 +21,7 @@ import { RadiusInlineLink } from '../inline-link/inline-link';
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/6wmTw9t9kiutJssWjO890d/Footer?type=design&node-id=1-2880)
  */
-export const RadiusFooter: RadiusFooterComponent = forwardRef(
+export const RadiusFooter = forwardRef(
   <C extends React.ElementType = 'footer'>(
     {
       as,

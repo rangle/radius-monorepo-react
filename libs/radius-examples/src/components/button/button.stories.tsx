@@ -45,23 +45,17 @@ export const ButtonStates: Story = {
       <div>
         <RadiusButton {...args}>Normal</RadiusButton>
       </div>
-      <div id="hover">
+      <div id="hover" className="pseudo-hover-all">
         <RadiusButton {...args}>Hover</RadiusButton>
       </div>
-      <div id="active">
+      <div id="active" className="pseudo-active-all">
         <RadiusButton {...args}>Active</RadiusButton>
       </div>
-      <div id="hover-active">
+      <div id="hover-active" className="pseudo-hover-all pseudo-active-all">
         <RadiusButton {...args}>Hover Active</RadiusButton>
       </div>
     </div>
   ),
-  parameters: {
-    pseudo: {
-      hover: ['#hover', '#hover-active'],
-      active: ['#active', '#hover-active'],
-    },
-  },
 };
 
 type ButtonVariations = {
@@ -78,16 +72,17 @@ const renderButtonVariationCell = (
   type: ButtonVariations['types'][number],
   state: ButtonVariations['states'][number]
 ) => {
-  const className = state.toLowerCase();
   if (state !== 'Disabled') {
+    const lowerState = state.toLowerCase();
+    const className = `${lowerState} pseudo-${lowerState}-all`;
     return (
-      <td className={className}>
+      <td key={`${type}-${state}`} className={className}>
         <RadiusButton variant={type}>Action</RadiusButton>
       </td>
     );
   } else {
     return (
-      <td>
+      <td key={`${type}-${state}`}>
         <RadiusButton variant={type} disabled>
           Action
         </RadiusButton>
@@ -110,38 +105,42 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
   // renders a table with rows for each type and size and columns for each state
   return () => (
     <table className={tableStyle}>
-      <tr>
-        <th></th>
-        {states.map((state) => (
-          <th>
-            <span
-              style={{
-                fontFamily: 'Riforma LL',
-                fontSize: '20px',
-                fontWeight: 'bold',
-              }}
-            >
-              {state}
-            </span>
-          </th>
-        ))}
-      </tr>
-      {types.map((type) => (
+      <thead>
         <tr>
-          <td>
-            <span
-              style={{
-                fontFamily: 'Riforma LL',
-                fontSize: '20px',
-                fontWeight: 'bold',
-              }}
-            >
-              {type}
-            </span>
-          </td>
-          {states.map((state) => renderButtonVariationCell(type, state))}
+          <th key="index-0"></th>
+          {states.map((state, index) => (
+            <th key={`index-${index + 1}`}>
+              <span
+                style={{
+                  fontFamily: 'Riforma LL',
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                }}
+              >
+                {state}
+              </span>
+            </th>
+          ))}
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {types.map((type, index) => (
+          <tr key={type}>
+            <td key={index}>
+              <span
+                style={{
+                  fontFamily: 'Riforma LL',
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                }}
+              >
+                {type}
+              </span>
+            </td>
+            {states.map((state) => renderButtonVariationCell(type, state))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };
@@ -149,10 +148,3 @@ const ButtonVariantsTemplateAutomated = (options: ButtonVariations) => {
 export const ButtonVariants = ButtonVariantsTemplateAutomated(
   buttonVariations
 ).bind({});
-
-ButtonVariants.parameters = {
-  pseudo: {
-    hover: ['.hover', '.hover-active'],
-    active: ['.active', '.hover-active'],
-  },
-};

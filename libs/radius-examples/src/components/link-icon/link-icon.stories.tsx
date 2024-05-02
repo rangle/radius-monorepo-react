@@ -48,9 +48,15 @@ type Story = StoryObj<typeof RadiusLinkIcon>;
 
 export const Default: Story = {};
 
-const Cell = ({ children, id }: { children: React.ReactNode; id?: string }) => (
+const Cell = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div
-    id={id}
+    className={className}
     style={{
       display: 'flex',
       flexDirection: 'column',
@@ -88,31 +94,20 @@ export const Variants: Story = {
       {Object.entries(sizes).map(([key, value]) => (
         <>
           <Cell>{key}</Cell>
-
           <Cell>
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
             <RadiusLinkIcon {...args} size={value} />
           </Cell>
-          <Cell id="hover">
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
+          <Cell className="pseudo-hover-all">
             <RadiusLinkIcon {...args} size={value} />
           </Cell>
-          <Cell id="active">
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
+          <Cell className="pseudo-active-all">
             <RadiusLinkIcon {...args} size={value} />
           </Cell>
           <Cell>
-            {/* @ts-expect-error - core tokens not allowed in `size` prop */}
             <RadiusLinkIcon {...args} size={value} disabled />
           </Cell>
         </>
       ))}
     </div>
   ),
-  parameters: {
-    pseudo: {
-      hover: ['#hover'],
-      active: ['#active'],
-    },
-  },
 };

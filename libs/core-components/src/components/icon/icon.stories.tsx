@@ -7,18 +7,10 @@ import { icons } from '@rangle/radius-foundations';
 import { radiusTokens, version } from '@rangle/radius-foundations';
 import { flattenObject } from '@rangle/radius-shared';
 
-const [major, minor, patch] = version ? version.split('.') : ['0', '0', '0'];
-
 const meta: Meta<typeof RadiusIcon> = {
   component: RadiusIcon,
   title: 'Icon',
   parameters: {
-    // Version is rendered by this plugin https://github.com/silversonicaxel/storybook-addon-versioning
-    version: {
-      major,
-      minor,
-      patch,
-    },
     badges: [BADGE.BETA],
   },
   argTypes: {

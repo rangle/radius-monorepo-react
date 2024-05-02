@@ -8,10 +8,7 @@ import {
 } from '@rangle/radius-react-core-components';
 
 import { useStyles } from './link-button.styles';
-import {
-  RadiusLinkButtonComponent,
-  RadiusLinkButtonProps,
-} from './link-button.types';
+import { RadiusLinkButtonProps } from './link-button.types';
 import { PolymorphicRef } from '@rangle/radius-shared';
 
 /**
@@ -22,7 +19,7 @@ import { PolymorphicRef } from '@rangle/radius-shared';
  * ### Resources
  * [Figma Design Specs](https://www.figma.com/file/GyMbhen70fwnSFOXriDZWZ/Link-Button?type=design&node-id=2-2)
  */
-export const RadiusLinkButton: RadiusLinkButtonComponent = forwardRef(
+export const RadiusLinkButton = forwardRef(
   <C extends React.ElementType = 'a'>(
     {
       as,

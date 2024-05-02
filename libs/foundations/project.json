@@ -6,11 +6,8 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/foundations/src/**/*.{ts,tsx,js,jsx}"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "build-generated": {
       "executor": "nx:run-script",
@@ -32,7 +29,7 @@
         "tsConfig": "libs/foundations/tsconfig.lib.json",
         "project": "libs/foundations/package.json",
         "entryFile": "libs/foundations/src/index.ts",
-        "external": ["react", "react-dom", "@emotion/react/jsx-runtime"],
+        "external": ["react", "react-dom", "react/jsx-runtime"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

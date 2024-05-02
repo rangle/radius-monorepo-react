@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
 
       # Cache node_modules to speed up future builds
       # For more info see: https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
@@ -31,27 +31,27 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json', '**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-        # Only install dependencies if cached dependencies aren't found (applies when content of yarn.lock or any package.json changes)
+        # Only install dependencies if cached dependencies aren't found (applies when content of package-lock.json or any package.json changes)
       - name: Install Dependencies
         if: ${{ steps.cache-nodemodules.outputs.cache-hit != 'true' }}
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Validate tokens
         id: validate-tokens
         run: |
           # Parse and Validate Design Tokens
-          yarn tokens:ci
+          npm run tokens:ci
 
       - name: Build Demo App
         run: npx nx run demo:build --skip-nx-cache
 
       - name: Lint
-        run: yarn lint:ci
+        run: npm run lint:ci
 
       - name: Configure AWS credentials for deployment
         uses: aws-actions/configure-aws-credentials@v2
@@ -62,7 +62,7 @@ jobs:
 
       ## Deploy remix demo app with SST
       - name: Deploy Demo App to AWS
-        run: yarn sst deploy --stage radius-pr
+        run: npx sst deploy --stage radius-pr
 
       # Find existing Demo App comment
       - name: Find Existing Comment

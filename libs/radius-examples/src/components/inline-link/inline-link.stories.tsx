@@ -48,9 +48,15 @@ type Story = StoryObj<typeof RadiusInlineLink>;
 
 export const Default: Story = {};
 
-const Cell = ({ children, id }: { children: React.ReactNode; id?: string }) => (
+const Cell = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div
-    id={id}
+    className={className}
     style={{
       display: 'flex',
       flexDirection: 'column',
@@ -91,10 +97,11 @@ export const Variants: Story = {
           <Cell>
             <RadiusInlineLink {...args} typography={value} />
           </Cell>
-          <Cell id="hover">
+
+          <Cell className="pseudo-hover-all">
             <RadiusInlineLink {...args} typography={value} />
           </Cell>
-          <Cell id="active">
+          <Cell className="pseudo-active-all">
             <RadiusInlineLink {...args} typography={value} />
           </Cell>
           <Cell>
@@ -104,10 +111,4 @@ export const Variants: Story = {
       ))}
     </div>
   ),
-  parameters: {
-    pseudo: {
-      hover: ['#hover'],
-      active: ['#active'],
-    },
-  },
 };

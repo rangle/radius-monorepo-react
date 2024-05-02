@@ -146,7 +146,7 @@ export const renderCompositeToken = (
 /* TOKEN REFERENCE MANAGER */
 
 /* REFERENCE PROCESSOR */
-const bracketsAround = /[\{][a-zA-Z][a-zA-Z0-9.\-]*[\}]/g;
+const bracketsAround = /[{][a-zA-Z][a-zA-Z0-9.-]*[}]/g;
 export const isReference = (u: string) => u.match(bracketsAround);
 const isPresent = <T>(a: T[], b: T[]) => a.some((item) => b.includes(item));
 
@@ -420,6 +420,7 @@ export const extractTokens = (
 
 // read data from standard input
 export const readStdin = (): Promise<Buffer> => {
+  // eslint-disable-next-line
   if (!!process.stdin.setRawMode) {
     throw new Error(
       `This script should receive its input as data piped through standard input
