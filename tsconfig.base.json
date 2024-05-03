@@ -13,6 +13,7 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "jsx": "react",
     "baseUrl": ".",
     "paths": {
       "@radius-monorepo-react/storybook-host": [

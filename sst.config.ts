@@ -1,10 +1,10 @@
 import { SSTConfig } from 'sst';
-import { API } from './stacks/my-stack';
+import { API } from './stacks/next-demo-stack';
 
 export default {
   config(_input) {
     return {
-      name: 'radius-remix',
+      name: 'radius-next',
       region: 'us-east-1',
     };
   },

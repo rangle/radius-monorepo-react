@@ -48,7 +48,7 @@ jobs:
           npm run tokens:ci
 
       - name: Build Demo App
-        run: npx nx run demo:build --skip-nx-cache
+        run: npx nx run next-demo:build --skip-nx-cache
 
       - name: Lint
         run: npm run lint:ci
@@ -60,7 +60,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      ## Deploy remix demo app with SST
+      ## Deploy Nextjs demo app with SST
       - name: Deploy Demo App to AWS
         run: npx sst deploy --stage radius-pr
 
@@ -80,4 +80,4 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Demo App Preview: https://d11mwnosflssyy.cloudfront.net/
+            Demo App Preview: https://d3vy1i1e5adgl7.cloudfront.net

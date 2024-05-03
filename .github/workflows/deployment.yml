@@ -40,7 +40,7 @@ jobs:
         run: npm ci
 
       - name: Build Demo App
-        run: npx nx run demo:build --skip-nx-cache
+        run: npx nx run next-demo:build --skip-nx-cache
 
       ## Run lint, test, and build for all affected projects
       - run: NX_CLOUD_AUTH_TOKEN=${{ secrets.NX_CLOUD_AUTH_TOKEN }} npx nx affected --target=lint --parallel=3
@@ -53,6 +53,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      ## Deploy remix demo app with SST
+      ## Deploy Nextjs demo app with SST
       - name: Deploy Demo App to AWS
         run: npx sst deploy --stage prod
