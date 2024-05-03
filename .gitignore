@@ -54,3 +54,7 @@ apps/demo/public/brand/*
 *.env
 
 .nx/cache
+
+# Next.js
+.next
+out

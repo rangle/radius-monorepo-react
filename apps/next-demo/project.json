@@ -1,0 +1,65 @@
+{
+  "name": "next-demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/next-demo",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "load-assets": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "load-assets"
+      }
+    },
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "dependsOn": ["load-assets"],
+      "options": {
+        "outputPath": "dist/next-demo"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "dist/next-demo"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "customServerTarget": "dist/next-demo",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "next-demo:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "next-demo:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "next-demo:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "next-demo:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/next-demo/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
