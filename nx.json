@@ -15,34 +15,22 @@
     "dev": {
       "dependsOn": [
         {
-          "projects": [
-            "foundations"
-          ],
+          "projects": ["foundations"],
           "target": "build"
         }
       ],
-      "inputs": [
-        "production",
-        "^production"
-      ],
+      "inputs": ["production", "^production"],
       "cache": true
     },
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ],
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
       "cache": true
     },
     "storybook": {
       "dependsOn": [
         {
-          "projects": [
-            "foundations"
-          ],
+          "projects": ["foundations"],
           "target": "build-generated"
         }
       ],
@@ -55,9 +43,7 @@
     "build-storybook": {
       "dependsOn": [
         {
-          "projects": [
-            "foundations"
-          ],
+          "projects": ["foundations"],
           "target": "build-generated"
         }
       ],
@@ -70,10 +56,7 @@
       "cache": true
     },
     "build-generated": {
-      "inputs": [
-        "default",
-        "{projectRoot}/scripts/**/*"
-      ],
+      "inputs": ["default", "{projectRoot}/scripts/**/*"],
       "cache": true
     },
     "@nx/jest:jest": {
@@ -101,13 +84,15 @@
         "{workspaceRoot}/.eslintignore"
       ],
       "cache": true
+    },
+    "@nx/next:build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -128,6 +113,12 @@
       },
       "library": {
         "unitTestRunner": "jest"
+      }
+    },
+    "@nx/next": {
+      "application": {
+        "style": "@emotion/styled",
+        "linter": "eslint"
       }
     }
   },

@@ -62,7 +62,7 @@ jobs:
           npm run tokens:ci
 
       - name: Build projects 🏗
-        run: npx nx run demo:build --skip-nx-cache
+        run: npx nx run next-demo:build --skip-nx-cache
 
       # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
