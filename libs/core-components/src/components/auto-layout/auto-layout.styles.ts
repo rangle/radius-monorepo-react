@@ -1,9 +1,5 @@
 import { CSSExpression } from '@rangle/radius-foundations';
-import {
-  renderCSSProp,
-  css,
-  RequireAndPick,
-} from '@rangle/radius-shared';
+import { renderCSSProp, css, RequireAndPick } from '@rangle/radius-shared';
 
 import {
   mapAlignments,
@@ -79,6 +75,7 @@ const FIGMA_DEFAULT_SPACING = '10px';
 export type StyleProps = Pick<
   AutoLayoutExtendedProps,
   | 'direction'
+  | 'wrap'
   | 'space'
   | 'padding'
   | 'opacity'
@@ -145,6 +142,7 @@ const gridStyles = `
 // Should we add type for using em or rem? or vw or vh? What should be our suggested unit?
 export const useStyles = ({
   direction, //flex-direction
+  wrap, //flex-wrap
   space, // is either auto or number or zero
   clippedContent, //overflow:hidden
   alignment, //align-items
@@ -183,6 +181,11 @@ export const useStyles = ({
       ? 'row'
       : renderCSSProp(direction)};
     margin: 0;
+    flex-wrap: ${wrap === 'wrap'
+      ? 'wrap'
+      : wrap === 'wrap-reverse'
+      ? 'wrap-reverse'
+      : 'nowrap'};
     box-sizing: ${mapStrokeAlign[strokeAlign || 'inside']};
     align-items: ${mapAlignments[alignment]};
     width: ${getSize(width)};
